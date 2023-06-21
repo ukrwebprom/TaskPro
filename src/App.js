@@ -2,6 +2,7 @@ import "./App.css";
 import { useTheme } from "./hooks/useTheme";
 import { ThemeSelector } from "./components/ThemeSelector/ThemeSelector";
 import { useEffect } from "react";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const { theme } = useTheme();

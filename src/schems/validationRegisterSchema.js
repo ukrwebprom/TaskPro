@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
-export const validationAuthSchema = Yup.object().shape({
+export const validationRegistrSchema = Yup.object().shape({
   name: Yup.string()
+    .required("Is Require")
     .matches(
       /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/? ]*$/,
       "The name must contain only Latin letters, numbers and symbols"

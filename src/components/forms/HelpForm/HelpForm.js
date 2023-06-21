@@ -1,7 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationLoginSchema } from "schems/validationLoginSchema";
+import { validationHelpSchema } from "schems/validationHelpSchema";
 
-export const LoginForm = () => {
+export const HelpForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
@@ -12,26 +12,22 @@ export const LoginForm = () => {
     <Formik
       initialValues={{
         email: "",
-        password: "",
+        comment: "",
       }}
-      validationSchema={validationLoginSchema}
+      validationSchema={validationHelpSchema}
       onSubmit={handleSubmit}
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
         <Form>
           <label>
-            <Field name="email" placeholder="Enter your email" type="email" />
+            <Field name="email" placeholder="Email address" type="email" />
             <ErrorMessage name="email" />
           </label>
 
           <label>
-            <Field
-              name="password"
-              placeholder="Create a password"
-              type="password"
-            />
-            <ErrorMessage name="password" />
+            <Field name="comment" as="textarea" placeholder="Comment" />
+            <ErrorMessage name="comment" />
           </label>
 
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>

@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationAuthSchema } from "schems/validationAuthSchema";
+import { validationRegistrSchema } from "schems/validationRegisterSchema";
 
 export const RegisterForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -15,18 +15,28 @@ export const RegisterForm = () => {
         email: "",
         password: "",
       }}
-      validationSchema={validationAuthSchema}
+      validationSchema={validationRegistrSchema}
       onSubmit={handleSubmit}
+      validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
         <Form>
           <label>
-            <Field name="name" placeholder="Enter your name" />
+            <Field
+              name="name"
+              placeholder="Enter your name"
+              autoComplete="off"
+            />
             <ErrorMessage name="name" />
           </label>
 
           <label>
-            <Field name="email" placeholder="Enter your email" type="email" />
+            <Field
+              name="email"
+              placeholder="Enter your email"
+              type="email"
+              autoComplete="off"
+            />
             <ErrorMessage name="email" />
           </label>
 
@@ -35,6 +45,7 @@ export const RegisterForm = () => {
               name="password"
               placeholder="Create a password"
               type="password"
+              autoComplete="off"
             />
             <ErrorMessage name="password" />
           </label>
@@ -47,3 +58,18 @@ export const RegisterForm = () => {
     </Formik>
   );
 };
+
+// const formik = useFormik({
+//   initialValues: {
+//     name: '',
+//     email: '',
+//   },
+//   validationSchema: Yup.object({
+//     name: Yup.string().required('Введіть ім'я'),
+//     email: Yup.string().email('Введіть коректну адресу').required('Введіть електронну пошту'),
+//   }),
+//   validateOnBlur: true, // валідація буде виконуватися лише після зняття фокусу
+//   onSubmit: values => {
+//     alert(JSON.stringify(values, null, 2));
+//   },
+// });

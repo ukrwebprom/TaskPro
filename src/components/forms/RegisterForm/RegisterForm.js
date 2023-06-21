@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationAuthSchema } from "../../../schems/validationAuthSchema";
+import { validationAuthSchema } from "schems/validationAuthSchema";
 
 export const RegisterForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -38,6 +38,7 @@ export const RegisterForm = () => {
             />
             <ErrorMessage name="password" />
           </label>
+
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
             Submit
           </button>

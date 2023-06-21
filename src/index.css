@@ -14,13 +14,17 @@ code {
 
 :root {
   --accent-color: #BEDBB0;
-  --button-foreground-color: #161616;
+  --main-background-color: #161616;
+  --main-text-color: rgba(255, 255, 255, 0.5);
 }
-[data-theme='dark'] {
+[data-theme='light'] {
   --accent-color: #BEDBB0;
-  --button-foreground-color: #161616;
+  --main-background-color: #FCFCFC;
+  --main-text-color: #161616;
 }
 [data-theme='violet'] {
   --accent-color: #5255BC;
-  --button-foreground-color: #FFFFFF;
+  --main-background-color: #FCFCFC;
+  --main-text-color: #161616;
 }
+

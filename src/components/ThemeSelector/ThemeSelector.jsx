@@ -1,13 +1,17 @@
 import {useTheme} from "../../hooks/useTheme";
+import css from './ThemeSelector.module.css';
 
 export const ThemeSelector = () => {
-    const {themes, setTheme} = useTheme();
-
+    const {themes, setTheme, theme} = useTheme();
+    const getThemeOptions = () => {
+        let list = [];
+        for (const option in themes) {
+            const item = themes[option];
+            list.push(<li key={item}><button onClick={() => setTheme(item)} className={theme === item? css.active : css.selectorItem}>{item}</button></li>)
+        }
+        return list;
+    }
     return(
-        <ul className="theme-selector">
-            <li><button onClick={() => setTheme(themes.dark)}>Dark</button></li>
-            <li><button onClick={() => setTheme(themes.light)}>Light</button></li>
-            <li><button onClick={() => setTheme(themes.violet)}>Violet</button></li>
-        </ul>
+        <ul className={css.selector}>{getThemeOptions()}</ul>
     )
 }

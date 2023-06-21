@@ -91,7 +91,7 @@ export const NewBoardForm = () => {
       {({ isSubmitting, isValid, dirty, values, setFieldValue }) => (
         <Form>
           <div>
-            <label htmlFor="title">Заголовок:</label>
+            <label htmlFor="title">Title</label>
             <Field
               type="text"
               id="title"

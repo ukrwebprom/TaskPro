@@ -9,63 +9,63 @@ const icons = ["❤️", "👍", "👎", "🤔", "😂", "🤢", "🤬", "🤯"]
 const backgrounds = [
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background1.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background2.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background3.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background4.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background6.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background7.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background8.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background9.jpg",
+    image: "https://picsum.photos/200/300.jpg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background10.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background11.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background12.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background13.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background14.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background15.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
   {
     id: nanoid(),
-    image: "https://example.com/backgrounds/background16.jpg",
+    image: "https://picsum.photos/200/300.jpgg",
   },
 ];
 
@@ -90,16 +90,10 @@ export const NewBoardForm = () => {
     >
       {({ isSubmitting, isValid, dirty, values, setFieldValue }) => (
         <Form>
-          <div>
-            <label htmlFor="title">Title</label>
-            <Field
-              type="text"
-              id="title"
-              name="title"
-              placeholder="Заголовок"
-            />
+          <label>
+            <Field type="text" name="title" placeholder="Title" />
             <ErrorMessage name="title" />
-          </div>
+          </label>
 
           <label className="icon-container">
             Icons

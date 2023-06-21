@@ -1,79 +1,34 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { nanoid } from "nanoid";
 import { validationNewBoardSchema } from "schems";
 import "./test.css";
 
 const icons = ["❤️", "👍", "👎", "🤔", "😂", "🤢", "🤬", "🤯"];
 
 const backgrounds = [
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
-  {
-    id: nanoid(),
-    image: "https://picsum.photos/200/300.jpgg",
-  },
+  "https://picsum.photos/200.jpg",
+  "https://picsum.photos/201.jpg",
+  "https://picsum.photos/202.jpg",
+  "https://picsum.photos/203.jpg",
+  "https://picsum.photos/204.jpg",
+  "https://picsum.photos/205.jpg",
+  "https://picsum.photos/206.jpg",
+  "https://picsum.photos/207.jpg",
+  "https://picsum.photos/208.jpgg",
+  "https://picsum.photos/209.jpgg",
+  "https://picsum.photos/210.jpgg",
+  "https://picsum.photos/211.jpgg",
+  "https://picsum.photos/212.jpgg",
+  "https://picsum.photos/213.jpgg",
+  "https://picsum.photos/214.jpgg",
+  "https://picsum.photos/215.jpgg",
 ];
 
 export const NewBoardForm = () => {
   const initialValues = {
     title: "",
-    icon: "",
-    background: "",
+    icon: icons[0],
+    background: backgrounds[0],
   };
 
   const onSubmit = (values, { setSubmitting }) => {
@@ -121,16 +76,16 @@ export const NewBoardForm = () => {
               <div key={index}>
                 <Field
                   type="radio"
-                  id={`background${background.id}`}
+                  id={`background${background}`}
                   name="background"
-                  value={background.id}
-                  checked={values.background === background.id}
-                  onChange={() => setFieldValue("background", background.id)}
+                  value={background}
+                  checked={values.background === background}
+                  onChange={() => setFieldValue("background", background)}
                 />
                 <label
-                  htmlFor={`background${background.id}`}
+                  htmlFor={`background${index}`}
                   className="background"
-                  style={{ backgroundImage: `url(${background.image})` }}
+                  style={{ backgroundImage: `url(${background})` }}
                 />
               </div>
             ))}

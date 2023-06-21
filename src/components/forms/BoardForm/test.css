@@ -1,0 +1,39 @@
+/* Сховати чекбокси */
+input[type="radio"] {
+  display: none;
+}
+
+/* Стилізувати кружечки для іконок */
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* Стилізувати квадратики для фонів */
+.background {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 10px;
+  border: 1px solid #0077ff;
+}
+
+/* Стилізувати вибрані значки */
+input[type="radio"][name="icon"]:checked + .icon {
+  background-color: #0077ff;
+  color: #fff;
+}
+
+/* Стилізувати вибрані фони */
+input[type="radio"][name="background"]:checked + .background {
+  border: 2px solid #0077ff;
+}

@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationLoginSchema } from "schems/validationLoginSchema";
+import { validationLoginSchema } from "schems";
 
 export const LoginForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -35,7 +35,7 @@ export const LoginForm = () => {
           </label>
 
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Submit
+            Log In Now
           </button>
         </Form>
       )}

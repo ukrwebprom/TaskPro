@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationHelpSchema } from "schems/validationHelpSchema";
+import { validationHelpSchema } from "schems";
 
 export const HelpForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -31,7 +31,7 @@ export const HelpForm = () => {
           </label>
 
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Submit
+            Send
           </button>
         </Form>
       )}

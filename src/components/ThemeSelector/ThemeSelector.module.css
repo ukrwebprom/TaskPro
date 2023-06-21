@@ -17,6 +17,7 @@
     font-family: inherit;
     font-weight: 400;
     font-size: 14px;
+    text-transform: capitalize;
     line-height: 21px;
     color:var(--main-text-color);
     background-color: transparent;

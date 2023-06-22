@@ -1,13 +1,14 @@
 import css from './HomeLayout.module.css';
 import { useState } from 'react';
+import Sidebar from 'components/Sidebar/Sidebar';
+
 export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
 
     return(
         <div className={css.outer}>
             <div className={isSidebar? css.sidebar : css.hidden}>
-                
-                Sidebar
+                <Sidebar />
             </div>
             {isSidebar && <div className={css.backdrop} onClick={() => setIsSidebar(false)}></div>}
             <div className={css.mainarea}>

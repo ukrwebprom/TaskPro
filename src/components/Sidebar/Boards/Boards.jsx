@@ -1,4 +1,5 @@
-import ProjectsList from "./ProjectsList";
+/* import ProjectsList from "./ProjectsList"; */
+import ProjectsList from "./ProjectsList/ProjectsList";
 import "../Sidebar.css";
 
 const Boards = () => {

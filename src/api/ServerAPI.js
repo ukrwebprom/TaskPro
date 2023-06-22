@@ -12,12 +12,6 @@ const resetAuthToken = () => {
 
 export const getMe = async (token) => {
     setAuthToken(token);
-    try {
-        const res = await axios.get(`/user/me`);
-        setAuthToken(res.data.token);
-        return res.data;
-
-    } catch(err) {
-        return false;
-    }
+    const res = await axios.get(`/users/me`);
+    return res.data;
 }

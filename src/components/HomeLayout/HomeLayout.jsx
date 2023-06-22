@@ -15,8 +15,8 @@ export const HomeLayout = ({children}) => {
             </div>
             {isSidebar && <div className={css.backdrop} onClick={() => setIsSidebar(false)}></div>}
             <div className={css.mainarea}>
-                <div className={css.header}>
-                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
+                <div className={css.header}><a href='/fuck'>fuck</a>
+ {/*                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
 
                     <Button className={`${btn.btn} ${btn.send}`}>Send</Button>
 
@@ -24,7 +24,7 @@ export const HomeLayout = ({children}) => {
 
                     <Button className={`${btn.btn} ${btn.column}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another column</Button>
 
-                    <Button className={`${btn.btn} ${btn.card}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another card</Button>
+                    <Button className={`${btn.btn} ${btn.card}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another card</Button> */}
                 </div>
                 {children}
             </div>

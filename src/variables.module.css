@@ -1,0 +1,87 @@
+:root {
+  /* adaptive screens for media rules*/
+  --mobile-screen: 375px;
+  --tablet-screen: 768px;
+  --desktop-screen: 1280px;
+
+  /* common colors*/
+  --auth-bg-color: #bedbb0;
+  --auth-input-color: #1f1f1f;
+
+  --without-priority-bg-color: #ffffff4d;
+  --low-priority-bg-color: #8fa1d0;
+  --medium-priority-bg-color: #e09cb5;
+  --high-priority-bg-color: #bedbb0;
+
+    /* timig*/
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+  /* theme colors*/
+  /* dark theme*/
+[data-theme="dark"] {
+  --primary-text-color: #fff;
+  --secondary-text-color: #ffffff80;
+  --btn-text-color: #161616;
+  --accent-color: #bedbb0;
+
+  --primary-bg-color: #1f1f1f;
+  --secondary-bg-color: #121212;
+  --navigation-bg-color: #121212;
+  --navigation-sec-bg-color: #1f1f1f;
+  --pop-up-bg-color: #151515;
+  --header-bg-color: #151515;
+}
+
+  /* light theme*/
+  [data-theme="light"] {
+  --primary-text-color: #161616;
+  --secondary-text-color: #161616b2;
+  --btn-text-color: #161616;
+  --accent-color: #bedbb0;
+
+  --primary-bg-color: #f6f6f7;
+  --secondary-bg-color: #fff;
+  --navigation-bg-color: #ffffff;
+  --navigation-sec-bg-color: #f6f6f7;
+  --pop-up-bg-color: #fcfcfc;
+  --header-bg-color: #fcfcfc;
+  }
+
+  /* violet theme*/
+  [data-theme="violet"] {
+  --primary-text-color: #161616;
+  --secondary-text-color: #161616b2;
+  --btn-text-color: #fff;
+  --accent-color: #5255bc;
+
+  --primary-bg-color: #ecedfd;
+  --secondary-bg-color: #fff;
+  --navigation-bg-color: #5255bc;
+  --navigation-sec-bg-color: #ecedfd66;
+  --pop-up-bg-color: #fcfcfc;
+  --header-bg-color: #fff;
+}
+  /* fonts*/
+/*   --font: "Poppins", sans-serif; */
+
+
+
+
+/*adaptive layout with breakpoints example*/
+@media screen and (min-width: var(--mobile-screen)) {
+  .App {
+    background-color: var(--primary-bg-color);
+  }
+}
+
+@media screen and (min-width: var(--tablet-screen)) {
+  .App {
+    background-color: var(--secondary-bg-color);
+  }
+}
+
+@media screen and (min-width: var(--desktop-screen)) {
+  .App {
+    background-color: var(--navigation-bg-color);
+  }
+}

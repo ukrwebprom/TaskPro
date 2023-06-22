@@ -1,12 +1,8 @@
-import "./App.css";
-import { useTheme } from "./hooks/useTheme";
+import { useUser } from "./hooks/useUser";
 import { ThemeSelector } from "./components/ThemeSelector/ThemeSelector";
-import { useEffect } from "react";
-import Sidebar from "./components/Sidebar";
 
 function App() {
-  const { theme } = useTheme();
-  console.log(theme);
+  const { isLogged, setAuthToken, theme } = useUser();
 
   return (
     <div className="App" data-theme={theme}>

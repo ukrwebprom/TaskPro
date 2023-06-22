@@ -15,3 +15,8 @@ export const getMe = async (token) => {
     const res = await axios.get(`/users/me`);
     return res.data;
 }
+
+export const updTheme = async (theme) => {
+    const res = await axios.patch(`/users/theme`, {theme});
+    return res.data;
+}

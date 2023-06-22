@@ -1,0 +1,143 @@
+.sidebar,
+.sidebar * {
+  outline: 2px dashed tomato;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  max-width: 225px;
+  padding: 24px 14px;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: -0.28px;
+
+  @media screen and (min-width: 375px) {
+    width: 260px;
+    padding: 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.64px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.boards {
+  margin-top: 70px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+  }
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 8px;
+  font: inherit;
+  border: none;
+  border-top: 1px solid rgba(22, 22, 22, 0.1);
+  border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.create-text {
+  width: 76px;
+  text-align: left;
+}
+
+.create-icon {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background-color: var(--accent-color);
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.projects-item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 0;
+}
+
+.projects-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.help {
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.help-header {
+  height: 78px;
+}
+
+.help-text {
+  margin-top: 14px;
+}
+
+.help-text-accent {
+  color: var(--accent-color);
+}
+
+.help-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  background-color: transparent;
+  border: none;
+}
+
+.help-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 14px;
+  background-color: transparent;
+  border: none;
+}
+
+.logout-icon {
+  width: 32px;
+  height: 32px;
+}

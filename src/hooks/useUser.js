@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useRef, useEffect } from "react";
 import useLocalStorage from "use-local-storage";
-import { getMe } from "api/ServerAPI";
+import { getMe, updTheme } from "api/ServerAPI";
 
 const UserContext = createContext();
 
@@ -14,8 +14,14 @@ export const UserProvider = ({children}) => {
     const [theme, setTheme] = useState('dark');
     const initialized = useRef(false);
 
-    const setUserTheme = newtheme => {
-        setTheme(newtheme);
+    const setUserTheme = async (newtheme) => {
+        try {
+            await updTheme(newtheme);
+            setTheme(newtheme);
+        } catch(err) {
+            console.log(err);
+        }
+        
     }
 
     useEffect(() => {

@@ -5,7 +5,7 @@ import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
-    <aside className="sidebar">
+    <div className="sidebar">
       <div>
         <Logo />
         <Boards />
@@ -19,7 +19,7 @@ const Sidebar = () => {
           <span>Log out</span>
         </button>
       </div>
-    </aside>
+    </div>
   );
 };
 

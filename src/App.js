@@ -3,6 +3,7 @@ import { useUser } from "./hooks/useUser";
 import { ThemeSelector } from "./components/ThemeSelector/ThemeSelector";
 import { CardForm } from "components/forms/CardForm/CardForm";
 import { ColumnForm } from "components/forms/ColumnForm/ColumnForm";
+import { EditProfileForm } from "components/forms/EditProfileForm/EditProfileForm";
 
 function App() {
   const { theme } = useTheme();
@@ -16,6 +17,7 @@ function App() {
       </div>
       <CardForm />
       <ColumnForm />
+      <EditProfileForm />
     </>
   );
 }

@@ -5,7 +5,7 @@ const ProjectsList = () => {
   return (
     <ul className="projects">
       <ProjectsItem />
-      <li className="projects-item">
+      <li className="projects-item active">
         <svg className="projects-icon">
           <use href="" />
         </svg>

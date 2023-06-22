@@ -4,7 +4,7 @@ import "../Sidebar.css";
 const Boards = () => {
   return (
     <div className="boards">
-      <p>My boards</p>
+      <p className="boards-heading">My boards</p>
       <button type="button" className="create-button button">
         <span className="create-text">Create a new board</span>
         <div className="create-icon">

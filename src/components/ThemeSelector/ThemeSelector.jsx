@@ -1,14 +1,18 @@
-import {useTheme} from "../../hooks/useTheme";
 import css from './ThemeSelector.module.css';
+import { useUser } from "hooks/useUser";
 
 export const ThemeSelector = () => {
-    const {themes, setTheme, theme} = useTheme();
-
+    const {theme, setUserTheme} = useUser();
+    const themes = {
+        dark: 'dark',
+        light: 'light',
+        violet: 'violet'
+    }
     const getThemeOptions = () => {
         let list = [];
         for (const option in themes) {
             const item = themes[option];
-            list.push(<li key={item}><button onClick={() => setTheme(item)} className={`${theme === item? css.active : css.selectorItem} noselect`}>{item}</button></li>)
+            list.push(<li key={item}><button onClick={() => setUserTheme(item)} className={`${theme === item? css.active : css.selectorItem} noselect`}>{item}</button></li>)
         }
         return list;
     }

@@ -3,6 +3,7 @@ import {useTheme} from './hooks/useTheme';
 import { useUser } from './hooks/useUser';
 import { ThemeSelector } from './components/ThemeSelector/ThemeSelector';
 import { useEffect } from 'react';
+import {BoardForm} from './components/forms/BoardForm/BoardForm'
 
 function App() {
   const { theme } = useTheme();
@@ -13,6 +14,7 @@ function App() {
     <div className="App" data-theme={theme}>
       <h1>TaskPro</h1>
       <ThemeSelector />
+      <BoardForm/>
     </div>
   );
 }

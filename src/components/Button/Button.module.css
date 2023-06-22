@@ -1,0 +1,70 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  height: 49px;
+  outline: none;
+  color: var(--btn-text-color);
+  border-radius: 8px;
+  background: var(--accent-color);
+  border: none;
+}
+
+.send {
+  width: 352px;
+}
+
+.auth {
+  width: 344px;
+}
+
+.add {
+  width: 302px;
+}
+
+.column {
+  width: 334px;
+  height: 56px;
+  color: var(--primary-text-color);
+  background: var(--secondary-bg-color);
+}
+
+.card {
+  width: 334px;
+  height: 56px;
+  color: var(--btn-text-color);
+  background: var(--accent-color);
+}
+
+.plus {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-text-color);
+  color: var(--primary-text-color);
+  margin-right: 8px;
+}
+
+.plus-column {
+  background-color: var(--add-bg-color);
+  color: var(--secondary-bg-color);
+}
+
+@media screen and (max-width: 375px) {
+  .auth,
+  .add,
+  .send {
+    width: 287px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .column,
+  .card {
+    width: 335px;
+  }
+}

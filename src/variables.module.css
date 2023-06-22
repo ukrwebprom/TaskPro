@@ -13,8 +13,12 @@
   --medium-priority-bg-color: #e09cb5;
   --high-priority-bg-color: #bedbb0;
 
+    /* timig*/
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
   /* theme colors*/
   /* dark theme*/
+[data-theme="dark"] {
   --primary-text-color: #fff;
   --secondary-text-color: #ffffff80;
   --btn-text-color: #161616;
@@ -24,9 +28,12 @@
   --secondary-bg-color: #121212;
   --navigation-bg-color: #121212;
   --navigation-sec-bg-color: #1f1f1f;
-  --pop-up-header-bg-color: #151515;
+  --pop-up-bg-color: #151515;
+  --header-bg-color: #151515;
+}
 
   /* light theme*/
+  [data-theme="light"] {
   --primary-text-color: #161616;
   --secondary-text-color: #161616b2;
   --btn-text-color: #161616;
@@ -38,8 +45,10 @@
   --navigation-sec-bg-color: #f6f6f7;
   --pop-up-bg-color: #fcfcfc;
   --header-bg-color: #fcfcfc;
+  }
 
   /* violet theme*/
+  [data-theme="violet"] {
   --primary-text-color: #161616;
   --secondary-text-color: #161616b2;
   --btn-text-color: #fff;
@@ -51,29 +60,28 @@
   --navigation-sec-bg-color: #ecedfd66;
   --pop-up-bg-color: #fcfcfc;
   --header-bg-color: #fff;
-
-  /* fonts*/
-  --font: "Poppins", sans-serif;
-
-  /* timig*/
-  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+  /* fonts*/
+/*   --font: "Poppins", sans-serif; */
+
+
+
 
 /*adaptive layout with breakpoints example*/
 @media screen and (min-width: var(--mobile-screen)) {
-  body {
+  .App {
     background-color: var(--primary-bg-color);
   }
 }
 
 @media screen and (min-width: var(--tablet-screen)) {
-  body {
+  .App {
     background-color: var(--secondary-bg-color);
   }
 }
 
 @media screen and (min-width: var(--desktop-screen)) {
-  body {
+  .App {
     background-color: var(--navigation-bg-color);
   }
 }

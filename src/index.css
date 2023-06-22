@@ -1,9 +1,14 @@
 @import url("./fonts/fonts.css");
+@import url('./variables.module.css');
+
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg-color);
 }
 
 code {
@@ -17,21 +22,10 @@ code {
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  supported by Chrome, Edge, Opera and Firefox */
 }
-
-:root {
-  --accent-color: #bedbb0;
-  --main-background-color: #161616;
-  --main-text-color: rgba(255, 255, 255, 0.5);
-}
-[data-theme="light"] {
-  --accent-color: #bedbb0;
-  --main-background-color: #fcfcfc;
-  --main-text-color: #161616;
-}
-[data-theme="violet"] {
-  --accent-color: #5255bc;
-  --main-background-color: #fcfcfc;
-  --main-text-color: #161616;
+.App {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  padding:15px;
 }

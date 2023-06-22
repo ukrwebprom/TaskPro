@@ -22,9 +22,10 @@ export const CardForm = () => {
     deadline: new Date(),
   };
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
+    resetForm();
   };
 
   return (
@@ -34,11 +35,15 @@ export const CardForm = () => {
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <label>
             Title
-            <Field type="text" name="title" />
-            <ErrorMessage name="title" component="div" className="error" />
+            <Field
+              type="text"
+              name="title"
+              onBlur={touched.fieldName && errors.fieldName}
+            />
+            <ErrorMessage name="title" />
           </label>
 
           <label>
@@ -60,11 +65,13 @@ export const CardForm = () => {
                   name="labelColor"
                   value={color}
                   checked={values.labelColor === color}
+                  onBlur={touched.fieldName && errors.fieldName}
                 />
                 <span style={{ backgroundColor: color }}></span>
               </label>
             ))}
           </div>
+          <ErrorMessage name="labelColor" />
 
           <label>Deadline</label>
           <DatePicker
@@ -75,7 +82,7 @@ export const CardForm = () => {
           <button type="submit" disabled={isSubmitting || !dirty}>
             Add
           </button>
-        </form>
+        </Form>
       )}
     </Formik>
   );

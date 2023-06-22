@@ -4,7 +4,7 @@ import { ThemeSelector } from './components/ThemeSelector/ThemeSelector';
 
 function App() {
   const { theme } = useTheme();
-  const {isLogged} = useUser();
+  const {isLogged, setAuthToken} = useUser();
 
   return (
     <div className="App" data-theme={theme}>

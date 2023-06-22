@@ -27,12 +27,14 @@ export const validationEditProfileSchema = Yup.object().shape({
     .max(64, "Password must contain less than 64 characters"),
 
   userPhoto: Yup.mixed()
+    .nullable(true)
     .test("fileSize", "File size too large", (value) => {
-      return value && value.size <= 4000000; //~4mb
+      return !value || (value && value.size <= 4096000); // ~4MB
     })
     .test("fileType", "Invalid file type", (value) => {
       return (
-        value && ["image/jpeg", "image/png", "image/gif"].includes(value.type)
+        !value ||
+        (value && ["image/jpeg", "image/png", "image/gif"].includes(value.type))
       );
     }),
 });

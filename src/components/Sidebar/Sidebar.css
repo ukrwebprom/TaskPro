@@ -22,12 +22,12 @@
   color: var(--sidebar-text-color);
   background-color: var(--navigation-bg-color);
   height: 100%;
-  max-width: 260px;
   padding: 24px 14px;
   font-size: 14px;
   text-align: left;
   letter-spacing: -0.28px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .logo {
@@ -81,8 +81,9 @@
 .projects {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  max-height: 100px;
   gap: 4px;
-  max-height: 300px;
   margin-top: 40px;
   padding: 0;
   list-style: none;

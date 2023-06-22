@@ -28,6 +28,13 @@ export const CardForm = () => {
     resetForm();
   };
 
+  const validateDeadline = (date) => {
+    const now = new Date();
+    if (date < now) {
+      return "Deadline cannot be in the past";
+    }
+  };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -77,6 +84,8 @@ export const CardForm = () => {
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
+            minDate={new Date()}
+            onBlur={validateDeadline(selectedDate)}
           />
 
           <button type="submit" disabled={isSubmitting || !dirty}>

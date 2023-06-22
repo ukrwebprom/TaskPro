@@ -3,6 +3,18 @@
   outline: 2px dashed tomato;
 }
 
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -45,19 +57,12 @@
   }
 }
 
-.create-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.create-button {
   width: 100%;
   padding: 14px 0;
   margin-top: 8px;
-  font: inherit;
-  border: none;
   border-top: 1px solid rgba(22, 22, 22, 0.1);
   border-bottom: 1px solid rgba(22, 22, 22, 0.1);
-  background-color: transparent;
-  cursor: pointer;
 }
 
 .create-text {
@@ -114,13 +119,8 @@
 }
 
 .help-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
   margin-top: 18px;
-  background-color: transparent;
-  border: none;
 }
 
 .help-icon {
@@ -129,12 +129,7 @@
 }
 
 .logout-button {
-  display: flex;
-  justify-content: start;
-  align-items: center;
   gap: 14px;
-  background-color: transparent;
-  border: none;
 }
 
 .logout-icon {

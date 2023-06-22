@@ -12,7 +12,7 @@ const Sidebar = () => {
       </div>
       <div>
         <Help />
-        <button type="button" className="logout-button">
+        <button type="button" className="logout-button button">
           <svg className="logout-icon">
             <use href="" />
           </svg>

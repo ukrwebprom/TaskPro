@@ -1,5 +1,6 @@
 import { useUser } from "./hooks/useUser";
 import { ThemeSelector } from "./components/ThemeSelector/ThemeSelector";
+import Sidebar from "components/Sidebar";
 
 function App() {
   const { isLogged, setAuthToken, theme } = useUser();

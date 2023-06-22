@@ -9,7 +9,7 @@ const Help = () => {
         check out our support resources or reach out to our customer support
         team.
       </p>
-      <button type="button" className="help-button">
+      <button type="button" className="help-button button">
         <svg className="help-icon">
           <use href="" />
         </svg>

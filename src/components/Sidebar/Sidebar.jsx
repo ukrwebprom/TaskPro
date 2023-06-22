@@ -6,11 +6,11 @@ import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <div>
+      <div className="sidebar-top">
         <Logo />
         <Boards />
       </div>
-      <div>
+      <div className="sidebar-bottom">
         <Help />
         <button type="button" className="logout-button button">
           <svg className="logout-icon">

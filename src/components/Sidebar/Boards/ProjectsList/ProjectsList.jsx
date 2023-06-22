@@ -17,6 +17,54 @@ const ProjectsList = () => {
         </svg>
         Some project
       </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
+      <li className="projects-item">
+        <svg className="projects-icon">
+          <use href="" />
+        </svg>
+        Some project
+      </li>
     </ul>
   );
 };

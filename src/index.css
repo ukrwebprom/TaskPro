@@ -1,38 +1,37 @@
-@import url('./fonts/fonts.css');
+@import url("./fonts/fonts.css");
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
 :root {
-  --accent-color: #BEDBB0;
+  --accent-color: #bedbb0;
   --main-background-color: #161616;
   --main-text-color: rgba(255, 255, 255, 0.5);
 }
-[data-theme='light'] {
-  --accent-color: #BEDBB0;
-  --main-background-color: #FCFCFC;
+[data-theme="light"] {
+  --accent-color: #bedbb0;
+  --main-background-color: #fcfcfc;
   --main-text-color: #161616;
 }
-[data-theme='violet'] {
-  --accent-color: #5255BC;
-  --main-background-color: #FCFCFC;
+[data-theme="violet"] {
+  --accent-color: #5255bc;
+  --main-background-color: #fcfcfc;
   --main-text-color: #161616;
 }
-

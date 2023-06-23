@@ -1,0 +1,59 @@
+
+.reg{
+    margin: 0;
+    text-align: start;
+    font: "Poppins";
+   font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    opacity: 0.3;
+    margin-right: 14px;
+  }
+ .log{
+    margin: 0;
+    text-align: start;
+    font: "Poppins";
+   font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+opacity: 1;
+  }
+.loginbackround{
+ margin: auto;
+background-color: var(--main-background-color) ;
+width: 424px;
+height: 332px;
+border-radius: 8px;
+padding: 40px;
+text-align: left;
+}
+.input{
+    display: block;
+    min-width:352px;
+    background-color:  #1F1F1F;
+    opacity:0.4;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding:14px 18px;
+    box-shadow: 
+    #161616 8;
+    margin-bottom: 14px;
+
+  }
+  .input::placeholder{
+    font: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+  letter-spacing: 1px;
+    color:#FFFFFF
+    }
+    
+    .field{
+        margin-bottom: 24px;
+     }

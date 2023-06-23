@@ -1,6 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
-
+import s from "./Registerform.module.css"
 export const RegisterForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
@@ -20,9 +20,14 @@ export const RegisterForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
-        <Form>
+        <Form className={s.loginbackround}  >
+          <div className={s.titleFild}>
+          <a  className= {s.regtitleActive}>Registration</a>
+          <a  className= {s.regtitle}>Log In</a>
+          </div>
+         < div className={s.field}>
           <label>
-            <Field
+            <Field className= {s.input}
               name="name"
               placeholder="Enter your name"
               autoComplete="off"
@@ -31,7 +36,7 @@ export const RegisterForm = () => {
           </label>
 
           <label>
-            <Field
+            <Field className= {s.input}
               name="email"
               placeholder="Enter your email"
               type="email"
@@ -41,7 +46,7 @@ export const RegisterForm = () => {
           </label>
 
           <label>
-            <Field
+            <Field  className= {s.input}
               name="password"
               placeholder="Create a password"
               type="password"
@@ -49,7 +54,7 @@ export const RegisterForm = () => {
             />
             <ErrorMessage name="password" />
           </label>
-
+          </ div>
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
             Register Now
           </button>

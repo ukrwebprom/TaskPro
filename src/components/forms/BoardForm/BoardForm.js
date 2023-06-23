@@ -44,10 +44,10 @@ export const BoardForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty, values, setFieldValue }) => (
-        <Form>
-          <div className ={s.formbackround}>
-            <p className ={s.title}>New board</p>
-          <label  >
+      
+        <Form className ={s.formbackround}>
+           <p className ={s.title}>New board</p>
+          <label  className={s.label} >
             <Field className={s.input} type="text" name="title" placeholder="Title" />
             <ErrorMessage name="title" />
           </label>
@@ -56,7 +56,7 @@ export const BoardForm = () => {
             <p className={s.icontitle}>Icons</p>
             <div className={s.icontainer}>
             {icons.map((icon, index) => (
-              <div width="18" height="18" key={index}>
+              <div key={index}>
                 <Field
                   type="radio"
                   id={`icon${index}`}
@@ -74,10 +74,11 @@ export const BoardForm = () => {
             <ErrorMessage name="icon" />
           </label>
 
-          <label className={s.backcontainer}>
-            Background
+          <label >
+          <p className={s.icontitle}>Background</p>
+          <div className={s.wrapimage}>
                       {backgrounds.map((background, index) => (
-              <div key={index}>
+              <div className={s.imagecontainer} key={index}>
                 <Field
                   type="radio"
                   id={`background${background}`}
@@ -93,14 +94,15 @@ export const BoardForm = () => {
                 />
               </div>
             ))}
+            </div>
             <ErrorMessage name="background" />
           </label>
 
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
             Create
           </button>
-          </div>
         </Form>
+       
       )}
     </Formik>
   );

@@ -1,6 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
-
+import s from "./LoginForm.module.css"
 export const LoginForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
@@ -19,21 +19,25 @@ export const LoginForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
-        <Form>
+        <Form className={s.loginbackround}>
+          <a  className= {s.reg}>Registration</a>
+          <a  className= {s.log}>Login</a>
+          <div className={s.fiel}>
           <label>
-            <Field name="email" placeholder="Enter your email" type="email" />
+            <Field className= {s.input} name="email" placeholder="Enter your email" type="email" />
             <ErrorMessage name="email" />
           </label>
 
           <label>
-            <Field
+            <Field 
+             className= {s.input}
               name="password"
-              placeholder="Create a password"
+              placeholder="Confirm a password"
               type="password"
             />
             <ErrorMessage name="password" />
           </label>
-
+          </div>
           <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
             Log In Now
           </button>

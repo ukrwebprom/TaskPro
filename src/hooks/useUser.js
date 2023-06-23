@@ -32,16 +32,13 @@ export const UserProvider = ({children}) => {
                 console.log("init")
                 try {
                     const data = await getMe(authToken);
-                    console.log(data)
                     setIsLogged(true);
                     setName(data.name);
                     setTheme(data.theme);
-                    console.log("logged")
                 } catch (err) {
                     setIsLogged(false);
                     setAuthToken('');
                     console.log(err)
-                    console.log("not logged")
                 }
             }
             

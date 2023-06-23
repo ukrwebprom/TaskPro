@@ -12,11 +12,16 @@ const resetAuthToken = () => {
 
 export const getMe = async (token) => {
     setAuthToken(token);
-    const res = await axios.get(`/users/me`);
+    const res = await axios.get('/users/me');
     return res.data;
 }
 
 export const updTheme = async (theme) => {
-    const res = await axios.patch(`/users/theme`, {theme});
+    const res = await axios.patch('/users/theme', {theme});
+    return res.data;
+}
+
+export const login = async (data) => {
+    const res = await axios.post('/users/login', data);
     return res.data;
 }

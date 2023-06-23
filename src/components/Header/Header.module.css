@@ -1,0 +1,26 @@
+.headerTaskPro {
+    display: flex;
+    justify-content: right;
+    height: 68px;
+    align-items: center;
+    border-bottom: 1px solid rgb(57, 59, 59);
+}
+
+.styleTheme {
+    cursor: pointer;
+}
+
+.styleUserInfo {
+    list-style: none;
+    margin-right: 14px;
+    display: flex;
+}
+
+.styleName {
+    margin-right: 8px;
+}
+.styleAvatar {
+    cursor: pointer;
+    
+}
+

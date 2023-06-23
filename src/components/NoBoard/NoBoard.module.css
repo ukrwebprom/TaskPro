@@ -1,0 +1,16 @@
+.container {
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;   
+}
+.message {
+    max-width: 486px;
+    text-align: center;
+    font-size: 14px;
+    color:var(--secondary-text-color);
+}
+.message > span {
+    color:var(--accent-color);
+}

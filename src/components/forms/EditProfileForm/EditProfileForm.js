@@ -1,7 +1,12 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationRegistrSchema } from "schems";
+import { validationEditProfileSchema } from "schems";
 
-export const RegisterForm = () => {
+export const EditProfileForm = ({
+  userPhoto = null,
+  name = "",
+  email = "",
+  password = "",
+}) => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
@@ -11,21 +16,33 @@ export const RegisterForm = () => {
   return (
     <Formik
       initialValues={{
-        name: "",
-        email: "",
-        password: "",
+        userPhoto,
+        name,
+        email,
+        password,
       }}
-      validationSchema={validationRegistrSchema}
+      validationSchema={validationEditProfileSchema}
       onSubmit={handleSubmit}
-      validateOnBlur
     >
-      {({ isSubmitting, isValid, dirty }) => (
+      {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
         <Form>
+          <div>
+            <input
+              name="userPhoto"
+              type="file"
+              onChange={(event) => {
+                setFieldValue("userPhoto", event.currentTarget.files[0]);
+              }}
+              onBlur={touched.fieldName && errors.fieldName}
+            />
+            <ErrorMessage name="userPhoto" />
+          </div>
+
           <label>
             <Field
               name="name"
               placeholder="Enter your name"
-              autoComplete="off"
+              onBlur={touched.fieldName && errors.fieldName}
             />
             <ErrorMessage name="name" />
           </label>
@@ -35,7 +52,7 @@ export const RegisterForm = () => {
               name="email"
               placeholder="Enter your email"
               type="email"
-              autoComplete="off"
+              onBlur={touched.fieldName && errors.fieldName}
             />
             <ErrorMessage name="email" />
           </label>
@@ -45,13 +62,13 @@ export const RegisterForm = () => {
               name="password"
               placeholder="Create a password"
               type="password"
-              autoComplete="off"
+              onBlur={touched.fieldName && errors.fieldName}
             />
             <ErrorMessage name="password" />
           </label>
 
-          <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Register Now
+          <button type="submit" disabled={isSubmitting || !dirty}>
+            Send
           </button>
         </Form>
       )}

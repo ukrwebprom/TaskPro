@@ -34,6 +34,7 @@
   --create-btn-bg-color: #bedbb0;
   --pop-up-bg-color: #151515;
   --header-bg-color: #151515;
+  --add-bg-color: #fff;
 }
 
 /* light theme*/
@@ -53,6 +54,7 @@
   --create-btn-bg-color: #bedbb0;
   --pop-up-bg-color: #fcfcfc;
   --header-bg-color: #fcfcfc;
+  --add-bg-color: #161616;
 }
 
 /* violet theme*/
@@ -72,6 +74,7 @@
   --create-btn-bg-color: #b8bcfd;
   --pop-up-bg-color: #fcfcfc;
   --header-bg-color: #fff;
+  --add-bg-color: #5255bc;
 }
 /* fonts*/
 /*   --font: "Poppins", sans-serif; */

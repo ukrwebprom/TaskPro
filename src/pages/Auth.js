@@ -1,10 +1,13 @@
-import React from 'react';
-
+import { Outlet } from "react-router-dom";
+import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 const Auth = () => {
   return (
-    <div>
-      <title>Log in</title>
-    </div>
+    <WelcomeLayout>
+      <h1>Auth</h1>
+      <a href="login">Login</a>
+      <a href="register">Register</a>
+      <Outlet />
+    </WelcomeLayout>
   );
 };
 

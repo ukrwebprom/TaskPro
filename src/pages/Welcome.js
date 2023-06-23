@@ -1,7 +1,5 @@
 import React from "react";
 import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
-import boardPath from "../fonts/board-sprite.svg";
-import projectPath from "../fonts/project-sprite.svg";
 import Icon from "components/Icon/Icon";
 
 const Welcome = () => {
@@ -13,45 +11,52 @@ const Welcome = () => {
 
       {/* example of using SVG sprite */}
       <div>
-        <svg className='icon' width='50' height='50' stroke='gray'>
-          <use href={boardPath + "#colors-icon"}></use>
-        </svg>
-        <svg className='icon' width='50' height='50' stroke='black'>
-          <use href={boardPath + "#container-icon"}></use>
-        </svg>
-
         <Icon
-          path={projectPath + "#bell-icon"}
+          name={"#colors-icon"}
+          sprite={1}
+          width='50'
+          height='50'
+          stroke={"#bedbb0"}
+          fill={"#bedbb0"}
+        />
+        <Icon
+          name={"#bell-icon"}
+          sprite={2}
           width='50'
           height='50'
           stroke={"#bedbb0"}
         />
         <Icon
-          path={projectPath + "#arrow-circle-icon"}
+          sprite={2}
+          name={"#arrow-circle-icon"}
           width='50'
           height='50'
           stroke={"#bedbb0"}
         />
         <Icon
-          path={projectPath + "#chevron-down-icon"}
+          sprite={2}
+          name={"#chevron-down-icon"}
           width='50'
           height='50'
           stroke={"#bedbb0"}
         />
         <Icon
-          path={projectPath + "#close-icon"}
+          sprite={2}
+          name={"#close-icon"}
           width='50'
           height='50'
           stroke={"#bedbb0"}
         />
         <Icon
-          path={projectPath + "#eye-icon"}
+          sprite={2}
+          name={"#eye-icon"}
           width='50'
           height='50'
           stroke={"#bedbb0"}
         />
         <Icon
-          path={projectPath + "#filter-icon"}
+          sprite={2}
+          name={"#filter-icon"}
           width='50'
           height='50'
           stroke={"#bedbb0"}

@@ -19,6 +19,7 @@ export const HomeLayout = ({children}) => {
             </div>
             {isSidebar && <div className={css.backdrop} onClick={() => setIsSidebar(false)}></div>}
             <div className={css.mainarea}>
+            
                 <div className={css.header}>
                     <Header />
  {/*                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>

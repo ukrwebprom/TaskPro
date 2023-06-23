@@ -4,7 +4,6 @@
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,5 +26,6 @@ code {
 .App {
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
-  padding:15px;
+  height:100vh;
+  box-sizing: border-box;
 }

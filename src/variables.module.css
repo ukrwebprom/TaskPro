@@ -13,59 +13,71 @@
   --medium-priority-bg-color: #e09cb5;
   --high-priority-bg-color: #bedbb0;
 
-    /* timig*/
-    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* timig*/
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-  /* theme colors*/
-  /* dark theme*/
+/* theme colors*/
+/* dark theme*/
 [data-theme="dark"] {
   --primary-text-color: #fff;
   --secondary-text-color: #ffffff80;
+  --sidebar-text-color: #fff;
   --btn-text-color: #161616;
   --accent-color: #bedbb0;
 
   --primary-bg-color: #1f1f1f;
   --secondary-bg-color: #121212;
   --navigation-bg-color: #121212;
-  --navigation-sec-bg-color: #1f1f1f;
+  --navigation-sec-bg-color: rgba(31, 31, 31, 0.4);
+  --navigation-border-color: rgba(255, 255, 255, 0.1);
+  --navigation-active-marker: #bedbb0;
+  --create-btn-bg-color: #bedbb0;
   --pop-up-bg-color: #151515;
   --header-bg-color: #151515;
+  --add-bg-color: #fff;
 }
 
-  /* light theme*/
-  [data-theme="light"] {
+/* light theme*/
+[data-theme="light"] {
   --primary-text-color: #161616;
   --secondary-text-color: #161616b2;
+  --sidebar-text-color: #161616;
   --btn-text-color: #161616;
   --accent-color: #bedbb0;
 
   --primary-bg-color: #f6f6f7;
   --secondary-bg-color: #fff;
   --navigation-bg-color: #ffffff;
-  --navigation-sec-bg-color: #f6f6f7;
+  --navigation-sec-bg-color: rgba(247, 247, 248, 0.4);
+  --navigation-border-color: rgba(22, 22, 22, 0.1);
+  --navigation-active-marker: #bedbb0;
+  --create-btn-bg-color: #bedbb0;
   --pop-up-bg-color: #fcfcfc;
   --header-bg-color: #fcfcfc;
-  }
+  --add-bg-color: #161616;
+}
 
-  /* violet theme*/
-  [data-theme="violet"] {
+/* violet theme*/
+[data-theme="violet"] {
   --primary-text-color: #161616;
   --secondary-text-color: #161616b2;
+  --sidebar-text-color: #fff;
   --btn-text-color: #fff;
   --accent-color: #5255bc;
 
   --primary-bg-color: #ecedfd;
   --secondary-bg-color: #fff;
   --navigation-bg-color: #5255bc;
-  --navigation-sec-bg-color: #ecedfd66;
+  --navigation-sec-bg-color: rgba(236, 237, 253, 0.4);
+  --navigation-border-color: rgba(255, 255, 255, 0.1);
+  --navigation-active-marker: #fff;
+  --create-btn-bg-color: #b8bcfd;
   --pop-up-bg-color: #fcfcfc;
   --header-bg-color: #fff;
+  --add-bg-color: #5255bc;
 }
-  /* fonts*/
+/* fonts*/
 /*   --font: "Poppins", sans-serif; */
-
-
-
 
 /*adaptive layout with breakpoints example*/
 @media screen and (min-width: var(--mobile-screen)) {

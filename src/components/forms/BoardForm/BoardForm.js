@@ -31,9 +31,10 @@ export const BoardForm = () => {
     background: backgrounds[0],
   };
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
+    resetForm();
   };
 
   return (

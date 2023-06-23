@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import Button from 'components/Button/Button';
 import btn from '../Button/Button.module.css'
+import UserInfo from 'components/UserInfo/UserInfo';
 
 
 export const HomeLayout = ({children}) => {
@@ -10,12 +11,17 @@ export const HomeLayout = ({children}) => {
 
     return(
         <div className={css.outer}>
+            
             <div className={isSidebar? css.sidebar : css.hidden}>
                 <Sidebar />
             </div>
             {isSidebar && <div className={css.backdrop} onClick={() => setIsSidebar(false)}></div>}
             <div className={css.mainarea}>
+            
                 <div className={css.header}>
+                    <div>
+                        <UserInfo/>
+                    </div>
                     <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
 
                     <Button className={`${btn.btn} ${btn.send}`}>Send</Button>

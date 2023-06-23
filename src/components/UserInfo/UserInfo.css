@@ -1,0 +1,30 @@
+.userinfo {
+    display: flex;
+    justify-content: right;
+    height: 68px;
+    align-items: center;
+    margin-right: 24px;
+}
+
+.username {
+    margin-right: 8px;
+}
+
+.image-avatar {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-image: url('./../../../public/android-chrome-192x192.png');
+  background-size: cover;
+}
+
+.useravatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.selectortheme {
+    cursor: pointer;
+    margin-right: 14px;
+}

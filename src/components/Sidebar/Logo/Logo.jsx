@@ -1,12 +1,13 @@
 import "../Sidebar.css";
-import logoIcon from "../../../images/icon.svg";
+import logoNormal from "../../../images/icon.svg";
+import logoInverted from "../../../images/icon-violet.svg";
+import { useUser } from "hooks/useUser";
 
 const Logo = () => {
+  const {theme} = useUser();
   return (
     <a href="/" className="logo">
-      <svg className="logo-icon">
-        <use href={logoIcon} />
-      </svg>
+      <img src={theme == 'violet'? logoInverted : logoNormal} />
       <span>Task Pro</span>
     </a>
   );

@@ -1,19 +1,16 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
-import { login } from "api/ServerAPI";
 import { useUser } from "hooks/useUser";
 
 export const LoginForm = () => {
-  const {setAuthToken} = useUser();
+  const {userLogin} = useUser();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     
     try{
-      const res = await login(values);
+      const res = await userLogin(values);
       setSubmitting(false);
       resetForm();
-      setAuthToken(res.token)
-      
     } catch(err) {
       console.log(err);
     }

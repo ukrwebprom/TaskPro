@@ -9,7 +9,7 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({children}) => {
     const [authToken, setAuthToken] = useLocalStorage("authToken", "");
-    const [isLogged, setIsLogged] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
     const [name, setName] = useState('');
     const [theme, setTheme] = useState('dark');
     const initialized = useRef(false);
@@ -26,17 +26,25 @@ export const UserProvider = ({children}) => {
 
     useEffect(() => {
         const init = async () => {
+            
             initialized.current = true;
             if(authToken) {
+                console.log("init")
                 try {
                     const data = await getMe(authToken);
+                    console.log(data)
+                    setIsLogged(true);
                     setName(data.name);
                     setTheme(data.theme);
+                    console.log("logged")
                 } catch (err) {
                     setIsLogged(false);
                     setAuthToken('');
+                    console.log(err)
+                    console.log("not logged")
                 }
             }
+            
         }
         if(!initialized.current) init();
     }, [authToken, setAuthToken]);

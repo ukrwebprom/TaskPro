@@ -16,7 +16,7 @@ const Sidebar = () => {
         <Help />
         <button type="button" className="logout-button button">
           <svg className="logout-icon">
-            <use href="" />
+{/*             <use href="" /> */}
           </svg>
           <span onClick={() => userLogout()}>Log out</span>
         </button>

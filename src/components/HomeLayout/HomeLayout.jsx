@@ -1,9 +1,9 @@
 import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
-import Button from 'components/Button/Button';
+/* import Button from 'components/Button/Button';
 import btn from '../Button/Button.module.css';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; */
 import { useUser } from 'hooks/useUser';
 import { Header } from 'components/Header/Header';
 import Filters from 'components/Filters/Filters';

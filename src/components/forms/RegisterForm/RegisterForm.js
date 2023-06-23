@@ -7,13 +7,12 @@ export const RegisterForm = () => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const res = await userRegister(values);
+      await userRegister(values);
       setSubmitting(false);
       resetForm();
     } catch (err) {
-
+      console.log(err);
     }
-    
   };
 
   return (

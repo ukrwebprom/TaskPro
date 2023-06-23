@@ -6,9 +6,9 @@ const setAuthToken = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
-const resetAuthToken = () => {
+/* const resetAuthToken = () => {
     axios.defaults.headers.common.Authorization = '';
-}
+} */
 
 export const getMe = async (token) => {
     setAuthToken(token);

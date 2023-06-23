@@ -38,7 +38,7 @@ export const UserProvider = ({children}) => {
 
     const userLogout = async () => {
         try {
-            const res = await logout();
+            await logout();
             setName('');
             setAuthToken('');
             setIsLogged(false);

@@ -8,14 +8,12 @@ export const LoginForm = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     
     try{
-      const res = await userLogin(values);
+      await userLogin(values);
       setSubmitting(false);
       resetForm();
     } catch(err) {
       console.log(err);
     }
-    
-    
   };
 
   return (

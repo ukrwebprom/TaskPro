@@ -3,7 +3,7 @@ import logoIcon from "../../../images/icon.svg";
 
 const Logo = () => {
   return (
-    <a href="" className="logo">
+    <a href="/" className="logo">
       <svg className="logo-icon">
         <use href={logoIcon} />
       </svg>

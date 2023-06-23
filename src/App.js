@@ -7,6 +7,8 @@ import {BoardForm} from './components/forms/BoardForm/BoardForm'
 import {HelpForm} from './components/forms/HelpForm/HelpForm'
 import {LoginForm} from './components/forms/LoginForm/LoginForm'
 import {RegisterForm} from './components/forms/RegisterForm/RegisterForm'
+import {CardForm} from './components/forms/CardForm/CardForm'
+import {ColumnForm} from './components/forms/ColumnForm/ColumnForm'
 
 function App() {
   const { theme } = useTheme();
@@ -21,6 +23,8 @@ function App() {
       <HelpForm/>
       <LoginForm/>
       <RegisterForm/>
+     < CardForm/>
+     <ColumnForm/>
     </div>
   );
 }

@@ -1,27 +1,29 @@
 
-.reg{
-    margin: 0;
-    text-align: start;
-    font: "Poppins";
-   font-weight: 500;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 27px;
-    color: #FFFFFF;
-    opacity: 0.3;
-    margin-right: 14px;
-  }
- .log{
-    margin: 0;
-    text-align: start;
-    font: "Poppins";
-   font-weight: 500;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 27px;
-    color: #FFFFFF;
-opacity: 1;
-  }
+.regtitle{
+  display: inline-block;
+      text-align: start;
+      font: "Poppins";
+     font-weight: 500;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 27px;
+      color: #FFFFFF;
+      margin-right: 14px;
+      opacity: 0.3;
+    }
+    .regtitleActive{
+      display: inline-block;
+      text-align: start;
+      font: "Poppins";
+     font-weight: 500;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 27px;
+      color: #FFFFFF;
+      margin-bottom: 40px;
+    
+      opacity: 1;
+    }
 .loginbackround{
  margin: auto;
 background-color: var(--main-background-color) ;
@@ -57,3 +59,6 @@ text-align: left;
     .field{
         margin-bottom: 24px;
      }
+     .titleFild{
+      margin-bottom: 40px;
+  }

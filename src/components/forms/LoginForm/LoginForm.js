@@ -20,9 +20,11 @@ export const LoginForm = () => {
     >
       {({ isSubmitting, isValid, dirty }) => (
         <Form className={s.loginbackround}>
-          <a  className= {s.reg}>Registration</a>
-          <a  className= {s.log}>Login</a>
-          <div className={s.fiel}>
+          <div className={s.titleFild}>
+          <p className= {s.regtitle}>Registration</p>
+          <p  className= {s.regtitleActive}>Log In</p>
+          </div>
+          <div className={s.field}>
           <label>
             <Field className= {s.input} name="email" placeholder="Enter your email" type="email" />
             <ErrorMessage name="email" />

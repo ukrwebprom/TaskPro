@@ -22,8 +22,8 @@ export const RegisterForm = () => {
       {({ isSubmitting, isValid, dirty }) => (
         <Form className={s.loginbackround}  >
           <div className={s.titleFild}>
-          <a  className= {s.regtitleActive}>Registration</a>
-          <a  className= {s.regtitle}>Log In</a>
+          <p  className= {s.regtitleActive}>Registration</p>
+          <p   className= {s.regtitle}>Log In</p>
           </div>
          < div className={s.field}>
           <label>

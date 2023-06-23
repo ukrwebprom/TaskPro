@@ -1,0 +1,131 @@
+.formbackround {
+    margin: auto;
+    background-color: var(--main-background-color) ;
+    width: 350px;
+    height: 221px;
+    border-radius: 8px;
+    padding: 24px;
+    }
+    /*заголовки*/
+    .title{
+      margin: 0;
+      text-align: start;
+      font: "Poppins";
+      font-weight: 500;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 27px;
+      color: #FFFFFF;
+    }
+    /*инпут*/
+    .input{
+      display: block;
+      margin: 24px 0px;
+      min-width:302px;
+      background-color:  #1F1F1F;
+      border: 1px solid  #BEDBB0;
+      border-radius: 8px;
+      opacity:0.4;
+      padding:14px 18px;
+      box-shadow: 
+      #161616 8;
+    }
+    
+    .input::placeholder{
+      font: "Poppins";
+      font-size: 14px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 21px;
+    letter-spacing: 1px;
+      color:#FFFFFF
+      }
+    
+    
+    /*иконки*/
+    .icontitle{
+    color: #FFFFFF; 
+    margin: 0;
+    margin-bottom: 24px;
+    text-align: left;
+    font-size: 14px;
+    font: "Poppins";
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+    color:#FFFFFF
+     }
+    
+    
+    .icontainer{
+      display: flex;
+      margin-bottom: 24px;
+    }
+    /*картинки*/
+    
+    .wrapimage{
+      display: flex;
+      flex-wrap: wrap;
+      height: auto; 
+      gap: 4px;
+    }
+    .imagecontainer{
+      width: 28px;
+      height: 28px;
+    }
+    
+    .background {
+        display: block;
+        width: 28px;
+        height: 28px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        border: 1px transparent
+      }
+      /* Сховати чекбокси */
+    input[type="radio"] {
+        display: none;
+      }
+      
+      /* Стилізувати кружечки для іконок */
+      .icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #eee;
+        text-align: center;
+        line-height: 30px;
+        font-size: 20px;
+        margin-right: 10px;
+      }
+      
+     
+      
+      /* Стилізувати вибрані значки */
+      input[type="radio"][name="icon"]:checked + .icon {
+        background-color: #0077ff;
+        color: #fff;
+      }
+      
+      /* Стилізувати вибрані фони */
+      input[type="radio"][name="background"]:checked + .background {
+        border: 2px solid  #BEDBB0
+      }
+      /*кнопка*/
+    .btn{
+      display: block;
+      padding: 0px;
+      margin: 0px;
+      min-width: 302px;
+      height: 49px;
+      background-color:  #BEDBB0;
+      font-size: 14px; 
+      border-radius: 8px;
+      border: transparent;
+      cursor: pointer;
+      color: #161616;
+      line-height: 21px;
+    }
+     

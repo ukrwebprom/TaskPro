@@ -1,5 +1,5 @@
 import "../Sidebar.css";
-import logoIcon from "../../../logo.svg";
+import logoIcon from "../../../images/icon.svg";
 
 const Logo = () => {
   return (

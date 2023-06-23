@@ -7,7 +7,7 @@ const Logo = () => {
   const {theme} = useUser();
   return (
     <a href="/" className="logo">
-      <img src={theme == 'violet'? logoInverted : logoNormal} />
+      <img src={theme === 'violet'? logoInverted : logoNormal} />
       <span>Task Pro</span>
     </a>
   );

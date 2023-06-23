@@ -6,21 +6,47 @@
     border-bottom: 1px solid rgb(57, 59, 59);
 }
 
+
 .styleTheme {
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    gap: 4px;
+    margin-right: 14px;
+    color: var(--primary-text-color);
+    background-color: transparent;
+    text-decoration:none;
 }
 
 .styleUserInfo {
     list-style: none;
     margin-right: 14px;
     display: flex;
+    align-items: center;
 }
 
 .styleName {
     margin-right: 8px;
+    color: var(--primary-text-color);
+    background-color: transparent;
 }
 .styleAvatar {
-    cursor: pointer;
-    
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-image: url('./../../../public/android-chrome-192x192.png');
+  background-size: cover;
+}
+
+.icontheme {
+    width: 18px;
+    height: 18px;
+  }
+
+.dropdown {
+    display: none;
+    position: absolute;
+    z-index: 100;
 }
 

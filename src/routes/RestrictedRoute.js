@@ -11,3 +11,16 @@ export const RestrictedRoute = () => {
         <Outlet/> 
     </Suspense> 
 }
+
+/* import { useUser } from '../hooks/useUser';
+import { Navigate } from "react-router-dom"
+
+const RestrictedRoute = ({ component: Component, redirectTo="/"}) => {
+    const { isLogged } = useUser();
+
+    return (
+        isLogged ? <Navigate to={redirectTo} /> : <Component />
+    )
+};
+
+export default RestrictedRoute; */

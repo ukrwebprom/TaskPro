@@ -36,10 +36,12 @@ export const UserProvider = ({children}) => {
                     setIsLogged(true);
                     setName(data.name);
                     setTheme(data.theme);
+                    console.log("logged")
                 } catch (err) {
                     setIsLogged(false);
                     setAuthToken('');
                     console.log(err)
+                    console.log("not logged")
                 }
             }
             

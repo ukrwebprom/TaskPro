@@ -1,10 +1,13 @@
 import React from 'react';
+import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 
 const Welcome = () => {
   return (
-    <div>
+    <WelcomeLayout>
       <h1>You are welcome!</h1>
-    </div>
+      <a href="/auth/login">Login</a>
+      <a href="/auth/register">Register</a>
+    </WelcomeLayout>
   );
 };
 

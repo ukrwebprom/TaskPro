@@ -5,6 +5,7 @@ import Button from 'components/Button/Button';
 import btn from '../Button/Button.module.css';
 import { Link } from 'react-router-dom';
 import { useUser } from 'hooks/useUser';
+import { Header } from 'components/Header/Header';
 
 export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
@@ -18,6 +19,7 @@ export const HomeLayout = ({children}) => {
             {isSidebar && <div className={css.backdrop} onClick={() => setIsSidebar(false)}></div>}
             <div className={css.mainarea}>
                 <div className={css.header}>
+                    <Header />
  {/*                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
 
                     <Button className={`${btn.btn} ${btn.send}`}>Send</Button>

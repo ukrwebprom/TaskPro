@@ -6,10 +6,10 @@ import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
 import s from "./CardForm.module.css"
 
 const labelColors = [
-  "#8FA1D0",
-  "#E09CB5",
-  "#BEDBB0",
-  "rgba(255, 255, 255, 0.30)",
+  // "#8FA1D0",
+  // "#E09CB5",
+  // "#BEDBB0",
+  // "rgba(255, 255, 255, 0.30)",
 ];
 
 export const CardForm = () => {
@@ -92,6 +92,8 @@ export const CardForm = () => {
             onChange={(date) => setSelectedDate(date)}
             minDate={new Date()}
             onBlur={validateDeadline(selectedDate)}
+            // className={s.datepicker}
+        
           />
 
           <button type="submit" disabled={isSubmitting || !dirty}>

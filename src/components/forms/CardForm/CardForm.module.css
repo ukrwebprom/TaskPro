@@ -161,4 +161,7 @@
       color: #161616;
       line-height: 21px;
     }
-     
+     .datepicker{
+        background-color: var(--main-background-color) ;
+        border: transparent
+     }

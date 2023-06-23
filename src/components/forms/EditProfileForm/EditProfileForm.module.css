@@ -1,0 +1,54 @@
+.formbackround {
+    margin: auto;
+    background-color:#151515 ;
+    width: 400px;
+    height: 440px;
+    border-radius: 8px;
+    padding: 24px;
+    }
+.title{
+    margin: 0;
+    text-align: start;
+    font: "Poppins";
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+  }
+
+  .addfilewrap{
+    width:68px;
+    height: 79px;
+    position: relative;
+  }
+  /* .inputFile{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  } */
+  .input{
+    display: block;
+    margin: 24px 0px;
+    min-width:302px;
+    background-color:  #1F1F1F;
+    border: 1px solid  #BEDBB0;
+    border-radius: 8px;
+    opacity:0.4;
+    padding:14px 18px;
+    box-shadow: 
+    #161616 8;
+  }
+  
+  .input::placeholder{
+    font: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+  letter-spacing: 1px;
+    color:#FFFFFF
+    }
+  
+  

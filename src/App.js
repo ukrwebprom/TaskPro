@@ -9,7 +9,7 @@ import {LoginForm} from './components/forms/LoginForm/LoginForm'
 import {RegisterForm} from './components/forms/RegisterForm/RegisterForm'
 import {CardForm} from './components/forms/CardForm/CardForm'
 import {ColumnForm} from './components/forms/ColumnForm/ColumnForm'
-
+import {EditProfileForm}from './components/forms/EditProfileForm/EditProfileForm'
 function App() {
   const { theme } = useTheme();
   const {isLogged} = useUser();
@@ -25,6 +25,7 @@ function App() {
       <RegisterForm/>
      < CardForm/>
      <ColumnForm/>
+     <EditProfileForm/>
     </div>
   );
 }

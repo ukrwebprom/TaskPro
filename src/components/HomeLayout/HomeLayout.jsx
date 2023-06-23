@@ -6,6 +6,7 @@ import btn from '../Button/Button.module.css';
 import { Link } from 'react-router-dom';
 import { useUser } from 'hooks/useUser';
 import { Header } from 'components/Header/Header';
+import Filters from 'components/Filters/Filters';
 
 export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
@@ -30,6 +31,7 @@ export const HomeLayout = ({children}) => {
 
                     <Button className={`${btn.btn} ${btn.card}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another card</Button> */}
                 </div>
+                <Filters />
                 {children}
             </div>
             

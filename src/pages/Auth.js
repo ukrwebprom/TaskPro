@@ -4,8 +4,8 @@ const Auth = () => {
   return (
     <WelcomeLayout>
       <h1>Auth</h1>
-      <a href="/auth/login">Login</a>
-      <a href="/auth/register">Register</a>
+      <a href="login">Login</a>
+      <a href="register">Register</a>
       <Outlet />
     </WelcomeLayout>
   );

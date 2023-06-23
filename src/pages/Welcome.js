@@ -5,8 +5,8 @@ const Welcome = () => {
   return (
     <WelcomeLayout>
       <h1>You are welcome!</h1>
-      <a href="/auth/login">Login</a>
-      <a href="/auth/register">Register</a>
+      <a href="auth/login">Login</a>
+      <a href="auth/register">Register</a>
     </WelcomeLayout>
   );
 };

@@ -1,17 +1,19 @@
-import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { validationColumnSchema } from "schems";
+import { validationColumnSchema } from 'schems';
 
-export const ColumnForm = () => {
+export const ColumnForm = ({ setTitle, onClose, title }) => {
   const initialValues = {
-    title: "",
+    title,
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
+    setTitle(values.title);
     setSubmitting(false);
     resetForm();
+    onClose();
   };
 
   return (

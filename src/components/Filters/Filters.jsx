@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import FiltersButton from "./FiltersButton";
-import FiltersModal from "./FiltersModal";
+import React, { useState, useEffect } from 'react';
+import FiltersButton from './FiltersButton';
+import FiltersModal from './FiltersModal';
 
 const Filters = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,16 +14,16 @@ const Filters = () => {
   };
 
   useEffect(() => {
-    const handleEscapeKey = (event) => {
-      if (event.key === "Escape") {
+    const handleEscapeKey = event => {
+      if (event.key === 'Escape') {
         closeModal();
       }
     };
 
-    window.addEventListener("keydown", handleEscapeKey);
+    window.addEventListener('keydown', handleEscapeKey);
 
     return () => {
-      window.removeEventListener("keydown", handleEscapeKey);
+      window.removeEventListener('keydown', handleEscapeKey);
     };
   }, []);
 

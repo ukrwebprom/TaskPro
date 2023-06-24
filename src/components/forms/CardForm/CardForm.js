@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { validationCardSchema } from "schems";
-import "./test.css";
+import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { validationCardSchema } from 'schems';
+import './test.css';
 
 const labelColors = [
-  "#8FA1D0",
-  "#E09CB5",
-  "#BEDBB0",
-  "rgba(255, 255, 255, 0.30)",
+  '#8FA1D0',
+  '#E09CB5',
+  '#BEDBB0',
+  'rgba(255, 255, 255, 0.30)',
 ];
 
-export const CardForm = () => {
+export const CardForm = ({ makeTask, onClose }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const initialValues = {
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     labelColor: labelColors[0],
     deadline: new Date(),
   };
@@ -25,13 +25,15 @@ export const CardForm = () => {
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
+    makeTask(values);
     resetForm();
+    onClose();
   };
 
-  const validateDeadline = (date) => {
+  const validateDeadline = date => {
     const now = new Date();
     if (date < now) {
-      return "Deadline cannot be in the past";
+      return 'Deadline cannot be in the past';
     }
   };
 
@@ -65,7 +67,7 @@ export const CardForm = () => {
 
           <label>Label Color</label>
           <div className="label-colors">
-            {labelColors.map((color) => (
+            {labelColors.map(color => (
               <label key={color} className="label-color">
                 <Field
                   type="radio"
@@ -83,7 +85,7 @@ export const CardForm = () => {
           <label>Deadline</label>
           <DatePicker
             selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
+            onChange={date => setSelectedDate(date)}
             minDate={new Date()}
             onBlur={validateDeadline(selectedDate)}
           />

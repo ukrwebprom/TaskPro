@@ -2,8 +2,11 @@ import Logo from "./Logo";
 import Boards from "./Boards";
 import Help from "./Help";
 import "./Sidebar.css";
+import { useUser } from "hooks/useUser";
+
 
 const Sidebar = () => {
+  const {userLogout} = useUser();
   return (
     <div className="sidebar">
       <div className="sidebar-top">
@@ -14,9 +17,9 @@ const Sidebar = () => {
         <Help />
         <button type="button" className="logout-button button">
           <svg className="logout-icon">
-            <use href="" />
+{/*             <use href="" /> */}
           </svg>
-          <span>Log out</span>
+          <span onClick={() => userLogout()}>Log out</span>
         </button>
       </div>
     </div>

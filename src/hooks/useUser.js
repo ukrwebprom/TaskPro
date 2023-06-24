@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useRef, useEffect } from "react";
 import useLocalStorage from "use-local-storage";
-import { getMe, updTheme } from "api/ServerAPI";
+import { getMe, updTheme, login, logout, register } from "api/ServerAPI";
 
 const UserContext = createContext();
 
@@ -24,6 +24,38 @@ export const UserProvider = ({children}) => {
         
     }
 
+    const userLogin = async (data) => {
+        try {
+            const res = await login(data);
+            setIsLogged(true);
+            setName(res.name);
+            setTheme(res.theme);
+            setAuthToken(res.token);
+        } catch(err) {
+            throw new Error(err);
+        }
+    }
+
+    const userLogout = async () => {
+        try {
+            await logout();
+            setName('');
+            setAuthToken('');
+            setIsLogged(false);
+        } catch(err) {
+            throw new Error(err);
+        }
+    }
+
+    const userRegister = async (data) => {
+        try {
+            await register(data);
+            await userLogin({email:data.email, password:data.password});
+        } catch(err) {
+            throw new Error(err);
+        }
+    }
+
     useEffect(() => {
         const init = async () => {
             
@@ -32,16 +64,13 @@ export const UserProvider = ({children}) => {
                 console.log("init")
                 try {
                     const data = await getMe(authToken);
-                    console.log(data)
                     setIsLogged(true);
                     setName(data.name);
                     setTheme(data.theme);
-                    console.log("logged")
                 } catch (err) {
                     setIsLogged(false);
                     setAuthToken('');
                     console.log(err)
-                    console.log("not logged")
                 }
             }
             
@@ -49,7 +78,7 @@ export const UserProvider = ({children}) => {
         if(!initialized.current) init();
     }, [authToken, setAuthToken]);
 
-    return <UserContext.Provider value={{isLogged, name, theme, setUserTheme, setAuthToken }}>
+    return <UserContext.Provider value={{isLogged, name, theme, setUserTheme, setAuthToken, userLogin, userLogout, userRegister }}>
         {children}
     </UserContext.Provider>
     

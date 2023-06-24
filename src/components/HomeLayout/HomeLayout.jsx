@@ -1,10 +1,12 @@
 import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
-import Button from 'components/Button/Button';
+/* import Button from 'components/Button/Button';
 import btn from '../Button/Button.module.css';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; */
 import { useUser } from 'hooks/useUser';
+import { Header } from 'components/Header/Header';
+import Filters from 'components/Filters/Filters';
 
 export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
@@ -17,7 +19,9 @@ export const HomeLayout = ({children}) => {
             </div>
             {isSidebar && <div className={css.backdrop} onClick={() => setIsSidebar(false)}></div>}
             <div className={css.mainarea}>
+            
                 <div className={css.header}>
+                    <Header />
  {/*                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
 
                     <Button className={`${btn.btn} ${btn.send}`}>Send</Button>
@@ -28,6 +32,7 @@ export const HomeLayout = ({children}) => {
 
                     <Button className={`${btn.btn} ${btn.card}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another card</Button> */}
                 </div>
+                <Filters />
                 {children}
             </div>
             

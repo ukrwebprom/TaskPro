@@ -2,8 +2,6 @@ import {lazy} from 'react';
 import { Routes, Route } from "react-router-dom";
 import {PrivateRoute} from "routes/PrivateRoute";
 import {RestrictedRoute} from 'routes/RestrictedRoute';
-import { LoginForm } from 'components/forms/LoginForm/LoginForm';
-import { RegisterForm } from 'components/forms/RegisterForm/RegisterForm';
 import { NoRoute } from 'pages/404';
 import { NoBoard } from 'components/NoBoard/NoBoard';
 
@@ -19,16 +17,13 @@ function App() {
         <Route path='/' element={<PrivateRoute />}>
           <Route path='home' element={<Home />}>
             <Route index element={<NoBoard />} />
-            <Route path=':id' element={<Screens />} />
+            <Route path=':boardName' element={<Screens />} />
           </Route>
         </Route>
         
         <Route path='/' element={<RestrictedRoute />}>
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/auth" element={<Auth />}>
-            <Route path='login' element={<LoginForm />} />
-            <Route path='register' element={<RegisterForm />} />
-          </Route>
+          <Route path="/auth/:id" element={<Auth />} />
         </Route>
         
         <Route path="*" element={<NoRoute />} />

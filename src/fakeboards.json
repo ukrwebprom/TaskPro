@@ -1,0 +1,14 @@
+[
+    {
+        "id":"1",
+        "name":"the first board"
+    },
+    {
+        "id":"2",
+        "name":"the second board"
+    },
+    {
+        "id":"3",
+        "name":"the third board"
+    }
+]

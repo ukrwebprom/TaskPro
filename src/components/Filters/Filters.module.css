@@ -1,0 +1,185 @@
+@import "../../variables.module.css";
+@import "../../fonts/fonts.css";
+
+h2,
+h3,
+h4,
+p,
+img,
+li {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+input[type="radio"],
+label {
+  cursor: pointer;
+}
+.filtersButton {
+  background-color: transparent;
+  color: var(--primary-text-color);
+  padding: 10px;
+  border: none;
+}
+.modalContent {
+  width: 300px;
+  background: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  padding: 24px;
+}
+.modalTitle {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  margin-bottom: 14px;
+}
+.modalTitle::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #d9d9d9;
+  opacity: 0.1;
+}
+.bgList {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+}
+.bgContainer::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #d9d9d9;
+  opacity: 0.1;
+}
+.bgTitle {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.bgImg {
+  height: 28px;
+  width: 28px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+/* .labelContainer {
+} */
+.labelWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.labelTitle {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  margin-top: 24px;
+  margin-bottom: 14px;
+}
+.labelText {
+  color: var(--index-label-color);
+  font-size: 12px;
+  letter-spacing: -0.24px;
+  text-decoration-line: underline;
+}
+/* .labelList {
+} */
+.labelItem {
+  color: #878787;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+}
+.selectedLabel {
+  color: var(--primary-text-color);
+  font-size: 12px;
+  letter-spacing: -0.24px;
+}
+input[type="radio"] {
+  position: relative;
+  height: 14px;
+  width: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  margin-right: 8px;
+}
+
+input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2.7px solid white;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+}
+.withoutPriorityInput::before {
+  background-color: #878787;
+  border: 1px solid #878787;
+}
+.withoutPriorityInput:checked::after {
+  background-color: #878787;
+}
+
+.lowInput::before {
+  background-color: var(--low-priority-bg-color);
+
+  border: 1px solid var(--low-priority-bg-color);
+}
+.lowInput:checked::after {
+  background-color: var(--low-priority-bg-color);
+}
+
+.mediumInput::before {
+  background-color: var(--medium-priority-bg-color);
+  border: 1px solid var(--medium-priority-bg-color);
+}
+.mediumInput:checked::after {
+  background-color: var(--medium-priority-bg-color);
+}
+
+.highInput::before {
+  background-color: var(--high-priority-bg-color);
+  border: 1px solid var(--high-priority-bg-color);
+}
+.highInput:checked::after {
+  background-color: var(--high-priority-bg-color);
+}
+
+.closeButton {
+  background-color: transparent;
+  color: var(--primary-text-color);
+  padding: 10px;
+  border: none;
+}

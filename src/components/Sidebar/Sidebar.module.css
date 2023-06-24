@@ -1,0 +1,26 @@
+.projectsItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    padding: 20px 14px;
+    margin: 0 -14px;
+    opacity: 0.5;
+  }
+
+  .projectsActive {
+    composes: projectsItem;
+    position: relative;
+    background-color: var(--navigation-sec-bg-color);
+    opacity: 1;
+  }
+  
+  .projectsActive::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--navigation-active-marker);
+    border-radius: 4px 0px 0px 4px;
+  }

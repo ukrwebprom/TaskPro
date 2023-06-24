@@ -3,9 +3,22 @@
     justify-content: right;
     height: 68px;
     align-items: center;
-    border-bottom: 1px solid rgb(57, 59, 59);
+    border-bottom: 0px solid rgb(57, 59, 59);
 }
 
+.outputselector {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    z-index: 13;
+}
+
+.selectortheme {
+    position: absolute;
+    top: 33px;
+    z-index: 55;
+}
 
 .styleTheme {
     display: flex;
@@ -40,8 +53,8 @@
 }
 
 .icontheme {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
 .dropdown {
@@ -49,4 +62,3 @@
     position: absolute;
     z-index: 100;
 }
-

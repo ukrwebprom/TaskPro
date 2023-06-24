@@ -11,7 +11,7 @@ const ProjectsList = ({boards, setActive, activeBoard}) => {
         <svg className="projects-icon">
           <use href="" />
         </svg>
-        <button onClick={() => setActive(index)}>{board.name}</button>
+        <button onClick={() => setActive(index)}>{board.title}</button>
       </li>
       ))}
 {/*       <li className="projects-item active">

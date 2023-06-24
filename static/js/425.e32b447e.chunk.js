@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktaskpro=self.webpackChunktaskpro||[]).push([[425],{5425:function(e,r,s){s.r(r);var n=s(7689),a=s(184);r.default=function(){var e=(0,n.UO)().boardName;return(0,a.jsx)("div",{children:(0,a.jsxs)("h1",{children:["Screens ",e]})})}}}]);
+//# sourceMappingURL=425.e32b447e.chunk.js.map

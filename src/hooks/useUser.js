@@ -12,6 +12,7 @@ export const UserProvider = ({children}) => {
     const [isLogged, setIsLogged] = useState(false);
     const [name, setName] = useState('');
     const [theme, setTheme] = useState('dark');
+    const [avatar, setAvatar] = useState('none');
     const initialized = useRef(false);
 
     const setUserTheme = async (newtheme) => {
@@ -31,6 +32,7 @@ export const UserProvider = ({children}) => {
             setName(res.name);
             setTheme(res.theme);
             setAuthToken(res.token);
+            if(res.avatar) setAvatar(res.avatar)
         } catch(err) {
             throw new Error(err);
         }
@@ -78,7 +80,7 @@ export const UserProvider = ({children}) => {
         if(!initialized.current) init();
     }, [authToken, setAuthToken]);
 
-    return <UserContext.Provider value={{isLogged, name, theme, setUserTheme, setAuthToken, userLogin, userLogout, userRegister }}>
+    return <UserContext.Provider value={{isLogged, name, theme, avatar, setUserTheme, setAuthToken, userLogin, userLogout, userRegister }}>
         {children}
     </UserContext.Provider>
     

@@ -27,19 +27,6 @@
     margin-bottom: auto;
 }
 
-/* .burgerstyle {
-    cursor: pointer;
-    color: var(--primary-text-color);
-    background-color: transparent;
-    border: none;
-    width: 32px;
-    height: 32px;
-    background-size: cover;
-    margin-left: 32px;
-    font-size: 14px;
-    background-image: url('./../../images/icon.svg');
-} */
-
 .burgerstyle {
     cursor: pointer;
     outline: 0;

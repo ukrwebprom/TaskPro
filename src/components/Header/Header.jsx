@@ -5,7 +5,7 @@ export const Header = ({toggleSidebar}) => {
   return (
     <div className={css.headerall}>
       <div className={css.menuburger}>
-          <button className={css.burgerstyle} onClick={() => toggleSidebar(c => !c)}></button>
+          <button className={css.burgerstyle} onClick={() => toggleSidebar(c => !c)}><i></i></button>
       </div>
 
       <div className={css.headerTaskPro}>

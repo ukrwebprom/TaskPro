@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationNewBoardSchema } from "schems";
-import "./test.css";
+import s from "./BoardForm.module.css";
 
 const icons = ["❤️", "👍", "👎", "🤔", "😂", "🤢", "🤬", "🤯"];
 
@@ -45,36 +45,41 @@ export const BoardForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty, values, setFieldValue }) => (
-        <Form>
-          <label>
-            <Field type="text" name="title" placeholder="Title" />
+      
+        <Form className ={s.formbackround}>
+           <p className ={s.title}>New board</p>
+          <label  className={s.label} >
+            <Field className={s.input} type="text" name="title" placeholder="Title" />
             <ErrorMessage name="title" />
           </label>
 
-          <label className="icon-container">
-            Icons
+          <label >
+            <p className={s.itemtitle}>Icons</p>
+            <div className={s.icontainer}>
             {icons.map((icon, index) => (
               <div key={index}>
                 <Field
                   type="radio"
                   id={`icon${index}`}
                   name="icon"
-                  value={icon}
+                  value= {icon}
                   checked={values.icon === icon}
                   onChange={() => setFieldValue("icon", icon)}
                 />
-                <label htmlFor={`icon${index}`} className="icon">
+                <label htmlFor={`icon${index}`} className={s.icon}>
                   {icon}
                 </label>
               </div>
             ))}
+            </div>
             <ErrorMessage name="icon" />
           </label>
 
-          <label className="background-container">
-            Background
-            {backgrounds.map((background, index) => (
-              <div key={index}>
+          <label >
+          <p className={s.itemtitle}>Background</p>
+          <div className={s.wrapimage}>
+                      {backgrounds.map((background, index) => (
+              <div className={s.imagecontainer} key={index}>
                 <Field
                   type="radio"
                   id={`background${background}`}
@@ -85,11 +90,12 @@ export const BoardForm = () => {
                 />
                 <label
                   htmlFor={`background${index}`}
-                  className="background"
+                  className={s.background}
                   style={{ backgroundImage: `url(${background})` }}
                 />
               </div>
             ))}
+            </div>
             <ErrorMessage name="background" />
           </label>
 
@@ -97,6 +103,7 @@ export const BoardForm = () => {
             Create
           </button>
         </Form>
+       
       )}
     </Formik>
   );

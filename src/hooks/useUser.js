@@ -80,7 +80,7 @@ export const UserProvider = ({children}) => {
         if(!initialized.current) init();
     }, [authToken, setAuthToken]);
 
-    return <UserContext.Provider value={{isLogged, name, theme, setUserTheme, setAuthToken, userLogin, userLogout, userRegister }}>
+    return <UserContext.Provider value={{isLogged, name, theme, avatar, setUserTheme, setAuthToken, userLogin, userLogout, userRegister }}>
         {children}
     </UserContext.Provider>
     

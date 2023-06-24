@@ -5,14 +5,14 @@ export const Header = () => {
   return (
     <div className={css.headerall}>
       <div className={css.menuburger}>
-          <button className={css.burgerstyle}></button>
+          <button className={css.burgerstyle}><i></i></button>
       </div>
 
       <div className={css.headerTaskPro}>
         <div className={css.outputselector}>
-          <button className={css.styleTheme} > <span className={css.spantheme}>Theme</span>
+          <button className={css.styleTheme} ><span className={css.spantheme}>Theme</span>
             <img className={css.icontheme} src="/TaskPro/static/media/icon.811b950c1109ac38463be92ae94fe634.svg" alt='staticlogo'></img>
-            {/* <svg className={css.icontheme}><use href="./../../../public/logo192.png"></use> </svg>  */}
+            {/* <svg className={css.icontheme}><use href="./../../images/Vector.svg"></use> </svg>  */}
           </button>
           <div className={css.selectortheme}>
             <ThemeSelector />

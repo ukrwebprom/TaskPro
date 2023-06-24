@@ -29,8 +29,9 @@
   flex: 1;
   width: 100%;
   gap: 4px;
+  transition: background-color 0.2s var(--timing-function);
 }
 
-.projectsButton:hover {
+.projectsItem:not(.projectsActive) .projectsButton:hover {
   background-color: var(--primary-bg-color);
 }

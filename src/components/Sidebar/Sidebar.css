@@ -13,6 +13,13 @@
   font: inherit;
   color: inherit;
   cursor: pointer;
+  transition: opacity 0.2s var(--timing-function);
+}
+
+.create-button:hover,
+.help-button:hover,
+.logout-button:hover {
+  opacity: 0.7;
 }
 
 .sidebar {
@@ -64,8 +71,8 @@
   border-bottom: 1px solid var(--navigation-border-color);
 }
 
-.create-button:hover {
-  box-shadow: 0 0 50px 15px var(--create-btn-bg-color);
+ {
+  opacity: 0.7;
 }
 
 .create-text {

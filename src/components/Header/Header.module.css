@@ -6,6 +6,38 @@
     border-bottom: 0px solid rgb(57, 59, 59);
 }
 
+@media screen and (max-width:1280px) {
+    .headerall {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .menuburger {
+        display:none;
+    }
+}
+.iconburger {
+    width: 32px;
+    height: 32px;   
+}
+.menuburger {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.burgerstyle {
+    cursor: pointer;
+    color: var(--primary-text-color);
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    margin-left: 32px;
+    background-image: url('./../../images/icon.svg');
+}
+
 .outputselector {
     display: flex;
     flex-direction: column;

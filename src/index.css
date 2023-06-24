@@ -22,17 +22,26 @@ code {
 
 :root {
   --accent-color: #BEDBB0;
-  --main-background-color: #161616;
+  --main-background-color: #151515;
+  --input-backround-color: #1f1f1f;
+  --placeholder-color: #FFFFFF;
   --main-text-color: rgba(255, 255, 255, 0.5);
+  --main-tittle-color: #FFFFFF;
 }
 [data-theme='light'] {
   --accent-color: #BEDBB0;
   --main-background-color: #FCFCFC;
+  --input-backround-color: #FFFFFF;
+  --placeholder-color: #161616;
   --main-text-color: #161616;
+  --main-tittle-color:#161616;
 }
 [data-theme='violet'] {
   --accent-color: #5255BC;
   --main-background-color: #FCFCFC;
+  --input-backround-color: #FFFFFF;
+  --placeholder-color: #161616;
   --main-text-color: #161616;
+  --main-tittle-color:#161616;
 }
 

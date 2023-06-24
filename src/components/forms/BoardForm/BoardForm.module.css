@@ -16,20 +16,32 @@ padding: 24px;
   font-style: normal;
   font-size: 18px;
   line-height: 27px;
-  color: #FFFFFF;
+  color: var(--main-tittle-color);
 }
+
+.itemtitle{
+  color: var( --main-tittle-color); 
+  margin: 0;
+  margin-bottom: 24px;
+  text-align: left;
+  font-size: 14px;
+  font: "Poppins";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 21px;
+   }
+  
 /*инпут*/
 .input{
   display: block;
   margin: 24px 0px;
   min-width:302px;
-  background-color:  #1F1F1F;
+  background-color: var( --input-backround-color);
   border: 1px solid  #BEDBB0;
   border-radius: 8px;
   opacity:0.4;
   padding:14px 18px;
-  box-shadow: 
-  #161616 8;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
 
 .input::placeholder{
@@ -38,30 +50,31 @@ padding: 24px;
   font-weight: 400;
   font-style: normal;
   line-height: 21px;
-letter-spacing: 1px;
-  color:#FFFFFF
+letter-spacing: -2%;
+  color:var(--placeholder-color);
   }
 
 
 /*иконки*/
-.icontitle{
-color: #FFFFFF; 
-margin: 0;
-margin-bottom: 24px;
-text-align: left;
-font-size: 14px;
-font: "Poppins";
-font-weight: 400;
-font-style: normal;
-line-height: 21px;
-color:#FFFFFF
- }
-
 
 .icontainer{
   display: flex;
   margin-bottom: 24px;
 }
+
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+
 /*картинки*/
 
 .wrapimage{
@@ -88,20 +101,6 @@ color:#FFFFFF
 input[type="radio"] {
     display: none;
   }
-  
-  /* Стилізувати кружечки для іконок */
-  .icon {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #eee;
-    text-align: center;
-    line-height: 30px;
-    font-size: 20px;
-    margin-right: 10px;
-  }
-  
  
   
   /* Стилізувати вибрані значки */
@@ -112,7 +111,7 @@ input[type="radio"] {
   
   /* Стилізувати вибрані фони */
   input[type="radio"][name="background"]:checked + .background {
-    border: 2px solid  #BEDBB0
+    border: 2px solid  var( --accent-color)
   }
   /*кнопка*/
 .btn{

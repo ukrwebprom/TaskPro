@@ -20,7 +20,7 @@ export const RegisterForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
-        <Form className={s.loginbackround}  >
+        <Form className={s.regbackround}  >
           <div className={s.titleFild}>
           <p  className= {s.regtitleActive}>Registration</p>
           <p   className= {s.regtitle}>Log In</p>

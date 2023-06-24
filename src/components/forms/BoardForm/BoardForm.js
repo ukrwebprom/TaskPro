@@ -53,7 +53,7 @@ export const BoardForm = () => {
           </label>
 
           <label >
-            <p className={s.icontitle}>Icons</p>
+            <p className={s.itemtitle}>Icons</p>
             <div className={s.icontainer}>
             {icons.map((icon, index) => (
               <div key={index}>
@@ -75,7 +75,7 @@ export const BoardForm = () => {
           </label>
 
           <label >
-          <p className={s.icontitle}>Background</p>
+          <p className={s.itemtitle}>Background</p>
           <div className={s.wrapimage}>
                       {backgrounds.map((background, index) => (
               <div className={s.imagecontainer} key={index}>

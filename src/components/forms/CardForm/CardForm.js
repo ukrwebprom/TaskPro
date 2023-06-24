@@ -6,10 +6,10 @@ import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
 import s from "./CardForm.module.css"
 
 const labelColors = [
-  // "#8FA1D0",
-  // "#E09CB5",
-  // "#BEDBB0",
-  // "rgba(255, 255, 255, 0.30)",
+  "#8FA1D0",
+  "#E09CB5",
+  "#BEDBB0",
+  "rgba(255, 255, 255, 0.30)",
 ];
 
 export const CardForm = () => {
@@ -69,8 +69,8 @@ export const CardForm = () => {
             <ErrorMessage name="description" />
           </label>
 
-          <label className={s.label} >Label Color</label>
-          <div className="label-colors">
+          <label className={s.itemtittle} >Label Color</label>
+          <div className="label-color">
             {labelColors.map((color) => (
               <label key={color} className="label-color">
                 <Field
@@ -86,7 +86,7 @@ export const CardForm = () => {
           </div>
           <ErrorMessage name="labelColor" />
 
-          <label className={s.label}>Deadline</label>
+          <label className={s.itemtittle}>Deadline</label>
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}

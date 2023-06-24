@@ -39,7 +39,7 @@ const Background = ({ handleBgClick, selectedBg }) => {
                 }`}
                 src={background}
                 alt={`Background ${index + 1}`}
-                onClick={() => handleBgClick(background)}
+                onClick={() => handleBgClick(background, index)}
               />
             </li>
           ))}

@@ -7,8 +7,15 @@ const Filters = () => {
   const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleBgClick = (background) => {
-    setSelectedBg(background);
+  // const handleBgClick = (background) => {
+  //   setSelectedBg(background);
+  // };
+  const handleBgClick = (background, index) => {
+    if (index === 0) {
+      setSelectedBg(null);
+    } else {
+      setSelectedBg(background);
+    }
   };
   const openModal = () => {
     setIsModalOpen(true);

@@ -1,9 +1,11 @@
 import React from "react";
 import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 import Icon from "components/Icon/Icon";
+import { Suspense } from "react";
 
 const Welcome = () => {
   return (
+    <Suspense fallback={<p>Loading...</p>}>
     <WelcomeLayout>
       <h1>You are welcome!</h1>
       <a href='auth/login'>Login</a>
@@ -63,6 +65,7 @@ const Welcome = () => {
         />
       </div>
     </WelcomeLayout>
+    </Suspense>
   );
 };
 

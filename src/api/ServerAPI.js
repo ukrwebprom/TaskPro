@@ -1,5 +1,4 @@
 import axios from 'axios';
-import fakeboards from '../fakeboards.json';
 
 axios.defaults.baseURL = 'https://taskpro-41yf.onrender.com';
 
@@ -39,5 +38,6 @@ export const register = async (data) => {
 }
 
 export const getBoards = async () => {
-    return fakeboards;
+    const res = await axios.get('/boards');
+    return res.data;
 }

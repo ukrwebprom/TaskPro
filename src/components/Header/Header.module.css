@@ -28,7 +28,8 @@
     margin-right: 14px;
     color: var(--primary-text-color);
     background-color: transparent;
-    text-decoration:none;
+    border: none;
+    font-size: 14px;
 }
 
 .styleUserInfo {
@@ -42,7 +43,9 @@
     margin-right: 8px;
     color: var(--primary-text-color);
     background-color: transparent;
+    font-size: 14px;
 }
+
 .styleAvatar {
   cursor: pointer;
   width: 32px;
@@ -56,9 +59,4 @@
     width: 16px;
     height: 16px;
   }
-
-.dropdown {
-    display: none;
-    position: absolute;
-    z-index: 100;
-}
+  

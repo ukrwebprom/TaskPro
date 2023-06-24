@@ -1,11 +1,20 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
+
 import s from "./Registerform.module.css"
+import { useUser } from "hooks/useUser";
+
 export const RegisterForm = () => {
-  const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
-    setSubmitting(false);
-    resetForm();
+  const {userRegister} = useUser();
+
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    try {
+      await userRegister(values);
+      setSubmitting(false);
+      resetForm();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -63,18 +72,3 @@ export const RegisterForm = () => {
     </Formik>
   );
 };
-
-// const formik = useFormik({
-//   initialValues: {
-//     name: '',
-//     email: '',
-//   },
-//   validationSchema: Yup.object({
-//     name: Yup.string().required('Введіть ім'я'),
-//     email: Yup.string().email('Введіть коректну адресу').required('Введіть електронну пошту'),
-//   }),
-//   validateOnBlur: true, // валідація буде виконуватися лише після зняття фокусу
-//   onSubmit: values => {
-//     alert(JSON.stringify(values, null, 2));
-//   },
-// });

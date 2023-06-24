@@ -14,14 +14,14 @@ const backgrounds = [
   "https://picsum.photos/205.jpg",
   "https://picsum.photos/206.jpg",
   "https://picsum.photos/207.jpg",
-  "https://picsum.photos/208.jpgg",
-  "https://picsum.photos/209.jpgg",
-  "https://picsum.photos/210.jpgg",
-  "https://picsum.photos/211.jpgg",
-  "https://picsum.photos/212.jpgg",
-  "https://picsum.photos/213.jpgg",
-  "https://picsum.photos/214.jpgg",
-  "https://picsum.photos/215.jpgg",
+  "https://picsum.photos/208.jpg",
+  "https://picsum.photos/209.jpg",
+  "https://picsum.photos/210.jpg",
+  "https://picsum.photos/211.jpg",
+  "https://picsum.photos/212.jpg",
+  "https://picsum.photos/213.jpg",
+  "https://picsum.photos/214.jpg",
+  "https://picsum.photos/215.jpg",
 ];
 
 export const BoardForm = () => {
@@ -31,9 +31,10 @@ export const BoardForm = () => {
     background: backgrounds[0],
   };
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
+    resetForm();
   };
 
   return (

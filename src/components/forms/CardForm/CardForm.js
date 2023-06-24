@@ -42,6 +42,7 @@ export const CardForm = () => {
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (
+
        
         <Form className={s.formbackround} onSubmit={handleSubmit}>
            <p className={s.title}>Add card</p>

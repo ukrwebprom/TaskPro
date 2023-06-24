@@ -1,47 +1,31 @@
-@import url('./fonts/fonts.css');
+@import url("./fonts/fonts.css");
+@import url('./variables.module.css');
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg-color);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome, Edge, Opera and Firefox */
 }
-
-:root {
-  --accent-color: #BEDBB0;
-  --main-background-color: #151515;
-  --input-backround-color: #1f1f1f;
-  --placeholder-color: #FFFFFF;
-  --main-text-color: rgba(255, 255, 255, 0.5);
-  --main-tittle-color: #FFFFFF;
+.App {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  height:100vh;
+  box-sizing: border-box;
 }
-[data-theme='light'] {
-  --accent-color: #BEDBB0;
-  --main-background-color: #FCFCFC;
-  --input-backround-color: #FFFFFF;
-  --placeholder-color: #161616;
-  --main-text-color: #161616;
-  --main-tittle-color:#161616;
-}
-[data-theme='violet'] {
-  --accent-color: #5255BC;
-  --main-background-color: #FCFCFC;
-  --input-backround-color: #FFFFFF;
-  --placeholder-color: #161616;
-  --main-text-color: #161616;
-  --main-tittle-color:#161616;
-}
-

@@ -1,11 +1,11 @@
 import css from './Header.module.css'
 import { ThemeSelector } from 'components/ThemeSelector/ThemeSelector'
 
-export const Header = () => {
+export const Header = ({toggleSidebar}) => {
   return (
     <div className={css.headerall}>
       <div className={css.menuburger}>
-          <button className={css.burgerstyle}></button>
+          <button className={css.burgerstyle} onClick={() => toggleSidebar(c => !c)}></button>
       </div>
 
       <div className={css.headerTaskPro}>

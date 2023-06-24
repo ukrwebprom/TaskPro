@@ -1,5 +1,6 @@
 /* import ProjectsList from "./ProjectsList"; */
 import ProjectsList from "./ProjectsList/ProjectsList";
+import Icon from "components/Icon";
 import "../Sidebar.css";
 import { getBoards } from "api/ServerAPI";
 import { useState, useEffect, useRef } from "react";
@@ -15,18 +16,18 @@ const Boards = () => {
     const initBoards = async () => {
       isInit.current = true;
       const boards = await getBoards();
-      setBoards(boards); 
-    }
-    if(!isInit.current) initBoards();
-  }, [])
+      setBoards(boards);
+    };
+    if (!isInit.current) initBoards();
+  }, []);
 
   useEffect(() => {
-    if(boards.length > 0) navigate(boards[active].name, { replace: true });
-  }, [active, boards, navigate])
+    if (boards.length > 0) navigate(boards[active].name, { replace: true });
+  }, [active, boards, navigate]);
 
-  const onSelectBoard = i => {
+  const onSelectBoard = (i) => {
     setActive(i);
-  }
+  };
 
   return (
     <div className="boards">
@@ -34,12 +35,16 @@ const Boards = () => {
       <button type="button" className="create-button button">
         <span className="create-text">Create a new board</span>
         <div className="create-icon">
-          <svg width="20" height="20">
-            <use href="" />
-          </svg>
+          <Icon name={"#plus-icon"} sprite={2} width="20" height="20" />
         </div>
       </button>
-      {boards.length > 0 && <ProjectsList boards={boards} setActive={onSelectBoard} activeBoard={active} />}
+      {boards.length > 0 && (
+        <ProjectsList
+          boards={boards}
+          setActive={onSelectBoard}
+          activeBoard={active}
+        />
+      )}
     </div>
   );
 };

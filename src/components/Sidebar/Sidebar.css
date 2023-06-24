@@ -64,6 +64,10 @@
   border-bottom: 1px solid var(--navigation-border-color);
 }
 
+.create-button:hover {
+  box-shadow: 0 0 50px 15px var(--create-btn-bg-color);
+}
+
 .create-text {
   width: 76px;
   text-align: left;
@@ -78,16 +82,20 @@
   background-color: var(--create-btn-bg-color);
 }
 
+.create-icon .icon {
+  stroke: var(--btn-text-color);
+}
+
 .projects {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   max-height: 100px;
   gap: 4px;
-  margin-top: 40px;
+  margin: 40px -14px 0;
   padding: 0;
   list-style: none;
-  overflow: hidden scroll;
+  overflow-y: scroll;
 }
 
 .projects-item {
@@ -96,7 +104,6 @@
   align-items: center;
   gap: 4px;
   padding: 20px 14px;
-  margin: 0 -14px;
   opacity: 0.5;
 }
 
@@ -130,6 +137,7 @@
 
 .help-header {
   height: 78px;
+  background: url(/src/images/plant.png) no-repeat;
 }
 
 .help-text {
@@ -148,18 +156,16 @@
   font-size: 12px;
 }
 
-.help-icon {
-  width: 20px;
-  height: 20px;
+.help-button .icon {
+  stroke: currentColor;
 }
 
 .logout-button {
   gap: 14px;
 }
 
-.logout-icon {
-  width: 32px;
-  height: 32px;
+.logout-button .icon {
+  stroke: currentColor;
 }
 
 @media screen and (min-width: 768px) {
@@ -171,9 +177,13 @@
     margin-top: 60px;
   }
 
+  .projects {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+
   .projects-item {
     padding: 20px 24px;
-    margin: 0 -24px;
   }
 
   .help {

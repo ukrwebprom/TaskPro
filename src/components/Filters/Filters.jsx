@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import FiltersButton from "./FiltersButton";
 import FiltersModal from "./FiltersModal";
+import css from "../Filters/Filters.module.css";
 
 const Filters = () => {
+  const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleBgClick = (background) => {
+    setSelectedBg(background);
+  };
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -28,10 +33,18 @@ const Filters = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      className={css.filtersContainer}
+      style={{ backgroundImage: `url(${selectedBg})` }}
+    >
       <FiltersButton onClick={openModal} />
       {isModalOpen && (
-        <FiltersModal isOpen={isModalOpen} onClose={closeModal} />
+        <FiltersModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          handleBgClick={handleBgClick}
+          selectedBg={selectedBg}
+        />
       )}
     </div>
   );

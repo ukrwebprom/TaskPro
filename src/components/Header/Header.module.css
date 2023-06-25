@@ -34,14 +34,14 @@
     border: 0;
     background-color: transparent;
     width: 32px;
-    height: 16px;
+    height: 32px;
     margin-left: 32px;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
-.burgerstyle::before,
+/* .burgerstyle::before,
 .burgerstyle i,
 .burgerstyle::after {
     content: "";
@@ -49,7 +49,7 @@
     height: 2.5px;
     border-radius: 3px;
     background-color: var(--primary-text-color);
-}
+} */
 
 
 .outputselector {
@@ -93,11 +93,12 @@
 }
 
 .styleAvatar {
+    padding: 0;
   cursor: pointer;
   width: 32px;
   height: 32px;
   border: none;
-  background-image: url('./../../../public/android-chrome-192x192.png');
+  background-color: transparent;
   background-size: cover;
 }
 

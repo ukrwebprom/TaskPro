@@ -13,6 +13,13 @@
   font: inherit;
   color: inherit;
   cursor: pointer;
+  transition: opacity 0.2s var(--timing-function);
+}
+
+.create-button:hover,
+.help-button:hover,
+.logout-button:hover {
+  opacity: 0.7;
 }
 
 .sidebar {
@@ -22,12 +29,12 @@
   color: var(--sidebar-text-color);
   background-color: var(--navigation-bg-color);
   height: 100%;
-  max-width: 260px;
   padding: 24px 14px;
   font-size: 14px;
   text-align: left;
   letter-spacing: -0.28px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .logo {
@@ -78,15 +85,24 @@
   background-color: var(--create-btn-bg-color);
 }
 
+.create-icon .icon {
+  stroke: var(--btn-text-color);
+}
+
 .projects {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  max-height: 210px;
   gap: 4px;
-  max-height: 300px;
-  margin-top: 40px;
+  margin: 40px -14px 0;
   padding: 0;
   list-style: none;
-  overflow: hidden scroll;
+  overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar,
+.projects::-webkit-scrollbar {
+  width: 0px;
 }
 
 .projects-item {
@@ -95,7 +111,6 @@
   align-items: center;
   gap: 4px;
   padding: 20px 14px;
-  margin: 0 -14px;
   opacity: 0.5;
 }
 
@@ -122,13 +137,14 @@
 
 .help {
   padding: 15px;
-  margin-bottom: 24px;
+  margin: 24px 0;
   border-radius: 8px;
   background-color: var(--navigation-sec-bg-color);
 }
 
 .help-header {
   height: 78px;
+  background: url(/src/images/plant.png) no-repeat;
 }
 
 .help-text {
@@ -147,18 +163,16 @@
   font-size: 12px;
 }
 
-.help-icon {
-  width: 20px;
-  height: 20px;
+.help-button .icon {
+  fill: currentColor;
 }
 
 .logout-button {
   gap: 14px;
 }
 
-.logout-icon {
-  width: 32px;
-  height: 32px;
+.logout-button .icon {
+  stroke: currentColor;
 }
 
 @media screen and (min-width: 768px) {
@@ -170,9 +184,13 @@
     margin-top: 60px;
   }
 
+  .projects {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+
   .projects-item {
     padding: 20px 24px;
-    margin: 0 -24px;
   }
 
   .help {

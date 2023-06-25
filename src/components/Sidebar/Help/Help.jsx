@@ -1,4 +1,5 @@
 import "../Sidebar.css";
+import Icon from "components/Icon";
 
 const Help = () => {
   return (
@@ -10,9 +11,7 @@ const Help = () => {
         team.
       </p>
       <button type="button" className="help-button button">
-        <svg className="help-icon">
-          <use href="" />
-        </svg>
+        <Icon name={"#help-circle-icon"} sprite={2} width="20" height="20" />
         <span>Need help?</span>
       </button>
     </div>

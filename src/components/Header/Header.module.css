@@ -97,7 +97,8 @@
   width: 32px;
   height: 32px;
   border: none;
-  background-image: url('./../../../public/android-chrome-192x192.png');
+  border-radius: 8px;
+  background-image: url('./../../images/user-plug@2x.png');
   background-size: cover;
 }
 

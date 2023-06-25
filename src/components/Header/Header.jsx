@@ -19,8 +19,8 @@ export const Header = ({toggleSidebar}) => {
       <div className={css.headerTaskPro}>
         <div className={css.outputselector}>
           <button className={css.styleTheme} onClick={() => showThemeSelector()}><span className={css.spantheme}>Theme</span>
-            <img className={css.icontheme} src="/TaskPro/static/media/icon.811b950c1109ac38463be92ae94fe634.svg" alt='staticlogo'></img>
-            {/* <svg className={css.icontheme}><use href="./../../images/Vector.svg"></use> </svg>  */}
+            {/* <img className={css.icontheme} src="/TaskPro/static/media/icon.811b950c1109ac38463be92ae94fe634.svg" alt='staticlogo'></img> */}
+            <svg className={css.icontheme}><use href="/"></use> </svg> 
           </button>
           {isVisibleThemeSelector &&
             (<div className={css.selectortheme}>

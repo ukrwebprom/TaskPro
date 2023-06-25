@@ -43,7 +43,7 @@ export const Header = ({ toggleSidebar }) => {
         </ul>
         {isVasibleUserModal &&
           <div style={{ position: "absolute", top: 70, right: 12 }}>
-            <p>EditProfileModal</p>
+            <p className={css.textuseravatar}>EditProfileModal</p>
           </div>
         }
       </div>

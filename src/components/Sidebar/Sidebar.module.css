@@ -1,9 +1,4 @@
-.projectsItem {
-  opacity: 0.5;
-}
-
 .projectsActive {
-  composes: projectsItem;
   position: relative;
   background-color: var(--navigation-sec-bg-color);
   opacity: 1;
@@ -36,8 +31,12 @@
   }
 }
 
-.projectsItem:not(.projectsActive) .projectsButton:hover {
-  background-color: var(--primary-bg-color);
+.projectsItem .projectsButton:hover {
+  background-color: var(--navigation-sec-bg-color);
+}
+
+.projectsItem .boardTitle {
+  opacity: 0.5;
 }
 
 .boardTitle,
@@ -47,7 +46,23 @@
   gap: 8px;
 }
 
+.projectsActive .boardActionButton {
+  opacity: 1;
+}
+
+.projectsActive .boardActionButton:hover {
+  opacity: 0.5;
+}
+
+.projectsItem .projectsButton:hover .boardActionButton {
+  opacity: 0.5;
+}
+
 .boardActionButton {
   composes: button from "./Sidebar.css";
-  /* justify-self: flex-end; */
+  opacity: 0;
+}
+
+.projectsItem .projectsButton .boardActionButton:hover {
+  opacity: 1;
 }

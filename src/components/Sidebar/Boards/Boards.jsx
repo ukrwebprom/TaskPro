@@ -1,9 +1,9 @@
 /* import ProjectsList from "./ProjectsList"; */
-import ProjectsList from "./ProjectsList/ProjectsList";
-import "../Sidebar.css";
-import { getBoards } from "api/ServerAPI";
-import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import ProjectsList from './ProjectsList/ProjectsList';
+import '../Sidebar.css';
+import { getBoards } from 'api/ServerAPI';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Boards = () => {
   const isInit = useRef(false);
@@ -15,18 +15,18 @@ const Boards = () => {
     const initBoards = async () => {
       isInit.current = true;
       const boards = await getBoards();
-      setBoards(boards); 
-    }
-    if(!isInit.current) initBoards();
-  }, [])
+      setBoards(boards);
+    };
+    if (!isInit.current) initBoards();
+  }, []);
 
   useEffect(() => {
-    if(boards.length > 0) navigate(boards[active].title, { replace: true });
-  }, [active, boards, navigate])
+    if (boards.length > 0) navigate(boards[active].title, { replace: true });
+  }, [active, boards, navigate]);
 
   const onSelectBoard = i => {
     setActive(i);
-  }
+  };
 
   return (
     <div className="boards">
@@ -39,7 +39,13 @@ const Boards = () => {
           </svg>
         </div>
       </button>
-      {boards.length > 0 && <ProjectsList boards={boards} setActive={onSelectBoard} activeBoard={active} />}
+      {boards.length > 0 && (
+        <ProjectsList
+          boards={boards}
+          setActive={onSelectBoard}
+          activeBoard={active}
+        />
+      )}
     </div>
   );
 };

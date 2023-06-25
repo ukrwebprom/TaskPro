@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import { ModalColumn } from './ModalColumn';
+import Icon from '../Icon';
+
 import css from './Column.module.css';
 const tasks = [
   {
@@ -45,22 +47,17 @@ export const Column = () => {
     <section className={css.containerColumn}>
       <div className={css.wrapperTitleColumn}>
         <h3 className={css.titleColumn}>{title}</h3>
-        <div>
+        <div className={css.wrapperButton}>
           <button
             className={css.buttonColumn}
             type="button"
             onClick={toggleModalEditColumnName}
           >
-            Edit
-            {/* <Icon
-              name={'#pencil-icon'}
-              width={16}
-              height={16}
-              fill={'currentColor'}
-              sprite={2}
-            /> */}
+            <Icon name={'#pencil-icon'} />
           </button>
-          <button className={css.buttonColumn}>Delete</button>
+          <button className={css.buttonColumn}>
+            <Icon name={'#trash-icon'} />
+          </button>
         </div>
         {showModalEditColumnName && (
           <ModalColumn onClose={toggleModalEditColumnName}>
@@ -95,6 +92,10 @@ export const Column = () => {
         className={css.addCardButton}
         onClick={toggleModalCreateTasks}
       >
+        {' '}
+        <div className={css.wrapperIcon}>
+          <Icon name={'#plus-icon'} color={'#fff'} />
+        </div>
         Add another card
       </button>
     </section>

@@ -3,7 +3,7 @@
 }
 .wrapperTitleColumn{
     display: flex;
-    
+    align-items: center;
     justify-content: space-between;
     width: 294px; 
     padding: 18px 20px;
@@ -51,7 +51,8 @@
 
 .addCardButton {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     background-color: var(--accent-color);
     padding: 14px 88px 14px 89px;
     border-radius: 8px;
@@ -63,6 +64,15 @@
     color: var(--btn-text-color);
 }
 
+.addCardButton:hover{
+    background-color: #a4bb98;
+}
+.addCardButton:focus{
+    background-color: #a4bb98;
+}
+.wrapperButton{
+    display: flex;
+}
 .buttonColumn{
     width: 20px;
     height: 20px;
@@ -70,4 +80,18 @@
     color: aliceblue;
     border: none;
     color: var(--primary-text-color);
+}
+
+.buttonColumn:not(:last-child){
+    margin-right: 8px;
+}
+
+.wrapperIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--btn-text-color);
+    padding: 7px;
+    border-radius: 8px;
+
 }

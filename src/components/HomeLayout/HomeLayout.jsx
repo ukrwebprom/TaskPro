@@ -21,7 +21,7 @@ export const HomeLayout = ({children}) => {
             <div className={css.mainarea}>
             
                 <div className={css.header}>
-                    <Header />
+                    <Header toggleSidebar={setIsSidebar}/>
  {/*                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
 
                     <Button className={`${btn.btn} ${btn.send}`}>Send</Button>

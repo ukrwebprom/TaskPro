@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { validationCardSchema } from 'schems';
-import './test.css';
+
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
+import s from "./CardForm.module.css"
+
 
 const labelColors = [
   '#8FA1D0',
@@ -44,30 +46,39 @@ export const CardForm = ({ makeTask, onClose }) => {
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
+
+       
+        <Form className={s.formbackround} onSubmit={handleSubmit}>
+           <p className={s.title}>Add card</p>
           <label>
-            Title
+        
             <Field
+            className={s.input}
               type="text"
               name="title"
+              placeholder="Title" 
               onBlur={touched.fieldName && errors.fieldName}
             />
             <ErrorMessage name="title" />
           </label>
 
           <label>
-            Description
+       
             <Field
+          className={s.comment}
               as="textarea"
+              placeholder="Description"
               name="description"
               onBlur={touched.fieldName && errors.fieldName}
             />
             <ErrorMessage name="description" />
           </label>
 
-          <label>Label Color</label>
-          <div className="label-colors">
-            {labelColors.map(color => (
+
+          <label className={s.itemtittle} >Label Color</label>
+          <div className="label-color">
+            {labelColors.map((color) => (
+
               <label key={color} className="label-color">
                 <Field
                   type="radio"
@@ -82,12 +93,14 @@ export const CardForm = ({ makeTask, onClose }) => {
           </div>
           <ErrorMessage name="labelColor" />
 
-          <label>Deadline</label>
+          <label className={s.itemtittle}>Deadline</label>
           <DatePicker
             selected={selectedDate}
             onChange={date => setSelectedDate(date)}
             minDate={new Date()}
             onBlur={validateDeadline(selectedDate)}
+            // className={s.datepicker}
+        
           />
 
           <button type="submit" disabled={isSubmitting || !dirty}>

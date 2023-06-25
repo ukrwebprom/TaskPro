@@ -1,14 +1,20 @@
-
 .wrap{
-box-sizing: border-box;
- margin: auto;
-background-color: #151515;
-width: 424px;
-height: 395px;
-border-radius: 8px;
-padding: 40px;
-text-align: left;
-}
+  box-sizing: border-box;
+   margin: auto;
+  background-color: #151515;
+  width:335px;
+  height: 363px;
+  border-radius: 8px;
+  padding:24px;
+  text-align: left;
+  } 
+@media screen and (min-width:768px){
+  .wrap{
+    width: 424px;
+    height: 395px;
+    padding:40px;
+      } 
+ }
 .titleFild{
     margin-bottom: 40px;
 }

@@ -7,10 +7,8 @@ const ProjectsList = ({ boards, setActive, activeBoard }) => {
     <ul className="projects">
       {boards.map((board, index) => (
         <li
-          className={
-            index === activeBoard ? css.projectsActive : css.projectsItem
-          }
-          key={board.id}>
+          className={index === activeBoard ? css.boardActive : css.board}
+          key={board._id}>
           <ProjectsItem index={index} board={board} setActive={setActive} />
         </li>
       ))}

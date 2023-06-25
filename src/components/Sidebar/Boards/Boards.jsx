@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Boards = () => {
   const isInit = useRef(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();

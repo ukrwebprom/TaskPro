@@ -1,10 +1,10 @@
-.projectsActive {
+.boardActive {
   position: relative;
   background-color: var(--navigation-sec-bg-color);
   opacity: 1;
 }
 
-.projectsActive::after {
+.boardActive::after {
   position: absolute;
   content: "";
   top: 0;
@@ -15,54 +15,52 @@
   border-radius: 4px 0px 0px 4px;
 }
 
-.projectsButton {
-  composes: button from "./Sidebar.css";
+.boardLink {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 14px;
   flex: 1;
-  width: 100%;
   gap: 4px;
   transition: background-color 0.2s var(--timing-function);
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     padding: 22px 24px;
   }
 }
 
-.projectsItem .projectsButton:hover {
+.board .boardLink:hover {
   background-color: var(--navigation-sec-bg-color);
 }
 
-.projectsItem .boardTitle {
+.board .boardInfo {
   opacity: 0.5;
 }
 
-.boardTitle,
+.boardTitle {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boardInfo,
 .boardButtons {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.projectsActive .boardActionButton {
-  opacity: 1;
-}
-
-.projectsActive .boardActionButton:hover {
-  opacity: 0.5;
-}
-
-.projectsItem .projectsButton:hover .boardActionButton {
+.boardActive .boardActionButton:hover {
   opacity: 0.5;
 }
 
 .boardActionButton {
   composes: button from "./Sidebar.css";
-  opacity: 0;
 }
 
-.projectsItem .projectsButton .boardActionButton:hover {
-  opacity: 1;
+.board .boardActionButton {
+  opacity: 0;
+  pointer-events: none;
 }

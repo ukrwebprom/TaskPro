@@ -4,13 +4,13 @@ import css from "../../../Sidebar.module.css";
 const ProjectsItem = ({ index, board, setActive }) => {
   return (
     <>
-      <button
-        type="button"
-        className={css.projectsButton}
-        onClick={() => setActive(index)}>
-        <div className={css.boardTitle}>
-          <Icon name={"#" + board.icon} />
-          {board.title}
+      <a
+        className={css.boardLink}
+        onClick={() => setActive(index)}
+        title={board.title}>
+        <div className={css.boardInfo}>
+          <Icon name={"#" + board.icon} width="18" height="18" />
+          <span className={css.boardTitle}>{board.title}</span>
         </div>
         <div className={css.boardButtons}>
           <button type="button" className={css.boardActionButton}>
@@ -20,7 +20,7 @@ const ProjectsItem = ({ index, board, setActive }) => {
             <Icon name="#trash-icon" />
           </button>
         </div>
-      </button>
+      </a>
     </>
   );
 };

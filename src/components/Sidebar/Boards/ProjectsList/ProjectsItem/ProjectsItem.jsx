@@ -2,7 +2,6 @@ import Icon from "components/Icon/Icon";
 import css from "../../../Sidebar.module.css";
 
 const ProjectsItem = ({ index, board, setActive }) => {
-  console.log(board);
   return (
     <>
       <button

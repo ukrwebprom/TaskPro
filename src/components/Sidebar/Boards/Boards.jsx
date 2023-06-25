@@ -36,7 +36,7 @@ const Boards = () => {
       <p className="boards-heading">My boards</p>
       <button
         type="button"
-        onClick={() => setModalIsOpen(true)}
+  //      onClick={() => setModalIsOpen(true)}
         className="create-button button">
         <span className="create-text">Create a new board</span>
         <div className="create-icon">

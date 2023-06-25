@@ -93,7 +93,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-height: 100px;
+  max-height: 210px;
   gap: 4px;
   margin: 40px -14px 0;
   padding: 0;
@@ -137,7 +137,7 @@
 
 .help {
   padding: 15px;
-  margin-bottom: 24px;
+  margin: 24px 0;
   border-radius: 8px;
   background-color: var(--navigation-sec-bg-color);
 }

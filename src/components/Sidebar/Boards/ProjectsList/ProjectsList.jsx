@@ -14,66 +14,6 @@ const ProjectsList = ({ boards, setActive, activeBoard }) => {
           <ProjectsItem index={index} board={board} setActive={setActive} />
         </li>
       ))}
-      {/*       <li className="projects-item active">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li> */}
     </ul>
   );
 };

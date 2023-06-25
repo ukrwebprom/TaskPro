@@ -5,9 +5,11 @@ import "../Sidebar.css";
 import { getBoards } from "api/ServerAPI";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+// import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
   const isInit = useRef(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
@@ -32,7 +34,10 @@ const Boards = () => {
   return (
     <div className="boards">
       <p className="boards-heading">My boards</p>
-      <button type="button" className="create-button button">
+      <button
+        type="button"
+        onClick={() => setModalIsOpen(true)}
+        className="create-button button">
         <span className="create-text">Create a new board</span>
         <div className="create-icon">
           <Icon name={"#plus-icon"} sprite={2} width="20" height="20" />
@@ -45,6 +50,7 @@ const Boards = () => {
           activeBoard={active}
         />
       )}
+      {/* {modalIsOpen && <CardForm />} */}
     </div>
   );
 };

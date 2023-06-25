@@ -164,7 +164,7 @@
 }
 
 .help-button .icon {
-  stroke: currentColor;
+  fill: currentColor;
 }
 
 .logout-button {

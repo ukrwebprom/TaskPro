@@ -11,7 +11,7 @@ const ProjectsList = ({ boards, setActive, activeBoard }) => {
             index === activeBoard ? css.projectsActive : css.projectsItem
           }
           key={board.id}>
-          <ProjectsItem index={index} name={board.name} setActive={setActive} />
+          <ProjectsItem index={index} board={board} setActive={setActive} />
         </li>
       ))}
       {/*       <li className="projects-item active">

@@ -7,6 +7,7 @@ import { useUser } from "hooks/useUser";
 
 const Sidebar = () => {
   const { userLogout } = useUser();
+
   return (
     <div className="sidebar">
       <div className="sidebar-top">

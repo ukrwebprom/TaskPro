@@ -23,15 +23,31 @@
 .projectsButton {
   composes: button from "./Sidebar.css";
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 14px;
   flex: 1;
   width: 100%;
   gap: 4px;
   transition: background-color 0.2s var(--timing-function);
+
+  @media screen and (min-width: 768px) {
+    padding: 22px 24px;
+  }
 }
 
 .projectsItem:not(.projectsActive) .projectsButton:hover {
   background-color: var(--primary-bg-color);
+}
+
+.boardTitle,
+.boardButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boardActionButton {
+  composes: button from "./Sidebar.css";
+  /* justify-self: flex-end; */
 }

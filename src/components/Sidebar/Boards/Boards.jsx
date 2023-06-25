@@ -1,4 +1,4 @@
-/* import ProjectsList from "./ProjectsList"; */
+import slug from 'slug';
 import ProjectsList from "./ProjectsList/ProjectsList";
 import Icon from "components/Icon";
 import "../Sidebar.css";
@@ -9,10 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 const Boards = () => {
   const isInit = useRef(false);
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const initBoards = async () => {
@@ -24,7 +25,11 @@ const Boards = () => {
   }, []);
 
   useEffect(() => {
-    if (boards.length > 0) navigate(boards[active].title, { replace: true });
+    if (boards.length > 0) {
+      const title = boards[active].title;
+      const makeSlug = slug(title);
+      navigate(makeSlug, { replace: true });
+    }
   }, [active, boards, navigate]);
 
   const onSelectBoard = (i) => {

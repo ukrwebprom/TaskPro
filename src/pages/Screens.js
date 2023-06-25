@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 
-const Screens = () => {
+const Screens = ({data}) => {
   const { boardName } = useParams()
     return (
       <div>
-        <h1>Screens {boardName}</h1>
+        <h1>Screens {data}</h1>
       </div>
     );
   };

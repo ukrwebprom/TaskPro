@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import FiltersButton from "./FiltersButton";
 import FiltersModal from "./FiltersModal";
 import css from "../Filters/Filters.module.css";
+import { updateBackground } from "../../api/ServerAPI";
 
-const Filters = () => {
+const Filters = ({ boardId }) => {
   const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleBgClick = (background) => {
-  //   setSelectedBg(background);
-  // };
   const handleBgClick = (background, index) => {
     if (index === 0) {
       setSelectedBg(null);
@@ -51,6 +49,7 @@ const Filters = () => {
           onClose={closeModal}
           handleBgClick={handleBgClick}
           selectedBg={selectedBg}
+          updateBackground={updateBackground}
         />
       )}
     </div>

@@ -2,22 +2,29 @@ import React from "react";
 import css from "./Filters.module.css";
 import LabelColor from "./LabelColor";
 import Background from "./Background";
+import Icon from "components/Icon/Icon";
 
-const FiltersModal = ({ isOpen, onClose, handleBgClick, selectedBg }) => {
+const FiltersModal = ({
+  isOpen,
+  onClose,
+  handleBgClick,
+  selectedBg,
+  updateBackground,
+}) => {
   return (
-    <div className={`modal ${isOpen ? "open" : ""}`}>
-      <div className={css.modalContent}>
-        <div>
-          <h2 className={css.modalTitle}>Filters</h2>
-          <button className={css.closeButton} onClick={onClose}>
-            Close
-          </button>
-        </div>
-        <div className="modalBody">
-          <Background handleBgClick={handleBgClick} selectedBg={selectedBg} />
+    <div className={css.modalContent}>
+      <h2 className={css.modalTitle}>Filters</h2>
+      <button className={css.closeButton} onClick={onClose}>
+        <Icon name={"#close-icon"} sprite={2} width="18" height="18" />
+      </button>
+      <div className="modalBody">
+        <Background
+          handleBgClick={handleBgClick}
+          selectedBg={selectedBg}
+          updateBackground={updateBackground}
+        />
 
-          <LabelColor />
-        </div>
+        <LabelColor />
       </div>
     </div>
   );

@@ -29,9 +29,6 @@ code {
   height: 100vh;
   box-sizing: border-box;
 }
-body {
-  box-sizing: border-box;
-}
 
 h1,
 h2,
@@ -52,5 +49,6 @@ li {
 }
 input[type="radio"],
 label {
+  margin: 0;
   cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Filters.module.css";
 
-const Background = ({ handleBgClick, selectedBg }) => {
+const Background = ({ handleBgClick, selectedBg, updateBackground }) => {
   const backgrounds = [
     "https://upload.wikimedia.org/wikipedia/commons/8/87/Red_sunset.jpg",
     "https://images.pexels.com/photos/1301470/pexels-photo-1301470.jpeg",
@@ -23,23 +23,22 @@ const Background = ({ handleBgClick, selectedBg }) => {
 
   return (
     <div className={css.bgContainer}>
+      <div className={css.modalLine}></div>
       <h3 className={css.bgTitle}>Background</h3>
       <div>
         <ul className={css.bgList}>
           {backgrounds.map((background, index) => (
             <li key={index} className={css.bgItem}>
               <img
-                // className={css.bgImg}
-                // src={background}
-                // alt={`Background ${index + 1}`}
-                // selectedBg={selectedBg}
-
                 className={`${css.bgImg} ${
                   selectedBg === background ? css.selectedBg : ""
                 }`}
                 src={background}
                 alt={`Background ${index + 1}`}
-                onClick={() => handleBgClick(background, index)}
+                onClick={() => {
+                  handleBgClick(background, index);
+                  updateBackground(background);
+                }}
               />
             </li>
           ))}

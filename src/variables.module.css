@@ -20,7 +20,7 @@
 /* dark theme*/
 [data-theme="dark"] {
   --primary-text-color: #fff;
-  --secondary-text-color: #ffffff80;
+  --secondary-text-color: rgba(255, 255, 255, 0.8);
   --sidebar-text-color: #fff;
   --btn-text-color: #161616;
   --accent-color: #bedbb0;

@@ -1,11 +1,19 @@
-import React from 'react';
-import boardPath from '../../fonts/board-sprite.svg';
-import projectPath from '../../fonts/project-sprite.svg';
+import sprite from '../../images/sprite.svg'
+import css from './Icon.module.css'
 
-const Icon = ({ name, sprite, width, height, fill, stroke }) => {
-  const iconsPath = {
-    1: boardPath,
-    2: projectPath,
+const Icon = ({
+  name,
+  color = null,
+  width ='18px',
+  height ='18px',
+}) => {
+
+    return (
+        <svg className={css.icon} width={width} height={height} stroke={color? color:'currentColor'}>
+          <use href={sprite + name} />
+        </svg>
+    );
+
   };
 
   return (

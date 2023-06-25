@@ -44,7 +44,7 @@
     flex-direction: column;
     gap: 4px;
     position: relative;
-    z-index: 13;
+    z-index: 0;
 }
 
 .selectortheme {

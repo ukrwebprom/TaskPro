@@ -2,13 +2,19 @@
   box-sizing: border-box;
   margin: auto;
   background-color: #151515;
-  width: 424px;
-  height: 332px;
+  width: 335px;
+  height: 300px;
   border-radius: 8px;
-  padding: 40px;
+  padding: 24px;
   text-align: left;
   }
-
+  @media screen and (min-width:768px){
+    .wrap{
+      width: 424px;
+      height: 332px;
+      padding: 40px;
+        } 
+   }
 .regtitle{
   display: inline-block;
   text-decoration: none;

@@ -1,7 +1,7 @@
 import Icon from "components/Icon/Icon";
 import css from "../../../Sidebar.module.css";
 
-const ProjectsItem = ({ index, board, setActive }) => {
+const ProjectsItem = ({ index, board, setActive, handleDelete }) => {
   return (
     <>
       <a
@@ -16,7 +16,10 @@ const ProjectsItem = ({ index, board, setActive }) => {
           <button type="button" className={css.boardActionButton}>
             <Icon name="#pencil-icon" />
           </button>
-          <button type="button" className={css.boardActionButton}>
+          <button
+            type="button"
+            className={css.boardActionButton}
+            onClick={() => handleDelete(board._id)}>
             <Icon name="#trash-icon" />
           </button>
         </div>

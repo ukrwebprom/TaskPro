@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Boards = () => {
   const isInit = useRef(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Boards = () => {
       <p className="boards-heading">My boards</p>
       <button
         type="button"
-        onClick={() => setModalIsOpen(true)}
+        // onClick={() => setModalIsOpen(true)}
         className="create-button button">
         <span className="create-text">Create a new board</span>
         <div className="create-icon">
@@ -46,6 +46,7 @@ const Boards = () => {
       {boards.length > 0 && (
         <ProjectsList
           boards={boards}
+          setBoards={setBoards}
           setActive={onSelectBoard}
           activeBoard={active}
         />

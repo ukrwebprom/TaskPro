@@ -44,7 +44,7 @@
     flex-direction: column;
     gap: 4px;
     position: relative;
-    z-index: 13;
+    z-index: 0;
 }
 
 .selectortheme {
@@ -80,7 +80,7 @@
 }
 
 .styleAvatar {
-    padding: 0;
+  padding: 0;
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -89,6 +89,9 @@
   background-size: cover;
 }
 
+.textuseravatar {
+  color: var(--primary-text-color);
+}
   .burgerMenu {
     background-color: transparent;
     color: white;

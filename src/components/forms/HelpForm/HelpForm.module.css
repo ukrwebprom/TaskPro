@@ -1,0 +1,82 @@
+.title{
+    margin: 0;
+    text-align: start;
+    font: "Poppins";
+   font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--main-tittle-color);
+  }
+
+ 
+.formbackround {
+    margin: auto;
+    background-color: var(--main-background-color);
+    width: 400px;
+    height: 355px;
+    border-radius: 8px;
+    padding: 24px;
+    }
+/*кнопка*/
+.btn{
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    min-width: 352px;
+    height: 49px;
+    background-color: var(--accent-color);
+    font-size: 14px; 
+    border-radius: 8px;
+    border: transparent;
+    cursor: pointer;
+    color: #161616;
+    line-height: 21px;
+  }
+  .input{
+    display: block;
+    margin: 24px 0px;
+    min-width:352px;
+    background-color: var(--input-backround-color);
+    opacity:0.4;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding:14px 18px;
+    box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  }
+  .input::placeholder{
+    font: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing: -2%;
+    color:var(--placeholder-color);
+    }
+  
+    
+    .comment {
+      display: block;
+      margin: 24px 0px;
+      min-width:352px;
+      height: 120px;
+      opacity:0.4;
+      resize: none;
+      background-color: var(--input-backround-color);
+      border: 1px solid  #BEDBB0;
+      border-radius: 8px;
+      padding:14px 18px;
+      box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+    }
+    .comment::placeholder {
+        font: "Poppins";
+        font-size: 14px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 21px;
+      letter-spacing: -2%;
+        color:var(--placeholder-color);
+        }
+      
+    
+     

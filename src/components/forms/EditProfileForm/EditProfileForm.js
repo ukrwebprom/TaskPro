@@ -1,6 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validationEditProfileSchema } from "schems";
-
+import { validationEditProfileSchema } from "..//..//..//schems/validationEditProfileSchema";
+import s from "./EditProfileForm.module.css"
 export const EditProfileForm = ({
   userPhoto = null,
   name = "",
@@ -25,9 +25,12 @@ export const EditProfileForm = ({
       onSubmit={handleSubmit}
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
-        <Form>
-          <div>
+        <Form className={s.formbackround}>
+          <p className={s.title}>Edit  profile</p>
+          
+          <div className={s.addfilewrap}>
             <input
+              className={s.inputFile}
               name="userPhoto"
               type="file"
               onChange={(event) => {
@@ -39,7 +42,8 @@ export const EditProfileForm = ({
           </div>
 
           <label>
-            <Field
+            <Field     
+             className={s.input}
               name="name"
               placeholder="Enter your name"
               onBlur={touched.fieldName && errors.fieldName}
@@ -49,6 +53,7 @@ export const EditProfileForm = ({
 
           <label>
             <Field
+              className={s.input}
               name="email"
               placeholder="Enter your email"
               type="email"
@@ -59,6 +64,7 @@ export const EditProfileForm = ({
 
           <label>
             <Field
+              className={s.input}
               name="password"
               placeholder="Create a password"
               type="password"

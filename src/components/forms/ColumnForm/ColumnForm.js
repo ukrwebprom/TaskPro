@@ -1,7 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import { validationColumnSchema } from "schems";
+import { validationColumnSchema } from "..//..//..//schems/validationColumnSchema";
+import s from "./ColumnForm.module.css"
 
 export const ColumnForm = () => {
   const initialValues = {
@@ -22,10 +23,13 @@ export const ColumnForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, dirty, handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
+        <Form className={s.formbackround} onSubmit={handleSubmit}>
+          <p className={s.title}>Add column</p>
           <label>
-            Title
-            <Field type="text" name="title" />
+            <Field 
+             className={s.input}
+            type="text" name="title"
+            placeholder="Title"  />
             <ErrorMessage name="title" />
           </label>
 

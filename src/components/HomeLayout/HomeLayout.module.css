@@ -6,7 +6,7 @@
     border:0;
 }
 .sidebar {
-    width:260px;
+    min-width:260px;
     background-color: var(--navigation-bg-color);
     position:absolute;
     top:0;
@@ -31,7 +31,7 @@
 }
 @media screen and (max-width:375px) {
     .sidebar {
-        width:60%;
+        min-width:60%;
     }
 }
 .backdrop {

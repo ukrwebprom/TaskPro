@@ -1,68 +1,46 @@
 import React from "react";
 import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 import Icon from "components/Icon/Icon";
+import { Suspense } from "react";
 
 const Welcome = () => {
   return (
+    <Suspense fallback={<p>Loading...</p>}>
     <WelcomeLayout>
       <h1>You are welcome!</h1>
       <a href='auth/login'>Login</a>
       <a href='auth/register'>Register</a>
 
       {/* example of using SVG sprite */}
-      <div>
-        <Icon
-          name={"#colors-icon"}
-          sprite={1}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-          fill={"#bedbb0"}
-        />
-        <Icon
-          name={"#bell-icon"}
-          sprite={2}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-        />
-        <Icon
-          sprite={2}
-          name={"#arrow-circle-icon"}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-        />
-        <Icon
-          sprite={2}
-          name={"#chevron-down-icon"}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-        />
-        <Icon
-          sprite={2}
-          name={"#close-icon"}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-        />
-        <Icon
-          sprite={2}
-          name={"#eye-icon"}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-        />
-        <Icon
-          sprite={2}
-          name={"#filter-icon"}
-          width='50'
-          height='50'
-          stroke={"#bedbb0"}
-        />
+      <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
+        <p>Project icons:</p>
+        <Icon name="#board1" />
+        <Icon name="#board2" />
+        <Icon name="#board3" />
+        <Icon name="#board4" />
+        <Icon name="#board5" />
+        <Icon name="#board6" />
+        <Icon name="#board7" />
+        <Icon name="#board8" />
+      </div>
+      <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
+      <p>UI:</p>
+        <Icon name="#arrow-circle-icon" />
+        <Icon name="#bell-icon" />
+        <Icon name="#chevron-down-icon" />
+        <Icon name="#close-icon" />
+        <Icon name="#eye-icon" />
+        <Icon name="#filter-icon" />
+        <Icon name="#help-circle-icon" />
+        <Icon name="#login-icon" width='32px' height='32px' color='#bedbb0' />
+        <Icon name="#logo-icon" />
+        <Icon name="#menu-icon" />
+        <Icon name="#pencil-icon" />
+        <Icon name="#plus-icon" />
+        <Icon name="#trash-icon" />
       </div>
     </WelcomeLayout>
+    </Suspense>
   );
 };
 

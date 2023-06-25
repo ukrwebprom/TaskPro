@@ -22,7 +22,7 @@ const Boards = () => {
   }, []);
 
   useEffect(() => {
-    if (boards.length > 0) navigate(boards[active].name, { replace: true });
+    if (boards.length > 0) navigate(boards[active].title, { replace: true });
   }, [active, boards, navigate]);
 
   const onSelectBoard = (i) => {

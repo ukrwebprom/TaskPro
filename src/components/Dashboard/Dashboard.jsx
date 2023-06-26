@@ -62,11 +62,11 @@ const DashBoard = () => {
     return (
         <div className={css.dashboardContainer}>
            
-           <div className={css.dashboardHeader}>
+          <div className={css.dashboardHeader}>
             <span>{currentBoard.title} </span> 
             <Filters />
-         </div>
-
+          </div>
+          <div className={css.listArea}>
             <div className={css.columnsList}>
                {columns.map((column) => (
                <Column 
@@ -75,7 +75,8 @@ const DashBoard = () => {
                 cards={cards.filter((card)=>(card.columnId === column.id))}
                    />
                 ))}
-                </div>
+            </div>
+          </div>
         </div>
          
         

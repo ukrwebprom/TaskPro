@@ -3,17 +3,20 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+    border:1px solid pink;
 }
 
 .dashboardHeader {
-    flex-direction: row;
-    width: 100%;
+    display:flex;
+    justify-content: space-between;
 }
 
+.listArea {
+    overflow-x: auto;
+}
 .columnsList{
     display: flex;
-    flex-direction: row;
-    flex-grow: 1;
+    //flex-grow: 1;
 }
 
 .column{

@@ -1,6 +1,7 @@
 .outer {
     display:flex;
     height:100%;
+    max-width: 100%;
     position:relative;
     background-color: var(--primary-bg-color);
     border:0;

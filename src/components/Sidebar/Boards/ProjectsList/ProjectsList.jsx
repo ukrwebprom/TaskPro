@@ -13,7 +13,6 @@ const ProjectsList = ({ boards, setBoards, setActive, activeBoard }) => {
       console.log(error.message);
     }
   };
-
   return (
     <ul className="projects">
       {boards.map((board, index) => (

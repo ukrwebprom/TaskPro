@@ -1,7 +1,7 @@
 import Icon from "components/Icon/Icon";
-import css from "../../../Sidebar.module.css";
+import css from "../../Sidebar.module.css";
 
-const ProjectsItem = ({ index, board, setActive, handleDelete }) => {
+const BoardsItem = ({ index, board, setActive, handleDelete }) => {
   return (
     <>
       <p
@@ -28,4 +28,4 @@ const ProjectsItem = ({ index, board, setActive, handleDelete }) => {
   );
 };
 
-export default ProjectsItem;
+export default BoardsItem;

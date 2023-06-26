@@ -1,7 +1,7 @@
 .outer {
     display:flex;
     height:100%;
-    max-width: 100%;
+    width: 100%;
     position:relative;
     justify-content:flex-start;
     background-color: var(--primary-bg-color);
@@ -46,9 +46,11 @@
 }
 
 .mainarea {
-/*     display: flex;
+    display: flex;
+    max-width:calc(100% - 260px);
+    flex-grow: 1;
     flex-direction: column;
-    flex-grow:0; */
+    justify-content: space-between;
     border:0;
 }
 .header {

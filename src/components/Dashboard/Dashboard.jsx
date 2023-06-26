@@ -1,6 +1,6 @@
 import React from "react";
 /* import { Column } from "components/Dashboard/Columns/Column"; */
-
+import Button from "components/Button/Button";
 import { useUser } from "hooks/useUser";
 import  Filters  from "components/Filters/Filters";
 import css from './Dashboard.module.css'
@@ -63,11 +63,10 @@ const DashBoard = () => {
     return (
         <div className={css.dashboardContainer}>
           <div className={css.dashboardHeader}>
-            <span>{currentBoard.title} </span> 
+            <h2 className={css.dashboardTitle}>{currentBoard.title}</h2> 
             <Filters />
           </div>
           <div className={css.listArea}>
-{/*             <div className={css.columnsList}> */}
               <ul className={css.columnsList}>
                {columns.map((column) => (
                 <li key={column._id}><Column /></li>
@@ -77,8 +76,8 @@ const DashBoard = () => {
                 cards={cards.filter((card)=>(card.columnId === column.id))}
                    /> */
                 ))}
+                <li><Button /></li>
               </ul>
-{/*             </div> */}
           </div>
         </div>
          

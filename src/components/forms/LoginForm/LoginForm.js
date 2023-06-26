@@ -1,6 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
 import Button from "components/Button/Button";
+import Icon from "components/Icon/Icon";
 import s from "./LoginForm.module.css"
 import { useUser } from "hooks/useUser";
 
@@ -49,8 +50,9 @@ export const LoginForm = () => {
               name="password"
               placeholder="Confirm a password"
               type="password"
-            />
-            <ErrorMessage name="password"
+            /> <div className={s.eyeicon}>
+             <Icon name ="#eye-icon"  /></div>
+             <ErrorMessage name="password"
             component="div"
             className={s.error} />
           </label>

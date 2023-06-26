@@ -2,6 +2,7 @@ import sprite from '../../images/sprite.svg'
 
 const Icon = ({
   name,
+  onClic,
   color = null,
   width ='18px',
   height ='18px',

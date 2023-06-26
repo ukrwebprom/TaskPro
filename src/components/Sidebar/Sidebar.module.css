@@ -1,26 +1,66 @@
-.projectsItem {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    padding: 20px 14px;
-    margin: 0 -14px;
-    opacity: 0.5;
-  }
+.boardActive {
+  position: relative;
+  background-color: var(--navigation-sec-bg-color);
+  opacity: 1;
+}
 
-  .projectsActive {
-    composes: projectsItem;
-    position: relative;
-    background-color: var(--navigation-sec-bg-color);
-    opacity: 1;
+.boardActive::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--navigation-active-marker);
+  border-radius: 4px 0px 0px 4px;
+}
+
+.boardLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 14px;
+  flex: 1;
+  gap: 4px;
+  transition: background-color 0.2s var(--timing-function);
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    padding: 22px 24px;
   }
-  
-  .projectsActive::after {
-    position: absolute;
-    content: "";
-    right: 0;
-    width: 4px;
-    height: 100%;
-    background-color: var(--navigation-active-marker);
-    border-radius: 4px 0px 0px 4px;
-  }
+}
+
+.board .boardLink:hover {
+  background-color: var(--navigation-sec-bg-color);
+}
+
+.board .boardInfo {
+  opacity: 0.5;
+}
+
+.boardTitle {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boardInfo,
+.boardButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boardActive .boardActionButton:hover {
+  opacity: 0.5;
+}
+
+.boardActionButton {
+  composes: button from "./Sidebar.css";
+}
+
+.board .boardActionButton {
+  opacity: 0;
+  pointer-events: none;
+}

@@ -9,7 +9,7 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({children}) => {
     const [authToken, setAuthToken] = useLocalStorage("authToken", "");
-    const [isLogged, setIsLogged] = useState(false);
+    const [isLogged, setIsLogged] = useState(null);
     const [name, setName] = useState('');
     const [theme, setTheme] = useState('dark');
     const [avatar, setAvatar] = useState('none');
@@ -75,7 +75,7 @@ export const UserProvider = ({children}) => {
                     setAuthToken('');
                     console.log(err)
                 }
-            }
+            } else setIsLogged(false);
             
         }
         if(!initialized.current) init();

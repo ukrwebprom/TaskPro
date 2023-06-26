@@ -1,12 +1,10 @@
 import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
-/* import Button from 'components/Button/Button';
-import btn from '../Button/Button.module.css';
-import { Link } from 'react-router-dom'; */
 import { useUser } from 'hooks/useUser';
 import { Header } from 'components/Header/Header';
 import Filters from 'components/Filters/Filters';
+import Task from 'components/Task/Task';
 
 export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
@@ -22,17 +20,22 @@ export const HomeLayout = ({children}) => {
             
                 <div className={css.header}>
                     <Header toggleSidebar={setIsSidebar}/>
- {/*                    <button onClick={() => setIsSidebar(true)}>Show sidebar</button>
-
-                    <Button className={`${btn.btn} ${btn.send}`}>Send</Button>
-
-                    <Button className={`${btn.btn} ${btn.add}`}><div className={btn.plus}>+</div>Add</Button>
-
-                    <Button className={`${btn.btn} ${btn.column}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another column</Button>
-
-                    <Button className={`${btn.btn} ${btn.card}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another card</Button> */}
                 </div>
                 <Filters />
+                {/* TODO: If you dont want see single task comment next div. */}
+                <div style={{ paddingLeft: 300 }}>
+                  <Task
+                    columnList={[{name: 'In progress'}, {name: 'Done'}]}
+                    taskData={{
+                      id: 'frepgm23r-43r4--43rrwefv',
+                      levelIndex: 0,
+                      endDate: new Date(),
+                      title: 'The Watch Spot Design',
+                      description:
+                        "Create a visually stunning and eye-catching watch dial design that embodies our brand's  essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
+                    }}
+                  />
+                </div>
                 {children}
             </div>
             

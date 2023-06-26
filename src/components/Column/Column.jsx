@@ -70,7 +70,17 @@ export const Column = () => {
         )}
         {showModalCreateTasks && (
           <ModalColumn onClose={toggleModalCreateTasks}>
-            <CardForm makeTask={makeTask} onClose={toggleModalCreateTasks} />
+            <Modal
+              name='Add card'
+              onClick={event => {
+                if (event.currentTarget === event.target) {
+                  toggleModalCreateTasks();
+                }
+              }}
+              onClose={toggleModalCreateTasks}
+            >
+              <CardForm taskData={makeTask} />
+            </Modal>
           </ModalColumn>
         )}
       </div>

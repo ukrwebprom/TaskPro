@@ -2,22 +2,29 @@ import {lazy} from 'react';
 import { Routes, Route } from "react-router-dom";
 import {PrivateRoute} from "routes/PrivateRoute";
 import {RestrictedRoute} from 'routes/RestrictedRoute';
+import { Navigate } from "react-router-dom";
 import { NoRoute } from 'pages/404';
 import { NoBoard } from 'components/NoBoard/NoBoard';
+import { useUser } from 'hooks/useUser';
 
 const Home = lazy(() => import('./pages/Home'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Welcome = lazy(() => import('./pages/Welcome'));
-const Screens = lazy(() => import('./pages/Screens'));
+const DashBoard = lazy(() => import('./components/Dashboard/Dashboard'));
 
 function App() {
+  const {isLogged} = useUser();
+
   return (
     <div className='App'>
+      {(isLogged === null)? <p>Checking user</p>
+      :
       <Routes>
         <Route path='/' element={<PrivateRoute />}>
+          <Route index element={<Navigate to='/home' />} />
           <Route path='home' element={<Home />}>
             <Route index element={<NoBoard />} />
-            <Route path=':boardName' element={<Screens />} />
+            <Route path=':boardName' element={<DashBoard />} />
           </Route>
         </Route>
         
@@ -27,7 +34,7 @@ function App() {
         </Route>
         
         <Route path="*" element={<NoRoute />} />
-      </Routes>
+      </Routes>}
     </div>
   );
 }

@@ -120,10 +120,12 @@ border-radius: 8px;
 
 .eyeicon{
   position: absolute;
-  height: 18px;
   top: 50%;
-  right: 0; 
+display: block;
   transform: translate(-50%, -50%);
+  right: 0; 
   color: #ffffff;
+  background-color:transparent;
+  border: transparent;
   opacity: 0.4;
 }

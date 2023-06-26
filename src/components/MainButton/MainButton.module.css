@@ -20,10 +20,12 @@
 }
 
 .iconBtn{
+  display: flex;
+  color: var(--inner-icon-color);
   padding: 7px;
-  border: 1px solid rgba(22, 22, 22, 1);
+  /* border: 1px solid rgba(22, 22, 22, 1); */
   margin-right: 8px;
-  background-color: rgba(22, 22, 22, 1);
+  background-color: var(--bg-icon-wrapper-color);
   border-radius: 8px;
 }
 

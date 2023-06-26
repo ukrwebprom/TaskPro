@@ -34,6 +34,7 @@
 }
 
 .close_button{
+  color: var(--index-label-color);
   display: flex;
   justify-content: flex-end;
   border: none;

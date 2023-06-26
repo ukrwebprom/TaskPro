@@ -34,9 +34,10 @@ const Task = ({
           <h2 className={css.title}>{taskData.title}</h2>
           <div className={css.wrapper_text}>
             <EllipsisText
-              style={{ fontSize: '12px', color: 'var( --index-label-color)' }}
+              className={css.elips_text}
+              // style={{ fontSize: '12px', color: 'var( --index-label-color)' }}
               text={taskData.description}
-              length={90}
+              length={110}
             />
           </div>
           <div className={css.divider} />
@@ -62,11 +63,12 @@ const Task = ({
                   variant="contained" 
                 >
                   <Icon
+                    className={css.icon_info}
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"
                     height="16"
-                    stroke='var( --index-label-color)'
+                    // stroke='var( --index-label-color)'
                   />
                 </button>
               </Tooltip>
@@ -81,7 +83,7 @@ const Task = ({
                     name={'#pencil-icon'}
                     width="16"
                     height="16"
-                    stroke='var( --index-label-color)'
+                    // stroke='var( --index-label-color)'
                   />
                 </button>
               </Tooltip>
@@ -92,7 +94,7 @@ const Task = ({
                     name={'#trash-icon'}
                     width="16"
                     height="16"
-                    stroke='var( --index-label-color)'
+                    // stroke='var( --index-label-color)'
                   />
                 </button>
               </Tooltip>

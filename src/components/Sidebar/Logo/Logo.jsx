@@ -8,7 +8,7 @@ const Logo = () => {
   const { theme } = useUser();
   return (
     <div className={css.container}>
-      <a href="/" className={css.logo}>
+      <Link to="/" className={css.logo}>
         <img
           src={theme === "violet" ? logoInverted : logoNormal}
           alt="TaskPro logo"

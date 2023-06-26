@@ -13,18 +13,18 @@ const levelsToIndexes = {
   0: 'Without priority',
   1: 'Low',
   2: 'Medium',
-  3: 'High'
-}
+  3: 'High',
+};
 
-const Task = ({ 
-  taskData,
-  columnList,
-}) => {
+const Task = ({ taskData, columnList }) => {
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
 
   const openMovePopover = Boolean(moveAnchorEl);
-  const id = useMemo(() => openMovePopover ? 'move-popover' : undefined, [openMovePopover]);
+  const id = useMemo(
+    () => (openMovePopover ? 'move-popover' : undefined),
+    [openMovePopover]
+  );
 
   return (
     <>
@@ -44,7 +44,9 @@ const Task = ({
             <div className={css.card_priority}>
               <div className={css.card_title}>
                 <p className={css.priority}>Priority</p>
-                <p className={css.status}>{levelsToIndexes[taskData.priority]}</p>
+                <p className={css.status}>
+                  {levelsToIndexes[taskData.priority]}
+                </p>
               </div>
               <div className={css.card_dedline}>
                 <p className={css.priority}>Deadline</p>
@@ -58,15 +60,15 @@ const Task = ({
                   disabled={!columnList.length}
                   type="button"
                   className={css.icon_buttons}
-                  onClick={(event) => setMoveAnchorEl(event.currentTarget)}
-                  variant="contained" 
+                  onClick={event => setMoveAnchorEl(event.currentTarget)}
+                  variant="contained"
                 >
                   <Icon
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"
                     height="16"
-                    stroke='var( --index-label-color)'
+                    stroke="var( --index-label-color)"
                   />
                 </button>
               </Tooltip>
@@ -81,18 +83,18 @@ const Task = ({
                     name={'#pencil-icon'}
                     width="16"
                     height="16"
-                    stroke='var( --index-label-color)'
+                    stroke="var( --index-label-color)"
                   />
                 </button>
               </Tooltip>
               <Tooltip title="Delete">
                 <button type="button" className={css.icon_buttons}>
-                <Icon
+                  <Icon
                     sprite={2}
                     name={'#trash-icon'}
                     width="16"
                     height="16"
-                    stroke='var( --index-label-color)'
+                    stroke="var( --index-label-color)"
                   />
                 </button>
               </Tooltip>
@@ -134,9 +136,7 @@ const Task = ({
         <ul>
           {columnList?.map(column => (
             <li className={css.popoverItem}>
-              <p className={css.popoverStatus}>
-                {column.name}
-              </p>
+              <p className={css.popoverStatus}>{column.name}</p>
               <Icon
                 sprite={2}
                 name={'#arrow-circle-icon'}
@@ -144,7 +144,7 @@ const Task = ({
                 height="16"
                 fill={'#8942b3'}
                 stroke={'#d400ff'}
-                />
+              />
             </li>
           ))}
         </ul>

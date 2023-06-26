@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
 import s from "./CardForm.module.css"
-
+import MainButton from "../../MainButton/MainButton"
 
 const labelColors = [
   '#8FA1D0',
@@ -14,14 +14,16 @@ const labelColors = [
   'rgba(255, 255, 255, 0.30)',
 ];
 
-export const CardForm = ({ makeTask, onClose }) => {
+export const CardForm = ({ taskData }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const initialValues = {
-    title: '',
-    description: '',
-    labelColor: labelColors[0],
-    deadline: new Date(),
+    title: taskData?.title || '',
+    description: taskData?.description || '',
+    labelColor: taskData?.levelIndex
+      ? labelColors[taskData.levelInex]
+      : labelColors[0],
+    deadline: taskData?.endDate || new Date(),
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
@@ -45,15 +47,11 @@ export const CardForm = ({ makeTask, onClose }) => {
       validationSchema={validationCardSchema}
       onSubmit={onSubmit}
     >
-      {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (
-
-       
+      {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (       
         <Form className={s.formbackround} onSubmit={handleSubmit}>
-           <p className={s.title}>Add card</p>
           <label>
-        
             <Field
-            className={s.input}
+              className={s.input}
               type="text"
               name="title"
               placeholder="Title" 
@@ -63,9 +61,8 @@ export const CardForm = ({ makeTask, onClose }) => {
           </label>
 
           <label>
-       
             <Field
-          className={s.comment}
+              className={s.comment}
               as="textarea"
               placeholder="Description"
               name="description"
@@ -73,13 +70,10 @@ export const CardForm = ({ makeTask, onClose }) => {
             />
             <ErrorMessage name="description" />
           </label>
-
-
-          <label className={s.itemtittle} >Label Color</label>
-          <div className="label-color">
+          <label className={s.item_tittle} >Label Color</label>
+            <div className="label_color">
             {labelColors.map((color) => (
-
-              <label key={color} className="label-color">
+              <label key={color}>
                 <Field
                   type="radio"
                   name="labelColor"
@@ -90,10 +84,9 @@ export const CardForm = ({ makeTask, onClose }) => {
                 <span style={{ backgroundColor: color }}></span>
               </label>
             ))}
-          </div>
+            </div>
           <ErrorMessage name="labelColor" />
-
-          <label className={s.itemtittle}>Deadline</label>
+          <label className={s.item_tittle}>Deadline</label>
           <DatePicker
             selected={selectedDate}
             onChange={date => setSelectedDate(date)}
@@ -102,10 +95,14 @@ export const CardForm = ({ makeTask, onClose }) => {
             // className={s.datepicker}
         
           />
-
-          <button type="submit" disabled={isSubmitting || !dirty}>
-            Add
-          </button>
+          <MainButton
+            btnName={taskData.id ? 'Edit' : 'Add'}
+            iconColor='#2a2a2a'
+            iconName='#plus-icon'
+            disabled={isSubmitting || !dirty}
+            type="submit"
+            onClick={() => {}}
+          />
         </Form>
       )}
     </Formik>

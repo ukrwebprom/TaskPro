@@ -47,6 +47,7 @@ const Boards = () => {
 
   useEffect(() => {
     if (boards.length > 0) initBoards();
+    else navigate('/home', { replace: true });
   }, [boards, initBoards]);
 
   const handleDelete = async (id) => {

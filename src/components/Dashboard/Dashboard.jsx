@@ -1,11 +1,8 @@
 import React from "react";
 import { Column } from "components/Dashboard/Columns/Column";
+import { useUser } from "hooks/useUser";
 import css from './Dashboard.module.css'
 
-const dashboard = {title: "Dashboard2", 
-    icon:"", 
-    background: "", 
-    id: "64975dc80a8a56550bcd4729"};
 
     const columns = [{title: "todo", id: 1}, {title: "inProgress", id: 2}, {title: "done", id: 3}];
 
@@ -31,7 +28,13 @@ const dashboard = {title: "Dashboard2",
         columnId: 1,
       }]
 
-export const DashBoard = () => {
+const DashBoard = () => {
+    const { currentBoard } = useUser();
+    const dashboard = {
+      title: currentBoard.title, 
+      icon:currentBoard.icon, 
+      background: currentBoard.background, 
+      id: currentBoard._id};
     return (
         <div className={css.dashboardContainer}>
            
@@ -54,3 +57,5 @@ export const DashBoard = () => {
         
     );
 };
+
+export default DashBoard;

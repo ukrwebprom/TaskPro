@@ -3,18 +3,19 @@ import css from "./Logo.module.css";
 import logoNormal from "../../../images/icon.svg";
 import logoInverted from "../../../images/icon-violet.svg";
 import { useUser } from "hooks/useUser";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   const { theme } = useUser();
   return (
     <div className={css.container}>
-      <a href="/" className="logo">
+      <Link to="/home" className="logo">
         <img
           src={theme === "violet" ? logoInverted : logoNormal}
           alt="TaskPro logo"
         />
         <span>Task Pro</span>
-      </a>
+      </Link>
     </div>
   );
 };

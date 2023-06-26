@@ -4,7 +4,7 @@ import css from "../../../Sidebar.module.css";
 const ProjectsItem = ({ index, board, setActive }) => {
   return (
     <>
-      <a
+      <p
         className={css.boardLink}
         onClick={() => setActive(index)}
         title={board.title}>
@@ -20,7 +20,7 @@ const ProjectsItem = ({ index, board, setActive }) => {
             <Icon name="#trash-icon" />
           </button>
         </div>
-      </a>
+      </p>
     </>
   );
 };

@@ -1,3 +1,45 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--sidebar-text-color);
+  background-color: var(--navigation-bg-color);
+  max-height: 100%;
+  padding: 24px;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: -0.28px;
+  box-sizing: border-box;
+  /* overflow-y: auto; */
+}
+
+.sidebarBottom {
+  flex-grow: 1;
+}
+.boards {
+  margin-top: 40px;
+  margin-left:-24px;
+  margin-right: -24px;
+  overflow-x: hidden;
+}
+.boards::-webkit-scrollbar {
+  display: none;
+}
+
+.boardsHeading {
+  opacity: 0.5;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  list-style: none;
+}
+
 .boardActive {
   position: relative;
   background-color: var(--navigation-sec-bg-color);
@@ -63,4 +105,88 @@
 .board .boardActionButton {
   opacity: 0;
   pointer-events: none;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s var(--timing-function);
+}
+
+.createButton {
+  composes:button;
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--navigation-border-color);
+  border-bottom: 1px solid var(--navigation-border-color);
+}
+.createText {
+  width: 76px;
+  text-align: left;
+}
+.createIcon {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background-color: var(--create-btn-bg-color);
+}
+.createIcon .icon {
+  stroke: var(--btn-text-color);
+}
+.logoutButton {
+  composes:button;
+  gap: 14px;
+}
+
+.logoutButton .icon {
+  stroke: currentColor;
+}
+
+.createButton:hover,
+.helpButton:hover,
+.logoutButton:hover {
+  opacity: 0.7;
+}
+
+.help {
+  padding: 15px;
+  margin: 24px 0;
+  border-radius: 8px;
+  background-color: var(--navigation-sec-bg-color);
+}
+
+.helpHeader {
+  height: 78px;
+  background: url(/src/images/plant.png) no-repeat;
+}
+
+.helpText {
+  margin-top: 14px;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.helpTextAccent {
+  color: var(--accent-color);
+}
+
+.helpButton {
+  composes:button;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.helpButton .icon {
+  fill: currentColor;
 }

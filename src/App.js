@@ -10,7 +10,7 @@ import { useUser } from 'hooks/useUser';
 const Home = lazy(() => import('./pages/Home'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Welcome = lazy(() => import('./pages/Welcome'));
-const Screens = lazy(() => import('./pages/Screens'));
+const DashBoard = lazy(() => import('./components/Dashboard/Dashboard'));
 
 function App() {
   const {isLogged} = useUser();
@@ -24,7 +24,7 @@ function App() {
           <Route index element={<Navigate to='/home' />} />
           <Route path='home' element={<Home />}>
             <Route index element={<NoBoard />} />
-            <Route path=':boardName' element={<Screens />} />
+            <Route path=':boardName' element={<DashBoard />} />
           </Route>
         </Route>
         

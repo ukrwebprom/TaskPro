@@ -29,9 +29,9 @@ export const CardForm = ({ taskData }) => {
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
-    makeTask(values);
+    /* makeTask(values); */
     resetForm();
-    onClose();
+/*     onClose(); */
   };
 
   const validateDeadline = date => {

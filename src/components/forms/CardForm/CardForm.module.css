@@ -1,69 +1,91 @@
-.formbackround {
+@import "../../../variables.module.css";
+@import "../../../fonts/fonts.css";
+
+/* .formbackround {
     margin: auto;
     background-color: var(--main-background-color) ;
     width: 350px;
     height: 522px;
     border-radius: 8px;
     padding: 24px;
-    }
+    } */
     /*заголовки*/
     .title{
       margin: 0;
       text-align: start;
-      font: "Poppins";
+      font-family: "Poppins";
       font-weight: 500;
       font-style: normal;
       font-size: 18px;
       line-height: 27px;
-      color:var(--main-tittle-color);
+      color:var(--btn-text-color);
     }
 
     /*инпут*/
     .input{
       display: block;
-      margin: 24px 0px;
+      margin: 24px 0px 14px 0px;
       min-width:302px;
       background-color: var(--input-backround-color);
-      border: 1px solid  #BEDBB0;
+      border: 1px solid var(--high-priority-bg-color);
       border-radius: 8px;
-      opacity:0.4;
+      /* opacity:0.4; */
       padding:14px 18px;
       box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-    }
-    
-    .input::placeholder{
-      font: "Poppins";
+      color:var(--primary-text-color);
+      font-family: "Poppins";
       font-size: 14px;
       font-weight: 400;
       font-style: normal;
       line-height: 21px;
-    letter-spacing:  -2%;
-      color:var(--placeholder-color);
+      letter-spacing:  -2%;
+      /* color:var(--btn-text-color); */
+    }
+    
+    .input::placeholder{
+      /* font-family: "Poppins";
+      font-size: 14px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 21px;
+      letter-spacing:  -2%;
+      color:var(--btn-text-color); */
       }
     
       .comment {
         display: block;
-        margin: 24px 0px;
+        margin: 0px 0px 24px 0px;
         min-width:302px;
         height: 154px;
-        opacity:0.4;
+        /* opacity:0.4; */
         resize: none;
         background-color: var(--input-backround-color);
-        border: 1px solid  #BEDBB0;
+        /* border: 1px solid  #BEDBB0; */
+        border: 1px solid var(--high-priority-bg-color);
         border-radius: 8px;
         padding:14px 18px;
         box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+        font-family: "Poppins";
+        font-size: 14px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 18px;
+        letter-spacing: -0.28px;
+        color:var(--primary-text-color);
       }
           
   
     .comment::placeholder {
-        font: "Poppins";
+      /* color: #0000; */
+        /* font-family: "Poppins";
         font-size: 14px;
         font-weight: 400;
         font-style: normal;
-        line-height: 21px;
-        letter-spacing: -2%;
-        color:var(--placeholder-color);
+        line-height: 18px;
+        letter-spacing: -0.28px;
+        color: #161616;
+        font-style: bold; */
+        /* color:var(--placeholder-color); */
         }
         
   
@@ -86,17 +108,19 @@
         background-color: var(--main-background-color) ;
         border: transparent
      }
-     .itemtittle{
+     .item_tittle{
       display: block;
-      color:var(--placeholder-color); 
-      opacity: 0.3;
+      color:var(--index-label-color);
       margin: 0;
-      margin-bottom: 24px;
       text-align: left;
       font-size: 14px;
-      font: "Poppins";
+      font-family: "Poppins";
       font-weight: 400;
       font-style: normal;
       line-height: 21px;
-       }
+      }
+
+      .label_wrapper{
+      margin-top: 14px;
+      }
  

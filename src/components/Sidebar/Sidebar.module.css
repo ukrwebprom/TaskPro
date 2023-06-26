@@ -1,26 +1,202 @@
-.projectsItem {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    padding: 20px 14px;
-    margin: 0 -14px;
-    opacity: 0.5;
-  }
+.createBtnWrapper {
+  margin-top: 8px;
+  border-top: 1px solid var(--navigation-border-color);
+  border-bottom: 1px solid var(--navigation-border-color);
+}
 
-  .projectsActive {
-    composes: projectsItem;
-    position: relative;
-    background-color: var(--navigation-sec-bg-color);
-    opacity: 1;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--sidebar-text-color);
+  background-color: var(--navigation-bg-color);
+  height: 100%;
+  padding: 24px;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: -0.28px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+.sidebarTop {
+  flex-grow: 1;
+}
+.boards {
+  margin-top: 40px;
+  margin-left: -24px;
+  margin-right: -24px;
+  overflow-x: hidden;
+}
+.boards::-webkit-scrollbar {
+  display: none;
+}
+
+.boardsHeading {
+  opacity: 0.5;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.boardActive {
+  position: relative;
+  background-color: var(--navigation-sec-bg-color);
+  opacity: 1;
+}
+
+.boardActive::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--navigation-active-marker);
+  border-radius: 4px 0px 0px 4px;
+}
+
+.boardLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 14px;
+  flex: 1;
+  gap: 4px;
+  transition: background-color 0.2s var(--timing-function);
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    padding: 22px 24px;
   }
-  
-  .projectsActive::after {
-    position: absolute;
-    content: "";
-    right: 0;
-    width: 4px;
-    height: 100%;
-    background-color: var(--navigation-active-marker);
-    border-radius: 4px 0px 0px 4px;
-  }
+}
+
+.board .boardLink:hover {
+  background-color: var(--navigation-sec-bg-color);
+}
+
+.board .boardInfo {
+  opacity: 0.5;
+}
+
+.boardTitle {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boardInfo,
+.boardButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boardActive .boardActionButton:hover {
+  opacity: 0.5;
+}
+
+.boardActionButton {
+  composes: button from "./Sidebar.css";
+}
+
+.board .boardActionButton {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s var(--timing-function);
+}
+
+.createButton {
+  composes: button;
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--navigation-border-color);
+  border-bottom: 1px solid var(--navigation-border-color);
+}
+.createText {
+  width: 76px;
+  text-align: left;
+}
+.createIcon {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background-color: var(--create-btn-bg-color);
+}
+.createIcon .icon {
+  stroke: var(--btn-text-color);
+}
+.logoutButton {
+  composes: button;
+  gap: 14px;
+}
+
+.logoutButton .icon {
+  stroke: currentColor;
+}
+
+.createButton:hover,
+.helpButton:hover,
+.logoutButton:hover {
+  opacity: 0.7;
+}
+
+.help {
+  padding: 15px;
+  margin: 24px 0;
+  border-radius: 8px;
+  background-color: var(--navigation-sec-bg-color);
+}
+
+.helpHeader {
+  height: 78px;
+  background: url(/src/images/plant.png) no-repeat;
+}
+
+.helpText {
+  margin-top: 14px;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.helpTextAccent {
+  color: var(--accent-color);
+}
+
+.helpButton {
+  composes: button;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.helpButton .icon {
+  fill: currentColor;
+}

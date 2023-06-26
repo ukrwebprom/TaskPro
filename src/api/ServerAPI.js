@@ -40,4 +40,9 @@ export const register = async (data) => {
 export const getBoards = async () => {
     const res = await axios.get('/boards');
     return res.data;
-}
+} 
+
+export const deleteBoard = async (id) => {
+  const res = await axios.delete("/boards/" + id);
+  return res.data;
+};

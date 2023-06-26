@@ -9,10 +9,11 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({children}) => {
     const [authToken, setAuthToken] = useLocalStorage("authToken", "");
-    const [isLogged, setIsLogged] = useState(false);
+    const [isLogged, setIsLogged] = useState(null);
     const [name, setName] = useState('');
     const [theme, setTheme] = useState('dark');
     const [avatar, setAvatar] = useState('none');
+    const [currentBoard, setCurrentBoard] = useState(null);
     const initialized = useRef(false);
 
     const setUserTheme = async (newtheme) => {
@@ -74,13 +75,25 @@ export const UserProvider = ({children}) => {
                     setAuthToken('');
                     console.log(err)
                 }
-            }
+            } else setIsLogged(false);
             
         }
         if(!initialized.current) init();
     }, [authToken, setAuthToken]);
 
-    return <UserContext.Provider value={{isLogged, name, theme, avatar, setUserTheme, setAuthToken, userLogin, userLogout, userRegister }}>
+    return <UserContext.Provider 
+    value={{
+        isLogged, 
+        name, 
+        theme, 
+        avatar, 
+        currentBoard, 
+        setCurrentBoard,
+        setUserTheme, 
+        setAuthToken, 
+        userLogin, 
+        userLogout, 
+        userRegister }}>
         {children}
     </UserContext.Provider>
     

@@ -11,16 +11,3 @@ export const PrivateRoute = () => {
     :
     <Navigate to='/welcome' />
 }
-
-/* import { useUser } from '../hooks/useUser';
-import { Navigate } from "react-router-dom"
-
-const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
-    const {isLogged} = useUser();
-
-    return (
-        isLogged ? <Component /> : <Navigate to={redirectTo}/>  
-    )
-};
-
-export default PrivateRoute; */

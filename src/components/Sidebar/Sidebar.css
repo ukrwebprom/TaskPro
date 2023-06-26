@@ -66,9 +66,6 @@
 .create-button {
   width: 100%;
   padding: 14px 0;
-  margin-top: 8px;
-  border-top: 1px solid var(--navigation-border-color);
-  border-bottom: 1px solid var(--navigation-border-color);
 }
 
 .create-text {

@@ -2,6 +2,7 @@
 import ProjectsList from "./ProjectsList/ProjectsList";
 import Icon from "components/Icon";
 import "../Sidebar.css";
+import css from "../Sidebar.module.css";
 import { getBoards } from "api/ServerAPI";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +35,7 @@ const Boards = () => {
   return (
     <div className="boards">
       <p className="boards-heading">My boards</p>
+      <div className={css.createBtnWrapper}>
       <button
         type="button"
   //      onClick={() => setModalIsOpen(true)}
@@ -43,6 +45,7 @@ const Boards = () => {
           <Icon name={"#plus-icon"} sprite={2} width="20" height="20" />
         </div>
       </button>
+      </div>
       {boards.length > 0 && (
         <ProjectsList
           boards={boards}

@@ -1,6 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
-
+import Button from "..//..//Button/Button.jsx"
 import s from "./Registerform.module.css"
 import { useUser } from "hooks/useUser";
 
@@ -29,45 +29,55 @@ export const RegisterForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
-        <Form className={s.regbackround}  >
+        <div className={s.wrap}>
+        <Form >
           <div className={s.titleFild}>
           <p  className= {s.regtitleActive}>Registration</p>
-          <p   className= {s.regtitle}>Log In</p>
+          <a href="log"   className= {s.regtitle}>Log In</a>
           </div>
          < div className={s.field}>
-          <label>
+          <label className= {s.label}>
             <Field className= {s.input}
               name="name"
               placeholder="Enter your name"
               autoComplete="off"
             />
-            <ErrorMessage name="name" />
+            <ErrorMessage name="name"
+            component="div"
+            className={s.error} />
           </label>
 
-          <label>
+          <label className= {s.label}>
             <Field className= {s.input}
               name="email"
               placeholder="Enter your email"
               type="email"
               autoComplete="off"
             />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email"
+            component="div"
+            className={s.error} />
           </label>
 
-          <label>
+          <label className= {s.label}>
             <Field  className= {s.input}
               name="password"
               placeholder="Create a password"
               type="password"
               autoComplete="off"
             />
-            <ErrorMessage name="password" />
+            <ErrorMessage 
+            name="password" 
+            component="div"
+            className={s.error}
+            />
           </label>
           </ div>
-          <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Register Now
-          </button>
-        </Form>
+          <Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}> Register Now</Button>
+        </Form> 
+        
+        </div>
+       
       )}
     </Formik>
   );

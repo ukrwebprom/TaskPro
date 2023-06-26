@@ -1,6 +1,23 @@
-
+.wrap {
+  box-sizing: border-box;
+  margin: auto;
+  background-color: #151515;
+  width: 335px;
+  height: 300px;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: left;
+  }
+  @media screen and (min-width:768px){
+    .wrap{
+      width: 424px;
+      height: 332px;
+      padding: 40px;
+        } 
+   }
 .regtitle{
   display: inline-block;
+  text-decoration: none;
       text-align: start;
       font: "Poppins";
      font-weight: 500;
@@ -20,31 +37,29 @@
       font-size: 18px;
       line-height: 27px;
      color: #FFFFFF;
-      margin-bottom: 40px;
-    
-      opacity: 1;
+         opacity: 1;
     }
-.loginbackround{
- margin: auto;
-background-color: #151515;
-width: 424px;
-height: 332px;
-border-radius: 8px;
-padding: 40px;
-text-align: left;
-}
-.input{
-    display: block;
-    min-width:352px;
-    background-color:  #1F1F1F;
-    opacity:0.4;
-    border: 1px solid var(--accent-color);
-    border-radius: 8px;
-    padding:14px 18px;
-    box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-    margin-bottom: 14px;
-
-  }
+ 
+    .label{ 
+      position: relative;
+      display: block;
+      margin-bottom: 14px;
+  
+    }
+    .input{
+      display: block;
+      box-sizing: border-box;
+    width: 100%;
+      background-color:  #1F1F1F;
+      opacity:0.4;
+      border: 1px solid  #BEDBB0;
+      color: #FFFFFF;
+      border-radius: 8px;
+      padding:14px 18px;
+      box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+    
+    }
+ 
   .input::placeholder{
     font: "Poppins";
     font-size: 14px;
@@ -54,10 +69,43 @@ text-align: left;
   letter-spacing:  -2%;
     color:#FFFFFF
     }
-    
+    .input:focus{
+      color:#fff;
+      opacity: 1;
+    }  
+    .input:hover{
+      color: #BEDBB0;
+      opacity: 1;
+    }
     .field{
         margin-bottom: 24px;
      }
      .titleFild{
       margin-bottom: 40px;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    width: 100%;
+    height: 49px;
+    outline: none;
+    color: #161616;
+    border-radius: 8px;
+    background:#BEDBB0;
+    border: none;
+  }
+  .error{
+    position: absolute;
+    top:100%;
+    right: 0;
+    font: "Poppins";
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing:  -2%;
+    color:#BEDBB0;
+  
   }

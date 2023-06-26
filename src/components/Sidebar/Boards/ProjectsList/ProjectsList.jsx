@@ -5,7 +5,6 @@ import css from '../../Sidebar.module.css';
 const ProjectsList = ({ boards, setActive, activeBoard }) => {
   return (
     <ul className="projects">
-      <ProjectsItem />
       {boards.map((board, index) => (
         <li
           className={
@@ -13,72 +12,9 @@ const ProjectsList = ({ boards, setActive, activeBoard }) => {
           }
           key={board.id}
         >
-          <svg className="projects-icon">
-            <use href="" />
-          </svg>
-          <button onClick={() => setActive(index)}>{board.title}</button>
+          <ProjectsItem index={index} board={board} setActive={setActive} />
         </li>
       ))}
-      {/*       <li className="projects-item active">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li>
-      <li className="projects-item">
-        <svg className="projects-icon">
-          <use href="" />
-        </svg>
-        Some project
-      </li> */}
     </ul>
   );
 };

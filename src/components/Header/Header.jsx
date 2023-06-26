@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import css from './Header.module.css'
 import { ThemeSelector } from 'components/ThemeSelector/ThemeSelector'
-// import { Icon } from 'components/Icon/Icon'
+import { useUser } from 'hooks/useUser'
+import defaultAvatar from '../../images/defaultAvatar.png'
+import Icon from 'components/Icon/Icon'
 
-export const Header = ({toggleSidebar}) => {
+export const Header = ({ toggleSidebar }) => {
   const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
+  const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);
+  const { name, avatar } = useUser();
   
   const showThemeSelector = () => {
     setIsVisibleThemeSelector(!isVisibleThemeSelector)
@@ -13,29 +17,36 @@ export const Header = ({toggleSidebar}) => {
   return (
     <div className={css.headerall}>
       <div className={css.menuburger}>
-          <button className={css.burgerstyle} onClick={() => toggleSidebar(c => !c)}><i></i></button>
+        <button className={css.burgerstyle} onClick={() => toggleSidebar(c => !c)}>
+          <Icon className={css.burgerMenu}  name="#menu-icon" width='32px' height='32px' />
+        </button>        
       </div>
 
       <div className={css.headerTaskPro}>
         <div className={css.outputselector}>
           <button className={css.styleTheme} onClick={() => showThemeSelector()}><span className={css.spantheme}>Theme</span>
-            <img className={css.icontheme} src="/TaskPro/static/media/icon.811b950c1109ac38463be92ae94fe634.svg" alt='staticlogo'></img>
-            {/* <svg className={css.icontheme}><use href="./../../images/Vector.svg"></use> </svg>  */}
+            <Icon name="#chevron-down-icon" width='16px' height='16px' color='#ffffff'/>
           </button>
           {isVisibleThemeSelector &&
             (<div className={css.selectortheme}>
-            <ThemeSelector showThemeSelector={showThemeSelector} />
+              <ThemeSelector showThemeSelector={showThemeSelector} />
             </div>)}
         </div>
 
         <ul className={css.styleUserInfo}>
-            <li className={css.styleName}>Name</li>
-            <li className={css.styleAvatar}>
-                <button className={css.styleAvatar}></button>
-            </li>
+          <li className={css.styleName}>{name}</li>
+          <li className={css.styleAvatar}>
+            <button className={css.styleAvatar} onClick={() => setIsVasibleUserModal(!isVasibleUserModal)}>
+              <img src={avatar === "none" ? defaultAvatar : avatar} alt='avatar' width="32" height="32" />          
+            </button>
+          </li>
         </ul>
+        {isVasibleUserModal &&
+          <div style={{ position: "absolute", top: 70, right: 12 }}>
+            <p className={css.textuseravatar}>EditProfileModal</p>
+          </div>
+        }
       </div>
     </div>
-    
   )
-}
+};

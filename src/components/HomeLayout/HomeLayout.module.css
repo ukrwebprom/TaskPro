@@ -6,7 +6,7 @@
     border:0;
 }
 .sidebar {
-    min-width:260px;
+    max-width:260px;
     background-color: var(--navigation-bg-color);
     position:absolute;
     top:0;
@@ -46,7 +46,7 @@
 .mainarea {
     display: flex;
     flex-direction: column;
-    width:100%;
+    flex-grow:1;
     border:0;
 }
 .header {

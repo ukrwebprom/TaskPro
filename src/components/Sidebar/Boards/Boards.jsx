@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useUser } from "hooks/useUser";
 import slug from 'slug';
 import ProjectsList from "./ProjectsList/ProjectsList";
 import Icon from "components/Icon";
@@ -11,18 +12,29 @@ import { getBoards } from "api/ServerAPI";
 
 const Boards = () => {
   const { boardName } = useParams()
+  const {setCurrentBoard} = useUser();
   const isInit = useRef(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
 
+  const isMyBoard = (name) => {
+    return boards.map(b => slug(b.title)).indexOf(name);
+  }
+
+  const onSelectBoard = (i) => {
+    setActive(i);
+    setCurrentBoard(boards[i]);
+    const title = boards[i].title;
+    const makeSlug = slug(title);
+    navigate(makeSlug, { replace: true });
+  };
 
   useEffect(() => {
     const initBoards = async () => {
       isInit.current = true;
       const boards = await getBoards();
-      console.log(boards)
       setBoards(boards);
     };
     if (!isInit.current) initBoards();
@@ -30,15 +42,17 @@ const Boards = () => {
 
   useEffect(() => {
     if (boards.length > 0) {
-      const title = boards[active].title;
-      const makeSlug = slug(title);
-      navigate(makeSlug, { replace: true });
+      const boardIndex = isMyBoard(boardName)
+      if(boardIndex !== -1) {
+        setCurrentBoard(boards[boardIndex]);
+        setActive(boardIndex)
+      }
+      else onSelectBoard(0);
+      
     }
-  }, [active, boards, navigate]);
+  }, [boards, navigate]);
 
-  const onSelectBoard = (i) => {
-    setActive(i);
-  };
+ 
 
   return (
     <div className="boards">

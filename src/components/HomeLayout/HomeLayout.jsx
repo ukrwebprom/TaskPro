@@ -5,10 +5,10 @@ import { useUser } from 'hooks/useUser';
 import { Header } from 'components/Header/Header';
 import Filters from 'components/Filters/Filters';
 
-export const HomeLayout = ({children, boards}) => {
+export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
     const { theme } = useUser();
-    console.log(boards)
+
     return(
         <div className={css.outer} data-theme={theme}>
             <div className={isSidebar? css.sidebar : css.hidden}>

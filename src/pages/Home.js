@@ -8,7 +8,7 @@ const Home = () => {
     const { boardName } = useParams()
     return(
         <Suspense fallback={<p>Loading...</p>}>
-        <HomeLayout boards={'test'}>
+        <HomeLayout>
             {<Outlet />}
         </HomeLayout>
         </Suspense>

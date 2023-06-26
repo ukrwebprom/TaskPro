@@ -25,7 +25,9 @@ export const EditProfileForm = ({
       onSubmit={handleSubmit}
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
-        <Form className={s.formbackround}>
+       < div className={s.wrap}>
+    
+        <Form >
           <p className={s.title}>Edit  profile</p>
           
           <div className={s.addfilewrap}>
@@ -77,6 +79,7 @@ export const EditProfileForm = ({
             Send
           </button>
         </Form>
+        </ div>
       )}
     </Formik>
   );

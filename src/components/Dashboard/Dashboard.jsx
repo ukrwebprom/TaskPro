@@ -37,13 +37,13 @@ const DashBoard = () => {
     const [columns, setColunms] = useState([]);
     
     useEffect(() => {
-      console.log(currentBoard);
+/*       console.log(currentBoard); */
       if(!currentBoard){
         return
       }
       getBoard(currentBoard._id)
       .then((result) => {
-        console.log(result)
+/*         console.log(result) */
         setColunms(result.columns);
       })
       

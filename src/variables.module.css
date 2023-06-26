@@ -36,6 +36,9 @@
   --header-bg-color: #151515;
   --add-bg-color: #fff;
   --index-label-color: rgba(255, 255, 255, 0.5);
+  --divider-color:  rgba(255, 255, 255, 0.1);
+  --inner-icon-color:  rgba(255, 255, 255, 1);
+  --bg-icon-wrapper-color: rgba(22, 22, 22, 1);
 }
 
 /* light theme*/
@@ -57,6 +60,9 @@
   --header-bg-color: #fcfcfc;
   --add-bg-color: #161616;
   --index-label-color: rgba(22, 22, 22, 0.5);
+  --divider-color: rgba(22, 22, 22, 0.1);
+  --inner-icon-color:  rgba(255, 255, 255, 1);
+  --bg-icon-wrapper-color: rgba(22, 22, 22, 1);
 }
 
 /* violet theme*/
@@ -78,6 +84,9 @@
   --header-bg-color: #fff;
   --add-bg-color: #5255bc;
   --index-label-color: rgba(22, 22, 22, 0.5);
+  --divider-color: rgba(22, 22, 22, 0.1);
+  --inner-icon-color:  rgba(22, 22, 22, 1);
+  --bg-icon-wrapper-color:  rgba(255, 255, 255, 1);
 }
 /* fonts*/
 /*   --font: "Poppins", sans-serif; */

@@ -21,7 +21,7 @@ export const HomeLayout = ({children}) => {
                 <div className={css.header}>
                     <Header toggleSidebar={setIsSidebar}/>
                 </div>
-                <Filters />
+                
                 {/* TODO: If you dont want see single task comment next div. */}
                 <div style={{ paddingLeft: 300 }}>
                   <Task

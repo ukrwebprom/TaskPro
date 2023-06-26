@@ -2,6 +2,7 @@ import React from "react";
 import { Column } from "components/Dashboard/Columns/Column";
 import { useUser } from "hooks/useUser";
 import  Filters  from "components/Filters/Filters";
+import Button from "components/Button";
 import css from './Dashboard.module.css'
 import {useState, useEffect } from "react";
 import { getBoard } from "api/ServerAPI";
@@ -64,6 +65,7 @@ const DashBoard = () => {
            
            <div className={css.dashboardHeader}>
             <span>{currentBoard.title} </span> 
+            <Button/>
             <Filters />
          </div>
 

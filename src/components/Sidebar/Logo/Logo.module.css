@@ -1,5 +1,13 @@
-/* .container {
-  margin-bottom: 24px;
-  position: fixed;
-  background-color: var(--accent-color);
-} */
+.container {
+  margin-bottom: 60px;
+} 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.64px;
+}

@@ -28,40 +28,22 @@
   justify-content: space-between;
   color: var(--sidebar-text-color);
   background-color: var(--navigation-bg-color);
-  height: 100%;
-  padding: 24px 14px;
+  max-height: 100%;
+/*   padding: 24px 14px; */
   font-size: 14px;
   text-align: left;
   letter-spacing: -0.28px;
   box-sizing: border-box;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: inherit;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.64px;
-}
 
 .logo-icon {
   width: 32px;
   height: 32px;
 }
 
-.boards {
-  margin-top: 70px;
-}
 
-.boards-heading {
-  opacity: 0.5;
-  font-size: 12px;
-  letter-spacing: -0.24px;
-}
 
 .create-button {
   width: 100%;
@@ -89,17 +71,6 @@
   stroke: var(--btn-text-color);
 }
 
-.projects {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  max-height: 210px;
-  gap: 4px;
-  margin: 40px -14px 0;
-  padding: 0;
-  list-style: none;
-  overflow-y: scroll;
-}
 .sidebar::-webkit-scrollbar,
 .projects::-webkit-scrollbar {
   width: 0px;

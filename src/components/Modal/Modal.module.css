@@ -1,0 +1,53 @@
+@import "../../variables.module.css";
+@import "../../fonts/fonts.css";
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.modal_content {
+  display: grid;
+  background-color: var(--pop-up-bg-color);
+  border-radius: 8px;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  left: 50%;
+  width: 350px;
+  height: 522px;
+  padding: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  align-items: flex-start;
+  display: inline-grid;
+  justify-content: center;
+  margin-top: 20px;
+}
+.modal_items{
+  display: flex;
+  justify-content: space-between;
+}
+
+.close_button{
+  display: flex;
+  justify-content: flex-end;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.modal_title{
+  margin: 0;
+  text-align: start;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: var(--primary-text-color);
+}

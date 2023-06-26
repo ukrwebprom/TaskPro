@@ -31,10 +31,10 @@ import css from './Dashboard.module.css'
 const DashBoard = () => {
     const { currentBoard } = useUser();
     const dashboard = {
-      title: currentBoard.title, 
-      icon:currentBoard.icon, 
-      background: currentBoard.background, 
-      id: currentBoard._id};
+      title: "currentBoard.title", 
+      icon:"currentBoard.icon", 
+      background: "currentBoard.background", 
+      id: "currentBoard._id"};
     return (
         <div className={css.dashboardContainer}>
            

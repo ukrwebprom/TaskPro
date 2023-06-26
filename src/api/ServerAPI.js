@@ -39,10 +39,9 @@ export const register = async (data) => {
 
 export const getBoards = async () => {
   const res = await axios.get("/boards");
-  return res.data;
 };
 
-export const updateBackground = async (boardId, data) => {
-  const res = await axios.put(`/boards/${boardId}`, data);
+export const deleteBoard = async (id) => {
+  const res = await axios.delete("/boards/" + id);
   return res.data;
 };

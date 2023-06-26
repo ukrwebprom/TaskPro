@@ -4,7 +4,7 @@ import FiltersModal from "./FiltersModal";
 import css from "../Filters/Filters.module.css";
 import { updateBackground } from "../../api/ServerAPI";
 
-const Filters = ({ boardId }) => {
+const Filters = () => {
   const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

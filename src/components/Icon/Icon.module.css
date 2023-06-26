@@ -1,0 +1,6 @@
+.icon {
+    color:var(--secondary-text-color);
+}
+.icon:hover {
+    color:var(--accent-color);
+}

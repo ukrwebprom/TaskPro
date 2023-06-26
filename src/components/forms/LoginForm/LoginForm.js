@@ -1,5 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
+import Button from "components/Button/Button";
+import s from "./LoginForm.module.css"
 import { useUser } from "hooks/useUser";
 
 export const LoginForm = () => {
@@ -27,25 +29,36 @@ export const LoginForm = () => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty }) => (
-        <Form>
-          <label>
-            <Field name="email" placeholder="Enter your email" type="email" />
-            <ErrorMessage name="email" />
+        <div className={s.wrap}>
+        <Form >
+          <div className={s.titleFild}>
+          <a  href="register" className= {s.regtitle}>Registration</a>
+          <p  className= {s.regtitleActive}>Log In</p>
+          </div>
+          <div className={s.field}>
+          <label className={s.label}>
+            <Field className= {s.input} name="email" placeholder="Enter your email" type="email" />
+            <ErrorMessage name="email"
+            component="div"
+            className={s.error} />
           </label>
 
-          <label>
-            <Field
+          <label className={s.label}>
+            <Field 
+             className= {s.input}
               name="password"
-              placeholder="Create a password"
+              placeholder="Confirm a password"
               type="password"
             />
-            <ErrorMessage name="password" />
+            <ErrorMessage name="password"
+            component="div"
+            className={s.error} />
           </label>
-
-          <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Log In Now
-          </button>
+          </div>
+          < Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}>Log In Now</Button>
         </Form>
+       
+             </div>
       )}
     </Formik>
   );

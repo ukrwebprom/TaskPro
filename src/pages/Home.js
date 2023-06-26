@@ -8,7 +8,6 @@ const Home = () => {
         <Suspense fallback={<p>Loading...</p>}>
         <HomeLayout>
             <Outlet />
-           
         </HomeLayout>
         </Suspense>
     )

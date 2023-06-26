@@ -1,13 +1,16 @@
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import slug from 'slug';
 import ProjectsList from "./ProjectsList/ProjectsList";
 import Icon from "components/Icon";
 import "../Sidebar.css";
 import { getBoards } from "api/ServerAPI";
-import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
+  const { boardName } = useParams()
   const isInit = useRef(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boards, setBoards] = useState([]);
@@ -19,6 +22,7 @@ const Boards = () => {
     const initBoards = async () => {
       isInit.current = true;
       const boards = await getBoards();
+      console.log(boards)
       setBoards(boards);
     };
     if (!isInit.current) initBoards();

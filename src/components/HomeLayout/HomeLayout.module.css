@@ -3,6 +3,7 @@
     height:100%;
     max-width: 100%;
     position:relative;
+    justify-content:flex-start;
     background-color: var(--primary-bg-color);
     border:0;
 }
@@ -45,9 +46,9 @@
 }
 
 .mainarea {
-    display: flex;
+/*     display: flex;
     flex-direction: column;
-    flex-grow:1;
+    flex-grow:0; */
     border:0;
 }
 .header {

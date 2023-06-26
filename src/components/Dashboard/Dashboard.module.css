@@ -1,9 +1,11 @@
 .dashboardContainer{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width:500px;
     height: 100%;
     border:1px solid pink;
+    padding: 24px 0 0 24px;
+    overflow-x:hidden;
 }
 
 .dashboardHeader {
@@ -16,12 +18,17 @@
 }
 .columnsList{
     display: flex;
-    //flex-grow: 1;
+    gap:34px;
+    flex-basis: 334px;
+    overflow: auto;
+    background-color: antiquewhite;
+    width:100%;
+/*     //flex-grow: 1; */
 }
 
-.column{
+/* .column{
     display: flex;
     flex-direction: column;
     width: 334px;
 
-}
+} */

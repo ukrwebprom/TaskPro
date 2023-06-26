@@ -1,11 +1,12 @@
 import React from "react";
-import { Column } from "components/Dashboard/Columns/Column";
+/* import { Column } from "components/Dashboard/Columns/Column"; */
+
 import { useUser } from "hooks/useUser";
 import  Filters  from "components/Filters/Filters";
 import css from './Dashboard.module.css'
 import {useState, useEffect } from "react";
 import { getBoard } from "api/ServerAPI";
-
+import { Column } from "components/Column/Column";
 
     
 
@@ -61,21 +62,23 @@ const DashBoard = () => {
    
     return (
         <div className={css.dashboardContainer}>
-           
           <div className={css.dashboardHeader}>
             <span>{currentBoard.title} </span> 
             <Filters />
           </div>
           <div className={css.listArea}>
-            <div className={css.columnsList}>
+{/*             <div className={css.columnsList}> */}
+              <ul className={css.columnsList}>
                {columns.map((column) => (
-               <Column 
+                <li key={column._id}><Column /></li>
+ /*               <Column 
                key={column._id}
                 title={column.title}
                 cards={cards.filter((card)=>(card.columnId === column.id))}
-                   />
+                   /> */
                 ))}
-            </div>
+              </ul>
+{/*             </div> */}
           </div>
         </div>
          

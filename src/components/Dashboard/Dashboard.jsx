@@ -1,10 +1,13 @@
 import React from "react";
 import { Column } from "components/Dashboard/Columns/Column";
 import { useUser } from "hooks/useUser";
+import  Filters  from "components/Filters/Filters";
 import css from './Dashboard.module.css'
+import {useState, useEffect } from "react";
+import { getBoard } from "api/ServerAPI";
 
 
-    const columns = [{title: "todo", id: 1}, {title: "inProgress", id: 2}, {title: "done", id: 3}];
+    
 
     const cards = [{
         title: "",
@@ -30,23 +33,44 @@ import css from './Dashboard.module.css'
 
 const DashBoard = () => {
     const { currentBoard } = useUser();
-    const dashboard = {
-      title: "currentBoard.title", 
-      icon:"currentBoard.icon", 
-      background: "currentBoard.background", 
-      id: "currentBoard._id"};
+
+    const [columns, setColunms] = useState([]);
+    
+    useEffect(() => {
+/*       console.log(currentBoard); */
+      if(!currentBoard){
+        return
+      }
+      getBoard(currentBoard._id)
+      .then((result) => {
+/*         console.log(result) */
+        setColunms(result.columns);
+      })
+      
+    
+      
+    }, [currentBoard])
+
+    if (!currentBoard) {
+      return null;
+    }
+
+    
+    
+
+   
     return (
         <div className={css.dashboardContainer}>
            
            <div className={css.dashboardHeader}>
-            <span>{dashboard.title} </span> 
-            
+            <span>{currentBoard.title} </span> 
+            <Filters />
          </div>
 
             <div className={css.columnsList}>
                {columns.map((column) => (
                <Column 
-               
+               key={column._id}
                 title={column.title}
                 cards={cards.filter((card)=>(card.columnId === column.id))}
                    />

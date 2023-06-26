@@ -1,11 +1,19 @@
-.formbackround {
+.wrap {
+  box-sizing: border-box;
     margin: auto;
     background-color:var(--main-background-color) ;
-    width: 400px;
+    width: 335px;
     height: 440px;
     border-radius: 8px;
     padding: 24px;
     }
+    @media screen and (min-width:768px){
+      .wrap{
+        width: 400px;
+        height: 440px;
+        padding:40px;
+          } 
+     }
 .title{
     margin: 0;
     text-align: start;
@@ -50,4 +58,14 @@
   color:var(--placeholder-color);
     }
   
-  
+/*   
+.btn-close-modal {
+  position: absolute;
+  right: 8;
+  top: 8;
+  width: 30px;
+  height: 30px;
+  // border: 1px solid black;
+  background-color: transparent;
+  border: none;
+} */

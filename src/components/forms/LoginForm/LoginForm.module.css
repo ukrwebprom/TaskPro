@@ -109,3 +109,12 @@
     color:#BEDBB0;
   
   }
+  .eyeicon{
+    position: absolute;
+    height: 18px;
+    top: 50%;
+    right: 0; 
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    opacity: 0.4;
+  }

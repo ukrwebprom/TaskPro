@@ -34,9 +34,10 @@ const Task = ({ taskData, columnList }) => {
           <h2 className={css.title}>{taskData.title}</h2>
           <div className={css.wrapper_text}>
             <EllipsisText
-              style={{ fontSize: '12px', color: 'var( --index-label-color)' }}
+              className={css.elips_text}
+              // style={{ fontSize: '12px', color: 'var( --index-label-color)' }}
               text={taskData.description}
-              length={90}
+              length={110}
             />
           </div>
           <div className={css.divider} />
@@ -64,6 +65,7 @@ const Task = ({ taskData, columnList }) => {
                   variant="contained"
                 >
                   <Icon
+                    className={css.icon_info}
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"

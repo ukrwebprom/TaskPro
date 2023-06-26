@@ -2,6 +2,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
 import Button from "..//..//Button/Button.jsx"
 import s from "./Registerform.module.css"
+import Icon from "components/Icon/Icon";
 import { useUser } from "hooks/useUser";
 
 export const RegisterForm = () => {
@@ -66,6 +67,9 @@ export const RegisterForm = () => {
               type="password"
               autoComplete="off"
             />
+            <div className={s.eyeicon}>
+            <Icon name ="#eye-icon" />
+            </div>
             <ErrorMessage 
             name="password" 
             component="div"

@@ -61,9 +61,12 @@
     font-size: 14px;
     line-height: 21px;
     width: 334px;
+    color: var(--primary-text-color);
+}
+.addCard{
+    display: block;
     color: var(--btn-text-color);
 }
-
 .addCardButton:hover{
     background-color: #a4bb98;
 }
@@ -90,8 +93,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--btn-text-color);
+    background-color: var(--btn-text-color); 
     padding: 7px;
     border-radius: 8px;
-
 }

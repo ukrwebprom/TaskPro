@@ -17,7 +17,7 @@ const handleShow=(e)=>{
   console.log(gettype)
   if (gettype==="password"){
     setType("text");
-    setIconName("#icon-eye-blocked")
+    setIconName("#eye-slash-icon")
   } else{
     setType("password")
     setIconName("#eye-icon")
@@ -31,6 +31,7 @@ const handleShow=(e)=>{
       resetForm();
     } catch (err) {
       console.log(err);
+      console.log("єто моя 409");
     }
   };
 

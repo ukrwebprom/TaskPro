@@ -17,7 +17,7 @@ const DashBoard = () => {
   const [title, setTitle] = useState("");
   const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(currentBoard);
+
   const setBoardBg = async (newBg) => {
     try {
       await updBg(currentBoard._id, { background: newBg });

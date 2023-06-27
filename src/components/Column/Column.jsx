@@ -1,33 +1,22 @@
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
+/* import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
-import { ModalColumn } from './ModalColumn';
+import Modal from '../Modal/Modal'; */
+import Task from 'components/Task/Task';
 import Icon from '../Icon';
 
 import css from './Column.module.css';
-const tasks = [
-  {
-    title: 'Task1',
-    description: 'Lorem Ipsum Lorem Ipsum',
-    lableColor: '#8FA0CF',
-    deadline: '26.06.2023',
-  },
-  {
-    title: 'Task2',
-    description: 'Lorem Ipsum Lorem Ipsum',
-    lableColor: '#E09CB5',
-    deadline: '26.06.2023',
-  },
-  {
-    title: 'Task3',
-    description: 'Lorem Ipsum Lorem Ipsum',
-    lableColor: '#8FA0CF',
-    deadline: '27.06.2023',
-  },
-];
-export const Column = () => {
-  const [title, setTitle] = useState('To Do');
-  const [listTask, setListTask] = useState(tasks);
+
+export const Column = ({data}) => {
+  const faketasks = [
+    {id:1, priority:0, title:"The Watch Spot Design", description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design."},
+    {id:2, priority:2, title:"Research and Analysis", description: "Conduct in-depth research and analysis on the project's topic, gather relevant data, and identify key insights to inform decision-making and project planning."},
+    {id:3, priority:3, title:"Concept Development", description: "Brainstorm and develop creative concepts and ideas that align with the project's objectives, considering factors such as target audience, messaging, and visual representation."},
+    /* {id:4, priority:1, title:"Design and Prototyping SoYummy", description: "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements."} */
+  ]
+  const [title, setTitle] = useState(data.title);
+  const [listTask, setListTask] = useState(faketasks);
   const [showModalEditColumnName, setShowModalEditColumnName] = useState(false);
   const [showModalCreateTasks, setShowModalCreateTasks] = useState(false);
 
@@ -39,9 +28,13 @@ export const Column = () => {
     setShowModalCreateTasks(!showModalCreateTasks);
   };
   const makeTask = task => {
-    setListTask(prevTasks => {
-      return [...prevTasks, task];
-    });
+    if (listTask === null) {
+      setListTask([task]);
+    } else {
+      setListTask(prevTasks => {
+        return [...prevTasks, task];
+      });
+    }
   };
   return (
     <section className={css.containerColumn}>
@@ -59,44 +52,22 @@ export const Column = () => {
             <Icon name={'#trash-icon'} />
           </button>
         </div>
-        {showModalEditColumnName && (
-          <ModalColumn onClose={toggleModalEditColumnName}>
-            <ColumnForm
-              setTitle={setTitle}
-              onClose={toggleModalEditColumnName}
-              title={title}
-            />
-          </ModalColumn>
-        )}
-        {showModalCreateTasks && (
-          <ModalColumn onClose={toggleModalCreateTasks}>
-            <Modal
-              name='Add card'
-              onClick={event => {
-                if (event.currentTarget === event.target) {
-                  toggleModalCreateTasks();
-                }
-              }}
-              onClose={toggleModalCreateTasks}
-            >
-              <CardForm taskData={makeTask} />
-            </Modal>
-          </ModalColumn>
-        )}
+        
       </div>
 
       <ul className={css.listTask}>
-        {listTask.map(task => {
-          return (
-            <li key={task.title} className={css.task}>
-              <p>{task.title}</p>
-              <p>{task.description}</p>
-              <p>{task.lableColor}</p>
-              <p>{task.deadline.toString()}</p>
-            </li>
-          );
-        })}
+        {listTask &&
+          listTask.map(task => 
+            (
+              <Task
+                key={nanoid()}
+                taskData={task}
+                columnList={['todo', 'done']}
+              />
+            )
+          )}
       </ul>
+
       <button
         type="button"
         className={css.addCardButton}
@@ -104,10 +75,49 @@ export const Column = () => {
       >
         {' '}
         <div className={css.wrapperIcon}>
-          <Icon name={'#plus-icon'} color={'#fff'} />
+          <Icon name={'#plus-icon'} />
         </div>
-        Add another card
+        <span className={css.addCard}>Add another card</span>
       </button>
     </section>
   );
 };
+
+/* {showModalEditColumnName && (
+  <Modal onClose={toggleModalEditColumnName}>
+    <ColumnForm
+      setTitle={setTitle}
+      onClose={toggleModalEditColumnName}
+      title={title}
+    />
+  </Modal>
+)}
+{showModalCreateTasks && (
+  <Modal
+    name="Add card"
+    onClick={event => {
+      if (event.currentTarget === event.target) {
+        toggleModalCreateTasks();
+      }
+    }}
+    onClose={toggleModalCreateTasks}
+  >
+    <CardForm taskData={makeTask} onClose={toggleModalCreateTasks} />
+  </Modal>
+)} */
+
+
+{
+  /* <li key={task.title} className={css.task}>
+                <p>{task.title}</p>
+                <p>{task.description}</p>
+                <p>{task.lableColor}</p>
+                <p>{date.toLocaleDateString('en-GB')}</p>
+              </li> */
+}
+{
+  /* const date = new Date(task.deadline);
+            const formattedDate = date.toLocaleDateString('en-GB');
+
+            task.deadline = formattedDate.toString(); */
+}

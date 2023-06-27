@@ -1,11 +1,12 @@
 .containerColumn{
-    width: 350px;
+    display:flex;
+    flex-direction: column;
 }
 .wrapperTitleColumn{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 294px; 
+/*     width: 294px;  */
     padding: 18px 20px;
     margin-bottom: 14px;
     background-color: var(--secondary-bg-color);
@@ -13,9 +14,13 @@
 }
 .titleColumn{
  color: var(--primary-text-color);
+ font-size:14px;
+ font-weight: 500;
 }
 .listTask{
-    height: 478px;
+    display:flex;
+    flex-direction: column;
+    gap:8px;
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 14px;
@@ -60,10 +65,12 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    width: 334px;
+    color: var(--primary-text-color);
+}
+.addCard{
+    display: block;
     color: var(--btn-text-color);
 }
-
 .addCardButton:hover{
     background-color: #a4bb98;
 }
@@ -90,8 +97,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--btn-text-color);
+    background-color: var(--btn-text-color); 
     padding: 7px;
     border-radius: 8px;
-
 }

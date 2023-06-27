@@ -5,7 +5,6 @@ import css from './MainButton.module.css';
 
 const MainButton = ({
   btnName,
-  iconColor,
   iconName,
   onClick,
   ...btnProps
@@ -38,7 +37,6 @@ const MainButton = ({
 MainButton.propTypes = {
   btnName: PropTypes.string.isRequired,
   btnProps: PropTypes.object,
-  iconColor: PropTypes.string,
   iconName: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };

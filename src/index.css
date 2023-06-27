@@ -27,6 +27,7 @@ code {
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
   height: 100vh;
+  max-width: 100%;
   box-sizing: border-box;
 }
 

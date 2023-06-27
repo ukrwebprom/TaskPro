@@ -4,10 +4,9 @@ import css from "../../Sidebar.module.css";
 const BoardsItem = ({ index, board, setActive, handleDelete }) => {
   return (
     <>
-      <p
+      <div
         className={css.boardLink}
-        onClick={() => setActive(index)}
-        title={board.title}>
+        onClick={() => setActive(index)}>
         <div className={css.boardInfo}>
           <Icon name={"#" + board.icon} width="18" height="18" />
           <span className={css.boardTitle}>{board.title}</span>
@@ -23,7 +22,7 @@ const BoardsItem = ({ index, board, setActive, handleDelete }) => {
             <Icon name="#trash-icon" />
           </button>
         </div>
-      </p>
+      </div>
     </>
   );
 };

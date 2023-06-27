@@ -11,6 +11,13 @@ const Home = lazy(() => import('./pages/Home'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Welcome = lazy(() => import('./pages/Welcome'));
 const DashBoard = lazy(() => import('./components/Dashboard/Dashboard'));
+const Screens = lazy(() => import('./pages/Screens'));
+
+/* import Home from './pages/Home';
+import Auth from './pages/Auth';
+import Welcome from './pages/Welcome';
+import DashBoard from './components/Dashboard/Dashboard';
+import Screens from './pages/Screens'; */
 
 function App() {
   const {isLogged} = useUser();

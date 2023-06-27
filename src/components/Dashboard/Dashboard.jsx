@@ -10,34 +10,39 @@ import { Column } from "components/Column/Column";
 
 
 const DashBoard = () => {
+
     const { currentBoard } = useUser();
 
-    const [columns, setColunms] = useState(null);
-    
+    const [columns, setColunms] = useState([]);
+    const [title, setTitle] = useState('');
+
     useEffect(() => {
       const getBoardInfo = async (id) => {
         try {
           const res = await getBoard(id);
           console.log(res)
-          setColunms(res.columns);
+          setColunms(res);
         } catch (err) {
           console.log(err)
         }
       }
-      if(currentBoard._id) getBoardInfo(currentBoard._id);
+      if(currentBoard) {
+        getBoardInfo(currentBoard._id);
+        setTitle(currentBoard.title)
+      }
     }, [currentBoard])
    
     return (
         <div className={css.dashboardContainer}>
           <div className={css.dashboardHeader}>
-            <h2 className={css.dashboardTitle}>{currentBoard.title}</h2> 
+            <h2 className={css.dashboardTitle}>{title}</h2> 
             <Filters />
           </div>
           <div className={css.listArea}>
               <ul className={css.columnsList}>
-               {!columns && columns.map((column) => {
+               {columns.length > 0 && columns.map((column) => {
                 return (
-                <li key={column._id}>
+                <li key={column._id} className={css.col}>
                   <Column data={column} />
                 </li>)
                 }

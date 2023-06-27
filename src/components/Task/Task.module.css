@@ -20,6 +20,7 @@ li {
   border-radius: 8px;
   border-left: 4px solid rgba(143, 161, 208, 1);
   background-color: var(--secondary-bg-color);
+  box-sizing: border-box;
 }
 
 .title {

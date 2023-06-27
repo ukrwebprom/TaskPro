@@ -30,9 +30,7 @@
     flex-basis: 334px;
 }
 
-/* .column{
-    display: flex;
-    flex-direction: column;
-    width: 334px;
+ .col{
+    min-width: 334px;
 
-} */
+}

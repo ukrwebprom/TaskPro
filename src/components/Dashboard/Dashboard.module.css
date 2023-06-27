@@ -24,7 +24,22 @@
     width: 100%;
     overflow-x: scroll;
     box-sizing: border-box;
+    padding-bottom: 10px;
 }
+
+.listArea::-webkit-scrollbar {
+    width: 12px;
+}
+.listArea::-webkit-scrollbar-track {
+    border-radius: 12px;
+    background-color:var(--taskScrollBase);
+}
+.listArea::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-clip: content-box;
+    background-color:var(--taskScrollHandler);
+}
+
 .columnsList{
     display: flex;
     flex-wrap: nowrap;

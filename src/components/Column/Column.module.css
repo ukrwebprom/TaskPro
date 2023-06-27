@@ -40,8 +40,6 @@
 }
 .columnMiddle::-webkit-scrollbar {
     width: 8px;
-    position:relative;
-    left:5px;
 }
 .columnMiddle::-webkit-scrollbar-track {
     border-radius: 12px;

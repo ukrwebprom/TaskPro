@@ -1,46 +1,56 @@
 .containerColumn{
     display:flex;
     flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    max-height: 100%;
 }
 .wrapperTitleColumn{
     display: flex;
     align-items: center;
     justify-content: space-between;
-/*     width: 294px;  */
     padding: 18px 20px;
     margin-bottom: 14px;
     background-color: var(--secondary-bg-color);
     border-radius: 8px;
+    flex-shrink: 0;
+    flex-grow: 1;
 }
 .titleColumn{
  color: var(--primary-text-color);
  font-size:14px;
  font-weight: 500;
 }
+.columnBottom {
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+.columnMiddle{
+    flex-shrink: 2;
+    flex-grow: 0;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
 .listTask{
     display:flex;
     flex-direction: column;
     gap:8px;
-    overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 14px;
-    
 }
-.listTask::-webkit-scrollbar {
+.columnMiddle::-webkit-scrollbar {
     width: 8px;
-    
+    position:relative;
+    left:5px;
 }
-.listTask::-webkit-scrollbar-track {
-    background-color: #313131;
+.columnMiddle::-webkit-scrollbar-track {
     border-radius: 12px;
-    
-    
+    background-color:var(--taskScrollBase);
 }
-.listTask::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-bg-color);
+.columnMiddle::-webkit-scrollbar-thumb {
     border-radius: 12px;
-    
     background-clip: content-box;
+    background-color:var(--taskScrollHandler);
 }
 .task{
     width: 334px;

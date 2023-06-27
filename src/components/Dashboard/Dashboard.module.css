@@ -1,15 +1,17 @@
 .dashboardContainer{
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 24px 0 0 24px;
-    
+    flex-shrink: 1;
+    box-sizing: border-box;
+    max-height: calc(100% - 80px);
 }
 
 .dashboardHeader {
     display:flex;
     justify-content: space-between;
+    flex-shrink: 1;
 }
 .dashboardTitle {
     font-size: 18px;
@@ -21,16 +23,12 @@
 .listArea {
     width: 100%;
     overflow-x: scroll;
-    flex-grow: 1;
+    box-sizing: border-box;
 }
 .columnsList{
     display: flex;
     flex-wrap: nowrap;
     gap:34px;
     flex-basis: 334px;
-}
-
- .col{
-    min-width: 334px;
-
+    max-height: 100%;
 }

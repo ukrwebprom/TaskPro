@@ -13,7 +13,7 @@ export const Column = ({data}) => {
     {id:1, priority:0, title:"The Watch Spot Design", description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design."},
     {id:2, priority:2, title:"Research and Analysis", description: "Conduct in-depth research and analysis on the project's topic, gather relevant data, and identify key insights to inform decision-making and project planning."},
     {id:3, priority:3, title:"Concept Development", description: "Brainstorm and develop creative concepts and ideas that align with the project's objectives, considering factors such as target audience, messaging, and visual representation."},
-    /* {id:4, priority:1, title:"Design and Prototyping SoYummy", description: "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements."} */
+    {id:4, priority:1, title:"Design and Prototyping SoYummy", description: "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements."}
   ]
   const [title, setTitle] = useState(data.title);
   const [listTask, setListTask] = useState(faketasks);
@@ -52,9 +52,9 @@ export const Column = ({data}) => {
             <Icon name={'#trash-icon'} />
           </button>
         </div>
-        
       </div>
 
+      <div className={css.columnMiddle}>
       <ul className={css.listTask}>
         {listTask &&
           listTask.map(task => 
@@ -67,7 +67,9 @@ export const Column = ({data}) => {
             )
           )}
       </ul>
+      </div>
 
+      <div className={css.columnBottom}>
       <button
         type="button"
         className={css.addCardButton}
@@ -79,6 +81,7 @@ export const Column = ({data}) => {
         </div>
         <span className={css.addCard}>Add another card</span>
       </button>
+      </div>
     </section>
   );
 };

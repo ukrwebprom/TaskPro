@@ -19,8 +19,8 @@ const Sidebar = () => {
             <Icon name={"#plus-icon"} sprite={2} width="20" height="20" />
           </div>
         </button>
-        <Boards />
       </div>
+        <Boards />
       <div className={css.sidebarBottom}>
         <Help />
         <button type="button" className={css.logoutButton}>

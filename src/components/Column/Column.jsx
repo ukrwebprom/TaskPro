@@ -1,15 +1,21 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
+/* import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
-import Modal from '../Modal/Modal';
+import Modal from '../Modal/Modal'; */
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
 
 import css from './Column.module.css';
 
-export const Column = () => {
-  const [title, setTitle] = useState('To Do');
+export const Column = ({data}) => {
+  const faketasks = [
+    {id:1, priority:0, title:"The Watch Spot Design", description: "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design."},
+    {id:2, priority:2, title:"Research and Analysis", description: "Conduct in-depth research and analysis on the project's topic, gather relevant data, and identify key insights to inform decision-making and project planning."},
+    {id:3, priority:3, title:"Concept Development", description: "Brainstorm and develop creative concepts and ideas that align with the project's objectives, considering factors such as target audience, messaging, and visual representation."},
+    {id:4, priority:1, title:"Design and Prototyping SoYummy", description: "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements."}
+  ]
+  const [title, setTitle] = useState(data.title);
   const [listTask, setListTask] = useState(null);
   const [showModalEditColumnName, setShowModalEditColumnName] = useState(false);
   const [showModalCreateTasks, setShowModalCreateTasks] = useState(false);
@@ -46,41 +52,20 @@ export const Column = () => {
             <Icon name={'#trash-icon'} />
           </button>
         </div>
-        {showModalEditColumnName && (
-          <Modal onClose={toggleModalEditColumnName}>
-            <ColumnForm
-              setTitle={setTitle}
-              onClose={toggleModalEditColumnName}
-              title={title}
-            />
-          </Modal>
-        )}
-        {showModalCreateTasks && (
-          <Modal
-            name="Add card"
-            onClick={event => {
-              if (event.currentTarget === event.target) {
-                toggleModalCreateTasks();
-              }
-            }}
-            onClose={toggleModalCreateTasks}
-          >
-            <CardForm taskData={makeTask} onClose={toggleModalCreateTasks} />
-          </Modal>
-        )}
+        
       </div>
 
       <ul className={css.listTask}>
         {listTask &&
-          listTask.map(task => {
-            return (
+          listTask.map(task => 
+            (
               <Task
                 key={nanoid()}
                 taskData={task}
                 columnList={['todo', 'done']}
               />
-            );
-          })}
+            )
+          )}
       </ul>
 
       <button
@@ -97,6 +82,31 @@ export const Column = () => {
     </section>
   );
 };
+
+/* {showModalEditColumnName && (
+  <Modal onClose={toggleModalEditColumnName}>
+    <ColumnForm
+      setTitle={setTitle}
+      onClose={toggleModalEditColumnName}
+      title={title}
+    />
+  </Modal>
+)}
+{showModalCreateTasks && (
+  <Modal
+    name="Add card"
+    onClick={event => {
+      if (event.currentTarget === event.target) {
+        toggleModalCreateTasks();
+      }
+    }}
+    onClose={toggleModalCreateTasks}
+  >
+    <CardForm taskData={makeTask} onClose={toggleModalCreateTasks} />
+  </Modal>
+)} */
+
+
 {
   /* <li key={task.title} className={css.task}>
                 <p>{task.title}</p>

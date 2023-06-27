@@ -1,6 +1,6 @@
 import React from "react";
-/* import { Column } from "components/Dashboard/Columns/Column"; */
 import Button from "components/Button/Button";
+import btn from '../Button/Button.module.css';
 import { useUser } from "hooks/useUser";
 import  Filters  from "components/Filters/Filters";
 import css from './Dashboard.module.css'
@@ -8,57 +8,24 @@ import {useState, useEffect } from "react";
 import { getBoard } from "api/ServerAPI";
 import { Column } from "components/Column/Column";
 
-    
-
-    const cards = [{
-        title: "",
-        description: "",
-        labelColor: "red",
-        deadline: new Date(),
-        columnId: 1,
-      }, 
-      {
-        title: "",
-        description: "",
-        labelColor: "blue",
-        deadline: new Date(),
-        columnId: 1,
-      },
-      {
-        title: "",
-        description: "",
-        labelColor: "red",
-        deadline: new Date(),
-        columnId: 1,
-      }]
 
 const DashBoard = () => {
     const { currentBoard } = useUser();
 
-    const [columns, setColunms] = useState([]);
+    const [columns, setColunms] = useState(null);
     
     useEffect(() => {
-/*       console.log(currentBoard); */
-      if(!currentBoard){
-        return
+      const getBoardInfo = async (id) => {
+        try {
+          const res = await getBoard(id);
+          console.log(res)
+          setColunms(res.columns);
+        } catch (err) {
+          console.log(err)
+        }
       }
-      getBoard(currentBoard._id)
-      .then((result) => {
-/*         console.log(result) */
-        setColunms(result.columns);
-      })
-      
-    
-      
+      if(currentBoard._id) getBoardInfo(currentBoard._id);
     }, [currentBoard])
-
-    if (!currentBoard) {
-      return null;
-    }
-
-    
-    
-
    
     return (
         <div className={css.dashboardContainer}>
@@ -68,15 +35,16 @@ const DashBoard = () => {
           </div>
           <div className={css.listArea}>
               <ul className={css.columnsList}>
-               {columns.map((column) => (
-                <li key={column._id}><Column /></li>
- /*               <Column 
-               key={column._id}
-                title={column.title}
-                cards={cards.filter((card)=>(card.columnId === column.id))}
-                   /> */
-                ))}
-                <li><Button /></li>
+               {!columns && columns.map((column) => {
+                return (
+                <li key={column._id}>
+                  <Column data={column} />
+                </li>)
+                }
+                )}
+                <li>
+                <Button className={`${btn.btn} ${btn.column}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another column</Button>
+                </li>
               </ul>
           </div>
         </div>

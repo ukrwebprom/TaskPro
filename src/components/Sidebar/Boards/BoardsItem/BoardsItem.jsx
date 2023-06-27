@@ -2,7 +2,6 @@ import Icon from "components/Icon/Icon";
 import css from "../../Sidebar.module.css";
 
 const BoardsItem = ({ index, board, setActive, handleDelete }) => {
-  console.log(board);
   return (
     <>
       <div className={css.boardLink} onClick={() => setActive(index)}>

@@ -7,7 +7,7 @@ import { updBg } from "api/ServerAPI";
 const Filters = ({ currentBoard }) => {
   const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(currentBoard);
+
   const setBoardBg = async (newBg) => {
     try {
       const updatedBoard = await updBg(currentBoard._id, { background: newBg });

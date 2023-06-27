@@ -1,16 +1,15 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { useUser } from 'hooks/useUser';
-import slug from 'slug';
-import { getBoards, deleteBoard } from 'api/ServerAPI';
-import BoardsItem from './BoardsItem';
-import css from '../Sidebar.module.css';
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useUser } from "hooks/useUser";
+import slug from "slug";
+import { getBoards, deleteBoard } from "api/ServerAPI";
+import BoardsItem from "./BoardsItem";
+import css from "../Sidebar.module.css";
 
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
-  
   const { boardName } = useParams();
   const { setCurrentBoard } = useUser();
   const isInit = useRef(false);
@@ -19,7 +18,7 @@ const Boards = () => {
   const navigate = useNavigate();
 
   const onSelectBoard = useCallback(
-    i => {
+    (i) => {
       setActive(i);
       setCurrentBoard(boards[i]);
       const title = boards[i].title;
@@ -30,7 +29,7 @@ const Boards = () => {
   );
 
   const initBoards = useCallback(() => {
-    const boardIndex = boards.map(b => slug(b.title)).indexOf(boardName);
+    const boardIndex = boards.map((b) => slug(b.title)).indexOf(boardName);
     if (boardIndex !== -1) {
       setCurrentBoard(boards[boardIndex]);
       setActive(boardIndex);
@@ -43,25 +42,23 @@ const Boards = () => {
       isInit.current = true;
       try {
         const boards = await getBoards();
-        console.log(boards);
         setBoards(boards);
-      } catch(err) {
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
-      
     };
     if (!isInit.current) getBoardList();
   }, []);
 
   useEffect(() => {
     if (boards.length > 0) initBoards();
-    else navigate('/home', { replace: true });
+    else navigate("/home", { replace: true });
   }, [boards, initBoards]);
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     try {
       await deleteBoard(id);
-      const updatedList = boards.filter(board => board._id !== id);
+      const updatedList = boards.filter((board) => board._id !== id);
       setBoards(updatedList);
     } catch (error) {
       console.log(error.message);
@@ -69,7 +66,6 @@ const Boards = () => {
   };
 
   return (
-    
     <div className={css.boards}>
       {boards.length > 0 && (
         <ul className={css.projects}>

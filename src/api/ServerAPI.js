@@ -47,6 +47,11 @@ export const deleteBoard = async (id) => {
 };
 
 export const getBoard = async (id) => {
-    const res = await axios.get("/boards/" + id);
-    return res.data;
-  };
+  const res = await axios.get("/boards/" + id);
+  return res.data;
+};
+
+export const updBg = async (id, background) => {
+  const res = await axios.patch("/boards/" + id, background);
+  return res.data;
+};

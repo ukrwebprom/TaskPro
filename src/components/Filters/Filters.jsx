@@ -2,17 +2,27 @@ import React, { useState, useEffect } from "react";
 import FiltersButton from "./FiltersButton";
 import FiltersModal from "./FiltersModal";
 import css from "../Filters/Filters.module.css";
-import { updateBackground } from "../../api/ServerAPI";
+import { updBg } from "api/ServerAPI";
 
-const Filters = () => {
+const Filters = ({ currentBoard }) => {
   const [selectedBg, setSelectedBg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  console.log(currentBoard);
+  const setBoardBg = async (newBg) => {
+    try {
+      const updatedBoard = await updBg(currentBoard._id, { background: newBg });
+      setSelectedBg(updatedBoard.background);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleBgClick = (background, index) => {
     if (index === 0) {
       setSelectedBg(null);
+      setBoardBg(null);
     } else {
       setSelectedBg(background);
+      setBoardBg(background);
     }
   };
   const openModal = () => {
@@ -49,7 +59,6 @@ const Filters = () => {
           onClose={closeModal}
           handleBgClick={handleBgClick}
           selectedBg={selectedBg}
-          updateBackground={updateBackground}
         />
       )}
     </div>

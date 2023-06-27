@@ -7,6 +7,7 @@ import css from "./Dashboard.module.css";
 import { useState, useEffect } from "react";
 import { getBoard } from "api/ServerAPI";
 import { Column } from "components/Column/Column";
+import Filters from "components/Filters/Filters";
 
 const DashBoard = () => {
   const { currentBoard } = useUser();
@@ -35,6 +36,7 @@ const DashBoard = () => {
       <div className={css.dashboardHeader}>
         <h2 className={css.dashboardTitle}>{title}</h2>
       </div>
+      <Filters board={currentBoard} />
       <div className={css.listArea}>
         <ul className={css.columnsList}>
           {columns.length > 0 &&

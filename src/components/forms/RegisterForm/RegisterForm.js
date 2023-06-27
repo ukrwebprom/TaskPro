@@ -10,14 +10,17 @@ import { useUser } from "hooks/useUser";
 export const RegisterForm = () => {
   const {userRegister} = useUser();
 const [type,setType]= useState("password");
+const [iconName, setIconName]= useState("#eye-icon")
 
 const handleShow=(e)=>{
-  const gettype = e.target.value;
+  const gettype = e.currentTarget.value;
   console.log(gettype)
   if (gettype==="password"){
-    setType("text")
+    setType("text");
+    setIconName("#icon-eye-blocked")
   } else{
     setType("password")
+    setIconName("#eye-icon")
   }
 
 }
@@ -85,7 +88,7 @@ const handleShow=(e)=>{
             className={s.eyeicon} 
             value={type}  
             onClick={(e)=>handleShow(e)} >
-            <Icon name ="#eye-icon" />
+            <Icon name ={iconName}/>
             </button>
             <ErrorMessage 
             name="password" 

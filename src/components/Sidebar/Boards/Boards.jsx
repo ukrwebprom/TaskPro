@@ -10,6 +10,7 @@ import css from '../Sidebar.module.css';
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
+  
   const { boardName } = useParams();
   const { setCurrentBoard } = useUser();
   const isInit = useRef(false);
@@ -38,9 +39,16 @@ const Boards = () => {
 
   useEffect(() => {
     const getBoardList = async () => {
+      console.log("iascsc");
       isInit.current = true;
-      const boards = await getBoards();
-      setBoards(boards);
+      try {
+        const boards = await getBoards();
+        console.log(boards);
+        setBoards(boards);
+      } catch(err) {
+        console.log(err)
+      }
+      
     };
     if (!isInit.current) getBoardList();
   }, []);
@@ -61,6 +69,7 @@ const Boards = () => {
   };
 
   return (
+    
     <div className={css.boards}>
       {boards.length > 0 && (
         <ul className={css.projects}>

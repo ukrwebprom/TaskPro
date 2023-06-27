@@ -23,7 +23,7 @@ export const HomeLayout = ({children}) => {
                 </div>
                 
                 {/* TODO: If you dont want see single task comment next div. */}
-                <div style={{ paddingLeft: 300 }}>
+{/*                 <div style={{ paddingLeft: 300 }}>
                   <Task
                     columnList={[{name: 'In progress'}, {name: 'Done'}]}
                     taskData={{
@@ -35,7 +35,7 @@ export const HomeLayout = ({children}) => {
                         "Create a visually stunning and eye-catching watch dial design that embodies our brand's  essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
                     }}
                   />
-                </div>
+                </div> */}
                 {children}
             </div>
             

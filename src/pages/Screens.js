@@ -1,9 +1,11 @@
 import { useUser } from "hooks/useUser";
+import { Suspense } from "react";
 
 const Screens = () => {
   const { currentBoard } = useUser();
 
   return (
+    <Suspense fallback={<p>Loading...</p>}>
       <div>
         {currentBoard && <>
         <h1>{currentBoard.title}</h1>
@@ -13,6 +15,7 @@ const Screens = () => {
         </>
         }
       </div>
+    </Suspense>
     );
   };
   

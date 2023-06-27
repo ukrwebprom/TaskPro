@@ -22,8 +22,6 @@ const DashBoard = () => {
     try {
       await updBg(currentBoard._id, { background: newBg });
     } catch (err) {
-      console.log(currentBoard.background);
-      console.log(currentBoard._id);
       console.log(err);
     }
   };

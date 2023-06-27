@@ -4,10 +4,24 @@ import Button from "components/Button/Button";
 import Icon from "components/Icon/Icon";
 import s from "./LoginForm.module.css"
 import { useUser } from "hooks/useUser";
+import { useState } from "react";
 
 export const LoginForm = () => {
   const {userLogin} = useUser();
-
+  const [type,setType]= useState("password");
+  const [iconName, setIconName]= useState("#eye-icon")
+  
+  const handleShow=(e)=>{
+    const gettype = e.currentTarget.value;
+    console.log(gettype)
+    if (gettype==="password"){
+      setType("text");
+      setIconName("#eye-slash-icon")
+    } else{
+      setType("password")
+      setIconName("#eye-icon")
+    }
+  }  
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     
     try{
@@ -49,12 +63,14 @@ export const LoginForm = () => {
              className= {s.input}
               name="password"
               placeholder="Confirm a password"
-              type="password"
-            /> <div className={s.eyeicon}>
-             <Icon name ="#eye-icon"  /></div>
-             <ErrorMessage name="password"
-            component="div"
-            className={s.error} />
+              type={type}
+            /> 
+              <button  type="button" 
+            className={s.eyeicon} 
+            value={type}  
+            onClick={(e)=>handleShow(e)} >
+            <Icon name ={iconName}/>
+            </button>
           </label>
           </div>
           < Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}>Log In Now</Button>

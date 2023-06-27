@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
 
 const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -19,7 +19,7 @@ axios.interceptors.response.use(
 
         const { data } = await axios.post("/user/refresh", { refreshToken });
         setAuthToken(data.token);
-        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("authToken", `"${data.token}"`);
         localStorage.setItem("refreshToken", data.refreshToken);
         error.config.headers.authorization = `Bearer ${data.token}`;
         return axios.request(error.config);
@@ -51,6 +51,7 @@ export const login = async (data) => {
 
 export const logout = async () => {
   const res = await axios.post("/user/logout");
+  localStorage.setItem("refreshToken", "");
   return res.data;
 };
 

@@ -1,81 +1,59 @@
 import React from "react";
-import { Column } from "components/Dashboard/Columns/Column";
+import Button from "components/Button/Button";
+import btn from '../Button/Button.module.css';
 import { useUser } from "hooks/useUser";
 import  Filters  from "components/Filters/Filters";
+import Button from "components/Button";
 import css from './Dashboard.module.css'
 import {useState, useEffect } from "react";
 import { getBoard } from "api/ServerAPI";
+import { Column } from "components/Column/Column";
 
-
-    
-
-    const cards = [{
-        title: "",
-        description: "",
-        labelColor: "red",
-        deadline: new Date(),
-        columnId: 1,
-      }, 
-      {
-        title: "",
-        description: "",
-        labelColor: "blue",
-        deadline: new Date(),
-        columnId: 1,
-      },
-      {
-        title: "",
-        description: "",
-        labelColor: "red",
-        deadline: new Date(),
-        columnId: 1,
-      }]
 
 const DashBoard = () => {
+
     const { currentBoard } = useUser();
 
     const [columns, setColunms] = useState([]);
-    
+    const [title, setTitle] = useState('');
+
     useEffect(() => {
-/*       console.log(currentBoard); */
-      if(!currentBoard){
-        return
+      const getBoardInfo = async (id) => {
+        try {
+          const res = await getBoard(id);
+          console.log(res)
+          setColunms(res);
+        } catch (err) {
+          console.log(err)
+        }
       }
-      getBoard(currentBoard._id)
-      .then((result) => {
-/*         console.log(result) */
-        setColunms(result.columns);
-      })
-      
-    
-      
+      if(currentBoard) {
+        getBoardInfo(currentBoard._id);
+        setTitle(currentBoard.title)
+      }
     }, [currentBoard])
-
-    if (!currentBoard) {
-      return null;
-    }
-
-    
-    
-
    
     return (
         <div className={css.dashboardContainer}>
-           
-           <div className={css.dashboardHeader}>
-            <span>{currentBoard.title} </span> 
-            <Filters />
-         </div>
+          <div className={css.dashboardHeader}>
+            <h2 className={css.dashboardTitle}>{title}</h2> 
 
-            <div className={css.columnsList}>
-               {columns.map((column) => (
-               <Column 
-               key={column._id}
-                title={column.title}
-                cards={cards.filter((card)=>(card.columnId === column.id))}
-                   />
-                ))}
-                </div>
+            <Filters />
+          </div>
+          <div className={css.listArea}>
+              <ul className={css.columnsList}>
+               {columns.length > 0 && columns.map((column) => {
+                return (
+                <li key={column._id} className={css.col}>
+                  <Column data={column} />
+                </li>)
+                }
+                )}
+                <li>
+                <Button className={`${btn.btn} ${btn.column}`}><div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add another column</Button>
+                </li>
+              </ul>
+          </div>
         </div>
          
         

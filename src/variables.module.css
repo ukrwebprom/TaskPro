@@ -39,6 +39,8 @@
   --divider-color:  rgba(255, 255, 255, 0.1);
   --inner-icon-color:  rgba(255, 255, 255, 1);
   --bg-icon-wrapper-color: rgba(22, 22, 22, 1);
+  --taskScrollBase:rgba(255, 255, 255, 0.08);
+  --taskScrollHandler:#121212;
 }
 
 /* light theme*/
@@ -63,6 +65,8 @@
   --divider-color: rgba(22, 22, 22, 0.1);
   --inner-icon-color:  rgba(255, 255, 255, 1);
   --bg-icon-wrapper-color: rgba(22, 22, 22, 1);
+  --taskScrollBase:#E8E8E8;
+  --taskScrollHandler:rgba(22, 22, 22, 0.10);
 }
 
 /* violet theme*/
@@ -87,6 +91,8 @@
   --divider-color: rgba(22, 22, 22, 0.1);
   --inner-icon-color:  rgba(22, 22, 22, 1);
   --bg-icon-wrapper-color:  rgba(255, 255, 255, 1);
+  --taskScrollBase:#fff;
+  --taskScrollHandler:#B8BCFD;
 }
 /* fonts*/
 /*   --font: "Poppins", sans-serif; */

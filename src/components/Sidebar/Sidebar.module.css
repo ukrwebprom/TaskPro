@@ -7,30 +7,31 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content:space-between;
   color: var(--sidebar-text-color);
   background-color: var(--navigation-bg-color);
-  height: 100%;
+  max-height: 100%;
   padding: 24px;
   font-size: 14px;
   text-align: left;
   letter-spacing: -0.28px;
   box-sizing: border-box;
-  overflow-y: auto;
 }
 
 .sidebar::-webkit-scrollbar {
   width: 0;
 }
 
-.sidebarTop {
-  flex-grow: 1;
+.sidebarBottom {
+  flex-shrink: 1;
 }
 .boards {
   margin-top: 40px;
   margin-left: -24px;
   margin-right: -24px;
   overflow-x: hidden;
+  overflow-y: auto;
+  flex-shrink: 2;
 }
 .boards::-webkit-scrollbar {
   display: none;

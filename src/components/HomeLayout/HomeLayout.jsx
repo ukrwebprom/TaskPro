@@ -21,21 +21,6 @@ export const HomeLayout = ({children}) => {
                 <div className={css.header}>
                     <Header toggleSidebar={setIsSidebar}/>
                 </div>
-                
-                {/* TODO: If you dont want see single task comment next div. */}
-{/*                 <div style={{ paddingLeft: 300 }}>
-                  <Task
-                    columnList={[{name: 'In progress'}, {name: 'Done'}]}
-                    taskData={{
-                      id: 'frepgm23r-43r4--43rrwefv',
-                      levelIndex: 0,
-                      endDate: new Date(),
-                      title: 'The Watch Spot Design',
-                      description:
-                        "Create a visually stunning and eye-catching watch dial design that embodies our brand's  essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
-                    }}
-                  />
-                </div> */}
                 {children}
             </div>
             

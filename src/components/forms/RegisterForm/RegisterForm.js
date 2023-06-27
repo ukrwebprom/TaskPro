@@ -56,6 +56,7 @@ const handleShow=(e)=>{
               placeholder="Enter your name"
               autoComplete="off"
             />
+          
             <ErrorMessage name="name"
             component="div"
             className={s.error} />
@@ -84,7 +85,7 @@ const handleShow=(e)=>{
             className={s.eyeicon} 
             value={type}  
             onClick={(e)=>handleShow(e)} >
-            <Icon name ="#eye-icon"/>
+            <Icon name ="#eye-icon" />
             </button>
             <ErrorMessage 
             name="password" 

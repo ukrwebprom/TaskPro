@@ -1,11 +1,15 @@
-.formbackround {
+
+@import "../../../variables.module.css";
+@import "../../../fonts/fonts.css";
+/* .wrap {
+  box-sizing: border-box;
     margin: auto;
-    background-color: var(--main-background-color) ;
+    background: var(--pop-up-bg-color);
     width: 350px;
     height: 221px;
     border-radius: 8px;
     padding: 24px;
-    }
+    } */
     /*заголовки*/
     .title{
       margin: 0;
@@ -15,22 +19,29 @@
       font-style: normal;
       font-size: 18px;
       line-height: 27px;
-      color: var(--main-tittle-color);
+      color:#ffffff;
     }
     /*инпут*/
     .input{
       display: block;
-      margin: 24px 0px;
-      min-width:302px;
+      margin: 24px 0px 14px 0px;
+      width:335px;
       background-color: var(--input-backround-color);
-      border: 1px solid  #BEDBB0;
+      border: 1px solid var(--high-priority-bg-color);
       border-radius: 8px;
-      opacity:0.4;
       padding:14px 18px;
       box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+      color:var(--primary-text-color);
+      font-family: "Poppins";
+      font-size: 14px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 21px;
+      letter-spacing:  -2%;
+     
     }
     
-    .input::placeholder{
+    /* .input::placeholder{
       font: "Poppins";
       font-size: 14px;
       font-weight: 400;
@@ -39,20 +50,38 @@
     letter-spacing:  -2%;
     color:var(--placeholder-color);
       }
-    
+     */
       /*кнопка*/
-    .btn{
-      display: block;
-      padding: 0px;
-      margin: 0px;
-      min-width: 302px;
-      height: 49px;
-      background-color:  #BEDBB0;
-      font-size: 14px; 
-      border-radius: 8px;
-      border: transparent;
-      cursor: pointer;
-      color: #161616;
-      line-height: 21px;
+      .btn{
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        align-items: center;
+        background-color: var(--accent-color);
+        padding: 14px 88px 14px 89px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        width: 100%;
+        color: var(--primary-text-color);
+      }
+      .wrapperIcon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--btn-text-color); 
+        padding: 7px;
+        border-radius: 8px;
     }
-     
+    .addCard{
+      display: block;
+      color: var(--btn-text-color);
+  }
+  .addCardButton:hover{
+      background-color: #a4bb98;
+  }
+  .addCardButton:focus{
+      background-color: #a4bb98;
+  }

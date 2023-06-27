@@ -22,7 +22,7 @@
 
 .listArea {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     box-sizing: border-box;
     padding-bottom: 10px;
 }

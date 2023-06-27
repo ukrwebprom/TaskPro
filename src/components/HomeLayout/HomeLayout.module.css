@@ -50,9 +50,9 @@
     display: flex;
     max-width:calc(100% - 260px);
     max-height: 100%;
-    flex-grow: 0;
+    flex-grow: 1;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     box-sizing: border-box;
 }
 .header {

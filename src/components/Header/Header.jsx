@@ -4,6 +4,8 @@ import { ThemeSelector } from 'components/ThemeSelector/ThemeSelector'
 import { useUser } from 'hooks/useUser'
 import defaultAvatar from '../../images/defaultAvatar.png'
 import Icon from 'components/Icon/Icon'
+import Modal from 'components/Modal/Modal'
+import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
 
 export const Header = ({ toggleSidebar }) => {
   const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
@@ -12,6 +14,10 @@ export const Header = ({ toggleSidebar }) => {
   
   const showThemeSelector = () => {
     setIsVisibleThemeSelector(!isVisibleThemeSelector)
+  };
+
+  const showUserModal = () => {
+    setIsVasibleUserModal(!isVasibleUserModal)
   };
 
   return (
@@ -36,15 +42,18 @@ export const Header = ({ toggleSidebar }) => {
         <ul className={css.styleUserInfo}>
           <li className={css.styleName}>{name}</li>
           <li className={css.styleAvatar}>
-            <button className={css.styleAvatar} onClick={() => setIsVasibleUserModal(!isVasibleUserModal)}>
+            <button className={css.styleAvatar} onClick={() => showUserModal()}>
               <img src={avatar === "none" ? defaultAvatar : avatar} alt='avatar' width="32" height="32" />          
             </button>
           </li>
         </ul>
         {isVasibleUserModal &&
-          <div style={{ position: "absolute", top: 70, right: 12 }}>
-            <p className={css.textuseravatar}>EditProfileModal</p>
-          </div>
+          <Modal isOpen="isVasibleUserModal" name="Edit profile" onClose={showUserModal}>
+            <EditProfileForm/>
+          </Modal>
+          // <div style={{ position: "absolute", top: 70, right: 12 }}>
+          //   <p className={css.textuseravatar}>EditProfileModal</p>
+          // </div>
         }
       </div>
     </div>

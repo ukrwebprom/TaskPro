@@ -44,7 +44,7 @@ const DashBoard = () => {
               <ul className={css.columnsList}>
                {columns.length > 0 && columns.map((column) => {
                 return (
-                <li key={column._id} className={css.col}>
+                <li key={column._id}>
                   <Column data={column} />
                 </li>)
                 }

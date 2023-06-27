@@ -3,7 +3,7 @@ import Button from "components/Button/Button";
 import btn from '../Button/Button.module.css';
 import { useUser } from "hooks/useUser";
 import  Filters  from "components/Filters/Filters";
-import Button from "components/Button";
+/* import Button from "components/Button"; */
 import css from './Dashboard.module.css'
 import {useState, useEffect } from "react";
 import { getBoard } from "api/ServerAPI";

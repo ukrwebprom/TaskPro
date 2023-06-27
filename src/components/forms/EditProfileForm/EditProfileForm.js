@@ -28,8 +28,6 @@ export const EditProfileForm = ({
        < div className={s.wrap}>
     
         <Form >
-          <p className={s.title}>Edit  profile</p>
-          
           <div className={s.addfilewrap}>
             <input
               className={s.inputFile}

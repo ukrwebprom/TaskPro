@@ -7,9 +7,13 @@ const Welcome = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
     <WelcomeLayout>
-      <h1>You are welcome!</h1>
-      <a href='auth/login'>Login</a>
+      <div className="logowrap">
+      <Icon className='#logo-icon'/>
+      </div>
+      <h1>Task Pro</h1>
       <a href='auth/register'>Register</a>
+      <a href='auth/login'>Login</a>
+      
 
       {/* example of using SVG sprite */}
       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>

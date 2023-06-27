@@ -1,13 +1,29 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
+import { useState } from "react";
 import Button from "..//..//Button/Button.jsx"
 import s from "./Registerform.module.css"
 import Icon from "components/Icon/Icon";
 import { useUser } from "hooks/useUser";
 
+
 export const RegisterForm = () => {
   const {userRegister} = useUser();
+const [type,setType]= useState("password");
+const [iconName, setIconName]= useState("#eye-icon")
 
+const handleShow=(e)=>{
+  const gettype = e.currentTarget.value;
+  console.log(gettype)
+  if (gettype==="password"){
+    setType("text");
+    setIconName("#eye-slash-icon")
+  } else{
+    setType("password")
+    setIconName("#eye-icon")
+  }
+
+}
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       await userRegister(values);
@@ -15,6 +31,7 @@ export const RegisterForm = () => {
       resetForm();
     } catch (err) {
       console.log(err);
+      console.log("єто моя 409");
     }
   };
 
@@ -43,6 +60,7 @@ export const RegisterForm = () => {
               placeholder="Enter your name"
               autoComplete="off"
             />
+          
             <ErrorMessage name="name"
             component="div"
             className={s.error} />
@@ -64,12 +82,15 @@ export const RegisterForm = () => {
             <Field  className= {s.input}
               name="password"
               placeholder="Create a password"
-              type="password"
+              type={type}
               autoComplete="off"
-            />
-            <div className={s.eyeicon}>
-            <Icon name ="#eye-icon" />
-            </div>
+                        />
+            <button  type="button" 
+            className={s.eyeicon} 
+            value={type}  
+            onClick={(e)=>handleShow(e)} >
+            <Icon name ={iconName}/>
+            </button>
             <ErrorMessage 
             name="password" 
             component="div"

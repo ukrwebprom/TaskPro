@@ -1,6 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { validationColumnSchema } from "..//..//..//schems/validationColumnSchema";
+import Button from 'components/Button/Button';
+import Icon from 'components/Icon/Icon';
 import s from "./ColumnForm.module.css"
 
 
@@ -25,7 +27,8 @@ export const ColumnForm = ({ setTitle, onClose, title }) => {
       validateOnBlur
     >
       {({ isSubmitting, dirty, handleSubmit }) => (
-        <Form className={s.formbackround} onSubmit={handleSubmit}>
+          <div className={s.wrap}>
+        <Form onSubmit={handleSubmit}>
           <p className={s.title}>Add column</p>
           <label>
             <Field 
@@ -35,10 +38,13 @@ export const ColumnForm = ({ setTitle, onClose, title }) => {
             <ErrorMessage name="title" />
           </label>
 
-          <button type="submit" disabled={isSubmitting || !dirty}>
-            Add
-          </button>
-        </Form>
+          <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
+          {' '}
+        <div className={s.wrapperIcon}>
+          <Icon name={'#plus-icon'} />
+        </div>
+        <span className={s.addCard}>Add </span></Button>
+        </Form></div>
       )}
     </Formik>
   );

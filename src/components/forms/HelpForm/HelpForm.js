@@ -1,5 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationHelpSchema } from "schems";
+import Button from "components/Button/Button";
+import Icon from "components/Icon/Icon";
 import s from "./HelpForm.module.css"
 export const HelpForm = () => {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -31,10 +33,12 @@ export const HelpForm = () => {
             <Field  className={s.comment} name="comment" as="textarea" placeholder="Comment" />
             <ErrorMessage name="comment" />
           </label>
-
-          <button  type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Send
-          </button>
+          <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
+          {' '}
+        <div className={s.wrapperIcon}>
+          <Icon name={'#plus-icon'} />
+        </div>
+        <span className={s.addCard}>Send </span></Button>
         </Form>
       )}
     </Formik>

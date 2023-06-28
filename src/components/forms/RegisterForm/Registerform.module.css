@@ -132,3 +132,6 @@ display: block;
   border: transparent;
   opacity: 0.4;
 }
+.mistake{
+  color: red;
+}

@@ -9,32 +9,32 @@ import { useUser } from "hooks/useUser";
 
 export const RegisterForm = () => {
   const {userRegister} = useUser();
-const [type,setType]= useState("password");
-const [iconName, setIconName]= useState("#eye-icon")
-
-const handleShow=(e)=>{
-  const gettype = e.currentTarget.value;
-  console.log(gettype)
-  if (gettype==="password"){
-    setType("text");
-    setIconName("#eye-slash-icon")
-  } else{
-    setType("password")
-    setIconName("#eye-icon")
-  }
-
-}
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+const[error,setError]=useState(false)
+  const handleSubmit = async (values, { setSubmitting, resetForm }, ) => {
     try {
       await userRegister(values);
       setSubmitting(false);
       resetForm();
     } catch (err) {
-      console.log(err);
-      console.log("єто моя 409");
-    }
+        setError(true)
+         console.log("это 409 МОЯ")
+      console.log(err.message); }
   };
-
+  const [type,setType]= useState("password");
+  const [iconName, setIconName]= useState("#eye-icon")
+  
+  const handleShow=(e)=>{
+    const gettype = e.currentTarget.value;
+    console.log(gettype)
+    if (gettype==="password"){
+      setType("text");
+      setIconName("#eye-slash-icon")
+    } else{
+      setType("password")
+      setIconName("#eye-icon")
+    }
+  
+  }
   return (
     <Formik
       initialValues={{
@@ -100,10 +100,12 @@ const handleShow=(e)=>{
           </ div>
           <Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}> Register Now</Button>
         </Form> 
-        
+       {error && <div className={s.mistake}>ошибка</div>} 
+       {/* {error && <div className={s.mistake}>{error.message}</div>}  */}
         </div>
-       
+     
       )}
+
     </Formik>
   );
 };

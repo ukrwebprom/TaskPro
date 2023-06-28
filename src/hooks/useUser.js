@@ -56,6 +56,7 @@ export const UserProvider = ({children}) => {
             await userLogin({email:data.email, password:data.password});
         } catch(err) {
             throw new Error(err);
+          
         }
     }
 

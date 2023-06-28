@@ -6,17 +6,17 @@ import { Suspense } from "react";
 const Welcome = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
-    <WelcomeLayout>
-      <div className="logowrap">
-      <Icon className='#logo-icon'/>
-      </div>
-      <h1>Task Pro</h1>
-      <a href='auth/register'>Register</a>
-      <a href='auth/login'>Login</a>
-      
+      <WelcomeLayout>
+        <div className="logowrap">
+          <Icon className="#logo-icon" />
+        </div>
+        <h1>Task Pro</h1>
+        <a href="auth/register">Register</a>
+        <a href="auth/login">Login</a>
+        <a href={"http://localhost:3001/user/google"}>Login with Google</a>
 
-      {/* example of using SVG sprite */}
-{/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
+        {/* example of using SVG sprite */}
+        {/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
         <p>Project icons:</p>
         <Icon name="#board1" />
         <Icon name="#board2" />
@@ -43,7 +43,7 @@ const Welcome = () => {
         <Icon name="#plus-icon" />
         <Icon name="#trash-icon" />
       </div> */}
-    </WelcomeLayout>
+      </WelcomeLayout>
     </Suspense>
   );
 };

@@ -18,7 +18,7 @@ const DashBoard = () => {
   const [selectedBgIndex, setSelectedBgIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userScreen, setUserScreen] = useState("1280");
-  console.log(window.screen.width);
+  const [userRatio, setUserRatio] = useState("1280");
 
   const windowMedia = () => {
     if (window.screen.width >= 1280) {
@@ -31,12 +31,25 @@ const DashBoard = () => {
     }
   };
 
+  const windowPixelRatio = () => {
+    if (window.devicePixelRatio >= 2) {
+      return "2x";
+    } else {
+      return "1x";
+    }
+  };
+
   useEffect(() => {
     const screen = windowMedia();
     setUserScreen(screen);
   }, []);
 
-  const url = `https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%401x_${userScreen}.jpg.webp`;
+  useEffect(() => {
+    const ratio = windowPixelRatio();
+    setUserRatio(ratio);
+  }, []);
+
+  const url = `https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%40${userRatio}_${userScreen}.jpg.webp`;
 
   const setBoardBg = async (newBgIndex) => {
     try {

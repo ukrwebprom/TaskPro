@@ -3,13 +3,14 @@ import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 import Icon from "components/Icon/Icon";
 import s from "..//components/WelcomeLayout/WelcomeLayout.module.css"
 import { Suspense } from "react";
-
+import img from "..//images/welcome-page.png"
 const Welcome = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
     <WelcomeLayout>
     <img 
-    src= "..//images/welcome-page.png" 
+    className={s.wecomeimage}
+    src= {img} 
     alt="welcome" width="162"
           height="162" />
       <div className={s.logowrap}>

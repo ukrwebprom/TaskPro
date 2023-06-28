@@ -35,7 +35,7 @@ export const UserProvider = ({children}) => {
             setAuthToken(res.token);
             if(res.avatar) setAvatar(res.avatar)
         } catch(err) {
-            throw new Error(err);
+            throw new Error(err.response.data.message);
         }
     }
 

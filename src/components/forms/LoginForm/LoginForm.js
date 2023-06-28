@@ -10,11 +10,10 @@ export const LoginForm = () => {
   const {userLogin} = useUser();
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")
-  
+  const[error,setError]=useState(false)
   const handleShow=(e)=>{
     const gettype = e.currentTarget.value;
-    console.log(gettype)
-    if (gettype==="password"){
+     if (gettype==="password"){
       setType("text");
       setIconName("#eye-slash-icon")
     } else{
@@ -29,7 +28,7 @@ export const LoginForm = () => {
       setSubmitting(false);
       resetForm();
     } catch(err) {
-      console.log(err);
+      setError(err)
     }
   };
 
@@ -49,6 +48,7 @@ export const LoginForm = () => {
           <div className={s.titleFild}>
           <a  href="register" className= {s.regtitle}>Registration</a>
           <p  className= {s.regtitleActive}>Log In</p>
+          {error && <div className={s.mistake}>* {error.message}</div>} 
           </div>
           <div className={s.field}>
           <label className={s.label}>

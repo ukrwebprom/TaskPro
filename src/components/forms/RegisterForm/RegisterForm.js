@@ -17,8 +17,7 @@ const[error,setError]=useState(false)
       resetForm();
     } catch (err) {
         setError(err)
-         console.log("это 409 МОЯ")
-      console.log(err.message); }
+        }
   };
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")

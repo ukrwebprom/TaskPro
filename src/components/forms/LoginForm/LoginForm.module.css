@@ -81,6 +81,7 @@
         margin-bottom: 24px;
      }
      .titleFild{
+      position: relative;
       margin-bottom: 40px;
   }
   .btn {
@@ -126,4 +127,17 @@ display: block;
   background-color:transparent;
   border: transparent;
   opacity: 0.4;
+}
+.mistake{
+  position: absolute;
+  display: flex;
+  bottom:-100%;
+  width: 100%;
+  color:#e66666;
+  font: "Poppins";
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+ justify-content: center;
+  align-items: center;
 }

@@ -1,16 +1,16 @@
-import {lazy} from 'react';
-import { Routes, Route } from "react-router-dom";
-import {PrivateRoute} from "routes/PrivateRoute";
-import {RestrictedRoute} from 'routes/RestrictedRoute';
+import { lazy } from "react";
+import { Routes, Route, useSearchParams } from "react-router-dom";
+import { PrivateRoute } from "routes/PrivateRoute";
+import { RestrictedRoute } from "routes/RestrictedRoute";
 import { Navigate } from "react-router-dom";
-import { NoRoute } from 'pages/404';
-import { NoBoard } from 'components/NoBoard/NoBoard';
-import { useUser } from 'hooks/useUser';
+import { NoRoute } from "pages/404";
+import { NoBoard } from "components/NoBoard/NoBoard";
+import { useUser } from "hooks/useUser";
 
-const Home = lazy(() => import('./pages/Home'));
-const Auth = lazy(() => import('./pages/Auth'));
-const Welcome = lazy(() => import('./pages/Welcome'));
-const DashBoard = lazy(() => import('./components/Dashboard/Dashboard'));
+const Home = lazy(() => import("./pages/Home"));
+const Auth = lazy(() => import("./pages/Auth"));
+const Welcome = lazy(() => import("./pages/Welcome"));
+const DashBoard = lazy(() => import("./components/Dashboard/Dashboard"));
 /* const Screens = lazy(() => import('./pages/Screens')); */
 
 /* import Home from './pages/Home';
@@ -20,28 +20,40 @@ import DashBoard from './components/Dashboard/Dashboard';
 import Screens from './pages/Screens'; */
 
 function App() {
-  const {isLogged} = useUser();
+  const { isLogged, userLoginWithGoogle } = useUser();
+
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token");
+  const refreshToken = searchParams.get("refreshToken");
+
+  if (token && refreshToken) {
+    localStorage.setItem("authToken", JSON.stringify(token));
+    localStorage.setItem("refreshToken", refreshToken);
+    userLoginWithGoogle();
+  }
 
   return (
-    <div className='App'>
-      {(isLogged === null)? <p>Checking user</p>
-      :
-      <Routes>
-        <Route path='/' element={<PrivateRoute />}>
-          <Route exact index element={<Navigate to='/home' />} />
-          <Route path='home' element={<Home />}>
-            <Route exact index element={<NoBoard />} />
-            <Route path=':boardName' element={<DashBoard />} />
+    <div className="App">
+      {isLogged === null ? (
+        <p>Checking user</p>
+      ) : (
+        <Routes>
+          <Route path="/" element={<PrivateRoute />}>
+            <Route exact index element={<Navigate to="/home" />} />
+            <Route path="home" element={<Home />}>
+              <Route exact index element={<NoBoard />} />
+              <Route path=":boardName" element={<DashBoard />} />
+            </Route>
           </Route>
-        </Route>
-        
-        <Route path='/' element={<RestrictedRoute />}>
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/auth/:id" element={<Auth />} />
-        </Route>
-        
-        <Route path="*" element={<NoRoute />} />
-      </Routes>}
+
+          <Route path="/" element={<RestrictedRoute />}>
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/auth/:id" element={<Auth />} />
+          </Route>
+
+          <Route path="*" element={<NoRoute />} />
+        </Routes>
+      )}
     </div>
   );
 }

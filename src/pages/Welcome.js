@@ -16,7 +16,7 @@ const Welcome = () => {
       
 
       {/* example of using SVG sprite */}
-      <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
+{/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
         <p>Project icons:</p>
         <Icon name="#board1" />
         <Icon name="#board2" />
@@ -42,7 +42,7 @@ const Welcome = () => {
         <Icon name="#pencil-icon" />
         <Icon name="#plus-icon" />
         <Icon name="#trash-icon" />
-      </div>
+      </div> */}
     </WelcomeLayout>
     </Suspense>
   );

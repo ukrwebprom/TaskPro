@@ -1,8 +1,9 @@
-import { useUser } from "hooks/useUser";
+// import { useUser } from "hooks/useUser";
 import { Suspense } from "react";
 
 const Screens = () => {
-  const { currentBoard } = useUser();
+  // const { currentBoard } = useUser();
+  const currentBoard = null;
 
   return (
     <Suspense fallback={<p>Loading...</p>}>

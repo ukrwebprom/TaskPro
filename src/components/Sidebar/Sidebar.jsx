@@ -3,10 +3,14 @@ import Boards from "./Boards";
 import Help from "./Help";
 import Icon from "components/Icon";
 import css from "./Sidebar.module.css";
-import { useUser } from "hooks/useUser";
+// import { useUser } from "hooks/useUser";
+import { logout } from "redux/auth/operations";
+import { useDispatch } from "react-redux";
+
 
 const Sidebar = () => {
-  const { userLogout } = useUser();
+  // const { userLogout } = useUser();
+const dispatch = useDispatch();
 
   return (
     <div className={css.sidebar}>
@@ -25,7 +29,8 @@ const Sidebar = () => {
         <Help />
         <button type="button" className={css.logoutButton}>
           <Icon name={"#login-icon"} sprite={2} width="32" height="32" />
-          <span onClick={() => userLogout()}>Log out</span>
+          {/* <span onClick={() => userLogout()}>Log out</span> */}
+          <span onClick={() => dispatch(logout)}>Log out</span>
         </button>
       </div>
     </div>

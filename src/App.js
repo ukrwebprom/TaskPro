@@ -5,7 +5,8 @@ import {RestrictedRoute} from 'routes/RestrictedRoute';
 import { Navigate } from "react-router-dom";
 import { NoRoute } from 'pages/404';
 import { NoBoard } from 'components/NoBoard/NoBoard';
-import { useUser } from 'hooks/useUser';
+// import { useUser } from 'hooks/useUser';
+import { useAuth } from 'hooks/useAuth';
 
 const Home = lazy(() => import('./pages/Home'));
 const Auth = lazy(() => import('./pages/Auth'));
@@ -20,11 +21,13 @@ import DashBoard from './components/Dashboard/Dashboard';
 import Screens from './pages/Screens'; */
 
 function App() {
-  const {isLogged} = useUser();
+  // const {isLogged} = useUser();
+  const {isLoggedIn} = useAuth();
 
   return (
     <div className='App'>
-      {(isLogged === null)? <p>Checking user</p>
+      {/* {(isLogged === null)? <p>Checking user</p> */}
+      {(isLoggedIn === null)? <p>Checking user</p>
       :
       <Routes>
         <Route path='/' element={<PrivateRoute />}>

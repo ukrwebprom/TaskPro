@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Filters.module.css";
 import previews from "../../images/background/small-url.json";
 
-const Background = ({ handleBgClick, selectedBg }) => {
+const Background = ({ handleBgClick, selectedBgIndex }) => {
   return (
     <div className={css.bgContainer}>
       <div className={css.modalLine}></div>
@@ -13,11 +13,11 @@ const Background = ({ handleBgClick, selectedBg }) => {
             <li key={index} className={css.bgItem}>
               <img
                 className={`${css.bgImg} ${
-                  selectedBg === preview ? css.selectedBg : ""
+                  selectedBgIndex === preview ? css.selectedBg : ""
                 }`}
                 src={preview}
                 alt={`Background ${index + 1}`}
-                onClick={() => handleBgClick(preview, index)}
+                onClick={() => handleBgClick(index)}
               />
             </li>
           ))}

@@ -15,23 +15,23 @@ const DashBoard = () => {
 
   const [columns, setColunms] = useState([]);
   const [title, setTitle] = useState("");
-  const [selectedBg, setSelectedBg] = useState(null);
+  const [selectedBgIndex, setSelectedBgIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const setBoardBg = async (newBg) => {
+  const setBoardBg = async (newBgIndex) => {
     try {
-      await updBg(currentBoard._id, { background: newBg });
+      await updBg(currentBoard._id, { background: newBgIndex });
     } catch (err) {
       console.log(err);
     }
   };
-  const handleBgClick = (background, index) => {
+  const handleBgClick = (index) => {
     if (index === 0) {
-      setSelectedBg(null);
+      setSelectedBgIndex(null);
       setBoardBg(null);
     } else {
-      setSelectedBg(background);
-      setBoardBg(background);
+      setSelectedBgIndex(index.toString());
+      setBoardBg(index.toString());
     }
   };
   const openModal = () => {
@@ -67,7 +67,7 @@ const DashBoard = () => {
     if (currentBoard) {
       getBoardInfo(currentBoard._id);
       setTitle(currentBoard.title);
-      setSelectedBg(currentBoard.background);
+      setSelectedBgIndex(currentBoard.background);
     }
   }, [currentBoard]);
 
@@ -75,7 +75,11 @@ const DashBoard = () => {
     <div
       className={css.dashboardContainer}
       style={{
-        backgroundImage: selectedBg ? `url(${selectedBg})` : "none",
+        backgroundSize: "cover",
+        backgroundImage:
+          selectedBgIndex !== null
+            ? `url("https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%401x_1280.jpg.jpg")`
+            : "none",
       }}
     >
       <div className={css.dashboardHeader}>
@@ -86,7 +90,7 @@ const DashBoard = () => {
             isOpen={isModalOpen}
             onClose={closeModal}
             handleBgClick={handleBgClick}
-            selectedBg={selectedBg}
+            selectedBgIndex={selectedBgIndex}
           />
         )}
       </div>

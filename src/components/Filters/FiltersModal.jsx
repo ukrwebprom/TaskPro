@@ -4,7 +4,7 @@ import LabelColor from "./LabelColor";
 import Background from "./Background";
 import Icon from "components/Icon/Icon";
 
-const FiltersModal = ({ isOpen, onClose, handleBgClick, selectedBg }) => {
+const FiltersModal = ({ isOpen, onClose, handleBgClick, selectedBgIndex }) => {
   return (
     <div className={css.modalContent}>
       <h2 className={css.modalTitle}>Filters</h2>
@@ -12,7 +12,10 @@ const FiltersModal = ({ isOpen, onClose, handleBgClick, selectedBg }) => {
         <Icon name={"#close-icon"} sprite={2} width="18" height="18" />
       </button>
       <div className="modalBody">
-        <Background handleBgClick={handleBgClick} selectedBg={selectedBg} />
+        <Background
+          handleBgClick={handleBgClick}
+          selectedBgIndex={selectedBgIndex}
+        />
 
         <LabelColor />
       </div>

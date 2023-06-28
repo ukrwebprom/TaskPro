@@ -16,7 +16,9 @@
       } 
  }
 .titleFild{
+  position: relative;
     margin-bottom: 40px;
+ 
 }
 .regtitle{
 display: inline-block;
@@ -84,6 +86,7 @@ text-decoration: none;
 
 
  .field{
+  
     margin-bottom: 24px;
  }
  .btn {
@@ -133,5 +136,15 @@ display: block;
   opacity: 0.4;
 }
 .mistake{
-  color: red;
+  position: absolute;
+  display: flex;
+  bottom:-100%;
+  width: 100%;
+  color:#e66666;
+  font: "Poppins";
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+ justify-content: center;
+  align-items: center;
 }

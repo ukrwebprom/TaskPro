@@ -16,7 +16,7 @@ const[error,setError]=useState(false)
       setSubmitting(false);
       resetForm();
     } catch (err) {
-        setError(true)
+        setError(err)
          console.log("это 409 МОЯ")
       console.log(err.message); }
   };
@@ -52,8 +52,10 @@ const[error,setError]=useState(false)
           <div className={s.titleFild}>
           <p  className= {s.regtitleActive}>Registration</p>
           <a href="log"   className= {s.regtitle}>Log In</a>
+          {error && <div className={s.mistake}>* {error.message}</div>} 
           </div>
          < div className={s.field}>
+        
           <label className= {s.label}>
             <Field className= {s.input}
               name="name"
@@ -100,8 +102,7 @@ const[error,setError]=useState(false)
           </ div>
           <Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}> Register Now</Button>
         </Form> 
-       {error && <div className={s.mistake}>ошибка</div>} 
-       {/* {error && <div className={s.mistake}>{error.message}</div>}  */}
+      
         </div>
      
       )}

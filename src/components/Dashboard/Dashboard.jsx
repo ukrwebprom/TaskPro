@@ -17,6 +17,26 @@ const DashBoard = () => {
   const [title, setTitle] = useState("");
   const [selectedBgIndex, setSelectedBgIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userScreen, setUserScreen] = useState("1280");
+  console.log(window.screen.width);
+
+  const windowMedia = () => {
+    if (window.screen.width >= 1280) {
+      return "1280";
+    }
+    if (window.screen.width >= 768 && window.screen.width < 1280) {
+      return "768-min";
+    } else {
+      return "320-min";
+    }
+  };
+
+  useEffect(() => {
+    const screen = windowMedia();
+    setUserScreen(screen);
+  }, []);
+
+  const url = `https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%401x_${userScreen}.jpg.webp`;
 
   const setBoardBg = async (newBgIndex) => {
     try {
@@ -74,12 +94,11 @@ const DashBoard = () => {
   return (
     <div
       className={css.dashboardContainer}
+      media={window.media}
       style={{
+        height: "100%",
         backgroundSize: "cover",
-        backgroundImage:
-          selectedBgIndex !== null
-            ? `url("https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%401x_1280.jpg.jpg")`
-            : "none",
+        backgroundImage: selectedBgIndex !== null ? `url(${url})` : "none",
       }}
     >
       <div className={css.dashboardHeader}>

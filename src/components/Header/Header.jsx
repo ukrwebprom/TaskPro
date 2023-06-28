@@ -9,7 +9,7 @@ import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileFor
 
 export const Header = ({ toggleSidebar }) => {
   const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
-  const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);
+  const [isVisibleUserModal, setIsVisibleUserModal] = useState(false);
   const { name, avatar } = useUser();
   
   const showThemeSelector = () => {
@@ -17,7 +17,7 @@ export const Header = ({ toggleSidebar }) => {
   };
 
   const showUserModal = () => {
-    setIsVasibleUserModal(!isVasibleUserModal)
+    setIsVisibleUserModal(!isVisibleUserModal)
   };
 
   return (
@@ -47,8 +47,8 @@ export const Header = ({ toggleSidebar }) => {
             </button>
           </li>
         </ul>
-        {isVasibleUserModal &&
-          <Modal isOpen="isVasibleUserModal" name="Edit profile" onClose={showUserModal}>
+        {isVisibleUserModal &&
+          <Modal isOpen="isVisibleUserModal" name="Edit profile" onClose={showUserModal}>
             <EditProfileForm/>
           </Modal>
           // <div style={{ position: "absolute", top: 70, right: 12 }}>

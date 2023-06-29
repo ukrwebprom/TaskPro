@@ -4,11 +4,14 @@ import { useState } from "react";
 import Button from "..//..//Button/Button.jsx"
 import s from "./Registerform.module.css"
 import Icon from "components/Icon/Icon";
-import { useUser } from "hooks/useUser";
+// import { useUser } from "hooks/useUser";
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 
 export const RegisterForm = () => {
-  const {userRegister} = useUser();
+  // const {userRegister} = useUser();
+const dispatch = useDispatch();
 const [type,setType]= useState("password");
 const [iconName, setIconName]= useState("#eye-icon")
 
@@ -24,15 +27,26 @@ const handleShow=(e)=>{
   }
 
 }
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    try {
-      await userRegister(values);
-      setSubmitting(false);
-      resetForm();
-    } catch (err) {
-      console.log(err);
-      console.log("єто моя 409");
-    }
+  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  //   try {
+  //     await userRegister(values);
+  //     setSubmitting(false);
+  //     resetForm();
+  //   } catch (err) {
+  //     console.log(err);
+  //     console.log("єто моя 409");
+  //   }
+  // };
+
+  const handleSubmit = (values, actions) => {
+    dispatch(
+      register({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      })
+    );
+    actions.resetForm();
   };
 
   return (

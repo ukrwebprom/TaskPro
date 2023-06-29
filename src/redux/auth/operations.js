@@ -1,17 +1,17 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = 'https://taskpro-41yf.onrender.com';
+axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
 
 // Utility to add JWT
-const setAuthHeader = token => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+export const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 // Utility to remove JWT
-const clearAuthHeader = ()=>{
-    axios.defaults.headers.common.Authorization = '';
-}
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = "";
+};
 
 /*
  * POST @ /user/login
@@ -19,20 +19,19 @@ const clearAuthHeader = ()=>{
  */
 
 export const login = createAsyncThunk(
-    'auth/login',
-    async (credentials, thunkAPI)=>{
-        try {
-            const resp = await axios.post('/user/login', credentials);
+  "auth/login",
+  async (credentials, thunkAPI) => {
+    try {
+      const resp = await axios.post("/user/login", credentials);
 
-            // After successful login, add the token to the HTTP header
-            setAuthHeader(resp.data.token)
-            return resp.data; 
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
+      // After successful login, add the token to the HTTP header
+      setAuthHeader(resp.data.token);
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
+  }
 );
-
 
 /*
  * POST @ /user/register
@@ -40,37 +39,30 @@ export const login = createAsyncThunk(
  */
 
 export const register = createAsyncThunk(
-    'auth/register',
-    async (data, thunkAPI) => {
-      try {
-        await axios.post('/user/register', data);
-        await login({email: data.email, password: data.password});
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+  "auth/register",
+  async (data, thunkAPI) => {
+    try {
+      await axios.post("/user/register", data);
+      await login({ email: data.email, password: data.password });
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
+  }
 );
 
 /*
  * POST @ /user/logout
  * headers: Authorization: Bearer token
  */
-export const logout = createAsyncThunk(
-    'auth/logout',
-    async (_, thunkAPI)=>{
-        try {
-            await axios.post('/user/logout');
-             // After a successful logout, remove the token from the HTTP header
-            clearAuthHeader();
-
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
-    }
-);
-
-
-
+export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+  try {
+    await axios.post("/user/logout");
+    // After a successful logout, remove the token from the HTTP header
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 /*
  * PATCH @ /user/theme
@@ -78,46 +70,41 @@ export const logout = createAsyncThunk(
  */
 
 export const updTheme = createAsyncThunk(
-    'auth/updTheme',
-    async (theme, thunkAPI) => {
-      try {
-        const { data } = await axios.patch('user/theme', {
-          theme
-        });
-        console.log(data);
-        return data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+  "auth/updTheme",
+  async (theme, thunkAPI) => {
+    try {
+      const { data } = await axios.patch("user/theme", {
+        theme,
+      });
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
-  );
+  }
+);
 
-
-/* REFRESH user 
+/* REFRESH user
  * GET @ /user/me
  * headers: Authorization: Bearer token
  */
-export const getMe = createAsyncThunk(
-  'auth/getMe',
-    async (_, thunkAPI)=>{
-        // Reading the token from the state via getState()
-        const {token} = thunkAPI.getState().auth;
-        if(!token){
-              // If there is no token, exit without performing any request
-            return thunkAPI.rejectWithValue('No valid token');
-        }
-        
-        try {
-             // If there is a token, add it to the HTTP header and perform the request
-            setAuthHeader(token);
-            const resp = await axios.get('/user/me');
-            return resp.data;
+export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
+  // Reading the token from the state via getState()
+  const { token } = thunkAPI.getState().auth;
+  if (!token) {
+    // If there is no token, exit without performing any request
+    return thunkAPI.rejectWithValue("No valid token");
+  }
 
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
-    }
-);
+  try {
+    // If there is a token, add it to the HTTP header and perform the request
+    setAuthHeader(token);
+    const resp = await axios.get("/user/me");
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 /*
  * GET @ /user/me

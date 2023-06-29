@@ -1,7 +1,9 @@
-import { configureStore} from "@reduxjs/toolkit";
-import { authReducer } from './auth/slice';
+import axios from "axios";
+import { configureStore } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { authReducer, refreshTokens } from "./auth/slice";
 import { boardsReducer } from "./boards/slice";
-import storage from 'redux-persist/lib/storage';
+import { setAuthHeader } from "./auth/operations";
 
 import {
   persistStore,
@@ -12,28 +14,45 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
+} from "redux-persist";
 
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token", "refreshToken"],
+};
 
-  const authPersistConfig = {
-    key: 'auth',
-    storage,
-    whitelist: ['token'],
-  };
-
-  export const store = configureStore({
-    reducer: {
-        auth: persistReducer(authPersistConfig, authReducer),
-        boards: boardsReducer
-    },
-    middleware: (getDefaultMiddleware) =>
+export const store = configureStore({
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    boards: boardsReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-    devTools: process.env.NODE_ENV === 'development',
+  devTools: process.env.NODE_ENV === "development",
 });
 
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response.status == 401) {
+      try {
+        const { refreshToken } = store.getState().auth;
+        const { data } = await axios.post("/user/refresh", { refreshToken });
+        setAuthHeader(data.token);
+        store.dispatch(refreshTokens(data));
+        error.config.headers.authorization = `Bearer ${data.token}`;
+        return axios.request(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const persistor = persistStore(store);

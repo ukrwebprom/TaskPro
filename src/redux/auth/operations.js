@@ -78,12 +78,13 @@ export const logout = createAsyncThunk(
  */
 
 export const updTheme = createAsyncThunk(
-    'contacts/addToFavorite',
+    'auth/updTheme',
     async (theme, thunkAPI) => {
       try {
         const { data } = await axios.patch('user/theme', {
           theme
         });
+        console.log(data);
         return data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);

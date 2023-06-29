@@ -3,8 +3,6 @@ import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 // import { useUser } from 'hooks/useUser';
 import { Header } from 'components/Header/Header';
-import Filters from 'components/Filters/Filters';
-import Task from 'components/Task/Task';
 
 import { useAuth } from 'hooks/useAuth';
 

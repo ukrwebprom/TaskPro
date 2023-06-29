@@ -9,6 +9,7 @@
   border-radius: 8px;
   background: var(--accent-color);
   border: none;
+  cursor:pointer;
 }
 
 .send {

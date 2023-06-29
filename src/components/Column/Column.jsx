@@ -15,8 +15,8 @@ export const Column = ({data}) => {
     {id:3, priority:3, title:"Concept Development", description: "Brainstorm and develop creative concepts and ideas that align with the project's objectives, considering factors such as target audience, messaging, and visual representation."},
     {id:4, priority:1, title:"Design and Prototyping SoYummy", description: "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements."}
   ]
-  const [title, setTitle] = useState(data.title);
-  const [listTask, setListTask] = useState(faketasks);
+  const [title] = useState(data.title);
+  const [listTask] = useState(faketasks);
   const [showModalEditColumnName, setShowModalEditColumnName] = useState(false);
   const [showModalCreateTasks, setShowModalCreateTasks] = useState(false);
 
@@ -27,7 +27,7 @@ export const Column = ({data}) => {
   const toggleModalCreateTasks = () => {
     setShowModalCreateTasks(!showModalCreateTasks);
   };
-  const makeTask = task => {
+/*   const makeTask = task => {
     if (listTask === null) {
       setListTask([task]);
     } else {
@@ -35,7 +35,7 @@ export const Column = ({data}) => {
         return [...prevTasks, task];
       });
     }
-  };
+  }; */
   return (
     <section className={css.containerColumn}>
       <div className={css.wrapperTitleColumn}>
@@ -108,19 +108,3 @@ export const Column = ({data}) => {
     <CardForm taskData={makeTask} onClose={toggleModalCreateTasks} />
   </Modal>
 )} */
-
-
-{
-  /* <li key={task.title} className={css.task}>
-                <p>{task.title}</p>
-                <p>{task.description}</p>
-                <p>{task.lableColor}</p>
-                <p>{date.toLocaleDateString('en-GB')}</p>
-              </li> */
-}
-{
-  /* const date = new Date(task.deadline);
-            const formattedDate = date.toLocaleDateString('en-GB');
-
-            task.deadline = formattedDate.toString(); */
-}

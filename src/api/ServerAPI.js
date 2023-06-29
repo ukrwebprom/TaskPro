@@ -1,3 +1,4 @@
+
 // import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://taskpro-41yf.onrender.com';
@@ -6,9 +7,11 @@
 //     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 // }
 
+
 /* const resetAuthToken = () => {
     axios.defaults.headers.common.Authorization = '';
 } */
+
 
 // export const getMe = async (token) => {
 //     setAuthToken(token);
@@ -51,3 +54,4 @@
 //     const res = await axios.get("/boards/" + id);
 //     return res.data;
 //   };
+

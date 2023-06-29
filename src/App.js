@@ -15,7 +15,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Welcome = lazy(() => import('./pages/Welcome'));
 const DashBoard = lazy(() => import('./components/Dashboard/Dashboard'));
-const Screens = lazy(() => import('./pages/Screens'));
+/* const Screens = lazy(() => import('./pages/Screens')); */
 
 /* import Home from './pages/Home';
 import Auth from './pages/Auth';
@@ -39,9 +39,9 @@ function App() {
       :
       <Routes>
         <Route path='/' element={<PrivateRoute />}>
-          <Route index element={<Navigate to='/home' />} />
+          <Route exact index element={<Navigate to='/home' />} />
           <Route path='home' element={<Home />}>
-            <Route index element={<NoBoard />} />
+            <Route exact index element={<NoBoard />} />
             <Route path=':boardName' element={<DashBoard />} />
           </Route>
         </Route>

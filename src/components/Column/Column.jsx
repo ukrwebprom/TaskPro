@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 /* import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
-import { CardForm } from 'components/forms/CardForm/CardForm';
-import Modal from '../Modal/Modal'; */
+import { CardForm } from 'components/forms/CardForm/CardForm'; */
+import Modal from '../Modal/Modal';
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
 
@@ -82,20 +82,25 @@ export const Column = ({data}) => {
         <span className={css.addCard}>Add another card</span>
       </button>
       </div>
+
+      {showModalEditColumnName && (
+  <Modal onClose={toggleModalEditColumnName}>
+{/*     <ColumnForm
+      setTitle={setTitle}
+      onClose={toggleModalEditColumnName}
+      title={title}
+    /> */}
+  </Modal>
+)}
+
+
+
     </section>
   );
 };
 
-/* {showModalEditColumnName && (
-  <Modal onClose={toggleModalEditColumnName}>
-    <ColumnForm
-      setTitle={setTitle}
-      onClose={toggleModalEditColumnName}
-      title={title}
-    />
-  </Modal>
-)}
-{showModalCreateTasks && (
+
+/* {showModalCreateTasks && (
   <Modal
     name="Add card"
     onClick={event => {
@@ -107,4 +112,5 @@ export const Column = ({data}) => {
   >
     <CardForm taskData={makeTask} onClose={toggleModalCreateTasks} />
   </Modal>
-)} */
+)}
+ */

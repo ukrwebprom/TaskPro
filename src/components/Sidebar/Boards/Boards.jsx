@@ -35,6 +35,7 @@ const Boards = () => {
   }, [boardName, boards, navigate, dispatch]);
   
   useEffect(() => {
+    console.log('test')
     if (boards.length > 0) ifSlug();
     else navigate('/home', { replace: true });
   }, [boards, ifSlug, navigate]);

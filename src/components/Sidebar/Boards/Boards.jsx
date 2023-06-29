@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { selectBoard } from "redux/boards/slice";
 import slug from "slug";
 import BoardsItem from "./BoardsItem";
 import css from "../Sidebar.module.css";
@@ -9,19 +10,15 @@ import css from "../Sidebar.module.css";
 const Boards = () => {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards.items);
-  const [currBoard, setCurrentBoard] = useState(null);
-  const { boards, current } = useBoards();
   const { boardName } = useParams();
-  const [active, setActive] = useState(0);
+  const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleSelect = (index) => {
     dispatch(selectBoard(index));
     const boardSlug = slug(boards[index].title);
     navigate(`/home/${boardSlug}`, { replace: true });
   };
-  const handleDelete = (id) => dispatch(deleteBoard(id));
 
   const ifSlug = useCallback(() => {
     const boardIndex = boards.map((b) => slug(b.title)).indexOf(boardName);
@@ -44,6 +41,7 @@ const Boards = () => {
           {boards.map((board, index) => (
             <li
               className={index === current ? css.boardActive : css.board}
+              onClick={() => setCurrent(index)}
               key={board._id}>
               <BoardsItem
                 index={index}

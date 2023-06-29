@@ -1,26 +1,21 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-// import { useUser } from 'hooks/useUser';
-import slug from 'slug';
-import { getBoards, deleteBoard } from 'api/ServerAPI';
-import BoardsItem from './BoardsItem';
-import css from '../Sidebar.module.css';
-
-// import { CardForm } from "components/forms/CardForm/CardForm";
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import slug from "slug";
+import BoardsItem from "./BoardsItem";
+import css from "../Sidebar.module.css";
 
 const Boards = () => {
-  const [currBoard, setCurrentBoard] = useState(null)
-  
+  const dispatch = useDispatch();
+  const boards = useSelector((state) => state.boards.items);
+  const [currBoard, setCurrentBoard] = useState(null);
   const { boardName } = useParams();
-  // const { setCurrentBoard } = useUser();
-  const isInit = useRef(false);
-  const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
 
   const onSelectBoard = useCallback(
-    i => {
+    (i) => {
       setActive(i);
       setCurrentBoard(boards[i]);
       const title = boards[i].title;
@@ -31,72 +26,28 @@ const Boards = () => {
   );
 
   const initBoards = useCallback(() => {
-    const boardIndex = boards.map(b => slug(b.title)).indexOf(boardName);
+    const boardIndex = boards.map((b) => slug(b.title)).indexOf(boardName);
     if (boardIndex !== -1) {
       setCurrentBoard(boards[boardIndex]);
       setActive(boardIndex);
     } else onSelectBoard(0);
   }, [boardName, boards, onSelectBoard, setCurrentBoard]);
 
-  // useEffect(() => {
-  //   const getBoardList = async () => {
-  //     console.log("iascsc");
-  //     isInit.current = true;
-  //     try {
-  //       const boards = await getBoards();
-  //       console.log(boards);
-  //       setBoards(boards);
-  //     } catch(err) {
-  //       console.log(err)
-  //     }
-      
-  //   };
-  //   if (!isInit.current) getBoardList();
-  // }, []);
-
-  // useEffect(() => {
-  //   if (boards.length > 0) initBoards();
-  //   else navigate('/home', { replace: true });
-  // }, [boards, initBoards]);
-
-  // const handleDelete = async id => {
-  //   try {
-  //     await deleteBoard(id);
-  //     const updatedList = boards.filter(board => board._id !== id);
-  //     setBoards(updatedList);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
   useEffect(() => {
     if (boards.length > 0) initBoards();
-    else navigate('/home', { replace: true });
+    else navigate("/home", { replace: true });
   }, [boards, initBoards, navigate]);
 
-  const handleDelete = async id => {
-    try {
-      await deleteBoard(id);
-      const updatedList = boards.filter(board => board._id !== id);
-      setBoards(updatedList);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   return (
-    
     <div className={css.boards}>
       {boards.length > 0 && (
         <ul className={css.projects}>
           {boards.map((board, index) => (
             <li
               className={index === active ? css.boardActive : css.board}
-              key={board._id}
-            >
+              key={board._id}>
               <BoardsItem
                 index={index}
-                handleDelete={handleDelete}
                 board={board}
                 setActive={onSelectBoard}
               />

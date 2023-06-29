@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {login, register, logout, getMe, updTheme} from '../auth/operations';
 
 const handlePending = state => {
-    // state.isRefreshing = true;
+    state.isRefreshing = true;
   };
   
   const handleRejected = (state, action) => {

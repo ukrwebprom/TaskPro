@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {fetchBoards, getBoard, deleteBoard } from '../boards/operations';
+import {fetchBoards, addBoard, deleteBoard,updateBoardById, updateBoardBgById } from '../boards/operations';
 
 const handlePending = state => {
-    // state.isRefreshing = true;
+    state.isLoading = true;
   };
   
   const handleRejected = (state, action) => {
     state.error = action.payload;
-    state.isRefreshing = false;
+    state.isLoading = false;
   };
 
 const boardsSlice = createSlice({
@@ -25,13 +25,35 @@ const boardsSlice = createSlice({
       })
       .addCase(fetchBoards.pending, handlePending)
       .addCase(fetchBoards.rejected, handleRejected)
-      .addCase(getBoard.fulfilled, (state, action) => {
+      .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
+        state.items.push(action.payload);
       })
-      .addCase(getBoard.pending, handlePending)
-      .addCase(getBoard.rejected, handleRejected)
+      .addCase(addBoard.pending, handlePending)
+      .addCase(addBoard.rejected, handleRejected)
+      .addCase(updateBoardById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          board => board._id === action.payload.id
+        );
+
+        state.items[index] = action.payload;
+      })
+      .addCase(updateBoardById.pending, handlePending)
+      .addCase(updateBoardById.rejected, handleRejected)
+      .addCase(updateBoardBgById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          board => board._id === action.payload.id
+        );
+
+        state.items[index] = action.payload;
+      })
+      .addCase(updateBoardBgById.pending, handlePending)
+      .addCase(updateBoardBgById.rejected, handleRejected)
       .addCase(deleteBoard.pending, handlePending)
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -41,6 +63,13 @@ const boardsSlice = createSlice({
         );
         state.items.splice(index, 1);
       }).addCase(deleteBoard.rejected, handleRejected)
+        // .addCase(getBoard.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+
+      // })
+      // .addCase(getBoard.pending, handlePending)
+      // .addCase(getBoard.rejected, handleRejected)
 });
 
 export const boardsReducer = boardsSlice.reducer;

@@ -7,6 +7,9 @@ import { NoRoute } from 'pages/404';
 import { NoBoard } from 'components/NoBoard/NoBoard';
 // import { useUser } from 'hooks/useUser';
 import { useAuth } from 'hooks/useAuth';
+import { getMe } from 'redux/auth/operations';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 const Home = lazy(() => import('./pages/Home'));
 const Auth = lazy(() => import('./pages/Auth'));
@@ -22,7 +25,12 @@ import Screens from './pages/Screens'; */
 
 function App() {
   // const {isLogged} = useUser();
-  const {isLoggedIn} = useAuth();
+  const {isLoggedIn, isRefreshing} = useAuth();
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getMe())
+  },[dispatch]);
 
   return (
     <div className='App'>

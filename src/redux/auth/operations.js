@@ -51,9 +51,6 @@ export const register = createAsyncThunk(
     }
 );
 
-
-
-
 /*
  * POST @ /user/logout
  * headers: Authorization: Bearer token
@@ -73,20 +70,6 @@ export const logout = createAsyncThunk(
 );
 
 
-/*
- * GET @ /user/me
- * headers: Authorization: Bearer token
- */
-export const getMe = createAsyncThunk('auth/getMe', async(_, thunkAPI) =>{
-        const {token} = thunkAPI.getState().auth;
-        try {
-            setAuthHeader(token);
-            const res = await axios.get('/user/me');
-            return res.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
-});
 
 
 /*
@@ -109,29 +92,43 @@ export const updTheme = createAsyncThunk(
   );
 
 
-/* REFRESH user if needed 
+/* REFRESH user 
  * GET @ /user/me
  * headers: Authorization: Bearer token
  */
-// export const refreshUser = createAsyncThunk(
-//     'auth/refresh',
-//     async (_, thunkAPI)=>{
-//         // Reading the token from the state via getState()
-//         const {token} = thunkAPI.getState().auth;
-//         if(!token){
-//               // If there is no token, exit without performing any request
-//             return thunkAPI.rejectWithValue('No valid token');
-//         }
+export const getMe = createAsyncThunk(
+  'auth/getMe',
+    async (_, thunkAPI)=>{
+        // Reading the token from the state via getState()
+        const {token} = thunkAPI.getState().auth;
+        if(!token){
+              // If there is no token, exit without performing any request
+            return thunkAPI.rejectWithValue('No valid token');
+        }
+        
+        try {
+             // If there is a token, add it to the HTTP header and perform the request
+            setAuthHeader(token);
+            const resp = await axios.get('/user/me');
+            return resp.data;
 
-      
-//         try {
-//              // If there is a token, add it to the HTTP header and perform the request
-//             setAuthHeader(token);
-//             const resp = await axios.get('/user/me');
-//             return resp.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
 
-//         } catch (error) {
-//             return thunkAPI.rejectWithValue(error.message);
-//         }
-//     }
-// );
+/*
+ * GET @ /user/me
+ * headers: Authorization: Bearer token
+ */
+// export const getMe = createAsyncThunk('auth/getMe', async(_, thunkAPI) =>{
+//   const {token} = thunkAPI.getState().auth;
+//   try {
+//       setAuthHeader(token);
+//       const res = await axios.get('/user/me');
+//       return res.data;
+//   } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//   }
+// });

@@ -7,11 +7,12 @@ export const PrivateRoute = () => {
 
     // const {isLogged} = useUser();
     // return isLogged? 
-    const {isLoggedIn} = useAuth();
-    return isLoggedIn ?
+    const {isLoggedIn, isRefreshing} = useAuth();
+    const shouldRedirect = !isRefreshing && !isLoggedIn;
+    return shouldRedirect ?
+    <Navigate to='/welcome' /> :
     <Suspense fallback={<div>Loading...</div>}>
         <Outlet/> 
-    </Suspense> 
-    :
-    <Navigate to='/welcome' />
+    </Suspense>
+    
 }

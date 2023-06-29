@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { validationCardSchema } from '..//..//..//schems/validationCardSchema';
 import s from './CardForm.module.css';
 import MainButton from '../../MainButton/MainButton';
+import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 
 const labelColors = [
   '#8FA1D0',
@@ -21,7 +21,6 @@ const colorsToLables = {
 };
 
 export const CardForm = ({ taskData, onClose }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [level, setLevel] = useState("none");
   console.log('level', level);
 
@@ -57,13 +56,6 @@ export const CardForm = ({ taskData, onClose }) => {
     taskData(values);
     resetForm();
     onClose();
-  };
-
-  const validateDeadline = date => {
-    const now = new Date();
-    if (date < now) {
-      return 'Deadline cannot be in the past';
-    }
   };
 
   return (
@@ -139,13 +131,7 @@ export const CardForm = ({ taskData, onClose }) => {
           {/* </div> */}
           <ErrorMessage name="labelColor" />
           <label className={s.item_tittle}>Deadline</label>
-          <DatePicker
-            selected={selectedDate}
-            onChange={date => setSelectedDate(date)}
-            minDate={new Date()}
-            onBlur={validateDeadline(selectedDate)}
-            // className={s.datepicker}
-          />
+          <MyDatepicker />
           <MainButton
             btnName={taskData.id ? 'Edit' : 'Add'}
             iconColor="#2a2a2a"

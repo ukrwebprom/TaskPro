@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { Column } from "components/Column/Column";
 import FiltersButton from "components/Filters/FiltersButton";
 import FiltersModal from "components/Filters/FiltersModal";
+import { Background } from "components/Background/Background";
 
 const DashBoard = () => {
   const {boards, current} = useBoards();
@@ -56,8 +57,8 @@ const DashBoard = () => {
     <>
     {
       current!== null &&
-      <div
-      className={css.dashboardContainer}>
+      <Background>
+      <div className={css.dashboardContainer}>
       <div className={css.dashboardHeader}>
         <h2 className={css.dashboardTitle}>{boards[current].title}</h2>
 
@@ -90,6 +91,7 @@ const DashBoard = () => {
         </ul>
       </div>
     </div>
+    </Background>
     }
     </>
    

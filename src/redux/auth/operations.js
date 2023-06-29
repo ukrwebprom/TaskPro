@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
 
 // Utility to add JWT
 export const setAuthHeader = (token) => {
@@ -91,7 +91,6 @@ export const updTheme = createAsyncThunk(
 export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
   // Reading the token from the state via getState()
   const { token } = thunkAPI.getState().auth;
-  console.log(token);
   if (!token) {
     // If there is no token, exit without performing any request
     return thunkAPI.rejectWithValue("No valid token");

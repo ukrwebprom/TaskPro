@@ -2,6 +2,7 @@ import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { Header } from 'components/Header/Header';
+import Task from '../Task/Task';
 
 import { useAuth } from 'hooks/useAuth';
 
@@ -17,7 +18,20 @@ export const HomeLayout = ({children}) => {
             <div className={css.mainarea}>
                 <div className={css.header}>
                     <Header toggleSidebar={setIsSidebar}/>
-                </div>
+                </div>                
+                {/* <div style={{ paddingLeft: 300 }}>
+                  <Task
+                    columnList={[{name: 'In progress'}, {name: 'Done'}]}
+                    taskData={{
+                      id: 'frepgm23r-43r4--43rrwefv',
+                      endDate: new Date(),
+                      priority: 'medium',
+                      title: 'The Watch Spot Design',
+                      description:
+                        "Create a visually stunning and eye-catching watch dial design that embodies our brand's  essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
+                    }}
+                  />
+                </div> */}
                 {children}
             </div>
             

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -13,16 +13,42 @@ const labelColors = [
   'rgba(255, 255, 255, 0.30)',
 ];
 
+const colorsToLables = {
+  none: 'rgba(255, 255, 255, 0.30)',
+  low: '#8FA1D0',
+  medium: '#E09CB5',
+  high: '#BEDBB0',
+};
+
 export const CardForm = ({ taskData, onClose }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [level, setLevel] = useState("none");
+  console.log('level', level);
+
+  useEffect(() => {
+    let newLevel = level;
+    if(taskData?.priority){
+      newLevel = taskData.priority;
+    };
+    setLevel(newLevel);
+   }, [taskData]);
+
+// useState = {
+//   taskData.priority ? taskData.priority : withoutPriority,
+//   labelColor: taskData?.levelIndex
+//       ? labelColors[taskData.levelIndex]
+//       : labelColors[0],
+//     deadline: taskData?.endDate || new Date(),
+// }
+
 
   const initialValues = {
     title: taskData?.title || '',
     description: taskData?.description || '',
-    labelColor: taskData?.levelIndex
-      ? labelColors[taskData.levelInex]
-      : labelColors[0],
-    deadline: taskData?.endDate || new Date(),
+    // labelColor: taskData?.levelIndex
+    //   ? labelColors[taskData.levelIndex]
+    //   : labelColors[0],
+    // deadline: taskData?.endDate || new Date(),
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
@@ -70,20 +96,47 @@ export const CardForm = ({ taskData, onClose }) => {
             <ErrorMessage name="description" />
           </label>
           <label className={s.item_tittle}>Label Color</label>
-          <div className="label_color">
-            {labelColors.map(color => (
-              <label key={color}>
-                <Field
-                  type="radio"
-                  name="labelColor"
-                  value={color}
-                  checked={values.labelColor === color}
-                  onBlur={touched.fieldName && errors.fieldName}
-                />
-                <span style={{ backgroundColor: color }}></span>
-              </label>
+          {/* <div className={s.label_color}> */}
+            {Object.entries(colorsToLables).map(([code, colorL]) => (
+            // Вариант 1
+              // <li>
+              //   <label className={s.lowInput} styles={{ color: colorL }}>
+              //     <input
+              //       className={s.lowInput}
+              //       type="radio"
+              //       value={code}
+              //       checked={level === code}
+              //       onChange={({ target }) => setLevel(target.value)}
+              //     />
+              //   </label>
+              // </li>
+              <label key={code}>
+              <Field
+              styles={{ color: colorL }}
+             // className={s.lowInput}
+              type="radio"
+              name="labelColor"
+              value={code}
+              checked={level === code}
+              onChange={({ target }) => setLevel(target.value)}
+             />
+           </label>
+              //Вариант 2
+              // <label key={code}>
+              //   <Field
+              //   // className={s.lowInput}
+              //     type="radio"
+              //     name="labelColor"
+              //     value={code}
+              //     checked={values.level === code}
+              //     onBlur={touched.fieldName && errors.fieldName}
+              //   />
+              //   <span style={{ backgroundColor: color }}></span>
+              // </label>
+              // вариант 3
+         
             ))}
-          </div>
+          {/* </div> */}
           <ErrorMessage name="labelColor" />
           <label className={s.item_tittle}>Deadline</label>
           <DatePicker

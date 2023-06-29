@@ -12,6 +12,9 @@
   width: 100%;
   cursor: pointer;
   margin-top: 40px;
+  &:hover{
+    opacity: 0.7;
+  }
 }
 
 .btnContext {

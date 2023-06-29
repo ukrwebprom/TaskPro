@@ -9,11 +9,13 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
 
+
 export const RegisterForm = () => {
   // const {userRegister} = useUser();
 const dispatch = useDispatch();
 const [type,setType]= useState("password");
-const [iconName, setIconName]= useState("#eye-icon")
+const [iconName, setIconName]= useState("#eye-icon");
+
 
 const handleShow=(e)=>{
   const gettype = e.currentTarget.value;

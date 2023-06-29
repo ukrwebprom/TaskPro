@@ -25,7 +25,7 @@ export const fetchBoards = createAsyncThunk(
     'boards/addBoard',
     async (body, thunkAPI) => {
       try {
-        const response = await axios.post('api/contacts', { ...body });
+        const response = await axios.post('/boards', { ...body });
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -56,7 +56,7 @@ export const fetchBoards = createAsyncThunk(
     }
   );
 
-   /*
+/*
  * PATCH @ /boards
  * headers: Authorization: Bearer token
  */
@@ -92,6 +92,77 @@ export const fetchBoards = createAsyncThunk(
           }
         }
       );
+
+
+/*
+ * POST @ /columns/:id/tasks
+ * headers: Authorization: Bearer token
+ */
+export const addTask = createAsyncThunk(
+  'boards/addTask',
+  async ({_id,body}, thunkAPI) => {
+    try {
+      const response = await axios.post(`/columns/${_id}/tasks`, { ...body });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+
+/*
+ * POST @ /columns
+ * headers: Authorization: Bearer token
+ */
+export const addColumn = createAsyncThunk(
+  'boards/addColumn',
+  async (body, thunkAPI) => {
+    try {
+      const response = await axios.post('/columns', { ...body });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+/*
+ * PATCH @ /columns/:id
+ * headers: Authorization: Bearer token
+ */
+export const updateColumnTitle = createAsyncThunk(
+  'boards/updateColumnTitle',
+  async (column, thunkAPI) => {
+    const { _id, title } = column;
+
+    try {
+      const { data } = await axios.patch(`/columns/${_id}`, {
+        title,
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+    /*
+ * DELETE @ /columns/:id
+ * headers: Authorization: Bearer token
+ */
+
+    export const deleteColumn = createAsyncThunk(
+      'boards/deleteColumn',
+      async (id, thunkAPI) => {
+        try {
+          const res = await axios.delete(`/columns/${id}`);
+          return res.data;
+        } catch (error) {
+          return thunkAPI.rejectWithValue(error.message);
+        }
+      }
+);
 
         /*
  * GET @ /boards/:id

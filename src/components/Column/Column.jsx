@@ -62,7 +62,7 @@ export const Column = ({data}) => {
               <Task
                 key={nanoid()}
                 taskData={task}
-                columnList={['todo', 'done']}
+                columnList={[{name: 'todo'}, {name: 'Done'}]}
               />
             )
           )}

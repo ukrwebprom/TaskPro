@@ -30,7 +30,7 @@ const dispatch = useDispatch();
         <button type="button" className={css.logoutButton}>
           <Icon name={"#login-icon"} sprite={2} width="32" height="32" />
           {/* <span onClick={() => userLogout()}>Log out</span> */}
-          <span onClick={() => dispatch(logout)}>Log out</span>
+          <span onClick={() => dispatch(logout())}>Log out</span>
         </button>
       </div>
     </div>

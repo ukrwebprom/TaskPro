@@ -21,7 +21,7 @@ const MainButton = ({
         {!!iconName?.length && (
           <div className={css.iconBtn}>
             <Icon
-              color='rgba(255, 255, 255, 1)'
+              // color='rgba(255, 255, 255, 1)'
               name={iconName}
               width='14px'
               height='14px'

@@ -3,6 +3,7 @@ import {
   selectBoards,
   selectError,
   selectCurrentBoard,
+  selectCurrentBoardData
 } from 'redux/boards/selectors';
 
 export const useBoards = () => {
@@ -10,9 +11,12 @@ export const useBoards = () => {
   const current = useSelector(selectCurrentBoard);
   const error = useSelector(selectError);
 
+  const currentData = useSelector(selectCurrentBoardData);
+
   return {
     boards,
     current,
     error,
+    currentData
   };
 };

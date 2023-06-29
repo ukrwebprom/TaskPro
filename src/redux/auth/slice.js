@@ -7,7 +7,6 @@ const handlePending = (state) => {
 
 const handleRejected = (state, action) => {
   state.error = action.payload;
-  console.log(action.payload);
   state.isRefreshing = false;
 };
 
@@ -60,6 +59,7 @@ const authSlice = createSlice({
         state.token = null;
         state.refreshToken = null;
         state.isLoggedIn = false;
+        state.isRefreshing = false;
         state.error = null;
       })
       .addCase(getMe.pending, handlePending)

@@ -98,23 +98,32 @@
   }
   .error{
     position: absolute;
-    top:100%;
-    right: 0;
+    display: flex;
+  bottom:-100;
+  right: 0;
+    width: 100%;
+    height: 12px;
+  border-radius: 8px;
     font: "Poppins";
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 400;
     font-style: normal;
+   justify-content: flex-end;
+   align-items: center;
     line-height: 21px;
-    letter-spacing:  -2%;
-    color:#BEDBB0;
-  
+    letter-spacing: -1%;
+    opacity: 0.9;
+    color:#e66666;;
   }
-  .eyeicon{
-    position: absolute;
-    height: 18px;
-    top: 50%;
-    right: 0; 
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    opacity: 0.4;
-  }
+
+.eyeicon{
+  position: absolute;
+  top: 50%;
+display: block;
+  transform: translate(-50%, -50%);
+  right: 0; 
+  color: #ffffff;
+  background-color:transparent;
+  border: transparent;
+  opacity: 0.4;
+}

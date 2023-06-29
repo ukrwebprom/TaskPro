@@ -1,3 +1,7 @@
+@import "..//..//variables.module.css";
+a{
+    text-decoration:none;
+}
 .container {
     width:100%;
     height:100vh;
@@ -15,3 +19,54 @@
     justify-content: center;
     align-items: center;
 }
+
+.logowrap{
+display: flex;
+width: 100%;
+gap: 14px;
+justify-content: center;
+margin-bottom: 24px;
+}
+.regbtn{
+    width: 344px;
+    /* width:335px; */
+    background-color: #161616;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    height: 49px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    margin-bottom: 14px;
+}
+.paragraph{
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -2%;
+    margin-bottom: 48px;
+}
+.regbtntext {    display: inline-block;
+    text-align: start;
+    font: "Poppins";
+   font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 27px;
+   color: #FFFFFF;
+
+     }
+     .logintext{
+        display: inline-block;
+        text-align: start;
+        font: "Poppins";
+       font-weight: 500;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 27px;
+        color:#161616
+     }
+

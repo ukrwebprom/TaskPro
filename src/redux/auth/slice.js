@@ -22,7 +22,7 @@ const authSlice = createSlice({
         },
         token: null,
         error: null,
-        isLoggedIn: false,
+        isLoggedIn: null,
         isRefreshing: false
     },extraReducers: builder =>
     builder

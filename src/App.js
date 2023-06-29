@@ -47,8 +47,8 @@ function App() {
         </Route>
         
         <Route path='/' element={<RestrictedRoute />}>
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/auth/:id" element={<Auth />} />
+          <Route path="welcome" element={<Welcome />} />
+          <Route path="auth/:id" element={<Auth />} />
         </Route>
         
         <Route path="*" element={<NoRoute />} />

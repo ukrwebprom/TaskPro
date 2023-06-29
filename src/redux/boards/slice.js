@@ -16,12 +16,20 @@ const boardsSlice = createSlice({
       items: [],
       isLoading: false,
       error: null,
-    },extraReducers: builder =>
+      currentBoard: null,
+    },
+    reducers: {
+      selectBoard(state, action) {
+        state.currentBoard = action.payload;
+      }
+    },
+    extraReducers: builder =>
     builder
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
+        state.currentBoard = 0;
       })
       .addCase(fetchBoards.pending, handlePending)
       .addCase(fetchBoards.rejected, handleRejected)
@@ -72,4 +80,5 @@ const boardsSlice = createSlice({
       // .addCase(getBoard.rejected, handleRejected)
 });
 
+export const { selectBoard } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;

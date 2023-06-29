@@ -11,7 +11,7 @@ import FiltersModal from "components/Filters/FiltersModal";
 import { Background } from "components/Background/Background";
 
 const DashBoard = () => {
-  const {boards, current} = useBoards();
+  const {boards, current, currentData} = useBoards();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
  /*  
@@ -60,7 +60,7 @@ const DashBoard = () => {
       <Background>
       <div className={css.dashboardContainer}>
       <div className={css.dashboardHeader}>
-        <h2 className={css.dashboardTitle}>{boards[current].title}</h2>
+        <h2 className={css.dashboardTitle}>{currentData.title}</h2>
 
 {/*         <FiltersButton onClick={openModal} /> */}
 {/*         {isModalOpen && (
@@ -74,8 +74,8 @@ const DashBoard = () => {
       </div>
       <div className={css.listArea}>
         <ul className={css.columnsList}>
-          {boards[current].columns.length > 0 &&
-            boards[current].columns.map((column) => {
+          {currentData.columns.length > 0 &&
+            currentData.columns.map((column) => {
               return (
                 <li key={column._id}>
                   <Column data={column} />

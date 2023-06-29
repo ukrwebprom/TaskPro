@@ -28,7 +28,7 @@
 .columnMiddle{
     flex-shrink: 2;
     flex-grow: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 10px;
 }
 .listTask{

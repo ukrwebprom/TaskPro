@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useUser } from 'hooks/useUser';
+// import { useUser } from 'hooks/useUser';
 import slug from 'slug';
 import { getBoards, deleteBoard } from 'api/ServerAPI';
 import BoardsItem from './BoardsItem';
@@ -10,9 +10,10 @@ import css from '../Sidebar.module.css';
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
+  const [currBoard, setCurrentBoard] = useState(null)
   
   const { boardName } = useParams();
-  const { setCurrentBoard } = useUser();
+  // const { setCurrentBoard } = useUser();
   const isInit = useRef(false);
   const [boards, setBoards] = useState([]);
   const [active, setActive] = useState(0);
@@ -37,26 +38,41 @@ const Boards = () => {
     } else onSelectBoard(0);
   }, [boardName, boards, onSelectBoard, setCurrentBoard]);
 
-  useEffect(() => {
-    const getBoardList = async () => {
-      console.log("iascsc");
-      isInit.current = true;
-      try {
-        const boards = await getBoards();
-        console.log(boards);
-        setBoards(boards);
-      } catch(err) {
-        console.log(err)
-      }
+  // useEffect(() => {
+  //   const getBoardList = async () => {
+  //     console.log("iascsc");
+  //     isInit.current = true;
+  //     try {
+  //       const boards = await getBoards();
+  //       console.log(boards);
+  //       setBoards(boards);
+  //     } catch(err) {
+  //       console.log(err)
+  //     }
       
-    };
-    if (!isInit.current) getBoardList();
-  }, []);
+  //   };
+  //   if (!isInit.current) getBoardList();
+  // }, []);
+
+  // useEffect(() => {
+  //   if (boards.length > 0) initBoards();
+  //   else navigate('/home', { replace: true });
+  // }, [boards, initBoards]);
+
+  // const handleDelete = async id => {
+  //   try {
+  //     await deleteBoard(id);
+  //     const updatedList = boards.filter(board => board._id !== id);
+  //     setBoards(updatedList);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   useEffect(() => {
     if (boards.length > 0) initBoards();
     else navigate('/home', { replace: true });
-  }, [boards, initBoards]);
+  }, [boards, initBoards, navigate]);
 
   const handleDelete = async id => {
     try {

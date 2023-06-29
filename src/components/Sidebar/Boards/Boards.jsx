@@ -24,10 +24,11 @@ const Boards = () => {
     const boardIndex = boards.map((b) => slug(b.title)).indexOf(boardName);
     if (boardIndex !== -1) dispatch(selectBoard(boardIndex));
     else {
+      dispatch(selectBoard(0));
       const boardSlug = slug(boards[0].title);
       navigate(`/home/${boardSlug}`, { replace: true });
     }
-  }, [boardName, boards, current, navigate, dispatch]);
+  }, [boardName, boards, navigate, dispatch]);
 
   useEffect(() => {
     if (boards.length > 0) ifSlug();

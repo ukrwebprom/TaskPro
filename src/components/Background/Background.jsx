@@ -9,10 +9,10 @@ export const Background = ({children}) => {
     const userRatio = useMedia('(-webkit-min-device-pixel-ratio: 2)')? "2x":"1x";
     const userScreen = isWide? "1280" : isMobile? "320-min" : "768-min";
     const selectedBgIndex = boards[current].background;
-    
     const url = `https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%40${userRatio}_${userScreen}.jpg.webp`;
+    const bg = boards[current].background? {backgroundImage:`url(${url})`} : {backgroundColor:'white'};
     return(
-        <div className={css.back} style={{backgroundImage:`url(${url})`}}>
+        <div className={css.back} style={bg}>
             {children}
         </div>
     )

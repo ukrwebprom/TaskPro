@@ -1,7 +1,6 @@
 import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
-import { Background } from 'components/Background/Background';
 import { Header } from 'components/Header/Header';
 
 import { useAuth } from 'hooks/useAuth';

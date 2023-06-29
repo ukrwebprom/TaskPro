@@ -10,33 +10,32 @@ const Boards = () => {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards.items);
   const [currBoard, setCurrentBoard] = useState(null);
+  const { boards, current } = useBoards();
   const { boardName } = useParams();
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onSelectBoard = useCallback(
-    (i) => {
-      setActive(i);
-      setCurrentBoard(boards[i]);
-      const title = boards[i].title;
-      const makeSlug = slug(title);
-      navigate(makeSlug, { replace: true });
-    },
-    [boards, navigate, setCurrentBoard]
-  );
+  const handleSelect = (index) => {
+    dispatch(selectBoard(index));
+    const boardSlug = slug(boards[index].title);
+    navigate(`/home/${boardSlug}`, { replace: true });
+  };
+  const handleDelete = (id) => dispatch(deleteBoard(id));
 
-  const initBoards = useCallback(() => {
+  const ifSlug = useCallback(() => {
     const boardIndex = boards.map((b) => slug(b.title)).indexOf(boardName);
-    if (boardIndex !== -1) {
-      setCurrentBoard(boards[boardIndex]);
-      setActive(boardIndex);
-    } else onSelectBoard(0);
-  }, [boardName, boards, onSelectBoard, setCurrentBoard]);
+    if (boardIndex !== -1) dispatch(selectBoard(boardIndex));
+    else {
+      const boardSlug = slug(boards[0].title);
+      navigate(`/home/${boardSlug}`, { replace: true });
+    }
+  }, [boardName, boards, current, navigate, dispatch]);
 
   useEffect(() => {
-    if (boards.length > 0) initBoards();
+    if (boards.length > 0) ifSlug();
     else navigate("/home", { replace: true });
-  }, [boards, initBoards, navigate]);
+  }, [boards, ifSlug, navigate]);
 
   return (
     <div className={css.boards}>
@@ -44,12 +43,12 @@ const Boards = () => {
         <ul className={css.projects}>
           {boards.map((board, index) => (
             <li
-              className={index === active ? css.boardActive : css.board}
+              className={index === current ? css.boardActive : css.board}
               key={board._id}>
               <BoardsItem
                 index={index}
                 board={board}
-                setActive={onSelectBoard}
+                setActive={handleSelect}
               />
             </li>
           ))}

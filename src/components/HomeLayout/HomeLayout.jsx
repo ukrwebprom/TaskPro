@@ -1,7 +1,7 @@
 import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
-// import { useUser } from 'hooks/useUser';
+import { Background } from 'components/Background/Background';
 import { Header } from 'components/Header/Header';
 
 import { useAuth } from 'hooks/useAuth';
@@ -22,7 +22,9 @@ export const HomeLayout = ({children}) => {
                 <div className={css.header}>
                     <Header toggleSidebar={setIsSidebar}/>
                 </div>
-                {children}
+                <Background>
+                    {children}
+                </Background>
             </div>
             
         </div>

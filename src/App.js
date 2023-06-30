@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Routes, Route, useSearchParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "routes/PrivateRoute";
 import { RestrictedRoute } from "routes/RestrictedRoute";
 import { Navigate } from "react-router-dom";

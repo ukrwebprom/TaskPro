@@ -30,9 +30,6 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
     },
-    userLoginWithGoogle: (state) => {
-      state.isLoggedIn = true;
-    },
   },
   extraReducers: (builder) =>
     builder

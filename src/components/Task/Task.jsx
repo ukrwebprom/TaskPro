@@ -51,7 +51,6 @@ const Task = ({
   avaliableColumns,
   index,
   taskData,
-  columnList,
 }) => {
   const authContext = useAuth();
   const { user } = authContext;
@@ -109,7 +108,7 @@ const Task = ({
               <Tooltip title="Move">
                 <button
                   aria-describedby={id}
-                  disabled={!columnList.length}
+                  disabled={!Object.keys(avaliableColumns).length}
                   type="button"
                   className={css.icon_buttons}
                   onClick={event => setMoveAnchorEl(event.currentTarget)}

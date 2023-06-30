@@ -69,7 +69,6 @@ export const Column = ({
                 index={idx}
                 key={nanoid()}
                 taskData={task}
-                columnList={[{name: 'todo'}, {name: 'Done'}]}
               />
             )
           )}

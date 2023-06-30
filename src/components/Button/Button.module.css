@@ -4,6 +4,7 @@
   justify-content: center;
   font-weight: 500;
   height: 49px;
+  width: 100%;
   outline: none;
   color: var(--btn-text-color);
   border-radius: 8px;

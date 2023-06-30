@@ -9,6 +9,8 @@ import { Column } from "components/Column/Column";
 import FiltersButton from "components/Filters/FiltersButton";
 import FiltersModal from "components/Filters/FiltersModal";
 import { Background } from "components/Background/Background";
+import { CardForm } from "components/forms/CardForm/CardForm";
+
 
 const DashBoard = () => {
   const {boards, current} = useBoards();
@@ -87,9 +89,11 @@ const DashBoard = () => {
               <div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add
               another column
             </Button>
+        
           </li>
         </ul>
       </div>
+      
     </div>
     </Background>
     }

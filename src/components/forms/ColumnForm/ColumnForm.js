@@ -29,13 +29,14 @@ export const ColumnForm = ({ setTitle, onClose, title }) => {
       {({ isSubmitting, dirty, handleSubmit }) => (
           <div className={s.wrap}>
         <Form onSubmit={handleSubmit}>
-          <p className={s.title}>Add column</p>
-          <label>
+             <label  className={s.label}>
             <Field 
              className={s.input}
             type="text" name="title"
             placeholder="Title"  />
-            <ErrorMessage name="title" />
+            <ErrorMessage name="title" 
+            component="div"
+            className={s.error}/>
           </label>
 
           <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 

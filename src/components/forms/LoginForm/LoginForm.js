@@ -7,13 +7,14 @@ import s from "./LoginForm.module.css"
 import { useState } from "react";
 import { login } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import { useAuth } from "hooks/useAuth.js";
 
 export const LoginForm = () => {
   // const {userLogin} = useUser();
   const dispatch = useDispatch();
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")
-  const[error,setError]=useState(false)
+  const {error} = useAuth();
   const handleShow=(e)=>{
     const gettype = e.currentTarget.value;
      if (gettype==="password"){
@@ -63,7 +64,7 @@ export const LoginForm = () => {
           <div className={s.titleFild}>
           <a  href="register" className= {s.regtitle}>Registration</a>
           <p  className= {s.regtitleActive}>Log In</p>
-          {error && <div className={s.mistake}>* {error.message}</div>} 
+          {error && <div className={s.mistake}>*{error}</div>} 
           </div>
           <div className={s.field}>
           <label className={s.label}>

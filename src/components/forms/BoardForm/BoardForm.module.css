@@ -1,14 +1,14 @@
 /*фон*/
-.formbackround {
+/* .formbackround {
 margin: auto;
 background-color: var(--main-background-color) ;
 width: 350px;
 height: 433px;
 border-radius: 8px;
 padding: 24px;
-}
+} */
 /*заголовки*/
-.title{
+/* .title{
   margin: 0;
   text-align: start;
   font: "Poppins";
@@ -17,7 +17,7 @@ padding: 24px;
   font-size: 18px;
   line-height: 27px;
   color: var(--main-tittle-color);
-}
+} */
 
 .itemtitle{
   color: var( --main-tittle-color); 
@@ -44,7 +44,7 @@ padding: 24px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
 
-.input::placeholder{
+/* .input::placeholder{
   font: "Poppins";
   font-size: 14px;
   font-weight: 400;
@@ -53,7 +53,7 @@ padding: 24px;
 letter-spacing: -2%;
   color:var(--placeholder-color);
   }
-
+ */
 
 /*иконки*/
 
@@ -114,18 +114,20 @@ input[type="radio"] {
     border: 2px solid  var( --accent-color)
   }
   /*кнопка*/
-.btn{
-  display: block;
-  padding: 0px;
-  margin: 0px;
-  min-width: 302px;
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
   height: 49px;
-  background-color:  #BEDBB0;
-  font-size: 14px; 
+  width: 100%;
+  outline: none;
+  color: var(--btn-text-color);
   border-radius: 8px;
-  border: transparent;
-  cursor: pointer;
-  color: #161616;
-  line-height: 21px;
+  background: var(--accent-color);
+  border: none;
+  cursor:pointer;
 }
- 
+
+  

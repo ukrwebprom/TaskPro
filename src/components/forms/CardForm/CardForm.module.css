@@ -1,14 +1,6 @@
 @import "../../../variables.module.css";
 @import "../../../fonts/fonts.css";
 
-/* .formbackround {
-    margin: auto;
-    background-color: var(--main-background-color) ;
-    width: 350px;
-    height: 522px;
-    border-radius: 8px;
-    padding: 24px;
-    } */
     /*заголовки*/
     .title{
       margin: 0;

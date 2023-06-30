@@ -7,6 +7,7 @@ import Icon from "components/Icon/Icon";
 // import { useUser } from "hooks/useUser";
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { useAuth } from "hooks/useAuth.js";
 
 
 
@@ -15,12 +16,11 @@ export const RegisterForm = () => {
 const dispatch = useDispatch();
 const [type,setType]= useState("password");
 const [iconName, setIconName]= useState("#eye-icon");
-
+const {error} = useAuth();
 
 const handleShow=(e)=>{
   const gettype = e.currentTarget.value;
-  console.log(gettype)
-  if (gettype==="password"){
+   if (gettype==="password"){
     setType("text");
     setIconName("#eye-slash-icon")
   } else{
@@ -68,7 +68,7 @@ const handleShow=(e)=>{
           <div className={s.titleFild}>
           <p  className= {s.regtitleActive}>Registration</p>
           <a href="log"   className= {s.regtitle}>Log In</a>
-          {error && <div className={s.mistake}>* {error.message}</div>} 
+          {error && <div className={s.mistake}>*{error.message}</div>} 
           </div>
          < div className={s.field}>
         

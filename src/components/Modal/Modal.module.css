@@ -12,19 +12,19 @@
 
 .modal_content {
   display: grid;
+  position: absolute;
   background-color: var(--pop-up-bg-color);
   border-radius: 8px;
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   /* width: 350px; */
   padding: 24px;
-  position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   align-items: flex-start;
   display: inline-grid;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 @media screen and (max-width: 767px) {
@@ -62,7 +62,7 @@
 }
 
 .modal_title{
-  margin: 0;
+  margin-bottom: 24px;
   text-align: start;
   font-family: "Poppins";
   font-weight: 500;

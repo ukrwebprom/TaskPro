@@ -32,9 +32,7 @@ const Welcome = () => {
         <a href="auth/login" className={s.logintext}>
           Log In
         </a>
-        <a href={"https://taskpro-41yf.onrender.com/user/google"}>
-          Login with Google
-        </a>
+        <a href={"http://localhost:3001/user/google"}>Login with Google</a>
         {/* https://taskpro-41yf.onrender.com */}
         {/* http://localhost:3001 */}
 

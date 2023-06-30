@@ -34,6 +34,7 @@ const Welcome = () => {
         </a>
         <a href={"http://localhost:3001/user/google"}>Login with Google</a>
         {/* https://taskpro-41yf.onrender.com */}
+        {/* http://localhost:3001 */}
 
         {/* example of using SVG sprite */}
         {/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>

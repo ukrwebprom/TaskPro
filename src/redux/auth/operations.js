@@ -1,8 +1,9 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
+axios.defaults.baseURL = "http://localhost:3001";
 /* https://taskpro-41yf.onrender.com */
+/* http://localhost:3001 */
 
 // Utility to add JWT
 export const setAuthHeader = (token) => {

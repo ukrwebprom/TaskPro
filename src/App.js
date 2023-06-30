@@ -10,7 +10,7 @@ import { useAuth } from "hooks/useAuth";
 import { getMe } from "redux/auth/operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { refreshTokens, userLoginWithGoogle } from "redux/auth/slice";
+import { refreshTokens } from "redux/auth/slice";
 
 const Home = lazy(() => import("./pages/Home"));
 const Auth = lazy(() => import("./pages/Auth"));
@@ -21,9 +21,9 @@ const DashBoard = lazy(() => import("./components/Dashboard/Dashboard"));
 const getQueryToken = () => {
   const queryParams = new URLSearchParams(window.location.search);
   const token = queryParams.get("token");
-  const refreshTokens = queryParams.get("refreshTokens");
+  const refreshToken = queryParams.get("refreshToken");
 
-  return { token, refreshTokens };
+  return { token, refreshToken };
 };
 
 /* import Home from './pages/Home';
@@ -33,25 +33,18 @@ import DashBoard from './components/Dashboard/Dashboard';
 import Screens from './pages/Screens'; */
 
 function App() {
-  // const { isLogged, userLoginWithGoogle } = useUser();
+  // const { isLogged } = useUser();
 
   // const {isLogged} = useUser();
   const { isLoggedIn, isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
-  // const [searchParams] = useSearchParams();
-  // const token = searchParams.get("token");
-  // const refreshToken = searchParams.get("refreshToken");
-
   useEffect(() => {
     const { token, refreshToken } = getQueryToken();
     if (token && refreshToken) {
       dispatch(refreshTokens({ token, refreshToken }));
-      // userLoginWithGoogle();
     }
-  }, [dispatch]);
 
-  useEffect(() => {
     dispatch(getMe());
   }, [dispatch]);
 

@@ -26,17 +26,10 @@ const getQueryToken = () => {
   return { token, refreshToken };
 };
 
-/* import Home from './pages/Home';
-import Auth from './pages/Auth';
-import Welcome from './pages/Welcome';
-import DashBoard from './components/Dashboard/Dashboard';
-import Screens from './pages/Screens'; */
 
 function App() {
-  // const { isLogged } = useUser();
 
-  // const {isLogged} = useUser();
-  const { isLoggedIn, isRefreshing } = useAuth();
+  const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,7 +43,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* {(isLogged === null)? <p>Checking user</p> */}
       {isLoggedIn === null ? (
         <p>Checking user</p>
       ) : (

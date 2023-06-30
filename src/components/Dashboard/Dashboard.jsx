@@ -6,10 +6,10 @@ import btn from "../Button/Button.module.css";
 import { useBoards } from 'hooks/useBoards'
 /* import Button from "components/Button"; */
 import css from "./Dashboard.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Column } from "components/Column/Column";
-import FiltersButton from "components/Filters/FiltersButton";
-import FiltersModal from "components/Filters/FiltersModal";
+/* import FiltersButton from "components/Filters/FiltersButton";
+import FiltersModal from "components/Filters/FiltersModal"; */
 import { Background } from "components/Background/Background";
 import Modal from "components/Modal/Modal";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';

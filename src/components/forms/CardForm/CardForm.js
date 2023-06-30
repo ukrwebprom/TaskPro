@@ -12,7 +12,7 @@ const labelColors = [
   '#BEDBB0',
   'rgba(255, 255, 255, 0.30)',
 ];
-
+console.log(labelColors);
 const colorsToLables = {
   none: 'rgba(255, 255, 255, 0.30)',
   low: '#8FA1D0',
@@ -30,7 +30,7 @@ export const CardForm = ({ taskData, onClose }) => {
       newLevel = taskData.priority;
     };
     setLevel(newLevel);
-   }, [taskData]);
+   }, [taskData, level]);
 
 // useState = {
 //   taskData.priority ? taskData.priority : withoutPriority,

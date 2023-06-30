@@ -136,7 +136,7 @@ export const updateColumnTitle = createAsyncThunk(
   async (column, thunkAPI) => {
     const { _id, title } = column;
     try {
-      const { data } = await axios.patch(`/columns/${_id}`, {
+      await axios.patch(`/columns/${_id}`, {
         title,
       });
       return column;
@@ -155,7 +155,7 @@ export const updateColumnTitle = createAsyncThunk(
       'boards/deleteColumn',
       async (id, thunkAPI) => {
         try {
-          const res = await axios.delete(`/columns/${id}`);
+          await axios.delete(`/columns/${id}`);
           return id;
         } catch (error) {
           return thunkAPI.rejectWithValue(error.message);

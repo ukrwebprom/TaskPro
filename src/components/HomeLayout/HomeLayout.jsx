@@ -2,7 +2,6 @@ import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { Header } from 'components/Header/Header';
-import Task from '../Task/Task';
 
 import { useAuth } from 'hooks/useAuth';
 

@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
+import { CardForm } from 'components/forms/CardForm/CardForm';
 import { updateColumnTitle, deleteColumn } from 'redux/boards/operations';
 import Modal from '../Modal/Modal';
 import Task from 'components/Task/Task';
@@ -12,15 +13,13 @@ import css from './Column.module.css';
 export const Column = ({data}) => {
   const dispatch = useDispatch();
   const [showColumnModal, setShowColumnModal] = useState(false);
-  const [showModalCreateTasks, setShowModalCreateTasks] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false);
 
   const toggleColumnModal = () => setShowColumnModal(c => !c);
   const handleEditColumn = value => dispatch(updateColumnTitle({...data, ...value}));
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
-  const toggleModalCreateTasks = () => {
-    setShowModalCreateTasks(!showModalCreateTasks);
-  };
+  const toggleTaskModal = () => setShowTaskModal(c => !c);
 /*   const makeTask = task => {
     if (listTask === null) {
       setListTask([task]);
@@ -68,7 +67,7 @@ export const Column = ({data}) => {
       <button
         type="button"
         className={css.addCardButton}
-        onClick={toggleModalCreateTasks}
+        onClick={toggleTaskModal}
       >
         {' '}
         <div className={css.wrapperIcon}>
@@ -82,6 +81,11 @@ export const Column = ({data}) => {
     {showColumnModal && ( 
       <Modal onClose={toggleColumnModal} name = "Edit column">
         <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleColumnModal} />
+      </Modal>
+    )}
+    {showTaskModal && ( 
+      <Modal onClose={toggleTaskModal} name = "Add card">
+        <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
       </Modal>
     )}
     </>

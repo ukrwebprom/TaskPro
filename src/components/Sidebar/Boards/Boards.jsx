@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -8,6 +8,8 @@ import { selectBoard } from "redux/boards/slice";
 import { deleteBoard } from 'redux/boards/operations';
 import BoardsItem from './BoardsItem';
 import css from '../Sidebar.module.css';
+import Modal from 'components/Modal/Modal';
+import { BoardForm } from 'components/forms/BoardForm/BoardForm';
 
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
@@ -17,13 +19,18 @@ const Boards = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(c => !c);
+
   const handleSelect = index => {
     dispatch(selectBoard(index));
     const boardSlug = slug(boards[index].title);
     navigate(`/home/${boardSlug}`, { replace: true });
   }
   const handleDelete = id => dispatch(deleteBoard(id));
+  const handleEdit = () => {
 
+  }
   const ifSlug = useCallback(() => {
     const boardIndex = boards.map(b => slug(b.title)).indexOf(boardName);
     if (boardIndex !== -1) dispatch(selectBoard(boardIndex));
@@ -40,7 +47,7 @@ const Boards = () => {
   }, [boards, ifSlug, navigate]);
 
   return (
-    
+    <>
     <div className={css.boards}>
       {boards.length > 0 && (
         <ul className={css.projects}>
@@ -51,6 +58,7 @@ const Boards = () => {
             >
               <BoardsItem
                 index={index}
+                handleEdit={toggleModal}
                 handleDelete={handleDelete}
                 board={board}
                 setActive={handleSelect}
@@ -60,6 +68,10 @@ const Boards = () => {
         </ul>
       )}
     </div>
+    {showModal && <Modal onClose={toggleModal} name="Edit board">
+    <BoardForm onSubmitForm={handleEdit}/>
+    </Modal>}
+    </>
   );
 };
 

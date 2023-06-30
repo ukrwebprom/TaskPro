@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { addColumn } from 'redux/boards/operations';
 import Button from "components/Button/Button";
 import btn from "../Button/Button.module.css";
 import { useBoards } from 'hooks/useBoards'
@@ -9,10 +11,18 @@ import { Column } from "components/Column/Column";
 import FiltersButton from "components/Filters/FiltersButton";
 import FiltersModal from "components/Filters/FiltersModal";
 import { Background } from "components/Background/Background";
+import Modal from "components/Modal/Modal";
+import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 
 const DashBoard = () => {
-  const {boards, current} = useBoards();
+  const dispatch = useDispatch();
+  const {current, currentData} = useBoards();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => setIsModalOpen(c => !c)
+  const handleAddColumn = value => {
+    dispatch(addColumn({board: currentData._id,...value}));
+  }
 
  /*  
   const setBoardBg = async (newBgIndex) => {
@@ -60,7 +70,7 @@ const DashBoard = () => {
       <Background>
       <div className={css.dashboardContainer}>
       <div className={css.dashboardHeader}>
-        <h2 className={css.dashboardTitle}>{boards[current].title}</h2>
+        <h2 className={css.dashboardTitle}>{currentData.title}</h2>
 
 {/*         <FiltersButton onClick={openModal} /> */}
 {/*         {isModalOpen && (
@@ -74,8 +84,8 @@ const DashBoard = () => {
       </div>
       <div className={css.listArea}>
         <ul className={css.columnsList}>
-          {boards[current].columns.length > 0 &&
-            boards[current].columns.map((column) => {
+          {currentData.columns.length > 0 &&
+            currentData.columns.map((column) => {
               return (
                 <li key={column._id}>
                   <Column data={column} />
@@ -83,7 +93,7 @@ const DashBoard = () => {
               );
             })}
           <li>
-            <Button className={`${btn.btn} ${btn.column}`}>
+            <Button className={`${btn.btn} ${btn.column}`} onClick={toggleModal}>
               <div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add
               another column
             </Button>
@@ -93,6 +103,10 @@ const DashBoard = () => {
     </div>
     </Background>
     }
+    {isModalOpen && 
+    <Modal onClose={toggleModal} name = "Add column">
+      <ColumnForm setTitle={handleAddColumn} onClose={toggleModal} />
+    </Modal>}
     </>
    
   );

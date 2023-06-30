@@ -9,7 +9,6 @@ const MainButton = ({
   onClick,
   ...btnProps
 }) => {
-  console.log('iconName', iconName);
   return (
     <button
       className={css.btn}

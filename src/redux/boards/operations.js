@@ -179,3 +179,23 @@ export const updateColumnTitle = createAsyncThunk(
   //     }
   //   }
   // );
+
+
+/*
+ * PATCH @ /tasks/:id
+ * headers: Authorization: Bearer token
+ */
+
+/*   export const moveTaskToOtherColumn = createAsyncThunk(
+    'tasks/',
+    async ({ colomnId, taskId }, thunkAPI) => {
+      try {
+        const response = await axios.putch(taskId, {
+          column: colomnId,
+        });
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  ); */

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import EllipsisText from 'react-ellipsis-text';
 import Tooltip from '@mui/material/Tooltip';
@@ -10,6 +11,7 @@ import Modal from 'components/Modal/Modal';
 import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
+// import { moveTaskToOtherColumn } from 'redux/boards/operations';
 
 const levelsToIndexes = {
   0: 'Without priority',
@@ -54,6 +56,7 @@ const Task = ({
 }) => {
   const authContext = useAuth();
   const { user } = authContext;
+  const dispatch = useDispatch();
 
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
@@ -193,8 +196,11 @@ const Task = ({
               <ItemWrapper className={css.popoverItem} key={id} popStyles={popStyles}>
                 <button
                   onClick={() => {
-                    //TODO dispatch move here
-
+                    // TODO 
+                    /* dispatch(moveTaskToOtherColumn({
+                      colomnId: id,
+                      taskId: taskData._id,
+                    })); */
                     setMoveAnchorEl(null);
                   }}
                   className={css.popoverBtn}

@@ -85,7 +85,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload.id
+          column => column._id === action.payload._id
         );
 
         state.items[state.currentBoard].columns[index] = action.payload;
@@ -97,7 +97,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload.id
+          column => column._id === action.payload
         );
         state.items[state.currentBoard].columns.splice(index, 1);
       }).addCase(deleteColumn.rejected, handleRejected)

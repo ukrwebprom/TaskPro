@@ -60,7 +60,6 @@ const Task = ({ taskData, columnList }) => {
 
   const popStyles  = useMemo(() => getPopoverItems[user.theme], [user.theme]);
 
-  console.log('user', user);
   return (
     <>
       <ul className={css.wrapper}>

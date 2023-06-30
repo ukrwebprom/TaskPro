@@ -21,25 +21,24 @@ const colorsToLables = {
 };
 
 export const CardForm = ({ taskData, onClose }) => {
-  const [level, setLevel] = useState("none");
+  const [level, setLevel] = useState('none');
   console.log('level', level);
 
   useEffect(() => {
     let newLevel = level;
-    if(taskData?.priority){
+    if (taskData?.priority) {
       newLevel = taskData.priority;
-    };
+    }
     setLevel(newLevel);
-   }, [taskData]);
+  }, [taskData]);
 
-// useState = {
-//   taskData.priority ? taskData.priority : withoutPriority,
-//   labelColor: taskData?.levelIndex
-//       ? labelColors[taskData.levelIndex]
-//       : labelColors[0],
-//     deadline: taskData?.endDate || new Date(),
-// }
-
+  // useState = {
+  //   taskData.priority ? taskData.priority : withoutPriority,
+  //   labelColor: taskData?.levelIndex
+  //       ? labelColors[taskData.levelIndex]
+  //       : labelColors[0],
+  //     deadline: taskData?.endDate || new Date(),
+  // }
 
   const initialValues = {
     title: taskData?.title || '',
@@ -89,45 +88,44 @@ export const CardForm = ({ taskData, onClose }) => {
           </label>
           <label className={s.item_tittle}>Label Color</label>
           {/* <div className={s.label_color}> */}
-            {Object.entries(colorsToLables).map(([code, colorL]) => (
+          {Object.entries(colorsToLables).map(([code, colorL]) => (
             // Вариант 1
-              // <li>
-              //   <label className={s.lowInput} styles={{ color: colorL }}>
-              //     <input
-              //       className={s.lowInput}
-              //       type="radio"
-              //       value={code}
-              //       checked={level === code}
-              //       onChange={({ target }) => setLevel(target.value)}
-              //     />
-              //   </label>
-              // </li>
-              <label key={code}>
+            // <li>
+            //   <label className={s.lowInput} styles={{ color: colorL }}>
+            //     <input
+            //       className={s.lowInput}
+            //       type="radio"
+            //       value={code}
+            //       checked={level === code}
+            //       onChange={({ target }) => setLevel(target.value)}
+            //     />
+            //   </label>
+            // </li>
+            <label key={code}>
               <Field
-              styles={{ color: colorL }}
-             // className={s.lowInput}
-              type="radio"
-              name="labelColor"
-              value={code}
-              checked={level === code}
-              onChange={({ target }) => setLevel(target.value)}
-             />
-           </label>
-              //Вариант 2
-              // <label key={code}>
-              //   <Field
-              //   // className={s.lowInput}
-              //     type="radio"
-              //     name="labelColor"
-              //     value={code}
-              //     checked={values.level === code}
-              //     onBlur={touched.fieldName && errors.fieldName}
-              //   />
-              //   <span style={{ backgroundColor: color }}></span>
-              // </label>
-              // вариант 3
-         
-            ))}
+                styles={{ color: colorL }}
+                // className={s.lowInput}
+                type="radio"
+                name="labelColor"
+                value={code}
+                checked={level === code}
+                onChange={({ target }) => setLevel(target.value)}
+              />
+            </label>
+            //Вариант 2
+            // <label key={code}>
+            //   <Field
+            //   // className={s.lowInput}
+            //     type="radio"
+            //     name="labelColor"
+            //     value={code}
+            //     checked={values.level === code}
+            //     onBlur={touched.fieldName && errors.fieldName}
+            //   />
+            //   <span style={{ backgroundColor: color }}></span>
+            // </label>
+            // вариант 3
+          ))}
           {/* </div> */}
           <ErrorMessage name="labelColor" />
           <label className={s.item_tittle}>Deadline</label>
@@ -138,7 +136,7 @@ export const CardForm = ({ taskData, onClose }) => {
             iconName="#plus-icon"
             disabled={isSubmitting || !dirty}
             type="submit"
-/*             onClick={() => {}} */
+            /*             onClick={() => {}} */
           />
         </Form>
       )}

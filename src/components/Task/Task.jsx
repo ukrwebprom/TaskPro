@@ -47,7 +47,12 @@ const ItemWrapper = styled.li`
    }
 `;  
 
-const Task = ({ taskData, columnList }) => {
+const Task = ({
+  avaliableColumns,
+  index,
+  taskData,
+  columnList,
+}) => {
   const authContext = useAuth();
   const { user } = authContext;
 
@@ -87,15 +92,19 @@ const Task = ({ taskData, columnList }) => {
               </div>
             </div>
             <div className={css.icon_list}>
-            <Tooltip title="Attation">
+            <Tooltip title="din din">
+              <button 
+                type='button'
+                className={css.icon_buttons_bell}
+              >
             <Icon
-                    className={css.icon_info}
                     sprite={2}
                     name={'#bell-icon'}
                     width="16"
                     height="16"
-                    stroke="var( --index-label-color)"
+                    stroke="var( --accent-color)"
                   />
+                  </button>
             </Tooltip>
               <Tooltip title="Move">
                 <button
@@ -107,7 +116,7 @@ const Task = ({ taskData, columnList }) => {
                   variant="contained"
                 >
                   <Icon
-                    className={css.icon_info}
+                    // className={css.icon_info}
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"
@@ -148,7 +157,7 @@ const Task = ({ taskData, columnList }) => {
       </ul>
       {isEditTaskOpened && (
         <Modal
-          name={taskData.id ? 'Edit card' : 'Add card'}
+          name="Edit card"
           onClick={event => {
             if (event.currentTarget === event.target) {
               setEditTaskOpened(false);
@@ -181,13 +190,17 @@ const Task = ({ taskData, columnList }) => {
       >
         <PopupWrapper popStyles={popStyles}>
           <ul className={css.popover_list}>
-            {columnList?.map(column => (
-              <ItemWrapper className={css.popoverItem} key={column.name} popStyles={popStyles}>
+            {Object.entries(avaliableColumns)?.map(([id, title]) => (
+              <ItemWrapper className={css.popoverItem} key={id} popStyles={popStyles}>
                 <button
-                  onClick={() => setMoveAnchorEl(null)}
+                  onClick={() => {
+                    //TODO dispatch move here
+
+                    setMoveAnchorEl(null);
+                  }}
                   className={css.popoverBtn}
                 >
-                <p className={css.popoverStatus}>{column.name}</p>
+                <p className={css.popoverStatus}>{title}</p>
                 </button>
                 <Icon
                   sprite={2}

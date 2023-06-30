@@ -19,8 +19,8 @@
   /* width: 350px; */
   padding: 24px;
   position: absolute;
+  left: 50%;
   top: 50%;
-  left:0;
   transform: translate(-50%, 50%);
   align-items: flex-start;
   display: inline-grid;
@@ -28,7 +28,7 @@
   margin-top: 20px;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .modal_content {
     width: 335px;
           }               
@@ -40,7 +40,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
-}
+} */
 .modal_items{
   display: flex;
   justify-content: space-between;

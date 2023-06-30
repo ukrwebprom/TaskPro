@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {fetchBoards, addBoard, deleteBoard,updateBoardById, updateBoardBgById, addTask, addColumn,updateColumnTitle,deleteColumn } from '../boards/operations';
+import {fetchBoards, addBoard, deleteBoard,updateBoardById, updateBoardBgById, addTask, addColumn, updateColumnTitle, deleteColumn,updateTask, updateTaskPlace, deleteTask   } from '../boards/operations';
 
 const handlePending = state => {
     state.isLoading = true;
@@ -43,7 +43,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          board => board._id === action.payload.id
+          board => board._id === action.payload._id
         );
 
         state.items[index] = action.payload;
@@ -54,7 +54,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          board => board._id === action.payload.id
+          board => board._id === action.payload._id
         );
 
         state.items[index] = action.payload;
@@ -66,7 +66,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          board => board._id === action.payload.id
+          board => board._id === action.payload._id
         );
         state.items.splice(index, 1);
       if(state.items.length === 0) {
@@ -106,13 +106,60 @@ const boardsSlice = createSlice({
         state.error = null;
 
         const index = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload.id
+          column => column._id === action.payload._id
         );
 
         state.items[state.currentBoard].columns[index].tasks.push(action.payload);
       })
       .addCase(addTask.pending, handlePending)
       .addCase(addTask.rejected, handleRejected)
+      .addCase(updateTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const columnIndex = state.items[state.currentBoard].columns.findIndex(
+          column => column._id === action.payload.column
+        );
+
+        const taskIndex =  state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
+          task => task._id === action.payload._id
+        );
+
+        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex].push(action.payload);
+      })
+      .addCase(updateTask.pending, handlePending)
+      .addCase(updateTask.rejected, handleRejected)
+      .addCase(updateTaskPlace.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const columnIndex = state.items[state.currentBoard].columns.findIndex(
+          column => column._id === action.payload.column
+        );
+
+        const taskIndex =  state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
+          task => task._id === action.payload._id
+        );
+
+        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex] = action.payload;
+      })
+      .addCase(updateTaskPlace.pending, handlePending)
+      .addCase(updateTaskPlace.rejected, handleRejected)
+      .addCase(deleteTask.pending, handlePending)
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const columnIndex = state.items[state.currentBoard].columns.findIndex(
+          column => column._id === action.payload.column
+        );
+
+        const taskIndex =  state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
+          task => task._id === action.payload._id
+        );
+
+        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex].splice(taskIndex, 1);
+      }).addCase(deleteTask.rejected, handleRejected)
         // .addCase(getBoard.fulfilled, (state, action) => {
       //   state.isLoading = false;
       //   state.error = null;

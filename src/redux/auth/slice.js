@@ -82,5 +82,5 @@ const authSlice = createSlice({
       .addCase(updTheme.rejected, handleRejected),
 });
 
-export const { refreshTokens, userLoginWithGoogle } = authSlice.actions;
+export const { refreshTokens } = authSlice.actions;
 export const authReducer = authSlice.reducer;

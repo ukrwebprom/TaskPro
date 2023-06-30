@@ -111,7 +111,7 @@ const Task = ({
               <Tooltip title="Move">
                 <button
                   aria-describedby={id}
-                  disabled={!Object.keys(avaliableColumns).length}
+                  disabled={!Object.keys(avaliableColumns || {}).length}
                   type="button"
                   className={css.icon_buttons}
                   onClick={event => setMoveAnchorEl(event.currentTarget)}

@@ -190,10 +190,10 @@ export const updateColumnTitle = createAsyncThunk(
     'tasks/',
     async ({ colomnId, taskId }, thunkAPI) => {
       try {
-        const response = await axios.putch(taskId, {
+        await axios.patch(taskId, {
           column: colomnId,
         });
-        return response.data;
+        return { colomnId, taskId };
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }

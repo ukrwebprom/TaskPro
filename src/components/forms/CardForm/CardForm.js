@@ -12,7 +12,7 @@ const labelColors = [
   '#BEDBB0',
   'rgba(255, 255, 255, 0.30)',
 ];
-console.log(labelColors);
+
 const colorsToLables = {
   none: 'rgba(255, 255, 255, 0.30)',
   low: '#8FA1D0',
@@ -22,7 +22,6 @@ const colorsToLables = {
 
 export const CardForm = ({ taskData, onClose }) => {
   const [level, setLevel] = useState("none");
-  console.log('level', level);
 
   useEffect(() => {
     let newLevel = level;
@@ -30,7 +29,7 @@ export const CardForm = ({ taskData, onClose }) => {
       newLevel = taskData.priority;
     };
     setLevel(newLevel);
-   }, [taskData, level]);
+   }, [taskData]);
 
 // useState = {
 //   taskData.priority ? taskData.priority : withoutPriority,

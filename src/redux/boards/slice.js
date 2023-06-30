@@ -120,6 +120,14 @@ const boardsSlice = createSlice({
       // })
       // .addCase(getBoard.pending, handlePending)
       // .addCase(getBoard.rejected, handleRejected)
+
+      // .addCase(moveTaskToOtherColumn.pending, handlePending)
+      // .addCase(moveTaskToOtherColumn.rejected, handleRejected)
+      // .addCase(moveTaskToOtherColumn.fulfilled, (state, action) => {
+        // state.isLoading = false;
+        // state.error = null;
+        // 
+      // })
 });
 
 export const { selectBoard } = boardsSlice.actions;

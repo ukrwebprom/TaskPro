@@ -133,12 +133,12 @@ export const CardForm = ({ taskData, onClose }) => {
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker />
           <MainButton
-            btnName={taskData.id ? 'Edit' : 'Add'}
+            btnName={taskData?.id ? 'Edit' : 'Add'}
             iconColor="#2a2a2a"
             iconName="#plus-icon"
             disabled={isSubmitting || !dirty}
             type="submit"
-            onClick={() => {}}
+/*             onClick={() => {}} */
           />
         </Form>
       )}

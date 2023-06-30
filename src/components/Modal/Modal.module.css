@@ -20,7 +20,8 @@
   /* width: 350px; */
   padding: 24px;
   top: 50%;
-  transform: translate(-50%, -50%);
+  left:0;
+  transform: translate(-50%, 50%);
   align-items: flex-start;
   display: inline-grid;
   justify-content: center;

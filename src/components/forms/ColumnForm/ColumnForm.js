@@ -6,14 +6,13 @@ import Icon from 'components/Icon/Icon';
 import s from "./ColumnForm.module.css"
 
 
-export const ColumnForm = ({ setTitle, onClose, title }) => {
+export const ColumnForm = ({ setTitle, onClose, defaultValues }) => {
   const initialValues = {
-    title,
+    title: "",
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
-    setTitle(values.title);
+    setTitle(values);
     setSubmitting(false);
     resetForm();
     onClose();
@@ -21,7 +20,7 @@ export const ColumnForm = ({ setTitle, onClose, title }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={defaultValues? defaultValues : initialValues}
       validationSchema={validationColumnSchema}
       onSubmit={onSubmit}
       validateOnBlur

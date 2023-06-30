@@ -18,6 +18,14 @@ const Welcome = lazy(() => import("./pages/Welcome"));
 const DashBoard = lazy(() => import("./components/Dashboard/Dashboard"));
 /* const Screens = lazy(() => import('./pages/Screens')); */
 
+const getQueryToken = () => {
+  const queryParams = new URLSearchParams(window.location.search);
+  const token = queryParams.get("token");
+  const refreshTokens = queryParams.get("refreshTokens");
+
+  return { token, refreshTokens };
+};
+
 /* import Home from './pages/Home';
 import Auth from './pages/Auth';
 import Welcome from './pages/Welcome';
@@ -30,16 +38,18 @@ function App() {
   // const {isLogged} = useUser();
   const { isLoggedIn, isRefreshing } = useAuth();
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
-  const token = searchParams.get("token");
-  const refreshToken = searchParams.get("refreshToken");
+
+  // const [searchParams] = useSearchParams();
+  // const token = searchParams.get("token");
+  // const refreshToken = searchParams.get("refreshToken");
 
   useEffect(() => {
+    const { token, refreshToken } = getQueryToken();
     if (token && refreshToken) {
       dispatch(refreshTokens({ token, refreshToken }));
       // userLoginWithGoogle();
     }
-  }, [dispatch, token, refreshToken]);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getMe());

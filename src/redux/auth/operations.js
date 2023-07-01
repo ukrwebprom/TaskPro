@@ -1,19 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
-/* https://taskpro-41yf.onrender.com */
-/* http://localhost:3001 */
-
-// Utility to add JWT
-export const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-// Utility to remove JWT
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
-};
+import { clearAuthHeader, setAuthHeader } from "api/axiosSettings";
 
 /*
  * POST @ /user/login
@@ -34,6 +21,26 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+/*
+ * POST @ /user/refresh
+ * body: { email, password }
+ */
+
+// export const refresh = createAsyncThunk(
+//   "auth/refresh",
+//   async (refreshToken, thunkAPI) => {
+//     try {
+//       const resp = await axios.post("/user/refresh", { refreshToken });
+
+//       // After successful login, add the token to the HTTP header
+//       setAuthHeader(resp.data.token);
+//       return resp.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.response.data.message);
+//     }
+//   }
+// );
 
 /*
  * POST @ /user/register

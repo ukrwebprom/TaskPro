@@ -30,6 +30,10 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
     },
+    resetIsLoggedIn: (state, action) => {
+      state.isLoggedIn = false;
+      state.isRefreshing = false;
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -49,6 +53,17 @@ const authSlice = createSlice({
       })
       .addCase(login.pending, handlePending)
       .addCase(login.rejected, handleRejected)
+
+      // .addCase(refresh.fulfilled, (state, action) => {
+      //   state.token = action.payload.token;
+      //   state.refreshToken = action.payload.refreshToken;
+      // })
+      // .addCase(refresh.pending, handlePending)
+      // .addCase(refresh.rejected, (state, action) => {
+      //   state.error = action.payload;
+      //   state.isLoggedIn = false;
+      // })
+
       .addCase(logout.fulfilled, (state, action) => {
         state.user = {
           name: null,
@@ -89,5 +104,5 @@ const authSlice = createSlice({
       .addCase(updateProfile.rejected, handleRejected),
 });
 
-export const { refreshTokens } = authSlice.actions;
+export const { refreshTokens, resetIsLoggedIn } = authSlice.actions;
 export const authReducer = authSlice.reducer;

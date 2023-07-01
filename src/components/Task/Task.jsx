@@ -81,6 +81,7 @@ const Task = ({
   const authContext = useAuth();
   const { user } = authContext;
   const dispatch = useDispatch();
+  console.log(index)
 
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);

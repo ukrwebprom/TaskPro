@@ -106,7 +106,7 @@ const boardsSlice = createSlice({
         state.error = null;
 
         const index = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload._id
+          column => column._id === action.payload.column
         );
 
         state.items[state.currentBoard].columns[index].tasks.push(action.payload);

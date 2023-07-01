@@ -3,8 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import { validationCardSchema } from '..//..//..//schems/validationCardSchema';
 import s from './CardForm.module.css';
-import Button from "..//..//Button/Button.jsx"
+import MainButton from '../../MainButton/MainButton';
 import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { addTask } from 'redux/boards/operations';
 
 // const labelColors = [
 //   '#8FA1D0',
@@ -13,6 +16,7 @@ import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 //   'rgba(255, 255, 255, 0.30)',
 // ];
 
+
 const orderedCodes = [
   'none',
   'low',
@@ -20,8 +24,7 @@ const orderedCodes = [
   'high',
 ];
 
-export const CardForm = ({ taskData, onClose, setTask }) => {
-
+export const CardForm = ({ taskData, _id, onClose, setTask }) => {
   const initialValues = {
     deadline: taskData?.deadline || new Date(),
     description: taskData?.description || '',
@@ -29,10 +32,10 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
     title: taskData?.title || '',
   };
 
-  const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
-    setTask(values);
-    setSubmitting(false);
+  const dispatch = useDispatch();
+
+  const onSubmit = (values, { resetForm }) => {
+    dispatch(addTask({_id, ...values}))
     resetForm();
     onClose();
   };
@@ -43,8 +46,8 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
       validationSchema={validationCardSchema}
       onSubmit={onSubmit}
     >
-      {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
-        <Form className={s.formbackround} onSubmit={handleSubmit}>
+      {({ values, isSubmitting, dirty, touched, errors,setFieldValue }) => (
+        <Form className={s.formbackround} >
           <label>
             <Field
               className={s.input}
@@ -94,9 +97,13 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
             <ErrorMessage name="priority" />
           </label>
           <label className={s.item_tittle}>Deadline</label>
-          <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
-          <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
-           />
+          <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , moment(date).format("DD/MM/YYYY"))}/>
+          <MainButton
+            btnName="Edit"
+            iconName="#plus-icon"
+            disabled={isSubmitting || !dirty}
+            type="submit"
+          />
         </Form>
       )}
     </Formik>

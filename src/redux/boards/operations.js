@@ -91,24 +91,6 @@ export const fetchBoards = createAsyncThunk(
         }
       );
 
-
-/*
- * POST @ /columns/:id/tasks
- * headers: Authorization: Bearer token
- */
-export const addTask = createAsyncThunk(
-  'boards/addTask',
-  async ({_id,body}, thunkAPI) => {
-    try {
-      const response = await axios.post(`/columns/${_id}/tasks`, { ...body });
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-
 /*
  * POST @ /columns
  * headers: Authorization: Bearer token
@@ -167,10 +149,18 @@ export const updateColumnTitle = createAsyncThunk(
  */
 export const addTask = createAsyncThunk(
   'boards/addTask',
-  async ({_id,body}, thunkAPI) => {
+   async (task, thunkAPI) => {
+    const { _id, title, description, deadline, priority } = task;
+
     try {
-      const response = await axios.post(`/columns/${_id}/tasks`, { ...body });
-      return response.data;
+      const { data } = await axios.post(`/columns/${_id}/tasks`, {
+        title,
+        description, 
+        deadline, 
+        priority,
+      });
+      return data;
+
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

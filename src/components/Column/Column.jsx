@@ -20,6 +20,7 @@ export const Column = ({
   const dispatch = useDispatch();
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
+  // console.log(data._id)
 
   const toggleColumnModal = () => setShowColumnModal(c => !c);
   const handleEditColumn = value => {
@@ -81,7 +82,7 @@ export const Column = ({
       </ul>
       </div>
       <Button title="Add another card" type="button" 
-      action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
+      action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} _id={data._id} setTitle={handleEditColumn} onClose={toggleTaskModal} />
       )}/>
     </section>
 
@@ -91,8 +92,8 @@ export const Column = ({
       </Modal>
     )}
     {showTaskModal && ( 
-      <Modal onClose={toggleTaskModal} name = "Add card">
-        <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
+      <Modal onClose={toggleTaskModal} name = "Add card" >
+        <CardForm defaultValues={{title:data.title}}  setTitle={handleEditColumn} onClose={toggleTaskModal} />
       </Modal>
     )}
     </>

@@ -109,6 +109,23 @@ export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
 });
 
 /*
+ * PUT @ /user/update
+ * headers: Authorization: Bearer token
+*/
+  export const updateProfile = createAsyncThunk(
+    'user/updateProfile',
+    async ({avatar, name, email, password}, thunkAPI) => {
+  
+      try {
+        const { data } = await axios.put("/user/update", {avatar, name, email, password});
+        return {data};
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
+
+/*
  * GET @ /user/me
  * headers: Authorization: Bearer token
  */

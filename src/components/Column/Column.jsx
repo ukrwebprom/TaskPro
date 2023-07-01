@@ -22,7 +22,10 @@ export const Column = ({
   const [showTaskModal, setShowTaskModal] = useState(false);
 
   const toggleColumnModal = () => setShowColumnModal(c => !c);
-  const handleEditColumn = value => dispatch(updateColumnTitle({...data, ...value}));
+  const handleEditColumn = value => {
+    killModal();
+    dispatch(updateColumnTitle({...data, ...value}));
+  }
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
   const toggleTaskModal = () => setShowTaskModal(c => !c);
@@ -51,8 +54,9 @@ export const Column = ({
           <button
             className={css.buttonColumn}
             type="button"
-            onClick={toggleColumnModal}
-          >
+            onClick={() => getModal("Add card", 
+            <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} />
+            )}>
             <Icon name={'#pencil-icon'} />
           </button>
           <button className={css.buttonColumn} onClick={handleDelete}>
@@ -79,19 +83,6 @@ export const Column = ({
       <Button title="Add another card" type="button" 
       action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
       )}/>
-{/*       <div className={css.columnBottom}>
-      <button
-        type="button"
-        className={css.addCardButton}
-        onClick={toggleTaskModal}
-      >
-        {' '}
-        <div className={css.wrapperIcon}>
-          <Icon name={'#plus-icon'} />
-        </div>
-        <span className={css.addCard}>onClick={toggleTaskModal}</span>
-      </button>
-      </div> */}
     </section>
 
     {showColumnModal && ( 
@@ -107,19 +98,3 @@ export const Column = ({
     </>
   );
 };
-
-
-/* {showModalCreateTasks && (
-  <Modal
-    name="Add card"
-    onClick={event => {
-      if (event.currentTarget === event.target) {
-        toggleModalCreateTasks();
-      }
-    }}
-    onClose={toggleModalCreateTasks}
-  >
-    <CardForm taskData={makeTask} onClose={toggleModalCreateTasks} />
-  </Modal>
-)}
- */

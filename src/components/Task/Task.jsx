@@ -124,7 +124,7 @@ const Task = ({
             <div className={css.card_priority}>
               <div className={css.card_title}>
                 <p className={css.priority}>Priority</p>
-                <div className={css.displayFlex}>
+                <div className={css.priorityBlock}>
                   <div style={{
                     border: `${proprityColors[taskData.priority].border}`,
                     backgroundColor: `${proprityColors[taskData.priority].bg}`,

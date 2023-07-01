@@ -203,6 +203,7 @@ li {
   height: 12px;
 }
 
-.displayFlex{
+.priorityBlock{
   display: flex;
+  gap: 4px;
 }

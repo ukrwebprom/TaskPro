@@ -162,7 +162,7 @@ const boardsSlice = createSlice({
           task => task._id === action.payload._id
         );
 
-        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex].splice(taskIndex, 1);
+        state.items[state.currentBoard].columns[columnIndex].tasks.splice(taskIndex, 1);
       }).addCase(deleteTask.rejected, handleRejected)
         // .addCase(getBoard.fulfilled, (state, action) => {
       //   state.isLoading = false;

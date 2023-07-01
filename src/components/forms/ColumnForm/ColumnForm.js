@@ -25,7 +25,7 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
       validateOnBlur
     >
       {({ isSubmitting, dirty, handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className={s.form}>
           <label className={s.label}>
             <Field 
              className={s.input}

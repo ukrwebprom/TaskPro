@@ -10,11 +10,13 @@ import Task from 'components/Task/Task';
 import Icon from '../Icon';
 import Button from "components/Button/Button";
 import css from './Column.module.css';
+import { useModal } from "hooks/useModal";
 
 export const Column = ({
   allColumns,
   data,
 }) => {
+  const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
@@ -74,7 +76,9 @@ export const Column = ({
           )}
       </ul>
       </div>
-      <Button title="Add another card" type="button" onClick={toggleTaskModal}/>
+      <Button title="Add another card" type="button" 
+      action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
+      )}/>
 {/*       <div className={css.columnBottom}>
       <button
         type="button"

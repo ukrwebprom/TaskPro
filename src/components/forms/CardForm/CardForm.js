@@ -20,6 +20,7 @@ const colorsToLables = {
   high: '#BEDBB0',
 };
 
+
 export const CardForm = ({ taskData, onClose, setTask }) => {
   // const [level, setLevel] = useState("none");
 
@@ -39,6 +40,14 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
 //     deadline: taskData?.endDate || new Date(),
 // }
 
+
+  // useState = {
+  //   taskData.priority ? taskData.priority : withoutPriority,
+  //   labelColor: taskData?.levelIndex
+  //       ? labelColors[taskData.levelIndex]
+  //       : labelColors[0],
+  //     deadline: taskData?.endDate || new Date(),
+  // }
 
   const initialValues = {
     deadline: taskData?.deadline || new Date(),
@@ -86,8 +95,9 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
           </label>
           <label className={s.item_tittle}>Label Color</label>
           {/* <div className={s.label_color}> */}
-            {Object.entries(colorsToLables).map(([code, colorL]) => (
+          {Object.entries(colorsToLables).map(([code, colorL]) => (
             // Вариант 1
+
               // <li>
               //   <label className={s.lowInput} styles={{ color: colorL }}>
               //     <input
@@ -126,6 +136,7 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
               // вариант 3
          
             ))}
+
           {/* </div> */}
           <ErrorMessage name="labelColor" />
           <label className={s.item_tittle}>Deadline</label>
@@ -135,6 +146,7 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
             iconName="#plus-icon"
             disabled={isSubmitting || !dirty}
             type="submit"
+
           />
         </Form>
       )}

@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
+  font-family: inherit;
   height: 49px;
   outline: none;
   color: var(--btn-text-color);

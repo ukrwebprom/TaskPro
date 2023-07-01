@@ -11,19 +11,23 @@ import Icon from '../Icon';
 
 import css from './Column.module.css';
 
+
 export const Column = ({
   allColumns,
   data,
 }) => {
+
   const dispatch = useDispatch();
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
 
   const toggleColumnModal = () => setShowColumnModal(c => !c);
-  const handleEditColumn = value => dispatch(updateColumnTitle({...data, ...value}));
+  const handleEditColumn = value =>
+    dispatch(updateColumnTitle({ ...data, ...value }));
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
   const toggleTaskModal = () => setShowTaskModal(c => !c);
+
 
   const avaliableColumns = useMemo(() => {
     const newColumns = {...allColumns};
@@ -32,6 +36,7 @@ export const Column = ({
   }, [allColumns, data]);
 
 /*   const makeTask = task => {
+
     if (listTask === null) {
       setListTask([task]);
     } else {
@@ -42,22 +47,47 @@ export const Column = ({
   }; */
   return (
     <>
-    <section className={css.containerColumn}>
-      <div className={css.wrapperTitleColumn}>
-        <h3 className={css.titleColumn}>{data.title}</h3>
-        <div className={css.wrapperButton}>
+      <section className={css.containerColumn}>
+        <div className={css.wrapperTitleColumn}>
+          <h3 className={css.titleColumn}>{data.title}</h3>
+          <div className={css.wrapperButton}>
+            <button
+              className={css.buttonColumn}
+              type="button"
+              onClick={toggleColumnModal}
+            >
+              <Icon name={'#pencil-icon'} />
+            </button>
+            <button className={css.buttonColumn} onClick={handleDelete}>
+              <Icon name={'#trash-icon'} />
+            </button>
+          </div>
+        </div>
+
+        <div className={css.columnMiddle}>
+          <ul className={css.listTask}>
+            {data.tasks &&
+              data.tasks.map(task => (
+                <Task key={nanoid()} taskData={task} columnList={columns} />
+              ))}
+          </ul>
+        </div>
+
+        <div className={css.columnBottom}>
           <button
-            className={css.buttonColumn}
             type="button"
-            onClick={toggleColumnModal}
+            className={css.addCardButton}
+            onClick={toggleTaskModal}
           >
-            <Icon name={'#pencil-icon'} />
-          </button>
-          <button className={css.buttonColumn} onClick={handleDelete}>
-            <Icon name={'#trash-icon'} />
+            {' '}
+            <div className={css.wrapperIcon}>
+              <Icon name={'#plus-icon'} />
+            </div>
+            <span className={css.addCardSpan}>Add another card</span>
           </button>
         </div>
-      </div>
+      </section>
+
 
       <div className={css.columnMiddle}>
       <ul className={css.listTask}>
@@ -103,7 +133,6 @@ export const Column = ({
     </>
   );
 };
-
 
 /* {showModalCreateTasks && (
   <Modal

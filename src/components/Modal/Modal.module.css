@@ -21,6 +21,10 @@
   width:350px;
   box-sizing: border-box;
 }
+.popoverContent {
+  composes: modal_content;
+  width:auto;
+}
 @media screen and (max-width: 375px) {
   .modal_content {
     width: 95%;

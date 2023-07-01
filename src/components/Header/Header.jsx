@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import css from './Header.module.css'
 import { ThemeSelector } from 'components/ThemeSelector/ThemeSelector'
-import defaultAvatar from '../../images/defaultAvatar.png'
+// import defaultAvatar from '../../images/defaultAvatar.png'
 import { Avatar } from 'components/Avatar/Avatar'
 import Icon from 'components/Icon/Icon'
 import Modal from 'components/Modal/Modal'

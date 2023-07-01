@@ -42,7 +42,7 @@ export const CardForm = ({ taskData, setTask }) => {
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
-        <Form className={s.formbackround} onSubmit={handleSubmit}>
+        <Form className={s.form} onSubmit={handleSubmit}>
           <label  className={s.label}>
             <Field
               className={s.input}

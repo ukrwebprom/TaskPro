@@ -2,6 +2,9 @@
   width: 100%;
   
 }
+.form{
+  width: 352px;
+}
 .addfilewrap{
   position: relative;
   margin: 0 auto 14px auto;

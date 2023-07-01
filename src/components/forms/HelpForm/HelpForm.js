@@ -25,7 +25,7 @@ const handleSubmit = (values, { setSubmitting, resetForm }) => {
     >
       {({ isSubmitting, isValid, dirty }) => (
 
-        <Form>
+        <Form className={s.form}>
             <label className={s.label}>
             <Field className={s.input} name="email" placeholder="Email address" type="email" />
             <ErrorMessage name="email"

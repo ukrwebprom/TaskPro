@@ -43,7 +43,7 @@ export const EditProfileForm = ({
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
        
-        <Form >
+        <Form  className={s.form}>
           <div className={s.s} >
          
           <div className={s.addfilewrap}>

@@ -2,33 +2,26 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationNewBoardSchema } from "schems";
 import s from "./BoardForm.module.css";
-
-const icons = ["❤️", "👍", "👎", "🤔", "😂", "🤢", "🤬", "🤯"];
-
-const backgrounds = [
-  "https://picsum.photos/200.jpg",
-  "https://picsum.photos/201.jpg",
-  "https://picsum.photos/202.jpg",
-  "https://picsum.photos/203.jpg",
-  "https://picsum.photos/204.jpg",
-  "https://picsum.photos/205.jpg",
-  "https://picsum.photos/206.jpg",
-  "https://picsum.photos/207.jpg",
-  "https://picsum.photos/208.jpg",
-  "https://picsum.photos/209.jpg",
-  "https://picsum.photos/210.jpg",
-  "https://picsum.photos/211.jpg",
-  "https://picsum.photos/212.jpg",
-  "https://picsum.photos/213.jpg",
-  "https://picsum.photos/214.jpg",
-  "https://picsum.photos/215.jpg",
+import Button from "components/Button/Button";
+import Icon from "components/Icon/Icon";
+import previews from "..//..//..//images/background/small-url.json"
+const icons = [
+  <Icon name="#board1" />,
+  <Icon name="#board2" />,
+  <Icon name="#board3" />,
+  <Icon name="#board4" />,
+  <Icon name="#board5" />,
+  <Icon name="#board6" />,
+  <Icon name="#board7" />,
+  <Icon name="#board8" />,
 ];
+
 
 export const BoardForm = ({onSubmitForm, def}) => {
   const initialValues = {
     title: "",
     icon: icons[0],
-    background: backgrounds[0],
+    background: previews[0],
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
@@ -46,22 +39,24 @@ export const BoardForm = ({onSubmitForm, def}) => {
     >
       {({ isSubmitting, isValid, dirty, values, setFieldValue }) => (
       
-        <Form className ={s.formbackround}>
-           <p className ={s.title}>New board</p>
+        <Form className={s.form} >
           <label  className={s.label} >
             <Field className={s.input} type="text" name="title" placeholder="Title" />
-            <ErrorMessage name="title" />
+            <ErrorMessage name="title"
+            component="div"
+            className={s.error} />
           </label>
 
-          <label >
+         <label   className={s.label}>
             <p className={s.itemtitle}>Icons</p>
             <div className={s.icontainer}>
-            {icons.map((icon, index) => (
-              <div key={index}>
-                <Field
+                {icons.map((icon, index) => (
+              <div className={s.boardicon} key={index}>
+                <Field 
                   type="radio"
-                  id={`icon${index}`}
+                  id={ <Icon name="#board1" />}
                   name="icon"
+                  
                   value= {icon}
                   checked={values.icon === icon}
                   onChange={() => setFieldValue("icon", icon)}
@@ -75,33 +70,37 @@ export const BoardForm = ({onSubmitForm, def}) => {
             <ErrorMessage name="icon" />
           </label>
 
-          <label >
+          <label   className={s.label} >
           <p className={s.itemtitle}>Background</p>
           <div className={s.wrapimage}>
-                      {backgrounds.map((background, index) => (
-              <div className={s.imagecontainer} key={index}>
+                      { previews.map(( preview, index) => (
+              <div className={s.boardicon} key={index}>
                 <Field
                   type="radio"
-                  id={`background${background}`}
+                  id={`preview${preview}`}
                   name="background"
-                  value={background}
-                  checked={values.background === background}
-                  onChange={() => setFieldValue("background", background)}
+                  value={preview}
+                  checked={values.background === preview}
+                  onChange={() => setFieldValue("background", preview)}
                 />
                 <label
-                  htmlFor={`background${index}`}
+                  htmlFor={`preview${index}`}
                   className={s.background}
-                  style={{ backgroundImage: `url(${background})` }}
+                  style={{ backgroundImage: `url(${preview})` }}
                 />
               </div>
             ))}
             </div>
+        
             <ErrorMessage name="background" />
-          </label>
+          </label> 
 
-          <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Create
-          </button>
+          <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
+          {' '}
+        <div className={s.wrapperIcon}>
+          <Icon name={'#plus-icon'} />
+        </div>
+        <span className={s.addCard}>Create </span></Button>
         </Form>
        
       )}

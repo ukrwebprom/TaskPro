@@ -50,7 +50,7 @@ export const EditProfileForm = ({
           <Avatar/>
         
             <label className={s.filelabel}> 
-            <Icon  className ={s.addphoto} name ="#plus-icon"/>
+            <Icon  name ="#plus-icon"/>
             <Field
               className={s.inputFile}
               name="userPhoto"

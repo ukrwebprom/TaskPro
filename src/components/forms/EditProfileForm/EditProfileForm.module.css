@@ -38,7 +38,7 @@ margin-bottom: 24px;
 .input{
   display: block;
   box-sizing: border-box;
-  min-width: 335px;
+  width: 100%;
   padding:14px 18px;
   background-color: var(--input-backround-color);
   font: "Poppins";
@@ -51,15 +51,8 @@ margin-bottom: 24px;
   border-radius: 8px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
-@media screen and(min-with:768px){
-  .input{
-    min-width:400px;
-  }
-}
-  
-.addphoto{
 
-}
+
    .eyeicon{
     position: absolute;
     top: 50%;

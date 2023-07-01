@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import { updateColumnTitle, deleteColumn } from 'redux/boards/operations';
@@ -11,6 +11,7 @@ import Icon from '../Icon';
 import Button from "components/Button/Button";
 import css from './Column.module.css';
 import { useModal } from "hooks/useModal";
+import { setFilter } from "redux/boards/selectors";
 
 export const Column = ({
   allColumns,
@@ -18,8 +19,9 @@ export const Column = ({
 }) => {
   const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
-/*   const [showColumnModal, setShowColumnModal] = useState(false);
-  const [showTaskModal, setShowTaskModal] = useState(false); */
+  const filter = useSelector(setFilter);
+  const [showColumnModal, setShowColumnModal] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false);
 
 /*   const toggleColumnModal = () => setShowColumnModal(c => !c); */
   const handleEditColumn = value => {
@@ -29,7 +31,7 @@ export const Column = ({
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
 /*   const toggleTaskModal = () => setShowTaskModal(c => !c); */
-
+  
   const avaliableColumns = useMemo(() => {
     const newColumns = {...allColumns};
     delete newColumns[data._id];
@@ -49,23 +51,26 @@ export const Column = ({
             <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} />
             )}>
             <Icon name={'#pencil-icon'} />
-          </button>
-          <button className={css.buttonColumn} onClick={handleDelete}>
+            </button>
+            <button className={css.buttonColumn} onClick={handleDelete}>
             <Icon name={'#trash-icon'} />
-          </button>
+            </button>
+          </div>
         </div>
-      </div>
 
       <div className={css.columnMiddle}>
       <ul className={css.listTask}>
         {data.tasks &&
-          data.tasks.map((task, idx) => 
+          data.tasks
+          .filter((task) => !filter || task.priority === filter)
+          .map((task, idx) => 
             (
               <Task
                 avaliableColumns={avaliableColumns}
                 index={idx}
                 key={nanoid()}
                 taskData={task}
+                columnList={[{name: 'todo'}, {name: 'Done'}]}
               />
             )
           )}
@@ -76,16 +81,16 @@ export const Column = ({
       )}/>
     </section>
 
-{/*     {showColumnModal && ( 
+      {showColumnModal && (
       <Modal onClose={toggleColumnModal} name = "Edit column">
         <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleColumnModal} />
-      </Modal>
-    )}
-    {showTaskModal && ( 
+        </Modal>
+      )}
+      {showTaskModal && (
       <Modal onClose={toggleTaskModal} name = "Add card">
         <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
-      </Modal>
-    )} */}
+        </Modal>
+      )}
     </>
   );
 };

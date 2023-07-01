@@ -1,37 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from "./Filters.module.css";
 
+import { setFilter } from "redux/boards/slice";
+import { useDispatch } from "react-redux";
+
 const LabelColor = () => {
-  const [selectedPriority, setSelectedPriority] = useState("Show all");
+  const dispatch = useDispatch();
+  const [selectedPriority, setSelectedPriority] = useState(null);
+  useEffect(() => {
+    console.log("start");
+    dispatch(setFilter(selectedPriority));
+  }, [selectedPriority, dispatch]);
 
   const handlePriorityChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedPriority(selectedValue);
 
     if (selectedValue === "withoutPriority") {
-      setSelectedPriority("Show all");
+      setSelectedPriority("none");
     }
   };
 
   const getLabelClassName = (priority) => {
     return selectedPriority === priority ? css.selectedLabel : css.labelItem;
   };
-
+  useEffect(() => {
+    dispatch(setFilter(selectedPriority));
+  }, [selectedPriority, dispatch]);
   return (
     <div className={css.labelContainer}>
       <div className={css.modalLine}></div>
       <div className={css.labelWrapper}>
         <h3 className={css.labelTitle}>Label color</h3>
-        <p className={css.labelText}>{selectedPriority}</p>
+        <button
+          className={css.labelButton}
+          onClick={() => setSelectedPriority(null)}
+        >
+          Show all
+        </button>
       </div>
       <ul className={css.labelList}>
         <li>
-          <label className={getLabelClassName("Show all")}>
+          <label className={getLabelClassName("Without Priority")}>
             <input
               className={css.withoutPriorityInput}
               type="radio"
-              value="withoutPriority"
-              checked={selectedPriority === "Show all"}
+              value="none"
+              checked={selectedPriority === "none"}
               onChange={handlePriorityChange}
             />
             <p>Without priority</p>
@@ -42,8 +57,8 @@ const LabelColor = () => {
             <input
               className={css.lowInput}
               type="radio"
-              value="Low"
-              checked={selectedPriority === "Low"}
+              value="low"
+              checked={selectedPriority === "low"}
               onChange={handlePriorityChange}
             />
             Low
@@ -54,8 +69,8 @@ const LabelColor = () => {
             <input
               className={css.mediumInput}
               type="radio"
-              value="Medium"
-              checked={selectedPriority === "Medium"}
+              value="medium"
+              checked={selectedPriority === "medium"}
               onChange={handlePriorityChange}
             />
             Medium
@@ -66,8 +81,8 @@ const LabelColor = () => {
             <input
               className={css.highInput}
               type="radio"
-              value="High"
-              checked={selectedPriority === "High"}
+              value="high"
+              checked={selectedPriority === "high"}
               onChange={handlePriorityChange}
             />
             High

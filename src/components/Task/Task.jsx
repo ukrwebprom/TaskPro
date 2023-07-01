@@ -15,6 +15,7 @@ import Icon from 'components/Icon/Icon';
 // import { moveTaskToOtherColumn } from 'redux/boards/operations';
 // import { updateTask } from 'redux/boards/operations';
 import { useModal } from 'hooks/useModal';
+import { deleteTask } from 'redux/boards/operations';
 
 const levelsToIndexes = {
   none: 'Without priority',
@@ -78,6 +79,7 @@ const Task = ({
   avaliableColumns,
   index,
   taskData,
+  colId
 }) => {
   const {getPopover} = useModal();
   const authContext = useAuth();
@@ -100,7 +102,7 @@ const Task = ({
   }
 
   const handleDeleteTask = () => {
-    // dispatch(deleteTask(taskData._id));
+    dispatch(deleteTask({_id:taskData._id, column:colId}));
   }
 
   const taskDate = moment(taskData.deadline).format("DD/MM/YYYY");

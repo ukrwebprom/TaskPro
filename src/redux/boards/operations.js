@@ -110,6 +110,38 @@ export const addTask = createAsyncThunk(
   }
 );
 
+/*
+ * PUT @ /tasks/:id/
+ * headers: Authorization: Bearer token
+ */
+export const updateTask = createAsyncThunk(
+  'tasks/',
+  async ({ body }, thunkAPI) => {
+    try {
+      const response = await axios.put(`/tasks/${body._id}`, { ...body });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+/*
+ * DELETE @ /tasks/:id/
+ * headers: Authorization: Bearer token
+ */
+export const deleteTask = createAsyncThunk(
+  'tasks/',
+  async ({ id }, thunkAPI) => {
+    try {
+      await axios.delete(`/tasks/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 
 /*
  * POST @ /columns
@@ -136,7 +168,7 @@ export const updateColumnTitle = createAsyncThunk(
   async (column, thunkAPI) => {
     const { _id, title } = column;
     try {
-      const { data } = await axios.patch(`/columns/${_id}`, {
+      await axios.patch(`/columns/${_id}`, {
         title,
       });
       return column;
@@ -155,7 +187,7 @@ export const updateColumnTitle = createAsyncThunk(
       'boards/deleteColumn',
       async (id, thunkAPI) => {
         try {
-          const res = await axios.delete(`/columns/${id}`);
+          await axios.delete(`/columns/${id}`);
           return id;
         } catch (error) {
           return thunkAPI.rejectWithValue(error.message);
@@ -179,3 +211,23 @@ export const updateColumnTitle = createAsyncThunk(
   //     }
   //   }
   // );
+
+
+/*
+ * PATCH @ /tasks/:id
+ * headers: Authorization: Bearer token
+ */
+
+/*   export const moveTaskToOtherColumn = createAsyncThunk(
+    'tasks/',
+    async ({ colomnId, taskId }, thunkAPI) => {
+      try {
+        await axios.patch(taskId, {
+          column: colomnId,
+        });
+        return { colomnId, taskId };
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  ); */

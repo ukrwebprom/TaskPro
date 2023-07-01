@@ -1,35 +1,45 @@
 import React from "react";
 import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 import Icon from "components/Icon/Icon";
-import s from "..//components/WelcomeLayout/WelcomeLayout.module.css"
+import s from "..//components/WelcomeLayout/WelcomeLayout.module.css";
 import { Suspense } from "react";
 
 const Welcome = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
-    <WelcomeLayout>
-    <img 
-    src= "..//images/welcome-page.png" 
-    alt="welcome" width="162"
-          height="162" />
-      <div className={s.logowrap}>
-        
-          <Icon name ="#icon-welcome-icon"
-          width="48"
-          height="48"/>
-        <h1 className={s.title}>Task Pro</h1>
+      <WelcomeLayout>
+        <img
+          src="..//images/welcome-page.png"
+          alt="welcome"
+          width="162"
+          height="162"
+        />
+        <div className={s.logowrap}>
+          <Icon name="#icon-welcome-icon" width="48" height="48" />
+          <h1 className={s.title}>Task Pro</h1>
         </div>
         <div className={s.paragraph}>
-        < p>Supercharge your productivity and take control of your tasks with Task 
-        Pro - Don't wait, start achieving your goals now!</p>
+          <p>
+            Supercharge your productivity and take control of your tasks with
+            Task Pro - Don't wait, start achieving your goals now!
+          </p>
         </div>
-        <button className ={s.regbtn}><a className={s.regbtntext} href='auth/register'>Registration</a></button>
-   
-      <a href='auth/login' className={s.logintext}>Log In</a>
-      
+        <button className={s.regbtn}>
+          <a className={s.regbtntext} href="auth/register">
+            Registration
+          </a>
+        </button>
+        <a href="auth/login" className={s.logintext}>
+          Log In
+        </a>
+        <a href={"https://taskpro-41yf.onrender.com/user/google"}>
+          Login with Google
+        </a>
+        {/* https://taskpro-41yf.onrender.com */}
+        {/* http://localhost:3001 */}
 
-      {/* example of using SVG sprite */}
-{/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
+        {/* example of using SVG sprite */}
+        {/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
         <p>Project icons:</p>
         <Icon name="#board1" />
         <Icon name="#board2" />
@@ -56,7 +66,7 @@ const Welcome = () => {
         <Icon name="#plus-icon" />
         <Icon name="#trash-icon" />
       </div> */}
-    </WelcomeLayout>
+      </WelcomeLayout>
     </Suspense>
   );
 };

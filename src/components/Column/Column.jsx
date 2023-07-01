@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,7 +11,12 @@ import Icon from '../Icon';
 
 import css from './Column.module.css';
 
-export const Column = ({ data, columns }) => {
+
+export const Column = ({
+  allColumns,
+  data,
+}) => {
+
   const dispatch = useDispatch();
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
@@ -21,7 +27,16 @@ export const Column = ({ data, columns }) => {
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
   const toggleTaskModal = () => setShowTaskModal(c => !c);
-  /*   const makeTask = task => {
+
+
+  const avaliableColumns = useMemo(() => {
+    const newColumns = {...allColumns};
+    delete newColumns[data._id];
+    return newColumns;
+  }, [allColumns, data]);
+
+/*   const makeTask = task => {
+
     if (listTask === null) {
       setListTask([task]);
     } else {
@@ -73,24 +88,48 @@ export const Column = ({ data, columns }) => {
         </div>
       </section>
 
-      {showColumnModal && (
-        <Modal onClose={toggleColumnModal} name="Edit column">
-          <ColumnForm
-            defaultValues={{ title: data.title }}
-            setTitle={handleEditColumn}
-            onClose={toggleColumnModal}
-          />
-        </Modal>
-      )}
-      {showTaskModal && (
-        <Modal onClose={toggleTaskModal} name="Add card">
-          <CardForm
-            defaultValues={{ title: data.title }}
-            setTitle={handleEditColumn}
-            onClose={toggleTaskModal}
-          />
-        </Modal>
-      )}
+
+      <div className={css.columnMiddle}>
+      <ul className={css.listTask}>
+        {data.tasks &&
+          data.tasks.map((task, idx) => 
+            (
+              <Task
+                avaliableColumns={avaliableColumns}
+                index={idx}
+                key={nanoid()}
+                taskData={task}
+              />
+            )
+          )}
+      </ul>
+      </div>
+
+      <div className={css.columnBottom}>
+      <button
+        type="button"
+        className={css.addCardButton}
+        onClick={toggleTaskModal}
+      >
+        {' '}
+        <div className={css.wrapperIcon}>
+          <Icon name={'#plus-icon'} />
+        </div>
+        <span className={css.addCard}>Add another card</span>
+      </button>
+      </div>
+    </section>
+
+    {showColumnModal && ( 
+      <Modal onClose={toggleColumnModal} name = "Edit column">
+        <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleColumnModal} />
+      </Modal>
+    )}
+    {showTaskModal && ( 
+      <Modal onClose={toggleTaskModal} name = "Add card">
+        <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
+      </Modal>
+    )}
     </>
   );
 };

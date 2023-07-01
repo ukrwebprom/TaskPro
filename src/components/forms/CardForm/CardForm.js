@@ -6,12 +6,12 @@ import s from './CardForm.module.css';
 import MainButton from '../../MainButton/MainButton';
 import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 
-const labelColors = [
-  '#8FA1D0',
-  '#E09CB5',
-  '#BEDBB0',
-  'rgba(255, 255, 255, 0.30)',
-];
+// const labelColors = [
+//   '#8FA1D0',
+//   '#E09CB5',
+//   '#BEDBB0',
+//   'rgba(255, 255, 255, 0.30)',
+// ];
 
 const colorsToLables = {
   none: 'rgba(255, 255, 255, 0.30)',
@@ -20,17 +20,26 @@ const colorsToLables = {
   high: '#BEDBB0',
 };
 
-export const CardForm = ({ taskData, onClose }) => {
-  const [level, setLevel] = useState('none');
-  console.log('level', level);
 
-  useEffect(() => {
-    let newLevel = level;
-    if (taskData?.priority) {
-      newLevel = taskData.priority;
-    }
-    setLevel(newLevel);
-  }, [taskData]);
+export const CardForm = ({ taskData, onClose, setTask }) => {
+  // const [level, setLevel] = useState("none");
+
+  // useEffect(() => {
+  //   let newLevel = level;
+  //   if(taskData?.priority){
+  //     newLevel = taskData.priority;
+  //   };
+  //   setLevel(newLevel);
+  //  }, [taskData]);
+
+// useState = {
+//   taskData.priority ? taskData.priority : withoutPriority,
+//   labelColor: taskData?.levelIndex
+//       ? labelColors[taskData.levelIndex]
+//       : labelColors[0],
+//     deadline: taskData?.endDate || new Date(),
+// }
+
 
   // useState = {
   //   taskData.priority ? taskData.priority : withoutPriority,
@@ -41,18 +50,16 @@ export const CardForm = ({ taskData, onClose }) => {
   // }
 
   const initialValues = {
-    title: taskData?.title || '',
+    deadline: taskData?.deadline || new Date(),
     description: taskData?.description || '',
-    // labelColor: taskData?.levelIndex
-    //   ? labelColors[taskData.levelIndex]
-    //   : labelColors[0],
-    // deadline: taskData?.endDate || new Date(),
+    priority: taskData?.priority || 'none',
+    title: taskData?.title || '',
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+    // console.log(values);
+    setTask(values);
     setSubmitting(false);
-    taskData(values);
     resetForm();
     onClose();
   };
@@ -63,7 +70,7 @@ export const CardForm = ({ taskData, onClose }) => {
       validationSchema={validationCardSchema}
       onSubmit={onSubmit}
     >
-      {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (
+      {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
         <Form className={s.formbackround} onSubmit={handleSubmit}>
           <label>
             <Field
@@ -90,53 +97,56 @@ export const CardForm = ({ taskData, onClose }) => {
           {/* <div className={s.label_color}> */}
           {Object.entries(colorsToLables).map(([code, colorL]) => (
             // Вариант 1
-            // <li>
-            //   <label className={s.lowInput} styles={{ color: colorL }}>
-            //     <input
-            //       className={s.lowInput}
-            //       type="radio"
-            //       value={code}
-            //       checked={level === code}
-            //       onChange={({ target }) => setLevel(target.value)}
-            //     />
-            //   </label>
-            // </li>
-            <label key={code}>
-              <Field
-                styles={{ color: colorL }}
-                // className={s.lowInput}
-                type="radio"
-                name="labelColor"
-                value={code}
-                checked={level === code}
-                onChange={({ target }) => setLevel(target.value)}
-              />
-            </label>
-            //Вариант 2
-            // <label key={code}>
-            //   <Field
-            //   // className={s.lowInput}
-            //     type="radio"
-            //     name="labelColor"
-            //     value={code}
-            //     checked={values.level === code}
-            //     onBlur={touched.fieldName && errors.fieldName}
-            //   />
-            //   <span style={{ backgroundColor: color }}></span>
-            // </label>
-            // вариант 3
-          ))}
+
+              // <li>
+              //   <label className={s.lowInput} styles={{ color: colorL }}>
+              //     <input
+              //       className={s.lowInput}
+              //       type="radio"
+              //       value={code}
+              //       checked={values.priority === code}
+              //       onChange={({ target }) => setLevel(target.value)}
+              //     />
+              //   </label>
+              // </li>
+              <label key={code}>
+            <Field
+              styles={{ color: colorL }}
+              // className={s.lowInput}
+              type="radio"
+              name="labelColor"
+              value={code}
+              checked={values.priority === code}
+              onChange={() => setFieldValue('priority' , code)}
+              onBlur={touched.fieldName && errors.fieldName}
+             />
+           </label>
+              //Вариант 2
+              // <label key={code}>
+              //   <Field
+              //   // className={s.lowInput}
+              //     type="radio"
+              //     name="labelColor"
+              //     value={code}
+              //     checked={values.level === code}
+              //     onBlur={touched.fieldName && errors.fieldName}
+              //   />
+              //   <span style={{ backgroundColor: color }}></span>
+              // </label>
+              // вариант 3
+         
+            ))}
+
           {/* </div> */}
           <ErrorMessage name="labelColor" />
           <label className={s.item_tittle}>Deadline</label>
-          <MyDatepicker />
+          <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
           <MainButton
-            btnName={taskData?.id ? 'Edit' : 'Add'}
-            iconColor="#2a2a2a"
+            btnName="Edit"
             iconName="#plus-icon"
             disabled={isSubmitting || !dirty}
             type="submit"
-            /*             onClick={() => {}} */
+
           />
         </Form>
       )}

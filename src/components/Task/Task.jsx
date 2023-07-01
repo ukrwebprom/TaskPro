@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import EllipsisText from 'react-ellipsis-text';
 import Tooltip from '@mui/material/Tooltip';
@@ -10,6 +11,8 @@ import Modal from 'components/Modal/Modal';
 import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
+// import { moveTaskToOtherColumn } from 'redux/boards/operations';
+// import { updateTask } from 'redux/boards/operations';
 
 const levelsToIndexes = {
   0: 'Without priority',
@@ -47,18 +50,33 @@ const ItemWrapper = styled.li`
    }
 `;  
 
-const Task = ({ taskData, columnList }) => {
+const Task = ({
+  avaliableColumns,
+  index,
+  taskData,
+}) => {
   const authContext = useAuth();
   const { user } = authContext;
+  const dispatch = useDispatch();
 
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
+
+  const toggleModal = () => setEditTaskOpened(!isEditTaskOpened);
 
   const openMovePopover = Boolean(moveAnchorEl);
   const id = useMemo(() => (openMovePopover ? 'move-popover' : undefined)
   , [openMovePopover]);
 
   const popStyles  = useMemo(() => getPopoverItems[user.theme], [user.theme]);
+
+  const handleEditTask = (task) => {
+    // dispatch(updateTask(task));
+  }
+
+  const handleDeleteTask = () => {
+    // dispatch(deleteTask(taskData._id));
+  }
 
   return (
     <>
@@ -87,27 +105,31 @@ const Task = ({ taskData, columnList }) => {
               </div>
             </div>
             <div className={css.icon_list}>
-            <Tooltip title="Attation">
-            <Icon
-                    className={css.icon_info}
-                    sprite={2}
-                    name={'#bell-icon'}
-                    width="16"
-                    height="16"
-                    stroke="var( --index-label-color)"
-                  />
+            <Tooltip title="din din">
+              <button 
+                type='button'
+                className={css.icon_buttons_bell}
+              >
+                <Icon
+                  sprite={2}
+                  name={'#bell-icon'}
+                  width="16"
+                  height="16"
+                  stroke="var( --accent-color)"
+                />
+              </button>
             </Tooltip>
               <Tooltip title="Move">
                 <button
                   aria-describedby={id}
-                  disabled={!columnList.length}
+                  disabled={!Object.keys(avaliableColumns || {}).length}
                   type="button"
                   className={css.icon_buttons}
                   onClick={event => setMoveAnchorEl(event.currentTarget)}
                   variant="contained"
                 >
                   <Icon
-                    className={css.icon_info}
+                    // className={css.icon_info}
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"
@@ -132,7 +154,11 @@ const Task = ({ taskData, columnList }) => {
                 </button>
               </Tooltip>
               <Tooltip title="Delete">
-                <button type="button" className={css.icon_buttons}>
+                <button
+                  type="button"
+                  className={css.icon_buttons}
+                  onClick={handleDeleteTask}
+                >
                   <Icon
                     sprite={2}
                     name={'#trash-icon'}
@@ -148,15 +174,15 @@ const Task = ({ taskData, columnList }) => {
       </ul>
       {isEditTaskOpened && (
         <Modal
-          name={taskData.id ? 'Edit card' : 'Add card'}
+          name="Edit card"
           onClick={event => {
             if (event.currentTarget === event.target) {
               setEditTaskOpened(false);
             }
           }}
-          onClose={() => setEditTaskOpened(!isEditTaskOpened)}
+          onClose={toggleModal}
         >
-          <CardForm taskData={taskData} />
+          <CardForm taskData={taskData} setTask={handleEditTask} onClose={toggleModal} />
         </Modal>
       )}
       <Popover
@@ -181,13 +207,20 @@ const Task = ({ taskData, columnList }) => {
       >
         <PopupWrapper popStyles={popStyles}>
           <ul className={css.popover_list}>
-            {columnList?.map(column => (
-              <ItemWrapper className={css.popoverItem} key={column.name} popStyles={popStyles}>
+            {Object.entries(avaliableColumns)?.map(([id, title]) => (
+              <ItemWrapper className={css.popoverItem} key={id} popStyles={popStyles}>
                 <button
-                  onClick={() => setMoveAnchorEl(null)}
+                  onClick={() => {
+                    // TODO 
+                    /* dispatch(moveTaskToOtherColumn({
+                      colomnId: id,
+                      taskId: taskData._id,
+                    })); */
+                    setMoveAnchorEl(null);
+                  }}
                   className={css.popoverBtn}
                 >
-                <p className={css.popoverStatus}>{column.name}</p>
+                <p className={css.popoverStatus}>{title}</p>
                 </button>
                 <Icon
                   sprite={2}

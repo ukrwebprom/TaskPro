@@ -2,6 +2,8 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
+/* https://taskpro-41yf.onrender.com */
+/* http://localhost:3001 */
 
 // Utility to add JWT
 export const setAuthHeader = (token) => {
@@ -105,6 +107,23 @@ export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+/*
+ * PUT @ /user/update
+ * headers: Authorization: Bearer token
+*/
+  export const updateProfile = createAsyncThunk(
+    'user/updateProfile',
+    async ({avatar, name, email, password}, thunkAPI) => {
+  
+      try {
+        const { data } = await axios.put("/user/update", {avatar, name, email, password});
+        return {data};
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
 
 /*
  * GET @ /user/me

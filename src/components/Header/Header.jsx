@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import css from './Header.module.css'
 import { ThemeSelector } from 'components/ThemeSelector/ThemeSelector'
-// import { useUser } from 'hooks/useUser'
 import defaultAvatar from '../../images/defaultAvatar.png'
+import { Avatar } from 'components/Avatar/Avatar'
 import Icon from 'components/Icon/Icon'
 import Modal from 'components/Modal/Modal'
 import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
@@ -10,9 +10,9 @@ import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileFor
 import { useAuth } from 'hooks/useAuth';
 
 export const Header = ({ toggleSidebar }) => {
+
   const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
-  const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);
-  // const { name, avatar } = useUser();
+  const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);;
   const {user} = useAuth();
   
   const showThemeSelector = () => {
@@ -43,14 +43,8 @@ export const Header = ({ toggleSidebar }) => {
         </div>
 
         <ul className={css.styleUserInfo}>
-          {/* <li className={css.styleName}>{name}</li> */}
           <li className={css.styleName}>{user.name}</li>
-          <li className={css.styleAvatar}>
-            <button className={css.styleAvatar} onClick={() => showUserModal()}>
-              {/* <img src={avatar === "none" ? defaultAvatar : avatar} alt='avatar' width="32" height="32" />           */}
-              <img src={user.avatar === "none" ? defaultAvatar : user.avatar} alt='avatar' width="32" height="32" /> 
-            </button>
-          </li>
+          <li><Avatar onClick={() => showUserModal()} size={32}/></li>
         </ul>
         {isVasibleUserModal &&
           <Modal isOpen="isVasibleUserModal" name="Edit profile" onClose={showUserModal}>

@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
 import { addColumn } from 'redux/boards/operations';
 import Button from 'components/Button/Button';
@@ -6,13 +7,15 @@ import btn from '../Button/Button.module.css';
 import { useBoards } from 'hooks/useBoards';
 import Icon from '../Icon';
 /* import Button from "components/Button"; */
-import css from './Dashboard.module.css';
-import { useState, useEffect } from 'react';
-import { Column } from 'components/Column/Column';
-import FiltersButton from 'components/Filters/FiltersButton';
-import FiltersModal from 'components/Filters/FiltersModal';
-import { Background } from 'components/Background/Background';
-import Modal from 'components/Modal/Modal';
+
+import css from "./Dashboard.module.css";
+import { useState } from "react";
+import { Column } from "components/Column/Column";
+/* import FiltersButton from "components/Filters/FiltersButton";
+import FiltersModal from "components/Filters/FiltersModal"; */
+import { Background } from "components/Background/Background";
+import Modal from "components/Modal/Modal";
+
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 
 const DashBoard = () => {
@@ -25,7 +28,15 @@ const DashBoard = () => {
     dispatch(addColumn({ board: currentData._id, ...value }));
   };
 
-  /*  
+
+  const columnNamesToIds = useMemo(() => currentData?.columns
+    ?.reduce((acc, column) => {
+        acc[column._id] = column.title;
+        return acc;
+    }, {})
+    , [currentData]);
+
+ /*  
   const setBoardBg = async (newBgIndex) => {
     try {
       await updBg(boards[current]._id, { background: newBgIndex });
@@ -81,31 +92,18 @@ const DashBoard = () => {
             selectedBgIndex={selectedBgIndex}
           />
         )} */}
-            </div>
-            <div className={css.listArea}>
-              <ul className={css.columnsList}>
-                {currentData.columns.length > 0 &&
-                  currentData.columns.map(column => {
-                    return (
-                      <li key={column._id}>
-                        <Column data={column} columns={currentData.columns} />
-                      </li>
-                    );
-                  })}
-                <li>
-                  <Button
-                    className={`${btn.btn} ${btn.column}`}
-                    onClick={toggleModal}
-                  >
-                    <div className={css.wrapperIcon}>
-                      <Icon name={'#plus-icon'} />
-                    </div>
-                    <span className={css.addColumnSpan}>
-                      Add another column
-                    </span>
-                    {/* <div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add
-                    another column */}
-                  </Button>
+
+      </div>
+      <div className={css.listArea}>
+        <ul className={css.columnsList}>
+          {currentData.columns.length > 0 &&
+            currentData.columns.map((column) => {
+              return (
+                <li key={column._id}>
+                  <Column
+                    allColumns={columnNamesToIds}
+                    data={column}
+                  />
                 </li>
               </ul>
             </div>

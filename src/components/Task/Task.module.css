@@ -202,3 +202,7 @@ li {
   width: 12px;
   height: 12px;
 }
+
+.displayFlex{
+  display: flex;
+}

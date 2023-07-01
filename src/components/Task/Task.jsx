@@ -124,13 +124,15 @@ const Task = ({
             <div className={css.card_priority}>
               <div className={css.card_title}>
                 <p className={css.priority}>Priority</p>
-                <div style={{
-                  border: `${proprityColors[taskData.priority].border}`,
-                  backgroundColor: `${proprityColors[taskData.priority].bg}`,
-                }} className={css.circul}></div>
-                <p className={css.status}>
-                  {levelsToIndexes[taskData.priority]}
-                </p>
+                <div className={css.displayFlex}>
+                  <div style={{
+                    border: `${proprityColors[taskData.priority].border}`,
+                    backgroundColor: `${proprityColors[taskData.priority].bg}`,
+                  }} className={css.circul}></div>
+                  <p className={css.status}>
+                    {levelsToIndexes[taskData.priority]}
+                  </p>
+                </div>
               </div>
               <div className={css.card_dedline}>
                 <p className={css.priority}>Deadline</p>

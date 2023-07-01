@@ -58,9 +58,10 @@ const Modal = ({ children, isOpen, name, onClose, position }) => {
         <div className={css.modal_items}>
           <h2 className={css.modal_title}>{name}</h2>
         </div>
-        <div className="modalBody">
+        {children}
+{/*         <div className="modalBody">
           {children}
-        </div>
+        </div> */}
       </div>
     </div>
   );

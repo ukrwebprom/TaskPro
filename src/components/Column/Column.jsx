@@ -18,17 +18,17 @@ export const Column = ({
 }) => {
   const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
-  const [showColumnModal, setShowColumnModal] = useState(false);
-  const [showTaskModal, setShowTaskModal] = useState(false);
+/*   const [showColumnModal, setShowColumnModal] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false); */
 
-  const toggleColumnModal = () => setShowColumnModal(c => !c);
+/*   const toggleColumnModal = () => setShowColumnModal(c => !c); */
   const handleEditColumn = value => {
     killModal();
     dispatch(updateColumnTitle({...data, ...value}));
   }
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
-  const toggleTaskModal = () => setShowTaskModal(c => !c);
+/*   const toggleTaskModal = () => setShowTaskModal(c => !c); */
 
   const avaliableColumns = useMemo(() => {
     const newColumns = {...allColumns};
@@ -36,15 +36,6 @@ export const Column = ({
     return newColumns;
   }, [allColumns, data]);
 
-/*   const makeTask = task => {
-    if (listTask === null) {
-      setListTask([task]);
-    } else {
-      setListTask(prevTasks => {
-        return [...prevTasks, task];
-      });
-    }
-  }; */
   return (
     <>
     <section className={css.containerColumn}>
@@ -54,7 +45,7 @@ export const Column = ({
           <button
             className={css.buttonColumn}
             type="button"
-            onClick={() => getModal("Add card", 
+            onClick={() => getModal("Edit column", 
             <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} />
             )}>
             <Icon name={'#pencil-icon'} />
@@ -81,11 +72,11 @@ export const Column = ({
       </ul>
       </div>
       <Button title="Add another card" type="button" 
-      action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
+      action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={killModal} />
       )}/>
     </section>
 
-    {showColumnModal && ( 
+{/*     {showColumnModal && ( 
       <Modal onClose={toggleColumnModal} name = "Edit column">
         <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleColumnModal} />
       </Modal>
@@ -94,7 +85,7 @@ export const Column = ({
       <Modal onClose={toggleTaskModal} name = "Add card">
         <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
       </Modal>
-    )}
+    )} */}
     </>
   );
 };

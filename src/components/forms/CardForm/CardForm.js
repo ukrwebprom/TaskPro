@@ -45,7 +45,7 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
         <Form className={s.formbackround} onSubmit={handleSubmit}>
-          <label>
+          <label  className={s.label}>
             <Field
               className={s.input}
               type="text"
@@ -53,10 +53,11 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
               placeholder="Title"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="title" />
+            <ErrorMessage name="title" component="div"
+            className={s.error} />
           </label>
 
-          <label>
+          <label  className={s.label}>
             <Field
               className={s.comment}
               as="textarea"
@@ -64,9 +65,10 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
               name="description"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="description" />
+            <ErrorMessage name="description" component="div"
+            className={s.error}/>
           </label>
-          <label>
+          <label className={s.label}>
             <p className={s.item_tittle}>Label Color</p>
             <div id="radio-group" className={s.label_color}>
               {orderedCodes.map(code => (
@@ -95,7 +97,7 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
           </label>
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
-          <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
+          <Button invert={false} title="Add" type="submit" disabled ={isSubmitting||!dirty}
            />
         </Form>
       )}

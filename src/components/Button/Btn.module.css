@@ -1,0 +1,45 @@
+.btn{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    background-color: var(--accent-color);
+/*     padding: 14px 88px 14px 89px; */
+    padding-top:10px;
+    padding-bottom: 11px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+    color: var(--btn-text-color);
+    font-family: inherit;
+    cursor:pointer;
+}
+
+.invertBtn {
+    composes:btn;
+    background-color: var(--secondary-bg-color);
+    color:var(--primary-text-color);
+}
+.wrapperIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-icon-bg); 
+    color: var(--button-icon);
+    padding: 7px;
+    border-radius: 8px;
+    margin:0;
+}
+.invertIcon {
+    composes:wrapperIcon;
+    background-color: var(--button-icon-bg-invert); 
+    color: var(--button-icon-invert);
+}
+.title {
+    line-height: 28px;
+    font-weight: 500;
+    font-size: 14px;
+}

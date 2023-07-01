@@ -4,6 +4,7 @@ import React from 'react';
 // import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 import Icon from 'components/Icon/Icon';
+import {useMedia} from 'react-use';
 
 // const modalRoot = document.querySelector('#modal-root');
 
@@ -38,10 +39,13 @@ import Icon from 'components/Icon/Icon';
 
 // export default Modal;
 
-const Modal = ({ children, isOpen, name, onClose }) => {
+const Modal = ({ children, isOpen, name, onClose, position }) => {
+  const isMobile = useMedia('(max-width: 480px)');
   return (
-    <div className={`modal ${isOpen ? "open" : ""}`}>
-      <div className={css.modal_content}>
+    /* <div className={`modal ${isOpen ? "open" : ""}`}> */
+      <div className={css.backdrop} onClick={onClose}>
+      <div className={css.modal_content} 
+        style={isMobile? {top:"50%", left:"50%", transform:"translate(-50%, -50%)"} : {...position}} onClick={e => e.stopPropagation()}>
         <button className={css.close_button} onClick={onClose}>
           <Icon
             sprite={2}

@@ -53,6 +53,11 @@
   --datepicker-color-day-keyboard-selected: #ffffff20;
   --datepicker-color-line: #ffffff20;
   --datepicker-color-navigation-icon: #ffffff80;
+
+  --button-icon-bg:#161616;
+  --button-icon:#fff;
+  --button-icon-bg-invert:#fff;
+  --button-icon-invert:#121212;
 }
 
 /* light theme*/
@@ -91,6 +96,11 @@
   --datepicker-color-day-keyboard-selected: #f0f0f0;
   --datepicker-color-line: #16161620;
   --datepicker-color-navigation-icon: #16161680;
+
+  --button-icon-bg:#161616;
+  --button-icon:#fff;
+  --button-icon-bg-invert:#161616;
+  --button-icon-invert:#fff;
 }
 
 /* violet theme*/
@@ -129,6 +139,11 @@
   --datepicker-color-day-keyboard-selected: #f0f0f0;
   --datepicker-color-line: #16161620;
   --datepicker-color-navigation-icon: #16161680;
+
+  --button-icon-bg:#fff;
+  --button-icon:#161616;
+  --button-icon-bg-invert:#5255BC;
+  --button-icon-invert:#fff;
 }
 /* fonts*/
 /*   --font: "Poppins", sans-serif; */

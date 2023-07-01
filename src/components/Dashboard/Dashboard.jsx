@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
 import { addColumn } from 'redux/boards/operations';
 import Button from "components/Button/Button";
@@ -23,6 +23,13 @@ const DashBoard = () => {
   const handleAddColumn = value => {
     dispatch(addColumn({board: currentData._id,...value}));
   }
+
+  const columnNamesToIds = useMemo(() => currentData?.columns
+    ?.reduce((acc, column) => {
+        acc[column._id] = column.title;
+        return acc;
+    }, {})
+    , [currentData]);
 
  /*  
   const setBoardBg = async (newBgIndex) => {
@@ -88,7 +95,10 @@ const DashBoard = () => {
             currentData.columns.map((column) => {
               return (
                 <li key={column._id}>
-                  <Column data={column} />
+                  <Column
+                    allColumns={columnNamesToIds}
+                    data={column}
+                  />
                 </li>
               );
             })}

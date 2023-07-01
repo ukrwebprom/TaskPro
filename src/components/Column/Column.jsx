@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,7 +11,10 @@ import Icon from '../Icon';
 
 import css from './Column.module.css';
 
-export const Column = ({data}) => {
+export const Column = ({
+  allColumns,
+  data,
+}) => {
   const dispatch = useDispatch();
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
@@ -20,6 +24,13 @@ export const Column = ({data}) => {
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
   const toggleTaskModal = () => setShowTaskModal(c => !c);
+
+  const avaliableColumns = useMemo(() => {
+    const newColumns = {...allColumns};
+    delete newColumns[data._id];
+    return newColumns;
+  }, [allColumns, data]);
+
 /*   const makeTask = task => {
     if (listTask === null) {
       setListTask([task]);
@@ -51,12 +62,13 @@ export const Column = ({data}) => {
       <div className={css.columnMiddle}>
       <ul className={css.listTask}>
         {data.tasks &&
-          data.tasks.map(task => 
+          data.tasks.map((task, idx) => 
             (
               <Task
+                avaliableColumns={avaliableColumns}
+                index={idx}
                 key={nanoid()}
                 taskData={task}
-                columnList={[{name: 'todo'}, {name: 'Done'}]}
               />
             )
           )}

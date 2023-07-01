@@ -24,7 +24,7 @@ const backgrounds = [
   "https://picsum.photos/215.jpg",
 ];
 
-export const BoardForm = () => {
+export const BoardForm = ({onSubmitForm, def}) => {
   const initialValues = {
     title: "",
     icon: icons[0],
@@ -32,14 +32,14 @@ export const BoardForm = () => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+    onSubmitForm(values);
     setSubmitting(false);
     resetForm();
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={def? def:initialValues}
       validationSchema={validationNewBoardSchema}
       onSubmit={onSubmit}
       validateOnBlur

@@ -1,43 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { validationCardSchema } from '..//..//..//schems/validationCardSchema';
 import s from './CardForm.module.css';
 import MainButton from '../../MainButton/MainButton';
+import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 
-const labelColors = [
-  '#8FA1D0',
-  '#E09CB5',
-  '#BEDBB0',
-  'rgba(255, 255, 255, 0.30)',
-];
+// const labelColors = [
+//   '#8FA1D0',
+//   '#E09CB5',
+//   '#BEDBB0',
+//   'rgba(255, 255, 255, 0.30)',
+// ];
 
-export const CardForm = ({ taskData, onClose }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const colorsToLables = {
+  none: 'rgba(255, 255, 255, 0.30)',
+  low: '#8FA1D0',
+  medium: '#E09CB5',
+  high: '#BEDBB0',
+};
+
+export const CardForm = ({ taskData, onClose, setTask }) => {
+  // const [level, setLevel] = useState("none");
+
+  // useEffect(() => {
+  //   let newLevel = level;
+  //   if(taskData?.priority){
+  //     newLevel = taskData.priority;
+  //   };
+  //   setLevel(newLevel);
+  //  }, [taskData]);
+
+// useState = {
+//   taskData.priority ? taskData.priority : withoutPriority,
+//   labelColor: taskData?.levelIndex
+//       ? labelColors[taskData.levelIndex]
+//       : labelColors[0],
+//     deadline: taskData?.endDate || new Date(),
+// }
+
 
   const initialValues = {
-    title: taskData?.title || '',
+    deadline: taskData?.deadline || new Date(),
     description: taskData?.description || '',
-    labelColor: taskData?.levelIndex
-      ? labelColors[taskData.levelInex]
-      : labelColors[0],
-    deadline: taskData?.endDate || new Date(),
+    priority: taskData?.priority || 'none',
+    title: taskData?.title || '',
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+    // console.log(values);
+    setTask(values);
     setSubmitting(false);
-    taskData(values);
     resetForm();
     onClose();
-  };
-
-  const validateDeadline = date => {
-    const now = new Date();
-    if (date < now) {
-      return 'Deadline cannot be in the past';
-    }
   };
 
   return (
@@ -46,7 +61,7 @@ export const CardForm = ({ taskData, onClose }) => {
       validationSchema={validationCardSchema}
       onSubmit={onSubmit}
     >
-      {({ values, isSubmitting, dirty, touched, errors, handleSubmit }) => (
+      {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
         <Form className={s.formbackround} onSubmit={handleSubmit}>
           <label>
             <Field
@@ -70,36 +85,56 @@ export const CardForm = ({ taskData, onClose }) => {
             <ErrorMessage name="description" />
           </label>
           <label className={s.item_tittle}>Label Color</label>
-          <div className="label_color">
-            {labelColors.map(color => (
-              <label key={color}>
-                <Field
-                  type="radio"
-                  name="labelColor"
-                  value={color}
-                  checked={values.labelColor === color}
-                  onBlur={touched.fieldName && errors.fieldName}
-                />
-                <span style={{ backgroundColor: color }}></span>
-              </label>
+          {/* <div className={s.label_color}> */}
+            {Object.entries(colorsToLables).map(([code, colorL]) => (
+            // Вариант 1
+              // <li>
+              //   <label className={s.lowInput} styles={{ color: colorL }}>
+              //     <input
+              //       className={s.lowInput}
+              //       type="radio"
+              //       value={code}
+              //       checked={values.priority === code}
+              //       onChange={({ target }) => setLevel(target.value)}
+              //     />
+              //   </label>
+              // </li>
+              <label key={code}>
+            <Field
+              styles={{ color: colorL }}
+              // className={s.lowInput}
+              type="radio"
+              name="labelColor"
+              value={code}
+              checked={values.priority === code}
+              onChange={() => setFieldValue('priority' , code)}
+              onBlur={touched.fieldName && errors.fieldName}
+             />
+           </label>
+              //Вариант 2
+              // <label key={code}>
+              //   <Field
+              //   // className={s.lowInput}
+              //     type="radio"
+              //     name="labelColor"
+              //     value={code}
+              //     checked={values.level === code}
+              //     onBlur={touched.fieldName && errors.fieldName}
+              //   />
+              //   <span style={{ backgroundColor: color }}></span>
+              // </label>
+              // вариант 3
+         
             ))}
-          </div>
+          {/* </div> */}
           <ErrorMessage name="labelColor" />
           <label className={s.item_tittle}>Deadline</label>
-          <DatePicker
-            selected={selectedDate}
-            onChange={date => setSelectedDate(date)}
-            minDate={new Date()}
-            onBlur={validateDeadline(selectedDate)}
-            // className={s.datepicker}
-          />
+          <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
           <MainButton
-            btnName={taskData.id ? 'Edit' : 'Add'}
-            iconColor="#2a2a2a"
+            btnName="Edit"
             iconName="#plus-icon"
             disabled={isSubmitting || !dirty}
             type="submit"
-            onClick={() => {}}
           />
         </Form>
       )}

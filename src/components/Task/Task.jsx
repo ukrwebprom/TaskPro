@@ -1,13 +1,18 @@
 import React, { useMemo, useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import EllipsisText from 'react-ellipsis-text';
 import Tooltip from '@mui/material/Tooltip';
 import Popover from '@mui/material/Popover';
+import styled from '@emotion/styled';
 
 import Modal from 'components/Modal/Modal';
 import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
+// import { moveTaskToOtherColumn } from 'redux/boards/operations';
+// import { updateTask } from 'redux/boards/operations';
 
 const levelsToIndexes = {
   0: 'Without priority',
@@ -16,28 +21,73 @@ const levelsToIndexes = {
   3: 'High',
 };
 
-const Task = ({ taskData, columnList }) => {
+const getPopoverItems = {
+  dark: {
+    hc: '#bedbb0',
+    bg: '#1F1F1F',
+    tc: 'rgba(255, 255, 255, 0.50)',
+  },
+  violet: {
+    hc: '#5255bc',
+    bg: '#FCFCFC',
+    tc: '#161616',
+  },
+  light: {
+    hc: '#bedbb0',
+    bg: '#FCFCFC',
+    tc: '#161616',
+  }
+};
+
+const PopupWrapper = styled.div`
+  background-color: ${({ popStyles }) => popStyles.bg};
+`;
+
+const ItemWrapper = styled.li`
+  color: ${({ popStyles }) => popStyles.tc};
+  &:hover{
+    color: ${({ popStyles }) => popStyles.hc};
+   }
+`;  
+
+const Task = ({
+  avaliableColumns,
+  index,
+  taskData,
+}) => {
+  const authContext = useAuth();
+  const { user } = authContext;
+  const dispatch = useDispatch();
+
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
 
+  const toggleModal = () => setEditTaskOpened(!isEditTaskOpened);
+
   const openMovePopover = Boolean(moveAnchorEl);
-  const id = useMemo(
-    () => (openMovePopover ? 'move-popover' : undefined),
-    [openMovePopover]
-  );
+  const id = useMemo(() => (openMovePopover ? 'move-popover' : undefined)
+  , [openMovePopover]);
+
+  const popStyles  = useMemo(() => getPopoverItems[user.theme], [user.theme]);
+
+  const handleEditTask = (task) => {
+    // dispatch(updateTask(task));
+  }
+
+  const handleDeleteTask = () => {
+    // dispatch(deleteTask(taskData._id));
+  }
 
   return (
     <>
-      {/* TODO ul must belong to column - remove after colume released!!! */}
       <ul className={css.wrapper}>
-        <li>
+        <li key={taskData.id}>
           <h2 className={css.title}>{taskData.title}</h2>
           <div className={css.wrapper_text}>
             <EllipsisText
               className={css.elips_text}
-              // style={{ fontSize: '12px', color: 'var( --index-label-color)' }}
               text={taskData.description}
-              length={110}
+              length={90}
             />
           </div>
           <div className={css.divider} />
@@ -54,18 +104,32 @@ const Task = ({ taskData, columnList }) => {
                 <p className={css.day}>23/06/2023</p>
               </div>
             </div>
-            <div>
+            <div className={css.icon_list}>
+            <Tooltip title="din din">
+              <button 
+                type='button'
+                className={css.icon_buttons_bell}
+              >
+                <Icon
+                  sprite={2}
+                  name={'#bell-icon'}
+                  width="16"
+                  height="16"
+                  stroke="var( --accent-color)"
+                />
+              </button>
+            </Tooltip>
               <Tooltip title="Move">
                 <button
                   aria-describedby={id}
-                  disabled={!columnList.length}
+                  disabled={!Object.keys(avaliableColumns || {}).length}
                   type="button"
                   className={css.icon_buttons}
                   onClick={event => setMoveAnchorEl(event.currentTarget)}
                   variant="contained"
                 >
                   <Icon
-                    className={css.icon_info}
+                    // className={css.icon_info}
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"
@@ -90,7 +154,11 @@ const Task = ({ taskData, columnList }) => {
                 </button>
               </Tooltip>
               <Tooltip title="Delete">
-                <button type="button" className={css.icon_buttons}>
+                <button
+                  type="button"
+                  className={css.icon_buttons}
+                  onClick={handleDeleteTask}
+                >
                   <Icon
                     sprite={2}
                     name={'#trash-icon'}
@@ -106,22 +174,18 @@ const Task = ({ taskData, columnList }) => {
       </ul>
       {isEditTaskOpened && (
         <Modal
-          name={taskData.id ? 'Edit card' : 'Add card'}
+          name="Edit card"
           onClick={event => {
             if (event.currentTarget === event.target) {
               setEditTaskOpened(false);
             }
           }}
-          onClose={() => setEditTaskOpened(!isEditTaskOpened)}
+          onClose={toggleModal}
         >
-          <CardForm taskData={taskData} />
+          <CardForm taskData={taskData} setTask={handleEditTask} onClose={toggleModal} />
         </Modal>
       )}
-      {/* TODO: it was good idea with mui Popover, but does not work completly */}
       <Popover
-        classes={{
-          paper: css.popover,
-        }}
         id={id}
         open={openMovePopover}
         anchorEl={moveAnchorEl}
@@ -134,22 +198,40 @@ const Task = ({ taskData, columnList }) => {
           vertical: 'top',
           horizontal: 'center',
         }}
+        sx={{ 
+          "& .MuiPopover-paper": {
+            backgroundColor: 'inherit',
+            borderRadius: '8px',
+          }
+        }}
       >
-        <ul>
-          {columnList?.map(column => (
-            <li className={css.popoverItem}>
-              <p className={css.popoverStatus}>{column.name}</p>
-              <Icon
-                sprite={2}
-                name={'#arrow-circle-icon'}
-                width="16"
-                height="16"
-                fill={'#8942b3'}
-                stroke={'#d400ff'}
-              />
-            </li>
-          ))}
-        </ul>
+        <PopupWrapper popStyles={popStyles}>
+          <ul className={css.popover_list}>
+            {Object.entries(avaliableColumns)?.map(([id, title]) => (
+              <ItemWrapper className={css.popoverItem} key={id} popStyles={popStyles}>
+                <button
+                  onClick={() => {
+                    // TODO 
+                    /* dispatch(moveTaskToOtherColumn({
+                      colomnId: id,
+                      taskId: taskData._id,
+                    })); */
+                    setMoveAnchorEl(null);
+                  }}
+                  className={css.popoverBtn}
+                >
+                <p className={css.popoverStatus}>{title}</p>
+                </button>
+                <Icon
+                  sprite={2}
+                  name={'#arrow-circle-icon'}
+                  width="16"
+                  height="16"
+                />
+              </ItemWrapper>
+            ))}
+          </ul>
+        </PopupWrapper>
       </Popover>
     </>
   );

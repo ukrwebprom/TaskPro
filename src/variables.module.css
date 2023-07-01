@@ -24,6 +24,7 @@
   --sidebar-text-color: #fff;
   --btn-text-color: #161616;
   --accent-color: #bedbb0;
+  --accent-bell-color: rgba(190, 219, 176, 1);
 
   --primary-bg-color: #1f1f1f;
   --secondary-bg-color: #121212;
@@ -41,6 +42,17 @@
   --bg-icon-wrapper-color: rgba(22, 22, 22, 1);
   --taskScrollBase:rgba(255, 255, 255, 0.08);
   --taskScrollHandler:#121212;
+  --datepicker-accent-color: #bedbb0;
+  --datepicker-bg-color: #1f1f1f;
+  --datepicker-primary-text-color: #fff;
+  --datepicker-primary-text-color-hover: #ffffff20;
+  --datepicker-color-day-name: #ffffff50;
+  --datepicker-color-day-disabled: #ffffff20;
+  --datepicker-color-day-selected: #1f1f1f;
+  --datepicker-color-day-selected-hover: #9bbf8a;
+  --datepicker-color-day-keyboard-selected: #ffffff20;
+  --datepicker-color-line: #ffffff20;
+  --datepicker-color-navigation-icon: #ffffff80;
 }
 
 /* light theme*/
@@ -50,6 +62,7 @@
   --sidebar-text-color: #161616;
   --btn-text-color: #161616;
   --accent-color: #bedbb0;
+  --accent-bell-color: rgba(190, 219, 176, 1);
 
   --primary-bg-color: #f6f6f7;
   --secondary-bg-color: #fff;
@@ -67,6 +80,17 @@
   --bg-icon-wrapper-color: rgba(22, 22, 22, 1);
   --taskScrollBase:#E8E8E8;
   --taskScrollHandler:rgba(22, 22, 22, 0.10);
+  --datepicker-accent-color: #bedbb0;
+  --datepicker-bg-color: #ffffff;
+  --datepicker-primary-text-color: #161616;
+  --datepicker-primary-text-color-hover: #f0f0f0;
+  --datepicker-color-day-name: #16161650;
+  --datepicker-color-day-disabled: #16161620;
+  --datepicker-color-day-selected: #161616;
+  --datepicker-color-day-selected-hover: #9bbf8a;
+  --datepicker-color-day-keyboard-selected: #f0f0f0;
+  --datepicker-color-line: #16161620;
+  --datepicker-color-navigation-icon: #16161680;
 }
 
 /* violet theme*/
@@ -76,6 +100,7 @@
   --sidebar-text-color: #fff;
   --btn-text-color: #fff;
   --accent-color: #5255bc;
+  --accent-bell-color: rgba(82, 85, 188, 1);
 
   --primary-bg-color: #ecedfd;
   --secondary-bg-color: #fff;
@@ -93,6 +118,17 @@
   --bg-icon-wrapper-color:  rgba(255, 255, 255, 1);
   --taskScrollBase:#fff;
   --taskScrollHandler:#B8BCFD;
+  --datepicker-accent-color: #5255bc;
+  --datepicker-bg-color: #ffffff;
+  --datepicker-primary-text-color: #161616;
+  --datepicker-primary-text-color-hover: #f0f0f0;
+  --datepicker-color-day-name: #16161650;
+  --datepicker-color-day-disabled: #16161620;
+  --datepicker-color-day-selected: #fcfcfc;
+  --datepicker-color-day-selected-hover: #353899;
+  --datepicker-color-day-keyboard-selected: #f0f0f0;
+  --datepicker-color-line: #16161620;
+  --datepicker-color-navigation-icon: #16161680;
 }
 /* fonts*/
 /*   --font: "Poppins", sans-serif; */

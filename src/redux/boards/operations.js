@@ -160,23 +160,6 @@ export const updateColumnTitle = createAsyncThunk(
         }
       }
 );
-
-/*
- * POST @ /columns/:id/tasks
- * headers: Authorization: Bearer token
- */
-/* export const addTask = createAsyncThunk(
-  'boards/addTask',
-  async ({_id,body}, thunkAPI) => {
-    try {
-      const response = await axios.post(`/columns/${_id}/tasks`, { ...body });
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-); */
-
 /*
  * PUT @ /tasks/:id
  * headers: Authorization: Bearer token
@@ -187,14 +170,14 @@ export const updateTask = createAsyncThunk(
     const { _id, title, description, deadline, priority, column } = task;
 
     try {
-      const { data } = await axios.put(`/tasks/${_id}`, {
+      await axios.put(`/tasks/${_id}`, {
         title,
         description, 
         deadline, 
         priority, 
         column
       });
-      return data;
+      return task;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -211,10 +194,10 @@ export const updateTaskPlace = createAsyncThunk(
     const { _id, column } = task;
 
     try {
-      const { data } = await axios.patch(`/tasks/${_id}`, {
+      axios.patch(`/tasks/${_id}`, {
         column,
       });
-      return data;
+      return task;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -227,10 +210,11 @@ export const updateTaskPlace = createAsyncThunk(
  */
   export const deleteTask = createAsyncThunk(
       'boards/deleteTask',
-      async (_id, thunkAPI) => {
+      async (task, thunkAPI) => {
+        const { _id, column } = task;
         try {
-          const res = await axios.delete(`/tasks/${_id}`);
-          return res.data;
+          await axios.delete(`/tasks/${_id}`);
+          return task;
         } catch (error) {
           return thunkAPI.rejectWithValue(error.message);
         }
@@ -276,3 +260,5 @@ export const updateTaskPlace = createAsyncThunk(
       }
     }
   ); */
+
+

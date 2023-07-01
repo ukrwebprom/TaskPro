@@ -110,7 +110,7 @@ const boardsSlice = createSlice({
         state.error = null;
 
         const index = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload._id
+          column => column._id === action.payload.column
         );
 
         state.items[state.currentBoard].columns[index].tasks.push(action.payload);
@@ -125,7 +125,7 @@ const boardsSlice = createSlice({
           column => column._id === action.payload.column
         );
 
-        const taskIndex =  state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
+        const taskIndex = state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
           task => task._id === action.payload._id
         );
 
@@ -199,4 +199,4 @@ const boardsSlice = createSlice({
 });
 
 export const { selectBoard, setFilter } = boardsSlice.actions;
-export const boardsReducer = boardsSlice.reducer;
+export const boardsReducer = boardsSlice.reducer

@@ -1,6 +1,7 @@
 // import { useDispatch } from "react-redux";
 import {
     forwardRef,
+    useEffect,
     // useEffect,
     useState
 } from "react";
@@ -12,13 +13,17 @@ import Icon from "components/Icon/Icon";
 
 const newDate = new Date()
 
-export const MyDatepicker = () => {
+export const MyDatepicker = ({ handleSetData }) => {
     const [selectedDate, setSelectedDate] = useState(newDate);
     // const dispatch = useDispatch();
 
     // useEffect(() => {
     //     dispatch(udateDeadline(selectedDate.toLocaleDateString()))
     // }, [dispatch, selectedDate]);
+
+    useEffect(() => {
+        handleSetData(selectedDate);
+    },[selectedDate])
 
     const CustomInput = forwardRef(({ value, onClick }, ref) => (
         <p className="example-custom-input" onClick={onClick} ref={ref}>

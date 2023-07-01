@@ -21,7 +21,7 @@ export const HomeLayout = ({children}) => {
                 </div>                
                 {/* <div style={{ paddingLeft: 300 }}>
                   <Task
-                    avaliableColumns={{}}
+                    avaliableColumns={{seflcksmfa3: 'TODO', qwdrthrtfa3: 'DONE' }}
                     taskData={{
                       id: 'frepgm23r-43r4--43rrwefv',
                       endDate: new Date(),

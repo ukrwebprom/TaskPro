@@ -110,6 +110,38 @@ export const addTask = createAsyncThunk(
   }
 );
 
+/*
+ * PUT @ /tasks/:id/
+ * headers: Authorization: Bearer token
+ */
+export const updateTask = createAsyncThunk(
+  'tasks/',
+  async ({ body }, thunkAPI) => {
+    try {
+      const response = await axios.put(`/tasks/${body._id}`, { ...body });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+/*
+ * DELETE @ /tasks/:id/
+ * headers: Authorization: Bearer token
+ */
+export const deleteTask = createAsyncThunk(
+  'tasks/',
+  async ({ id }, thunkAPI) => {
+    try {
+      await axios.delete(`/tasks/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 
 /*
  * POST @ /columns

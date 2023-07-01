@@ -12,6 +12,7 @@ import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
 // import { moveTaskToOtherColumn } from 'redux/boards/operations';
+// import { updateTask } from 'redux/boards/operations';
 
 const levelsToIndexes = {
   0: 'Without priority',
@@ -61,11 +62,21 @@ const Task = ({
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
 
+  const toggleModal = () => setEditTaskOpened(!isEditTaskOpened);
+
   const openMovePopover = Boolean(moveAnchorEl);
   const id = useMemo(() => (openMovePopover ? 'move-popover' : undefined)
   , [openMovePopover]);
 
   const popStyles  = useMemo(() => getPopoverItems[user.theme], [user.theme]);
+
+  const handleEditTask = (task) => {
+    // dispatch(updateTask(task));
+  }
+
+  const handleDeleteTask = () => {
+    // dispatch(deleteTask(taskData._id));
+  }
 
   return (
     <>
@@ -99,14 +110,14 @@ const Task = ({
                 type='button'
                 className={css.icon_buttons_bell}
               >
-            <Icon
-                    sprite={2}
-                    name={'#bell-icon'}
-                    width="16"
-                    height="16"
-                    stroke="var( --accent-color)"
-                  />
-                  </button>
+                <Icon
+                  sprite={2}
+                  name={'#bell-icon'}
+                  width="16"
+                  height="16"
+                  stroke="var( --accent-color)"
+                />
+              </button>
             </Tooltip>
               <Tooltip title="Move">
                 <button
@@ -143,7 +154,11 @@ const Task = ({
                 </button>
               </Tooltip>
               <Tooltip title="Delete">
-                <button type="button" className={css.icon_buttons}>
+                <button
+                  type="button"
+                  className={css.icon_buttons}
+                  onClick={handleDeleteTask}
+                >
                   <Icon
                     sprite={2}
                     name={'#trash-icon'}
@@ -165,9 +180,9 @@ const Task = ({
               setEditTaskOpened(false);
             }
           }}
-          onClose={() => setEditTaskOpened(!isEditTaskOpened)}
+          onClose={toggleModal}
         >
-          <CardForm taskData={taskData} />
+          <CardForm taskData={taskData} setTask={handleEditTask} onClose={toggleModal} />
         </Modal>
       )}
       <Popover

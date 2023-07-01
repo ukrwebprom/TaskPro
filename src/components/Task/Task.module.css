@@ -180,3 +180,19 @@ li {
   font-family: Poppins;
   letter-spacing: -0.28px;
 }
+
+.btn{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  background-color: var(--accent-color);
+  padding: 14px 88px 14px 89px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  width: 100%;
+  color: var(--primary-text-color);
+}

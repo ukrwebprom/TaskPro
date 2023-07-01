@@ -6,6 +6,7 @@ import EllipsisText from 'react-ellipsis-text';
 import Tooltip from '@mui/material/Tooltip';
 import Popover from '@mui/material/Popover';
 import styled from '@emotion/styled';
+import moment from 'moment';
 
 import Modal from 'components/Modal/Modal';
 import css from './Task.module.css';
@@ -15,11 +16,33 @@ import Icon from 'components/Icon/Icon';
 // import { updateTask } from 'redux/boards/operations';
 
 const levelsToIndexes = {
-  0: 'Without priority',
-  1: 'Low',
-  2: 'Medium',
-  3: 'High',
-};
+  none: 'Without priority',
+  low: 'Low',
+  medium: 'Medium',
+  high: 'High',
+}
+  const proprityColors = {
+    none: {
+      border: '1px solid rgba(22, 22, 22, 0.30)',
+      bg: 'rgba(22, 22, 22, 0.30)',
+      bl: '4px solid rgba(22, 22, 22, 0.30)'
+    },
+    low: {
+      border: '1px solid #8FA1D0',
+      bg: '#8FA1D0',
+      bl: '4px solid #8FA1D0',
+    },
+    medium: {
+      border: '1px solid #E09CB5',
+      bg: '#E09CB5',
+      bl: '4px solid #E09CB5',
+    },
+    high: {
+      border: '1px solid #BEDBB0',
+      bg: '#BEDBB0',
+      bl: '4px solid #BEDBB0',
+    },
+  };
 
 const getPopoverItems = {
   dark: {
@@ -78,9 +101,15 @@ const Task = ({
     // dispatch(deleteTask(taskData._id));
   }
 
+  const taskDate = moment(taskData.deadline).format("DD/MM/YYYY");
+  const isActual = moment().isBefore(moment(taskData.deadline), "day");
+
   return (
     <>
-      <ul className={css.wrapper}>
+      <ul
+        className={css.wrapper}
+        style={{ borderLeft: `${proprityColors[taskData.priority].bl}` }}
+      >
         <li key={taskData.id}>
           <h2 className={css.title}>{taskData.title}</h2>
           <div className={css.wrapper_text}>
@@ -95,30 +124,38 @@ const Task = ({
             <div className={css.card_priority}>
               <div className={css.card_title}>
                 <p className={css.priority}>Priority</p>
-                <p className={css.status}>
-                  {levelsToIndexes[taskData.priority]}
-                </p>
+                <div className={css.priorityBlock}>
+                  <div style={{
+                    border: `${proprityColors[taskData.priority].border}`,
+                    backgroundColor: `${proprityColors[taskData.priority].bg}`,
+                  }} className={css.circul}></div>
+                  <p className={css.status}>
+                    {levelsToIndexes[taskData.priority]}
+                  </p>
+                </div>
               </div>
               <div className={css.card_dedline}>
                 <p className={css.priority}>Deadline</p>
-                <p className={css.day}>23/06/2023</p>
+                <p className={css.day}>{taskDate}</p>
               </div>
             </div>
             <div className={css.icon_list}>
-            <Tooltip title="din din">
-              <button 
-                type='button'
-                className={css.icon_buttons_bell}
-              >
-                <Icon
-                  sprite={2}
-                  name={'#bell-icon'}
-                  width="16"
-                  height="16"
-                  stroke="var( --accent-color)"
-                />
-              </button>
-            </Tooltip>
+            {!isActual && taskData.priority !== 'none' && (
+              <Tooltip title="din din">
+                <button 
+                  type='button'
+                  className={css.icon_buttons_bell}
+                >
+                  <Icon
+                    sprite={2}
+                    name={'#bell-icon'}
+                    width="16"
+                    height="16"
+                    stroke="var( --accent-color)"
+                  />
+                </button>
+              </Tooltip>
+            )}
               <Tooltip title="Move">
                 <button
                   aria-describedby={id}

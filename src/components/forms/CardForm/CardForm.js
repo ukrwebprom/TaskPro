@@ -13,32 +13,14 @@ import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 //   'rgba(255, 255, 255, 0.30)',
 // ];
 
-const colorsToLables = {
-  none: 'rgba(255, 255, 255, 0.30)',
-  low: '#8FA1D0',
-  medium: '#E09CB5',
-  high: '#BEDBB0',
-};
+const orderedCodes = [
+  'none',
+  'low',
+  'medium',
+  'high',
+];
 
 export const CardForm = ({ taskData, onClose, setTask }) => {
-  // const [level, setLevel] = useState("none");
-
-  // useEffect(() => {
-  //   let newLevel = level;
-  //   if(taskData?.priority){
-  //     newLevel = taskData.priority;
-  //   };
-  //   setLevel(newLevel);
-  //  }, [taskData]);
-
-// useState = {
-//   taskData.priority ? taskData.priority : withoutPriority,
-//   labelColor: taskData?.levelIndex
-//       ? labelColors[taskData.levelIndex]
-//       : labelColors[0],
-//     deadline: taskData?.endDate || new Date(),
-// }
-
 
   const initialValues = {
     deadline: taskData?.deadline || new Date(),
@@ -48,7 +30,7 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    // console.log(values);
+    console.log(values);
     setTask(values);
     setSubmitting(false);
     resetForm();
@@ -84,50 +66,33 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
             />
             <ErrorMessage name="description" />
           </label>
-          <label className={s.item_tittle}>Label Color</label>
-          {/* <div className={s.label_color}> */}
-            {Object.entries(colorsToLables).map(([code, colorL]) => (
-            // Вариант 1
-              // <li>
-              //   <label className={s.lowInput} styles={{ color: colorL }}>
-              //     <input
-              //       className={s.lowInput}
-              //       type="radio"
-              //       value={code}
-              //       checked={values.priority === code}
-              //       onChange={({ target }) => setLevel(target.value)}
-              //     />
-              //   </label>
-              // </li>
-              <label key={code}>
-            <Field
-              styles={{ color: colorL }}
-              // className={s.lowInput}
-              type="radio"
-              name="labelColor"
-              value={code}
-              checked={values.priority === code}
-              onChange={() => setFieldValue('priority' , code)}
-              onBlur={touched.fieldName && errors.fieldName}
-             />
-           </label>
-              //Вариант 2
-              // <label key={code}>
-              //   <Field
-              //   // className={s.lowInput}
-              //     type="radio"
-              //     name="labelColor"
-              //     value={code}
-              //     checked={values.level === code}
-              //     onBlur={touched.fieldName && errors.fieldName}
-              //   />
-              //   <span style={{ backgroundColor: color }}></span>
-              // </label>
-              // вариант 3
-         
-            ))}
-          {/* </div> */}
-          <ErrorMessage name="labelColor" />
+          <label>
+            <p className={s.item_tittle}>Label Color</p>
+            <div id="radio-group" className={s.label_color}>
+              {orderedCodes.map(code => (
+                <div
+                  key={code}
+                  role="group"
+                  aria-labelledby="radio-group"
+                  className={values.priority === code
+                    ? s.selectedLabel
+                    : s.labelItem}
+                >
+                  <Field
+                    id={`color_${code}`}
+                    type="radio"
+                    name={code}
+                    value={code}
+                    checked={values.priority === code}
+                    onChange={() => setFieldValue('priority' , code)}
+                    onBlur={touched.priority && errors.priority}
+                    className={s[`${code}Input`]}
+                  />
+                </div>
+              ))}
+            </div>
+            <ErrorMessage name="priority" />
+          </label>
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
           <MainButton

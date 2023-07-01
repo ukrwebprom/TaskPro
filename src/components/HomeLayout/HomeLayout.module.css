@@ -7,6 +7,7 @@
     flex-basis: 100px;
     background-color: var(--primary-bg-color);
     border:0;
+    overflow: hidden;
 }
 .sidebar {
     max-width:260px;

@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationNewBoardSchema } from "schems";
 import s from "./BoardForm.module.css";
+import Button from "components/Button/Button";
 
 const icons = ["❤️", "👍", "👎", "🤔", "😂", "🤢", "🤬", "🤯"];
 
@@ -45,9 +46,8 @@ export const BoardForm = ({onSubmitForm, def}) => {
       validateOnBlur
     >
       {({ isSubmitting, isValid, dirty, values, setFieldValue }) => (
-      
+        <div className={s.wrap}>
         <Form className ={s.formbackround}>
-           <p className ={s.title}>New board</p>
           <label  className={s.label} >
             <Field className={s.input} type="text" name="title" placeholder="Title" />
             <ErrorMessage name="title" />
@@ -99,11 +99,9 @@ export const BoardForm = ({onSubmitForm, def}) => {
             <ErrorMessage name="background" />
           </label>
 
-          <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-            Create
-          </button>
+          <Button title="Create" type="submit" disabled={isSubmitting || !dirty} />
         </Form>
-       
+        </div>
       )}
     </Formik>
   );

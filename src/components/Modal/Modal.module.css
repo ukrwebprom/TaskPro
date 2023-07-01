@@ -2,12 +2,13 @@
 @import "../../fonts/fonts.css";
 
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
   height: 100vh;
   left: 0;
   position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 999;
 }
 
 .modal_content {
@@ -19,14 +20,18 @@
   /* width: 350px; */
   padding: 24px;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 50%);
+  /* transform: translate(-50%, 50%); */
   align-items: flex-start;
   display: inline-grid;
   justify-content: center;
   margin-top: 20px;
+
 }
+@media screen and (max-width: 480px) {
+  .modal_content {
+    max-width: 80%;
+          }               
+  }
 
 /* @media screen and (max-width: 767px) {
   .modal_content {

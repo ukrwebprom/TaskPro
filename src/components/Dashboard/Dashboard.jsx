@@ -14,6 +14,7 @@ import { Background } from "components/Background/Background";
 import Modal from "components/Modal/Modal";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { useModal } from "hooks/useModal";
+import Filters from "components/Filters/Filters";
 
 const DashBoard = () => {
   const {getModal, killModal} = useModal();
@@ -35,17 +36,18 @@ const DashBoard = () => {
     , [currentData]);
 
 
-  return ( 
+  return (
     <>
     {
       current!== null &&
-      <Background>
-      <div className={css.dashboardContainer}>
-      <div className={css.dashboardHeader}>
-        <h2 className={css.dashboardTitle}>{currentData.title}</h2>
+        <Background>
+          <div className={css.dashboardContainer}>
+            <div className={css.dashboardHeader}>
+              <h2 className={css.dashboardTitle}>{currentData.title}</h2>
+              <Filters />
 
-{/*         <FiltersButton onClick={openModal} /> */}
-{/*         {isModalOpen && (
+              {/*         <FiltersButton onClick={openModal} /> */}
+              {/*         {isModalOpen && (
           <FiltersModal
             isOpen={isModalOpen}
             onClose={closeModal}
@@ -82,7 +84,7 @@ const DashBoard = () => {
     }
     {isModalOpen && 
     <Modal onClose={toggleModal} name = "Add column">
-      <ColumnForm setTitle={handleAddColumn} onClose={toggleModal} />
+          <ColumnForm setTitle={handleAddColumn} onClose={toggleModal} />
     </Modal>}
     </>
    

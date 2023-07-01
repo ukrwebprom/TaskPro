@@ -4,7 +4,7 @@ import LabelColor from "./LabelColor";
 import Background from "./Background";
 import Icon from "components/Icon/Icon";
 
-const FiltersModal = ({ isOpen, onClose, handleBgClick, selectedBgIndex }) => {
+const FiltersModal = ({ onClose, handleBgClick, selectedBgIndex }) => {
   return (
     <div className={css.modalContent}>
       <h2 className={css.modalTitle}>Filters</h2>

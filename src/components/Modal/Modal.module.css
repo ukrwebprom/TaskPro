@@ -18,7 +18,7 @@
   align-items: flex-start;
   justify-content: center;
   margin-top: 20px;
-  width:350px;
+/*   width:350px; */
   box-sizing: border-box;
 }
 .popoverContent {

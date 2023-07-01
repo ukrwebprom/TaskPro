@@ -2,6 +2,7 @@ import css from './HomeLayout.module.css';
 import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { Header } from 'components/Header/Header';
+// import Task from 'components/Task/Task';
 
 import { useAuth } from 'hooks/useAuth';
 
@@ -20,7 +21,7 @@ export const HomeLayout = ({children}) => {
                 </div>                
                 {/* <div style={{ paddingLeft: 300 }}>
                   <Task
-                    columnList={[{name: 'In progress'}, {name: 'Done'}]}
+                    avaliableColumns={{seflcksmfa3: 'TODO', qwdrthrtfa3: 'DONE' }}
                     taskData={{
                       id: 'frepgm23r-43r4--43rrwefv',
                       endDate: new Date(),

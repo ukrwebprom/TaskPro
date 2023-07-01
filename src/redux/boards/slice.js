@@ -120,6 +120,31 @@ const boardsSlice = createSlice({
       // })
       // .addCase(getBoard.pending, handlePending)
       // .addCase(getBoard.rejected, handleRejected)
+
+      
+      // .addCase(moveTaskToOtherColumn.pending, handlePending)
+      // .addCase(moveTaskToOtherColumn.rejected, handleRejected)
+      // .addCase(moveTaskToOtherColumn.fulfilled, (state, action) => {
+      // state.isLoading = false;
+      // state.error = null;
+      // 
+      // })
+      
+      // .addCase(updateTask.pending, handlePending)
+      // .addCase(updateTask.rejected, handleRejected)
+      // .addCase(updateTask.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+
+      // })
+      
+      // .addCase(deleteTask.pending, handlePending)
+      // .addCase(deleteTask.rejected, handleRejected)
+      // .addCase(deleteTask.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+
+      // })
 });
 
 export const { selectBoard } = boardsSlice.actions;

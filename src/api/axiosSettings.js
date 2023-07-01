@@ -2,7 +2,7 @@ import axios from "axios";
 // import { refresh } from "redux/auth/operations";
 import { refreshTokens, resetIsLoggedIn } from "redux/auth/slice";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://taskpro-41yf.onrender.com";
 /* https://taskpro-41yf.onrender.com */
 /* http://localhost:3001 */
 

@@ -102,7 +102,7 @@ export const BoardForm = ({onSubmitForm, def}) => {
         </div>
         <span className={s.addCard}>Create </span></Button>
         </Form>
-       
+        </div>
       )}
     </Formik>
   );

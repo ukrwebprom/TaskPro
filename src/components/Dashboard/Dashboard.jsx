@@ -13,8 +13,10 @@ import FiltersModal from "components/Filters/FiltersModal"; */
 import { Background } from "components/Background/Background";
 import Modal from "components/Modal/Modal";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
+import { useModal } from "hooks/useModal";
 
 const DashBoard = () => {
+  const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
   const {current, currentData} = useBoards();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +24,7 @@ const DashBoard = () => {
   const toggleModal = () => setIsModalOpen(c => !c)
   const handleAddColumn = value => {
     dispatch(addColumn({board: currentData._id,...value}));
+    killModal();
   }
 
   const columnNamesToIds = useMemo(() => currentData?.columns
@@ -31,44 +34,6 @@ const DashBoard = () => {
     }, {})
     , [currentData]);
 
- /*  
-  const setBoardBg = async (newBgIndex) => {
-    try {
-      await updBg(boards[current]._id, { background: newBgIndex });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleBgClick = (index) => {
-    if (index === 0) {
-      setSelectedBgIndex(null);
-      setBoardBg(null);
-    } else {
-      setSelectedBgIndex(index.toString());
-      setBoardBg(index.toString());
-    }
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  useEffect(() => {
-    const handleEscapeKey = (event) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    };
-    window.addEventListener("keydown", handleEscapeKey);
-
-    return () => {
-      window.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, []); */
 
   return ( 
     <>
@@ -94,7 +59,7 @@ const DashBoard = () => {
           {currentData.columns.length > 0 &&
             currentData.columns.map((column) => {
               return (
-                <li key={column._id}>
+                <li key={column._id} className={css.column}>
                   <Column
                     allColumns={columnNamesToIds}
                     data={column}
@@ -102,11 +67,13 @@ const DashBoard = () => {
                 </li>
               );
             })}
-          <li>
-            <Button className={`${btn.btn} ${btn.column}`} onClick={toggleModal}>
+          <li className={css.column}>
+            {/* <Button className={`${btn.btn} ${btn.column}`} onClick={toggleModal}>
               <div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add
               another column
-            </Button>
+            </Button> */}
+            <Button invert={true} title="Add another column" type="button" 
+            action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
           </li>
         </ul>
       </div>

@@ -10,10 +10,12 @@ import BoardsItem from './BoardsItem';
 import css from '../Sidebar.module.css';
 import Modal from 'components/Modal/Modal';
 import { BoardForm } from 'components/forms/BoardForm/BoardForm';
+import { useModal } from 'hooks/useModal';
 
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
+  const {getModal} = useModal();
   const {boards, current} = useBoards();
   const { boardName } = useParams();
   const navigate = useNavigate();
@@ -27,7 +29,10 @@ const Boards = () => {
     const boardSlug = slug(boards[index].title);
     navigate(`/home/${boardSlug}`, { replace: true });
   }
-  const handleDelete = id => dispatch(deleteBoard(id));
+  const handleDelete = id => {
+    console.log(id);
+    dispatch(deleteBoard(id));
+  }
   const handleEdit = () => {
 
   }
@@ -58,7 +63,7 @@ const Boards = () => {
             >
               <BoardsItem
                 index={index}
-                handleEdit={toggleModal}
+                handleEdit={() => getModal("Edit board", <BoardForm onSubmitForm={handleEdit}/>)}
                 handleDelete={handleDelete}
                 board={board}
                 setActive={handleSelect}

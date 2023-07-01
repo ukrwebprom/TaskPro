@@ -3,14 +3,16 @@ import { useState } from 'react';
 import Sidebar from 'components/Sidebar/Sidebar';
 import { Header } from 'components/Header/Header';
 // import Task from 'components/Task/Task';
-
+import { ModelProvider } from 'hooks/useModal';
 import { useAuth } from 'hooks/useAuth';
 
 export const HomeLayout = ({children}) => {
     const [isSidebar, setIsSidebar] = useState(false);
     const {user} = useAuth();
     return(
-        <div className={css.outer} data-theme={user.theme}>
+        
+        <div className={css.outer}  data-theme={user.theme}>
+        <ModelProvider>
             <div className={isSidebar? css.sidebar : css.hidden}>
                 <Sidebar />
             </div>
@@ -34,7 +36,7 @@ export const HomeLayout = ({children}) => {
                 </div> */}
                 {children}
             </div>
-            
+            </ModelProvider>
         </div>
     )
 }

@@ -6,7 +6,7 @@ import Icon from 'components/Icon/Icon';
 import s from "./ColumnForm.module.css"
 
 
-export const ColumnForm = ({ setTitle, onClose, defaultValues }) => {
+export const ColumnForm = ({ setTitle, defaultValues }) => {
   const initialValues = {
     title: "",
   };
@@ -15,7 +15,6 @@ export const ColumnForm = ({ setTitle, onClose, defaultValues }) => {
     setTitle(values);
     setSubmitting(false);
     resetForm();
-    onClose();
   };
 
   return (
@@ -27,8 +26,7 @@ export const ColumnForm = ({ setTitle, onClose, defaultValues }) => {
     >
       {({ isSubmitting, dirty, handleSubmit }) => (
           <div className={s.wrap}>
-        <Form onSubmit={handleSubmit}>
-             <label  className={s.label}>
+        <Form onSubmit={handleSubmit} className={s.form}>
             <Field 
              className={s.input}
             type="text" name="title"
@@ -38,12 +36,7 @@ export const ColumnForm = ({ setTitle, onClose, defaultValues }) => {
             className={s.error}/>
           </label>
 
-          <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
-          {' '}
-        <div className={s.wrapperIcon}>
-          <Icon name={'#plus-icon'} />
-        </div>
-        <span className={s.addCard}>Add </span></Button>
+          <Button title="Add" type="submit" disabled={isSubmitting || !dirty} />
         </Form></div>
       )}
     </Formik>

@@ -8,7 +8,7 @@ import { updateColumnTitle, deleteColumn } from 'redux/boards/operations';
 import Modal from '../Modal/Modal';
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
-
+import Button from "components/Button/Button";
 import css from './Column.module.css';
 
 export const Column = ({
@@ -74,8 +74,8 @@ export const Column = ({
           )}
       </ul>
       </div>
-
-      <div className={css.columnBottom}>
+      <Button title="Add another card" type="button" onClick={toggleTaskModal}/>
+{/*       <div className={css.columnBottom}>
       <button
         type="button"
         className={css.addCardButton}
@@ -85,9 +85,9 @@ export const Column = ({
         <div className={css.wrapperIcon}>
           <Icon name={'#plus-icon'} />
         </div>
-        <span className={css.addCard}>Add another card</span>
+        <span className={css.addCard}>onClick={toggleTaskModal}</span>
       </button>
-      </div>
+      </div> */}
     </section>
 
     {showColumnModal && ( 

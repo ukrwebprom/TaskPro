@@ -14,7 +14,6 @@ export const EditProfileForm = ({
 }) => {
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")
-  const {user} = useAuth();
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
@@ -44,7 +43,7 @@ export const EditProfileForm = ({
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
        
-        <Form  >
+        <Form >
           <div className={s.s} >
          
           <div className={s.addfilewrap}>

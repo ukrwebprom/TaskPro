@@ -161,21 +161,7 @@ export const updateColumnTitle = createAsyncThunk(
       }
 );
 
-/*
- * POST @ /columns/:id/tasks
- * headers: Authorization: Bearer token
- */
-export const addTask = createAsyncThunk(
-  'boards/addTask',
-  async ({_id,body}, thunkAPI) => {
-    try {
-      const response = await axios.post(`/columns/${_id}/tasks`, { ...body });
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+
 
 /*
  * PUT @ /tasks/:id

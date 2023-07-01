@@ -93,8 +93,10 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
             </div>
             <ErrorMessage name="priority" />
           </label>
+          <div className={s.datepicker}>
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
+          </div>
           <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
            />
         </Form>

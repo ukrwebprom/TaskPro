@@ -3,6 +3,7 @@
   
 }
 .addfilewrap{
+  position: relative;
   margin: 0 auto 14px auto;
   justify-content: center;
   width:68px;
@@ -16,11 +17,17 @@
 }
 
 .filelabel{
-  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 50%;;
+  transform:translate(50% , 0);
+  display: flex;
   background-color:var(--accent-color);
   width: 24px;
   height: 24px;
   border-radius: 4px;
+  justify-content: center;
+  align-items: center;
 }
 .label{ 
 position: relative;
@@ -51,7 +58,7 @@ margin-bottom: 24px;
 }
   
 .addphoto{
-  
+
 }
    .eyeicon{
     position: absolute;

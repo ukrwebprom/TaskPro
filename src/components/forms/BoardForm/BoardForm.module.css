@@ -5,7 +5,7 @@
 
 .input{
   display: block;
-  width:100%; 
+  width:302px; 
    box-sizing: border-box;
   background-color: var(--input-backround-color);
   border: 1px solid var(--high-priority-bg-color);

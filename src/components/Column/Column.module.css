@@ -28,14 +28,12 @@
 .columnMiddle{
     flex-shrink: 2;
     flex-grow: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 10px;
 }
 .listTask{
     display:flex;
     flex-direction: column;
-    overflow-y: auto;
-    max-height: 478px;
     gap:8px;
     overflow-x: hidden;
     margin-bottom: 14px;
@@ -52,35 +50,40 @@
     background-clip: content-box;
     background-color:var(--taskScrollHandler);
 }
+.task{
+    width: 334px;
+    height: 154px;
+    border-radius:8px;
+    color: var(--primary-text-color);
+    background-color: var(--secondary-bg-color);
+}
 
+.task:not(:last-child){
+    margin-bottom: 8px;
+}
 
 .addCardButton {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: var(--accent-color);
     padding: 14px 88px 14px 89px;
-    width: 342px;
     border-radius: 8px;
     border: none;
-    font-family: inherit;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-
-    
-    color: var(--inner-icon-color);
-
+    color: var(--primary-text-color);
 }
-.addCardSpan{
+.addCard{
     display: block;
     color: var(--btn-text-color);
 }
 .addCardButton:hover{
-    opacity: 0.7 ;
+    background-color: #a4bb98;
 }
 .addCardButton:focus{
-    opacity: 0.7 ;
+    background-color: #a4bb98;
 }
 .wrapperButton{
     display: flex;
@@ -93,12 +96,7 @@
     border: none;
     color: var(--primary-text-color);
 }
-.buttonColumn:hover{
-    opacity: 0.5;
-}
-.buttonColumn:focus{
-    opacity: 0.5;
-}
+
 .buttonColumn:not(:last-child){
     margin-right: 8px;
 }
@@ -107,7 +105,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 8px;
     background-color: var(--btn-text-color); 
     padding: 7px;
     border-radius: 8px;

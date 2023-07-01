@@ -47,20 +47,3 @@
     flex-basis: 334px;
     max-height: 100%;
 }
-
-.wrapperIcon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-    background-color: var(--add-bg-color);
-    color: var(--secondary-bg-color);
-    padding: 7px;
-    border-radius: 8px;
-}
-
-.addColumnSpan {
-    display: block;
-    font-size: 14px;
-    color: var(--primary-text-color);
-}

@@ -20,7 +20,7 @@ const orderedCodes = [
   'high',
 ];
 
-export const CardForm = ({ taskData, onClose, setTask }) => {
+export const CardForm = ({ taskData, setTask }) => {
 
   const initialValues = {
     deadline: taskData?.deadline || new Date(),
@@ -30,11 +30,9 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     setTask(values);
     setSubmitting(false);
     resetForm();
-    onClose();
   };
 
   return (

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
-import { updateColumnTitle, deleteColumn } from 'redux/boards/operations';
+import { updateColumnTitle, deleteColumn, addTask } from 'redux/boards/operations';
 import Modal from '../Modal/Modal';
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
@@ -22,11 +22,14 @@ export const Column = ({
   const filter = useSelector(setFilter);
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
-
 /*   const toggleColumnModal = () => setShowColumnModal(c => !c); */
   const handleEditColumn = value => {
     killModal();
     dispatch(updateColumnTitle({...data, ...value}));
+  }
+  const handleAddTask = value => {
+    dispatch(addTask({_id:data._id, body:value}))
+    killModal();
   }
   const handleDelete = () => dispatch(deleteColumn(data._id));
 
@@ -77,11 +80,11 @@ export const Column = ({
       </ul>
       </div>
       <Button title="Add another card" type="button" 
-      action={() => getModal("Add card", <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={killModal} />
+      action={() => getModal("Add card", <CardForm setTask={handleAddTask} />
       )}/>
     </section>
 
-      {showColumnModal && (
+{/*       {showColumnModal && (
       <Modal onClose={toggleColumnModal} name = "Edit column">
         <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleColumnModal} />
         </Modal>
@@ -90,7 +93,7 @@ export const Column = ({
       <Modal onClose={toggleTaskModal} name = "Add card">
         <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
         </Modal>
-      )}
+      )} */}
     </>
   );
 };

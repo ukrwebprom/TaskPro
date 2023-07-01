@@ -2,28 +2,32 @@ import { createSlice } from "@reduxjs/toolkit";
 import {fetchBoards, addBoard, deleteBoard,updateBoardById, updateBoardBgById, addTask, addColumn, updateColumnTitle, deleteColumn,updateTask, updateTaskPlace, deleteTask   } from '../boards/operations';
 
 const handlePending = state => {
-    state.isLoading = true;
-  };
-  
-  const handleRejected = (state, action) => {
-    state.error = action.payload;
-    state.isLoading = false;
-  };
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.error = action.payload;
+  state.isLoading = false;
+};
 
 const boardsSlice = createSlice({
     name: 'boards',
-    initialState: {
-      items: [],
-      isLoading: false,
-      error: null,
-      currentBoard: null,
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+    currentBoard: null,
+    filter: null,
+  },
+  reducers: {
+    selectBoard(state, action) {
+      state.currentBoard = action.payload;
     },
-    reducers: {
-      selectBoard(state, action) {
-        state.currentBoard = action.payload;
-      }
+    setFilter: (state, action) => {
+      state.filter = action.payload;
     },
-    extraReducers: builder =>
+  },
+  extraReducers: builder =>
     builder
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -70,9 +74,9 @@ const boardsSlice = createSlice({
         );
         state.items.splice(index, 1);
       if(state.items.length === 0) {
-        state.currentBoard = null;
-      }
-      state.currentBoard = 0;
+          state.currentBoard = null;
+        }
+        state.currentBoard = 0;
       }).addCase(deleteBoard.rejected, handleRejected)
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -194,5 +198,5 @@ const boardsSlice = createSlice({
       // })
 });
 
-export const { selectBoard } = boardsSlice.actions;
+export const { selectBoard, setFilter } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;

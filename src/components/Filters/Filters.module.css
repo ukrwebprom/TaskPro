@@ -99,11 +99,14 @@
   letter-spacing: -0.28px;
   margin-bottom: 14px;
 }
-.labelText {
+.labelButton {
   color: var(--index-label-color);
   font-size: 12px;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 .labelList {
   display: flex;

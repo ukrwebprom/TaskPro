@@ -14,6 +14,7 @@ import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
 // import { moveTaskToOtherColumn } from 'redux/boards/operations';
 // import { updateTask } from 'redux/boards/operations';
+import { useModal } from 'hooks/useModal';
 
 const levelsToIndexes = {
   none: 'Without priority',
@@ -78,6 +79,7 @@ const Task = ({
   index,
   taskData,
 }) => {
+  const {getPopover} = useModal();
   const authContext = useAuth();
   const { user } = authContext;
   const dispatch = useDispatch();
@@ -162,7 +164,8 @@ const Task = ({
                   disabled={!Object.keys(avaliableColumns || {}).length}
                   type="button"
                   className={css.icon_buttons}
-                  onClick={event => setMoveAnchorEl(event.currentTarget)}
+                  /* onClick={event => setMoveAnchorEl(event.currentTarget)} */
+                  onClick={() => getPopover(<button >your component</button>)}
                   variant="contained"
                 >
                   <Icon

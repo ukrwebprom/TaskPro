@@ -1,7 +1,3 @@
-import React from 'react';
-
-// import { useEffect } from 'react';
-// import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 import Icon from 'components/Icon/Icon';
 import {useMedia} from 'react-use';
@@ -58,9 +54,10 @@ const Modal = ({ children, isOpen, name, onClose, position }) => {
         <div className={css.modal_items}>
           <h2 className={css.modal_title}>{name}</h2>
         </div>
-        <div className="modalBody">
+        {children}
+{/*         <div className="modalBody">
           {children}
-        </div>
+        </div> */}
       </div>
     </div>
   );

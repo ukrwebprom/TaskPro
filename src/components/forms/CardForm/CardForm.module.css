@@ -1,21 +1,7 @@
-@import "../../../variables.module.css";
-@import "../../../fonts/fonts.css";
-
-/* .formbackround {
-    margin: auto;
-    background-color: var(--main-background-color) ;
-    width: 350px;
-    height: 522px;
-    border-radius: 8px;
-    padding: 24px;
-    } */
-    /*заголовки*/
     .title{
       margin: 0;
       text-align: start;
-      font-family: "Poppins";
       font-weight: 500;
-      font-style: normal;
       font-size: 18px;
       line-height: 27px;
       color:var(--btn-text-color);
@@ -29,14 +15,11 @@
       background-color: var(--input-backround-color);
       border: 1px solid var(--accent-color);
       border-radius: 8px;
-      /* opacity:0.4; */
       padding:14px 18px;
       box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
       color:var(--primary-text-color);
-      font-family: "Poppins";
       font-size: 14px;
       font-weight: 400;
-      font-style: normal;
       line-height: 21px;
       letter-spacing:  -2%;
     }
@@ -44,7 +27,8 @@
    .comment {
         display: block;
         margin-bottom: 24px;
-        min-width:302px;
+        width:100%;
+        box-sizing: border-box;
         height: 154px;
         resize: none;
         background-color: var(--input-backround-color);
@@ -72,22 +56,6 @@
           background-color: var(--low-priority-bg-color);
         }
         
-  
-      /*кнопка*/
-    .btn{
-      display: block;
-      padding: 0px;
-      margin: 0px;
-      min-width: 302px;
-      height: 49px;
-      background-color:  #BEDBB0;
-      font-size: 14px; 
-      border-radius: 8px;
-      border: transparent;
-      cursor: pointer;
-      color: #161616;
-      line-height: 21px;
-    }
      .datepicker{
         background-color: var(--accent-color) ;
         border: transparent

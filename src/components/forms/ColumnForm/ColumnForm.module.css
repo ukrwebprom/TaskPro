@@ -1,7 +1,3 @@
-
-@import "../../../variables.module.css";
-@import "../../../fonts/fonts.css";
-
 .input{
   display: block;
   width:100%; 
@@ -12,73 +8,24 @@
   padding:14px 18px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
   color:var(--primary-text-color);
-  font-family: "Poppins";
   font-size: 14px;
   font-weight: 400;
-  font-style: normal;
   line-height: 21px;
   letter-spacing:  -2%;
   margin-bottom: 24px;
-     }
-     
-    .label{ 
-      width: 100%;
-      position: relative;
-      display: block;
-      margin-bottom: 24px;
-    
-    }
-.btn{
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  align-items: center;
-  background-color: var(--accent-color);
-  padding: 14px 88px 14px 89px;
-  border-radius: 8px;
-  border: none;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  width: 100%;
-  color: var(--primary-text-color);
- }
-.wrapperIcon{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--btn-text-color); 
-  padding: 7px;
-  border-radius: 8px;
-    }
-    
-.addCard{
-      display: block;
-      color: var(--btn-text-color);
   }
-.addCardButton:hover{
-  background-color: #a4bb98;
+     
+  .label{ 
+    position: relative;
   }
 
-.addCardButton:focus{
-  background-color: #a4bb98;
-  }
   .error{
   position: absolute;
-  display: flex;
-  bottom:100;
+  bottom:-24px;
   right: 0;
-  width: 100%;
-  height: 12px;
-  border-radius: 8px;
-  font: "Poppins";
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   font-style: normal;
-  justify-content: flex-end;
-  align-items: center;
-  line-height: 21px;
-  letter-spacing: -1%;
   opacity: 0.9;
   color:#e66666;;
  }

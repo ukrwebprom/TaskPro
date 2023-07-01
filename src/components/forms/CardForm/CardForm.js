@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import { validationCardSchema } from '..//..//..//schems/validationCardSchema';
 import s from './CardForm.module.css';
-import MainButton from '../../MainButton/MainButton';
+import Button from "..//..//Button/Button.jsx"
 import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 
 // const labelColors = [
@@ -20,7 +20,7 @@ const orderedCodes = [
   'high',
 ];
 
-export const CardForm = ({ taskData, onClose, setTask }) => {
+export const CardForm = ({ taskData, setTask }) => {
 
   const initialValues = {
     deadline: taskData?.deadline || new Date(),
@@ -30,11 +30,9 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     setTask(values);
     setSubmitting(false);
     resetForm();
-    onClose();
   };
 
   return (
@@ -45,7 +43,7 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
         <Form className={s.formbackround} onSubmit={handleSubmit}>
-          <label>
+          <label  className={s.label}>
             <Field
               className={s.input}
               type="text"
@@ -53,10 +51,11 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
               placeholder="Title"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="title" />
+            <ErrorMessage name="title" component="div"
+            className={s.error} />
           </label>
 
-          <label>
+          <label  className={s.label}>
             <Field
               className={s.comment}
               as="textarea"
@@ -64,9 +63,10 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
               name="description"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="description" />
+            <ErrorMessage name="description" component="div"
+            className={s.error}/>
           </label>
-          <label>
+          <label className={s.label}>
             <p className={s.item_tittle}>Label Color</p>
             <div id="radio-group" className={s.label_color}>
               {orderedCodes.map(code => (
@@ -95,12 +95,8 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
           </label>
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
-          <MainButton
-            btnName="Edit"
-            iconName="#plus-icon"
-            disabled={isSubmitting || !dirty}
-            type="submit"
-          />
+          <Button invert={false} title="Add" type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
       )}
     </Formik>

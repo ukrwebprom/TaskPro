@@ -88,7 +88,8 @@ export const LoginForm = () => {
             </button>
           </label>
           </div>
-          < Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}>Log In Now</Button>
+          <Button invert={false} title="Log In Now" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
        
              </div>

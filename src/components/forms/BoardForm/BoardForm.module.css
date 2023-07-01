@@ -1,95 +1,79 @@
-/*фон*/
-.formbackround {
-/* margin: auto;
-background-color: var(--main-background-color) ; */
-max-width: 100%;
-/* height: 433px;
-border-radius: 8px;
-padding: 24px; */
+.form{
+  width: 100%;
 }
-.wrap {
-  max-width: 100%;
-}
-/*заголовки*/
-.title{
-  margin: 0;
-  text-align: start;
-  font: "Poppins";
-  font-weight: 500;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 27px;
-  color: var(--primary-text-color);
-}
+/*инпут*/
 
+.input{
+  display: block;
+  width:100%; 
+   box-sizing: border-box;
+  background-color: var(--input-backround-color);
+  border: 1px solid var(--high-priority-bg-color);
+  border-radius: 8px;
+  padding:14px 18px;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  color:var(--primary-text-color);
+  font-family: "Poppins";
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 21px;
+  letter-spacing:  -2%;
+ 
+}
+/*заголовки 2 уровня*/
 .itemtitle{
-  color: var(--primary-text-color); 
+  color: var(--secondary-text-color); 
   margin: 0;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   text-align: left;
   font-size: 14px;
   font: "Poppins";
   font-weight: 400;
   font-style: normal;
   line-height: 21px;
-   }
-  
-/*инпут*/
-.input{
-  display: block;
-  margin: 24px 0px;
-  min-width:302px;
-  background-color: var( --input-backround-color);
-  border: 1px solid  #BEDBB0;
-  border-radius: 8px;
-  opacity:0.4;
-  padding:14px 18px;
-  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-}
-
-.input::placeholder{
-  font: "Poppins";
-  font-size: 14px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 21px;
-letter-spacing: -2%;
-  color:var(--placeholder-color);
+  letter-spacing: -2%;
   }
+.label{ 
+ width: 100%;
+position: relative;
+display: block;
+margin-bottom: 24px;
+ }
 
-
-/*иконки*/
+  /*иконки*/
 
 .icontainer{
   display: flex;
   margin-bottom: 24px;
+  gap: 8px;
 }
 
 .icon {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background-color: #eee;
+  background-color:transparent;
   text-align: center;
-  line-height: 30px;
-  font-size: 20px;
-  margin-right: 10px;
+  color: var(--secondary-text-color); 
+
+ }
+
+ .icon:hover {
+  color:var(--accent-color);
 }
-
-
 /*картинки*/
 
 .wrapimage{
-  display: flex;
-  flex-wrap: wrap;
-  height: auto; 
-  gap: 4px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 4px;
+  flex-wrap: wrap; 
+  justify-content: flex-start;
 }
-.imagecontainer{
-  width: 28px;
-  height: 28px;
-}
+
 
 .background {
     display: block;
@@ -101,34 +85,72 @@ letter-spacing: -2%;
     border: 1px transparent
   }
   /* Сховати чекбокси */
-input[type="radio"] {
+.boardicon input {
     display: none;
   }
  
-  
   /* Стилізувати вибрані значки */
-  input[type="radio"][name="icon"]:checked + .icon {
+  /* input[type="radio"][name="icon"]:checked + .icon {
     background-color: #0077ff;
     color: #fff;
   }
-  
+   */
   /* Стилізувати вибрані фони */
-  input[type="radio"][name="background"]:checked + .background {
+  /* input[type="radio"][name="background"]:checked + .background {
     border: 2px solid  var( --accent-color)
-  }
+  } */
   /*кнопка*/
-.btn{
-  display: block;
-  padding: 0px;
-  margin: 0px;
-  min-width: 302px;
-  height: 49px;
-  background-color:  #BEDBB0;
-  font-size: 14px; 
-  border-radius: 8px;
-  border: transparent;
-  cursor: pointer;
-  color: #161616;
-  line-height: 21px;
+  .btn{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    background-color: var(--accent-color);
+    padding: 14px 88px 14px 89px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+    color: var(--primary-text-color);
+   }
+   .addCard{
+    display: block;
+    color: var(--btn-text-color);
+}      .wrapperIcon{
+  display: flex;}
+
+ .addCard{
+display: block;
+color: var(--btn-text-color);
+}  
+
+.addCardButton:hover{
+background-color: #a4bb98;
 }
- 
+.addCardButton:focus{
+background-color: #a4bb98;
+}
+.error{
+  position: absolute;
+  display: flex;
+  bottom:100;
+  right: 0;
+  width: 100%;
+  height: 12px;
+  border-radius: 8px;
+  font: "Poppins";
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  justify-content: flex-end;
+  align-items: center;
+  line-height: 21px;
+  letter-spacing: -1%;
+  opacity: 0.9;
+  color:#e66666;;
+        }
+
+        
+       

@@ -3,17 +3,17 @@ import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 import Icon from "components/Icon/Icon";
 import s from "..//components/WelcomeLayout/WelcomeLayout.module.css";
 import { Suspense } from "react";
-
+import img from "..//images/welcome-page.png"
+import goggle from "..//images/google.png"
 const Welcome = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <WelcomeLayout>
-        <img
-          src="..//images/welcome-page.png"
-          alt="welcome"
-          width="162"
-          height="162"
-        />
+      <img 
+    className={s.wecomeimage}
+    src= {img} 
+    alt="welcome" width="162"
+          height="162" />
         <div className={s.logowrap}>
           <Icon name="#icon-welcome-icon" width="48" height="48" />
           <h1 className={s.title}>Task Pro</h1>
@@ -32,9 +32,17 @@ const Welcome = () => {
         <a href="auth/login" className={s.logintext}>
           Log In
         </a>
-        <a href={"https://taskpro-41yf.onrender.com/user/google"}>
+        <div  className={s.gogglelogin}>
+<img
+ className={s.goggleimage}
+src ={goggle}
+alt = "goggleicon"
+width="24"
+height="24"/>
+        <a  className={s.logintext} href={"https://taskpro-41yf.onrender.com/user/google"}>
           Login with Google
         </a>
+        </div>
         {/* https://taskpro-41yf.onrender.com */}
         {/* http://localhost:3001 */}
 

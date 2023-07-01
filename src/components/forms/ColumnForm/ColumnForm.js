@@ -25,16 +25,19 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
       validateOnBlur
     >
       {({ isSubmitting, dirty, handleSubmit }) => (
-          <div className={s.wrap}>
-        <Form onSubmit={handleSubmit} className={s.form}>
+        <Form onSubmit={handleSubmit}>
+          <label className={s.label}>
             <Field 
              className={s.input}
             type="text" name="title"
             placeholder="Title"  />
-            <ErrorMessage name="title" />
-
-          <Button title="Add" type="submit" disabled={isSubmitting || !dirty} />
-        </Form></div>
+            <ErrorMessage name="title" 
+            component="div"
+            className={s.error}/>
+          </label>
+     <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
+           />
+        </Form>
       )}
     </Formik>
   );

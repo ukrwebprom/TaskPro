@@ -1,38 +1,31 @@
+.input{
+  display: block;
+  width:100%; 
+  box-sizing: border-box;
+  background-color: var(--input-backround-color);
+  border: 1px solid var(--high-priority-bg-color);
+  border-radius: 8px;
+  padding:14px 18px;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  color:var(--primary-text-color);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing:  -2%;
+  margin-bottom: 24px;
+  }
+     
+  .label{ 
+    position: relative;
+  }
 
-  .wrap {
-    width:100%;
-  }
-  @media screen and (min-width:768px) {
-    .wrap {
-      width:350px;
-    } 
-  }
-  
-  .form {
-    display:flex;
-    flex-direction: column;
-  }
-
-  .input{
-    display: block;
-    margin: 24px 0px 24px 0px;
-    background-color: var(--input-backround-color);
-    border: 1px solid var(--high-priority-bg-color);
-    border-radius: 8px;
-    padding:14px 18px;
-    box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-    color:var(--primary-text-color);
-    font-family: "Poppins";
-    font-size: 14px;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 21px;
-    letter-spacing:  -2%;
+  .error{
+  position: absolute;
+  bottom:-24px;
+  right: 0;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  opacity: 0.9;
+  color:#e66666;;
  }
-
-  .addCardButton:hover{
-      background-color: #a4bb98;
-  }
-  .addCardButton:focus{
-      background-color: #a4bb98;
-  }

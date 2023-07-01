@@ -39,9 +39,8 @@ const handleSubmit = (values, { setSubmitting, resetForm }) => {
              component="div"
              className={s.error}/>
           </label>
-          <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
-          {' '}
-          <span>Send </span></Button>
+          <Button invert={false} title="Send" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
          )}
     

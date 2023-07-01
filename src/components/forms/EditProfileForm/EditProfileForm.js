@@ -1,7 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationEditProfileSchema } from "..//..//..//schems/validationEditProfileSchema";
-import defaultAvatar from '..//..//..//images/defaultAvatar.png'
 import s from "./EditProfileForm.module.css"
+import { Avatar } from 'components/Avatar/Avatar'
 import Button from "..//..//Button/Button.jsx"
 import Icon from "components/Icon/Icon";
 import { useState } from "react";
@@ -48,9 +48,10 @@ export const EditProfileForm = ({
           <div className={s.s} >
          
           <div className={s.addfilewrap}>
-          <img src= {user.avatar === "none" ? defaultAvatar : user.avatar}
-           alt='avatar' width="32" height="32" /> 
-            <label className={s.filelabel}> <Icon name ="#plus-icon"/>
+          <Avatar/>
+        
+            <label className={s.filelabel}> 
+            <Icon  className ={s.addphoto} name ="#plus-icon"/>
             <Field
               className={s.inputFile}
               name="userPhoto"
@@ -60,7 +61,9 @@ export const EditProfileForm = ({
               }}
               onBlur={touched.fieldName && errors.fieldName}
             /></label>
-            <ErrorMessage name="userPhoto" />
+            <ErrorMessage name="userPhoto"
+             component="div"
+             className={s.error} />
           </div>
           </div>
 
@@ -71,7 +74,9 @@ export const EditProfileForm = ({
               placeholder="Enter your name"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="name" />
+            <ErrorMessage name="name"
+             component="div"
+             className={s.error} />
           </label>
 
           <label  className={s.label}>
@@ -82,7 +87,9 @@ export const EditProfileForm = ({
               type="email"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email"
+             component="div"
+             className={s.error} />
           </label>
 
           <label  className={s.label}>
@@ -99,11 +106,12 @@ export const EditProfileForm = ({
             onClick={(e)=>handleShow(e)} >
             <Icon name ={iconName}/>
             </button>
-            <ErrorMessage name="password" />
+            <ErrorMessage name="password" 
+             component="div"
+             className={s.error}/>
           </label>
-                  <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
-          {' '}
-          <span className={s.addCard}>Send </span></Button>
+          <Button invert={false} title="Send" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
            )}
     </Formik>

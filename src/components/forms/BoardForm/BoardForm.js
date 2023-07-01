@@ -67,7 +67,9 @@ export const BoardForm = ({onSubmitForm, def}) => {
               </div>
             ))}
             </div>
-            <ErrorMessage name="icon" />
+            <ErrorMessage name="icon"
+             component="div"
+             className={s.error} />
           </label>
 
           <label   className={s.label} >
@@ -92,15 +94,13 @@ export const BoardForm = ({onSubmitForm, def}) => {
             ))}
             </div>
         
-            <ErrorMessage name="background" />
+            <ErrorMessage name="background"
+             component="div"
+             className={s.error} />
           </label> 
 
-          <Button className={s.btn} type="submit" disabled={isSubmitting || !dirty}> 
-          {' '}
-        <div className={s.wrapperIcon}>
-          <Icon name={'#plus-icon'} />
-        </div>
-        <span className={s.addCard}>Create </span></Button>
+           <Button invert={false} title="Create"   type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
      
       )}

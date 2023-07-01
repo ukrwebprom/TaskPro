@@ -114,7 +114,8 @@ const handleShow=(e)=>{
             />
           </label>
           </ div>
-          <Button className={s.btn} type="submit" disabled={isSubmitting || !isValid || !dirty}> Register Now</Button>
+          <Button invert={false} title="Register Now" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form> 
         
         </div>

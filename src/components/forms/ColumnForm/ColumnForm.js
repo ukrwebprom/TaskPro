@@ -35,7 +35,8 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
             component="div"
             className={s.error}/>
      
-          <Button title="Add" type="submit" disabled={isSubmitting || !dirty} />
+     <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
         </div>
       )}

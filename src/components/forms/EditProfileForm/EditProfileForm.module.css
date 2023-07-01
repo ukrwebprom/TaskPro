@@ -50,37 +50,10 @@ margin-bottom: 24px;
   }
 }
   
-
-/* .input::placeholder{
-  font: "Poppins";
-  font-size: 14px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 21px;
-letter-spacing: -2%;
-color:var(--placeholder-color);
-  }
- */
-
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    height: 49px;
-    outline: none;
-    color: var(--btn-text-color);
-    border-radius: 8px;
-    background: var(--accent-color);
-    border: none;
-    width: 100%;
-    cursor: pointer;
-    margin-top: 40px;
-    &:hover{
-      opacity: 0.7;
-    }
-  }
-  .eyeicon{
+.addphoto{
+  
+}
+   .eyeicon{
     position: absolute;
     top: 50%;
   display: block;

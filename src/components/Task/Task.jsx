@@ -23,9 +23,9 @@ const levelsToIndexes = {
 }
   const proprityColors = {
     none: {
-      border: '1px solid rgba(255, 255, 255, 0.30)',
-      bg: 'rgba(255, 255, 255, 0.30)',
-      bl: '4px solid rgba(255, 255, 255, 0.30)'
+      border: '1px solid rgba(22, 22, 22, 0.30)',
+      bg: 'rgba(22, 22, 22, 0.30)',
+      bl: '4px solid rgba(22, 22, 22, 0.30)'
     },
     low: {
       border: '1px solid #8FA1D0',

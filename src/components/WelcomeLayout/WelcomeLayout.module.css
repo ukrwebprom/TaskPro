@@ -43,11 +43,12 @@ margin-bottom: 24px;
 }
 .paragraph{
     width: 100%;
-    display: block;
+    font-weight: 400;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -2%;
     margin-bottom: 48px;
+  text-align: center;
 }
 .regbtntext {    display: inline-block;
     text-align: start;
@@ -69,4 +70,12 @@ margin-bottom: 24px;
         line-height: 27px;
         color:#161616
      }
-
+.wecomeimage{
+  margin-bottom: 24px;
+ }
+ .goggleimage{
+border-radius: 8px;
+   }
+.gogglelogin{
+    display: flex;
+}

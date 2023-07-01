@@ -31,10 +31,14 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
              className={s.input}
             type="text" name="title"
             placeholder="Title"  />
-            <ErrorMessage name="title" />
-
-          <Button title="Add" type="submit" disabled={isSubmitting || !dirty} />
-        </Form></div>
+            <ErrorMessage name="title" 
+            component="div"
+            className={s.error}/>
+     
+     <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
+           />
+        </Form>
+        </div>
       )}
     </Formik>
   );

@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import { validationCardSchema } from '..//..//..//schems/validationCardSchema';
 import s from './CardForm.module.css';
-import MainButton from '../../MainButton/MainButton';
+import Button from "..//..//Button/Button.jsx"
 import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 
 // const labelColors = [
@@ -95,12 +95,8 @@ export const CardForm = ({ taskData, onClose, setTask }) => {
           </label>
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
-          <MainButton
-            btnName="Edit"
-            iconName="#plus-icon"
-            disabled={isSubmitting || !dirty}
-            type="submit"
-          />
+          <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
       )}
     </Formik>

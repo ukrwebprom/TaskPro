@@ -1,17 +1,35 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationEditProfileSchema } from "..//..//..//schems/validationEditProfileSchema";
 import s from "./EditProfileForm.module.css"
+import { Avatar } from 'components/Avatar/Avatar'
+import Button from "..//..//Button/Button.jsx"
+import Icon from "components/Icon/Icon";
+import { useState } from "react";
+import { useAuth } from 'hooks/useAuth';
 export const EditProfileForm = ({
   userPhoto = null,
   name = "",
   email = "",
   password = "",
 }) => {
+  const [type,setType]= useState("password");
+  const [iconName, setIconName]= useState("#eye-icon")
+  const {user} = useAuth();
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
     resetForm();
   };
+  const handleShow=(e)=>{
+    const gettype = e.currentTarget.value;
+     if (gettype==="password"){
+      setType("text");
+      setIconName("#eye-slash-icon")
+    } else{
+      setType("password")
+      setIconName("#eye-icon")
+    }
+  }  
 
   return (
     <Formik
@@ -25,11 +43,16 @@ export const EditProfileForm = ({
       onSubmit={handleSubmit}
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
-       < div className={s.wrap}>
-    
-        <Form >
+       
+        <Form  >
+          <div className={s.s} >
+         
           <div className={s.addfilewrap}>
-            <input
+          <Avatar/>
+        
+            <label className={s.filelabel}> 
+            <Icon  className ={s.addphoto} name ="#plus-icon"/>
+            <Field
               className={s.inputFile}
               name="userPhoto"
               type="file"
@@ -37,21 +60,26 @@ export const EditProfileForm = ({
                 setFieldValue("userPhoto", event.currentTarget.files[0]);
               }}
               onBlur={touched.fieldName && errors.fieldName}
-            />
-            <ErrorMessage name="userPhoto" />
+            /></label>
+            <ErrorMessage name="userPhoto"
+             component="div"
+             className={s.error} />
+          </div>
           </div>
 
-          <label>
+          <label  className={s.label}>
             <Field     
              className={s.input}
               name="name"
               placeholder="Enter your name"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="name" />
+            <ErrorMessage name="name"
+             component="div"
+             className={s.error} />
           </label>
 
-          <label>
+          <label  className={s.label}>
             <Field
               className={s.input}
               name="email"
@@ -59,10 +87,12 @@ export const EditProfileForm = ({
               type="email"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email"
+             component="div"
+             className={s.error} />
           </label>
 
-          <label>
+          <label  className={s.label}>
             <Field
               className={s.input}
               name="password"
@@ -70,15 +100,20 @@ export const EditProfileForm = ({
               type="password"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="password" />
+             <button  type="button" 
+            className={s.eyeicon} 
+            value={type}  
+            onClick={(e)=>handleShow(e)} >
+            <Icon name ={iconName}/>
+            </button>
+            <ErrorMessage name="password" 
+             component="div"
+             className={s.error}/>
           </label>
-
-          <button type="submit" disabled={isSubmitting || !dirty}>
-            Send
-          </button>
+          <Button invert={false} title="Send" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
+           />
         </Form>
-        </ div>
-      )}
+           )}
     </Formik>
   );
 };

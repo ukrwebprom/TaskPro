@@ -70,13 +70,15 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
-          board => board._id === action.payload._id
+          board => board._id === action.payload
         );
         state.items.splice(index, 1);
       if(state.items.length === 0) {
           state.currentBoard = null;
-        }
-        state.currentBoard = 0;
+        } else {
+          state.currentBoard = 0;
+      }
+        
       }).addCase(deleteBoard.rejected, handleRejected)
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;

@@ -43,12 +43,12 @@ export const fetchBoards = createAsyncThunk(
       const { _id, title, icon, background } = board;
   
       try {
-        const { data } = await axios.put(`/boards/${_id}`, {
+       await axios.put(`/boards/${_id}`, {
           title,
           icon,
           background,
         });
-        return data;
+        return board;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }
@@ -83,8 +83,8 @@ export const fetchBoards = createAsyncThunk(
         'boards/deleteBoard',
         async (_id, thunkAPI) => {
           try {
-            const res = await axios.delete(`/boards/${_id}`);
-            return res.data;
+            await axios.delete(`/boards/${_id}`);
+            return _id;
           } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
           }

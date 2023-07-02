@@ -27,7 +27,7 @@ const handleAddBoard = (value) => {
       <div>
         <Logo />
         <p className={css.boardsHeading}>My boards</p>
-        <button type="button" className={css.createButton} onClick={() => getModal("New board", <BoardForm onSubmitForm={handleAddBoard}/>)}>
+        <button type="button" className={css.createButton} onClick={() => getModal("New board", <BoardForm onSubmitForm={handleAddBoard} type='Create' />)}>
           <span className={css.createText}>Create a new board</span>
           <div className={css.createIcon}>
             <Icon name={"#plus-icon"} sprite={2} width="20" height="20" />

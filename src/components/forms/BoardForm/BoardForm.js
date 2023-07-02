@@ -18,7 +18,7 @@ const icons = [
 const iconNames = ['board1', 'board2', 'board3', 'board4', 'board5', 'board6', 'board7', 'board8'];
 
 
-export const BoardForm = ({onSubmitForm, def}) => {
+export const BoardForm = ({onSubmitForm, def, type}) => {
   const initialValues = {
     title: "",
     icon: iconNames[0],
@@ -47,31 +47,7 @@ export const BoardForm = ({onSubmitForm, def}) => {
             component="div"
             className={s.error} />
           </label>
-
-{/*          <label   className={s.label}>
-            <p className={s.itemtitle}>Icons</p>
-            <div className={s.icontainer}>
-                {icons.map((icon, index) => (
-              <div className={s.boardicon} key={index}>
-                <Field 
-                  type="radio"
-                  id={ <Icon name="#board1" />}
-                  name="icon"
-                  
-                  value= {icon}
-                  checked={values.icon === icon}
-                  onChange={() => setFieldValue("icon", icon)}
-                />
-                <label htmlFor={`icon${index}`} className={s.icon}>
-                  {icon}
-                </label>
-              </div>
-            ))}
-            </div>
-            <ErrorMessage name="icon"
-             component="div"
-             className={s.error} />
-          </label> */}
+          
           <label   className={s.label}>
             <p className={s.itemtitle}>Icons</p>
             <div className={s.icontainer} role="group">
@@ -97,33 +73,6 @@ export const BoardForm = ({onSubmitForm, def}) => {
              className={s.error} />
           </label>
 
-{/*           <label   className={s.label} >
-          <p className={s.itemtitle}>Background</p>
-          <div className={s.wrapimage}>
-                      { previews.map(( preview, index) => (
-              <div className={s.boardicon} key={index}>
-                <Field
-                  type="radio"
-                  id={`preview${preview}`}
-                  name="background"
-                  value={preview}
-                  checked={values.background === preview}
-                  onChange={() => setFieldValue("background", preview)}
-                />
-                <label
-                  htmlFor={`preview${index}`}
-                  className={s.background}
-                  style={{ backgroundImage: `url(${preview})` }}
-                />
-              </div>
-            ))}
-            </div>
-        
-            <ErrorMessage name="background"
-             component="div"
-            className={s.error} />
-          </label>  */}
-
           <label   className={s.label} >
           <p className={s.itemtitle}>Background</p>
           <div className={s.wrapimage}>
@@ -133,9 +82,8 @@ export const BoardForm = ({onSubmitForm, def}) => {
                   type="radio"
                   id={`back${index}`}
                   name="background"
-                  value={preview}
-                  checked={values.background === preview}
-/*                   onChange={() => setFieldValue("background", preview)} */
+                  value={index}
+                  checked={Number(values.background) === index}
                 />
                 <label
                   htmlFor={`back${index}`}
@@ -151,7 +99,7 @@ export const BoardForm = ({onSubmitForm, def}) => {
             className={s.error} />
           </label> 
 
-           <Button invert={false} title="Create"   type="submit" disabled ={isSubmitting||!dirty}
+           <Button invert={false} title={type} type="submit" disabled ={isSubmitting||!dirty}
            />
         </Form>
      

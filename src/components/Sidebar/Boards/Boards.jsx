@@ -59,7 +59,7 @@ const Boards = () => {
             >
               <BoardsItem
                 index={index}
-                handleEdit={() => getModal("Edit board", <BoardForm onSubmitForm={handleEdit} def={board}/>)}
+                handleEdit={() => getModal("Edit board", <BoardForm onSubmitForm={handleEdit} def={board} type='Edit' />)}
                 handleDelete={handleDelete}
                 board={board}
                 setActive={handleSelect}

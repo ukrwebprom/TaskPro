@@ -12,7 +12,7 @@ import { BoardForm } from "components/forms/BoardForm/BoardForm";
 import { useModal } from "hooks/useModal";
 
 const Sidebar = () => {
-  const {getModal, killModal} = useModal();
+const {getModal, killModal} = useModal();
 const dispatch = useDispatch();
 const [showModal, setShowModal] = useState(false);
 const toggleModal = () => setShowModal(c => !c);

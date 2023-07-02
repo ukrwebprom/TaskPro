@@ -110,7 +110,7 @@ const boardsSlice = createSlice({
         state.error = null;
 
         const index = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload._id
+          column => column._id === action.payload.column
         );
 
         state.items[state.currentBoard].columns[index].tasks.push(action.payload);
@@ -125,11 +125,11 @@ const boardsSlice = createSlice({
           column => column._id === action.payload.column
         );
 
-        const taskIndex =  state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
+        const taskIndex = state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
           task => task._id === action.payload._id
         );
 
-        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex].push(action.payload);
+        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex] = action.payload;
       })
       .addCase(updateTask.pending, handlePending)
       .addCase(updateTask.rejected, handleRejected)
@@ -162,7 +162,7 @@ const boardsSlice = createSlice({
           task => task._id === action.payload._id
         );
 
-        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex].splice(taskIndex, 1);
+        state.items[state.currentBoard].columns[columnIndex].tasks.splice(taskIndex, 1);
       }).addCase(deleteTask.rejected, handleRejected)
         // .addCase(getBoard.fulfilled, (state, action) => {
       //   state.isLoading = false;
@@ -199,4 +199,4 @@ const boardsSlice = createSlice({
 });
 
 export const { selectBoard, setFilter } = boardsSlice.actions;
-export const boardsReducer = boardsSlice.reducer;
+export const boardsReducer = boardsSlice.reducer

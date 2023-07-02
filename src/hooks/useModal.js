@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useRef, useEffect } from "react";
 import Modal from "components/Modal/Modal";
+import Popover from "components/Modal/Popover";
 
 const ModalContext = createContext();
 
@@ -7,7 +8,9 @@ export const useModal = () => useContext(ModalContext);
 
 export const ModelProvider = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
   const [content, setContent] = useState(null);
+  const [popoverContent, setPopoverContent] = useState(null);
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState({})
 
@@ -16,8 +19,8 @@ export const ModelProvider = ({ children }) => {
     const pos = {};
     if(x > window.innerWidth /2) pos.right = window.innerWidth - x;
     else pos.left = x;
-    if(y > window.innerHeight /2) pos.bottom = window.innerHeight - y;
-    else pos.top = y;
+    if(y > window.innerHeight /2) pos.bottom = window.innerHeight - y - 150;
+    else pos.top = y - 150;
     setPosition(pos);
   }
   const getModal = (title, insert) => {
@@ -25,9 +28,17 @@ export const ModelProvider = ({ children }) => {
     setContent(insert);
     setShowModal(true);
   }
+  const getPopover = (insert) => {
+    setPopoverContent(insert);
+    setShowPopover(true);
+  }
   const killModal = () => {
     setContent(null);
     setShowModal(false);
+  }
+  const killPopover = () => {
+    setPopoverContent(null);
+    setShowPopover(false);
   }
   useEffect(() => {
     window.addEventListener('click', setClickPosition);
@@ -36,11 +47,15 @@ export const ModelProvider = ({ children }) => {
   
    return (
      <ModalContext.Provider
-       value={{ getModal, killModal }}>
+       value={{ getModal, killModal, getPopover, killPopover }}>
         {showModal && 
           <Modal onClose={killModal} name={title} position={position}>
             {content}
           </Modal>}
+          {showPopover && 
+          <Popover onClose={killPopover} position={position}>
+            {popoverContent}
+          </Popover>}
        {children}
      </ModalContext.Provider>
    );

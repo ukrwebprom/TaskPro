@@ -22,7 +22,7 @@ export const Column = ({
   const filter = useSelector(setFilter);
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showTaskModal, setShowTaskModal] = useState(false);
-/*   const toggleColumnModal = () => setShowColumnModal(c => !c); */
+
   const handleEditColumn = value => {
     killModal();
     dispatch(updateColumnTitle({...data, ...value}));
@@ -32,8 +32,6 @@ export const Column = ({
     killModal();
   }
   const handleDelete = () => dispatch(deleteColumn(data._id));
-
-/*   const toggleTaskModal = () => setShowTaskModal(c => !c); */
   
   const avaliableColumns = useMemo(() => {
     const newColumns = {...allColumns};
@@ -71,8 +69,9 @@ export const Column = ({
               <Task
                 avaliableColumns={avaliableColumns}
                 index={idx}
-                key={nanoid()}
+                key={task._id}
                 taskData={task}
+                colId={data._id}
                 columnList={[{name: 'todo'}, {name: 'Done'}]}
               />
             )
@@ -83,17 +82,6 @@ export const Column = ({
       action={() => getModal("Add card", <CardForm setTask={handleAddTask} />
       )}/>
     </section>
-
-{/*       {showColumnModal && (
-      <Modal onClose={toggleColumnModal} name = "Edit column">
-        <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleColumnModal} />
-        </Modal>
-      )}
-      {showTaskModal && (
-      <Modal onClose={toggleTaskModal} name = "Add card">
-        <CardForm defaultValues={{title:data.title}} setTitle={handleEditColumn} onClose={toggleTaskModal} />
-        </Modal>
-      )} */}
     </>
   );
 };

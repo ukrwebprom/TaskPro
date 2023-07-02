@@ -1,3 +1,11 @@
+.form {
+  width:302px;
+}
+@media screen and (max-width:375px) {
+  form {
+    width:90%;
+  }
+}
 .input{
   display: block;
   width:100%; 

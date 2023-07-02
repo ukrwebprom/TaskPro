@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { validationColumnSchema } from "..//..//..//schems/validationColumnSchema";
 import Button from 'components/Button/Button';
-import Icon from 'components/Icon/Icon';
 import s from "./ColumnForm.module.css"
 
 
@@ -25,7 +24,7 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
       validateOnBlur
     >
       {({ isSubmitting, dirty, handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className={s.form}>
           <label className={s.label}>
             <Field 
              className={s.input}

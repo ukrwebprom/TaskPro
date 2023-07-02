@@ -2,7 +2,11 @@
   width: 100%;
   
 }
+.form{
+  width: 352px;
+}
 .addfilewrap{
+  position: relative;
   margin: 0 auto 14px auto;
   justify-content: center;
   width:68px;
@@ -16,11 +20,17 @@
 }
 
 .filelabel{
-  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 50%;;
+  transform:translate(50% , 0);
+  display: flex;
   background-color:var(--accent-color);
   width: 24px;
   height: 24px;
   border-radius: 4px;
+  justify-content: center;
+  align-items: center;
 }
 .label{ 
 position: relative;
@@ -31,7 +41,7 @@ margin-bottom: 24px;
 .input{
   display: block;
   box-sizing: border-box;
-  min-width: 335px;
+  width: 100%;
   padding:14px 18px;
   background-color: var(--input-backround-color);
   font: "Poppins";
@@ -44,15 +54,8 @@ margin-bottom: 24px;
   border-radius: 8px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
-@media screen and(min-with:768px){
-  .input{
-    min-width:400px;
-  }
-}
-  
-.addphoto{
-  
-}
+
+
    .eyeicon{
     position: absolute;
     top: 50%;

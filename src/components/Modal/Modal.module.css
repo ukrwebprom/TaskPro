@@ -18,8 +18,12 @@
   align-items: flex-start;
   justify-content: center;
   margin-top: 20px;
-  width:350px;
+/*   width:350px; */
   box-sizing: border-box;
+}
+.popoverContent {
+  composes: modal_content;
+  width:auto;
 }
 @media screen and (max-width: 375px) {
   .modal_content {

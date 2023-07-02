@@ -1,3 +1,6 @@
+.form{
+  width: 302px;
+}
     .title{
       margin: 0;
       text-align: start;
@@ -6,25 +9,13 @@
       line-height: 27px;
       color:var(--btn-text-color);
     }
-    .label{ 
-      position: relative;
-    }
-    .error{
-      position: absolute;
-      bottom:-24px;
-      right: 0;
-      font-size: 12px;
-      font-weight: 400;
-      font-style: normal;
-      opacity: 0.9;
-      color:#e66666;;
-     }
+
     /*инпут*/
     .input{
       display: block;
-      margin-bottom: 24px;
-      width:100%;
       box-sizing: border-box;
+      margin-bottom: 14px;
+      width: 100%;
       background-color: var(--input-backround-color);
       border: 1px solid var(--accent-color);
       border-radius: 8px;
@@ -37,17 +28,7 @@
       letter-spacing:  -2%;
     }
     
-    .input::placeholder{
-      /* font-family: "Poppins";
-      font-size: 14px;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 21px;
-      letter-spacing:  -2%;
-      color:var(--btn-text-color); */
-      }
-    
-      .comment {
+   .comment {
         display: block;
         margin-bottom: 24px;
         width:100%;
@@ -69,18 +50,6 @@
       }
           
   
-    .comment::placeholder {
-      /* color: #0000; */
-        /* font-family: "Poppins";
-        font-size: 14px;
-        font-weight: 400;
-        font-style: normal;
-        line-height: 18px;
-        letter-spacing: -0.28px;
-        color: #161616;
-        font-style: bold; */
-        /* color:var(--placeholder-color); */
-        }
    
         .lowInput::before {
           background-color: var(--low-priority-bg-color);
@@ -98,7 +67,7 @@
      .item_tittle{
       display: block;
       color:var(--index-label-color);
-      margin: 0;
+      margin-bottom: 4px;
       text-align: left;
       font-size: 14px;
       font-family: "Poppins";
@@ -113,6 +82,8 @@
 
     .label_color{
       display: flex;
+      margin-bottom: 14px;
+      justify-content: start;
       }
  
 .noneInput::before {
@@ -163,4 +134,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.datepicker{
+  background-color: transparent;
+  margin-bottom: 40px;
 }

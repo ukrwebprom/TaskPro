@@ -12,10 +12,8 @@ import Modal from 'components/Modal/Modal';
 import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
-// import { moveTaskToOtherColumn } from 'redux/boards/operations';
-// import { updateTask } from 'redux/boards/operations';
 import { useModal } from 'hooks/useModal';
-import { deleteTask } from 'redux/boards/operations';
+import { deleteTask, updateTask } from 'redux/boards/operations';
 
 const levelsToIndexes = {
   none: 'Without priority',
@@ -77,14 +75,14 @@ const ItemWrapper = styled.li`
 
 const Task = ({
   avaliableColumns,
-  index,
   taskData,
   colId
 }) => {
-  const {getPopover} = useModal();
+  const { getPopover } = useModal();
   const authContext = useAuth();
   const { user } = authContext;
   const dispatch = useDispatch();
+  const { getModal, killModal } = useModal();
 
   const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
@@ -98,8 +96,16 @@ const Task = ({
   const popStyles  = useMemo(() => getPopoverItems[user.theme], [user.theme]);
 
   const handleEditTask = (task) => {
-    // dispatch(updateTask(task));
-  }
+    dispatch(updateTask({
+      _id: taskData._id,
+      title: task.title,
+      description: task.description, 
+      deadline: task.deadline, 
+      priority: task.priority, 
+      column: taskData.column,
+    }));
+    killModal();
+  };
 
   const handleDeleteTask = () => {
     dispatch(deleteTask({_id:taskData._id, column:colId}));
@@ -184,7 +190,10 @@ const Task = ({
                 <button
                   type="button"
                   className={css.icon_buttons}
-                  onClick={() => setEditTaskOpened(true)}
+                  onClick={() =>  getModal(
+                    "Edit card",
+                    <CardForm taskData={taskData} setTask={handleEditTask} />
+                  )}
                 >
                   <Icon
                     sprite={2}

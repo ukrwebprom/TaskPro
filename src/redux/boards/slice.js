@@ -129,7 +129,7 @@ const boardsSlice = createSlice({
           task => task._id === action.payload._id
         );
 
-        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex].push(action.payload);
+        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex] = action.payload;
       })
       .addCase(updateTask.pending, handlePending)
       .addCase(updateTask.rejected, handleRejected)

@@ -1,6 +1,12 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://taskpro-41yf.onrender.com';
+axios.defaults.baseURL = 'https://taskpro-41yf.onrender.com';
+
+export const sendTempPicture = async () => {
+   const res = await axios.post("/user/logout");
+   localStorage.setItem("refreshToken", "");
+   return res.data;
+};
 
 // const setAuthToken = token => {
 //     axios.defaults.headers.common.Authorization = `Bearer ${token}`;

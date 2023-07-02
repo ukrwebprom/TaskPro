@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import css from './Header.module.css'
 import { ThemeSelector } from 'components/ThemeSelector/ThemeSelector'
-// import defaultAvatar from '../../images/defaultAvatar.png'
+import { useModal } from 'hooks/useModal'
 import { Avatar } from 'components/Avatar/Avatar'
 import Icon from 'components/Icon/Icon'
-import Modal from 'components/Modal/Modal'
 import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
 
 import { useAuth } from 'hooks/useAuth';
@@ -12,8 +11,9 @@ import { useModal } from 'hooks/useModal'
 
 export const Header = ({ toggleSidebar }) => {
 
-  // const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
-  // const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);;
+  const {getModal, killModal} = useModal();
+  const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
+
   const {user} = useAuth();
   const {getPopover, killPopover} = useModal();
   const {getModal, killModal} = useModal();
@@ -22,9 +22,7 @@ export const Header = ({ toggleSidebar }) => {
   //   setIsVisibleThemeSelector(!isVisibleThemeSelector)
   // };
 
-  // const showUserModal = () => {
-  //   setIsVasibleUserModal(!isVasibleUserModal)
-  // };
+
 
   return (
     <div className={css.headerall}>
@@ -50,13 +48,11 @@ export const Header = ({ toggleSidebar }) => {
 
         <ul className={css.styleUserInfo}>
           <li className={css.styleName}>{user.name}</li>
-          <li><Avatar onClick={() => getModal("Edit profile", <EditProfileForm onClose={killModal}/> )} size={32}/></li>
+          <li><Avatar onClick={() => getModal('Edit profile', <EditProfileForm />)} 
+            size={32}/>
+          </li>
         </ul>
-        {/* {isVasibleUserModal &&
-          <Modal isOpen={isVasibleUserModal} name="Edit profile" onClose={showUserModal}>
-            <EditProfileForm/>
-          </Modal>
-        } */}
+
       </div>
     </div>
   )

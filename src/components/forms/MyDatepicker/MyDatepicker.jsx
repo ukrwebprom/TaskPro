@@ -1,8 +1,6 @@
-// import { useDispatch } from "react-redux";
 import {
     forwardRef,
     useEffect,
-    // useEffect,
     useState
 } from "react";
 import DatePicker from "react-datepicker";
@@ -13,13 +11,8 @@ import Icon from "components/Icon/Icon";
 
 const newDate = new Date()
 
-export const MyDatepicker = ({ handleSetData }) => {
-    const [selectedDate, setSelectedDate] = useState(newDate);
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(udateDeadline(selectedDate.toLocaleDateString()))
-    // }, [dispatch, selectedDate]);
+export const MyDatepicker = ({ date, handleSetData }) => {
+    const [selectedDate, setSelectedDate] = useState(date);
 
     useEffect(() => {
         handleSetData(selectedDate);

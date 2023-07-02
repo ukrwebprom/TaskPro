@@ -17,10 +17,11 @@ export const ModelProvider = ({ children }) => {
   const setClickPosition = e => {
     const {x, y} = e;
     const pos = {};
+    const h = window.innerHeight;
     if(x > window.innerWidth /2) pos.right = window.innerWidth - x;
     else pos.left = x;
-    if(y > window.innerHeight /2) pos.bottom = window.innerHeight - y - 150;
-    else pos.top = y - 150;
+    if(y > h /2) pos.bottom = h - y + (y-545);
+    else pos.top = y - Math.max(0, (545 - (h - y)));
     setPosition(pos);
   }
   const getModal = (title, insert) => {

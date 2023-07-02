@@ -15,12 +15,13 @@ const icons = [
   <Icon name="#board7" />,
   <Icon name="#board8" />,
 ];
+const iconNames = ['board1', 'board2', 'board3', 'board4', 'board5', 'board6', 'board7', 'board8'];
 
 
-export const BoardForm = ({onSubmitForm, def}) => {
+export const BoardForm = ({onSubmitForm, def, type}) => {
   const initialValues = {
     title: "",
-    icon: icons[0],
+    icon: iconNames[0],
     background: previews[0],
   };
 
@@ -46,23 +47,23 @@ export const BoardForm = ({onSubmitForm, def}) => {
             component="div"
             className={s.error} />
           </label>
-
-         <label   className={s.label}>
+          
+          <label   className={s.label}>
             <p className={s.itemtitle}>Icons</p>
-            <div className={s.icontainer}>
-                {icons.map((icon, index) => (
+            <div className={s.icontainer} role="group">
+                {iconNames.map((icon, index) => (
               <div className={s.boardicon} key={index}>
                 <Field 
                   type="radio"
-                  id={ <Icon name="#board1" />}
+                  id={index}
                   name="icon"
                   
                   value= {icon}
                   checked={values.icon === icon}
-                  onChange={() => setFieldValue("icon", icon)}
+                  className={s.radio}
                 />
-                <label htmlFor={`icon${index}`} className={s.icon}>
-                  {icon}
+                <label htmlFor={index}  className={s.icon}>
+                  <Icon name={`#${icon}`} />
                 </label>
               </div>
             ))}
@@ -79,14 +80,13 @@ export const BoardForm = ({onSubmitForm, def}) => {
               <div className={s.boardicon} key={index}>
                 <Field
                   type="radio"
-                  id={`preview${preview}`}
+                  id={`back${index}`}
                   name="background"
-                  value={preview}
-                  checked={values.background === preview}
-                  onChange={() => setFieldValue("background", preview)}
+                  value={index}
+                  checked={Number(values.background) === index}
                 />
                 <label
-                  htmlFor={`preview${index}`}
+                  htmlFor={`back${index}`}
                   className={s.background}
                   style={{ backgroundImage: `url(${preview})` }}
                 />
@@ -99,7 +99,7 @@ export const BoardForm = ({onSubmitForm, def}) => {
             className={s.error} />
           </label> 
 
-           <Button invert={false} title="Create"   type="submit" disabled ={isSubmitting||!dirty}
+           <Button invert={false} title={type} type="submit" disabled ={isSubmitting||!dirty}
            />
         </Form>
      

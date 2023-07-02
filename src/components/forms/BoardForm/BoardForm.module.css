@@ -42,7 +42,9 @@ margin-bottom: 24px;
  }
 
   /*иконки*/
-
+.radio {
+/*   display:none; */
+}
 .icontainer{
   display: flex;
   margin-bottom: 24px;
@@ -56,24 +58,24 @@ margin-bottom: 24px;
   border-radius: 50%;
   background-color:transparent;
   text-align: center;
-  color: var(--secondary-text-color); 
-
+  color: var(--secondary-text-color);
+  opacity: 0.5; 
  }
 
  .icon:hover {
   color:var(--accent-color);
+  opacity: 1; 
 }
 /*картинки*/
 
 .wrapimage{
   display: grid;
-  width: 100%;
+  width: fit-content;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 4px;
   flex-wrap: wrap; 
   justify-content: flex-start;
 }
-
 
 .background {
     display: block;
@@ -88,6 +90,7 @@ margin-bottom: 24px;
 .boardicon input {
     display: none;
   }
+.boardicon input:checked+label { opacity:1 }
  
   /* Стилізувати вибрані значки */
   /* input[type="radio"][name="icon"]:checked + .icon {
@@ -100,57 +103,15 @@ margin-bottom: 24px;
     border: 2px solid  var( --accent-color)
   } */
   /*кнопка*/
-  .btn{
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    align-items: center;
-    background-color: var(--accent-color);
-    padding: 14px 88px 14px 89px;
-    border-radius: 8px;
-    border: none;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    width: 100%;
-    color: var(--primary-text-color);
-   }
-   .addCard{
-    display: block;
-    color: var(--btn-text-color);
-}      .wrapperIcon{
-  display: flex;}
 
- .addCard{
-display: block;
-color: var(--btn-text-color);
-}  
-
-.addCardButton:hover{
-background-color: #a4bb98;
-}
-.addCardButton:focus{
-background-color: #a4bb98;
-}
 .error{
   position: absolute;
-  display: flex;
-  bottom:100;
+  bottom:-21px;
   right: 0;
-  width: 100%;
-  height: 12px;
-  border-radius: 8px;
-  font: "Poppins";
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 400;
   font-style: normal;
-  justify-content: flex-end;
-  align-items: center;
-  line-height: 21px;
   letter-spacing: -1%;
   opacity: 0.9;
   color:#e66666;;
-        }
-
-        
-       
+}

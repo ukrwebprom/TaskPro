@@ -102,8 +102,11 @@ export const CardForm = ({ taskData, setTask }) => {
             handleSetData={(date) => setFieldValue('deadline' , date)}
           />
           </div>
-          <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
-           />
+          <Button
+            invert={false} title={taskData?._id ? 'Edit' : 'Add' }
+            type="submit"
+            disabled ={isSubmitting||!dirty}
+          />
         </Form>
       )}
     </Formik>

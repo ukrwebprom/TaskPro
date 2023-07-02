@@ -8,20 +8,23 @@ import Modal from 'components/Modal/Modal'
 import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
 
 import { useAuth } from 'hooks/useAuth';
+import { useModal } from 'hooks/useModal'
 
 export const Header = ({ toggleSidebar }) => {
 
-  const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
-  const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);;
+  // const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
+  // const [isVasibleUserModal, setIsVasibleUserModal] = useState(false);;
   const {user} = useAuth();
+  const {getPopover, killPopover} = useModal();
+  const {getModal, killModal} = useModal();
   
-  const showThemeSelector = () => {
-    setIsVisibleThemeSelector(!isVisibleThemeSelector)
-  };
+  // const showThemeSelector = () => {
+  //   setIsVisibleThemeSelector(!isVisibleThemeSelector)
+  // };
 
-  const showUserModal = () => {
-    setIsVasibleUserModal(!isVasibleUserModal)
-  };
+  // const showUserModal = () => {
+  //   setIsVasibleUserModal(!isVasibleUserModal)
+  // };
 
   return (
     <div className={css.headerall}>
@@ -33,27 +36,27 @@ export const Header = ({ toggleSidebar }) => {
 
       <div className={css.headerTaskPro}>
         <div className={css.outputselector}>
-          <button className={css.styleTheme} onClick={() => showThemeSelector()}><span className={css.spantheme}>Theme</span>
+          <button className={css.styleTheme} onClick={() => getPopover(<ThemeSelector onClose={killPopover}/>)}>
+            <span className={css.spantheme}>Theme</span>
             <Icon name="#chevron-down-icon" width='16px' height='16px' color='#ffffff'/>
           </button>
-          {isVisibleThemeSelector &&
+          {/* {isVisibleThemeSelector &&
             (<div className={css.selectortheme}>
-              <ThemeSelector showThemeSelector={showThemeSelector} />
-            </div>)}
+              <Popover >
+                <ThemeSelector showThemeSelector={showThemeSelector} />
+              </Popover >              
+            </div>)} */}
         </div>
 
         <ul className={css.styleUserInfo}>
           <li className={css.styleName}>{user.name}</li>
-          <li><Avatar onClick={() => showUserModal()} size={32}/></li>
+          <li><Avatar onClick={() => getModal("Edit profile", <EditProfileForm onClose={killModal}/> )} size={32}/></li>
         </ul>
-        {isVasibleUserModal &&
-          <Modal isOpen="isVasibleUserModal" name="Edit profile" onClose={showUserModal}>
+        {/* {isVasibleUserModal &&
+          <Modal isOpen={isVasibleUserModal} name="Edit profile" onClose={showUserModal}>
             <EditProfileForm/>
           </Modal>
-          // <div style={{ position: "absolute", top: 70, right: 12 }}>
-          //   <p className={css.textuseravatar}>EditProfileModal</p>
-          // </div>
-        }
+        } */}
       </div>
     </div>
   )

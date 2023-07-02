@@ -176,6 +176,7 @@ const Task = ({
                   disabled={!Object.keys(avaliableColumns || {}).length}
                   type="button"
                   className={css.icon_buttons}
+
                   onClick={() => getPopover(<ul className={css.popover_list}>
                     {Object.entries(avaliableColumns)?.map(([id, title]) => (
                       <li className={css.popoverItem} key={id}>
@@ -203,6 +204,7 @@ const Task = ({
                       </li>
                     ))}
                   </ul>)}
+
                   variant="contained"
                 >
                   <Icon

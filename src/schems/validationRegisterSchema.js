@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const validationRegistrSchema = Yup.object().shape({
   name: Yup.string()
-    .required("Is Require")
+    .required("Is Required")
     .matches(
       /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/? ]*$/,
       "The name must contain only Latin letters, numbers and symbols"
@@ -11,14 +11,14 @@ export const validationRegistrSchema = Yup.object().shape({
     .max(32, "The name must contain less than 32 characters"),
 
   email: Yup.string()
-    .required("Is Require")
+    .required("Is Required")
     .matches(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
       "This must be a valid email"
     ),
 
   password: Yup.string()
-    .required("Is Require")
+    .required("Is Required")
     .matches(
       /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/,
       "The password must contain only Latin letters, numbers and symbols"

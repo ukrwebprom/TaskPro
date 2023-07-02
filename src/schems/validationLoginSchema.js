@@ -2,14 +2,14 @@ import * as Yup from "yup";
 
 export const validationLoginSchema = Yup.object().shape({
   email: Yup.string()
-    .required("Is Require")
+    .required("Is Required")
     .matches(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
       "This must be a valid email"
     ),
 
   password: Yup.string()
-    .required("Is Require")
+    .required("Is Required")
     .matches(
       /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/,
       "The password must contain only Latin letters, numbers and symbols"

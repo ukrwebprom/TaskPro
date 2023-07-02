@@ -52,7 +52,6 @@
     top: 33px;
     z-index: 55;
 }
-
 .styleTheme {
     display: flex;
     align-items: center;
@@ -65,7 +64,6 @@
     font-family: "Poppins";
     font-size: 14px;
 }
-
 .styleUserInfo {
     list-style: none;
     margin-right: 14px;

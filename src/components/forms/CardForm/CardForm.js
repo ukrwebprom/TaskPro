@@ -23,7 +23,9 @@ const orderedCodes = [
 export const CardForm = ({ taskData, setTask }) => {
 
   const initialValues = {
-    deadline: taskData?.deadline || new Date(),
+    deadline: taskData?.deadline
+      ? new Date(taskData.deadline)
+      : new Date(),
     description: taskData?.description || '',
     priority: taskData?.priority || 'none',
     title: taskData?.title || '',
@@ -49,7 +51,7 @@ export const CardForm = ({ taskData, setTask }) => {
               type="text"
               name="title"
               placeholder="Title"
-              onBlur={touched.fieldName && errors.fieldName}
+              onBlur={touched.title && errors.title}
             />
             <ErrorMessage name="title" component="div"
             className={s.error} />
@@ -61,7 +63,7 @@ export const CardForm = ({ taskData, setTask }) => {
               as="textarea"
               placeholder="Description"
               name="description"
-              onBlur={touched.fieldName && errors.fieldName}
+              onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="description" component="div"
             className={s.error}/>
@@ -95,10 +97,16 @@ export const CardForm = ({ taskData, setTask }) => {
           </label>
           <div className={s.datepicker}>
           <label className={s.item_tittle}>Deadline</label>
-          <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
+          <MyDatepicker
+            date={values.deadline}
+            handleSetData={(date) => setFieldValue('deadline' , date)}
+          />
           </div>
-          <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
-           />
+          <Button
+            invert={false} title={taskData?._id ? 'Edit' : 'Add' }
+            type="submit"
+            disabled ={isSubmitting||!dirty}
+          />
         </Form>
       )}
     </Formik>

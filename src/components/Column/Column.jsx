@@ -59,9 +59,10 @@ export const Column = ({
           </div>
         </div>
 
+      {data.tasks.length > 0 && (
       <div className={css.columnMiddle}>
       <ul className={css.listTask}>
-        {data.tasks &&
+        {
           data.tasks
           .filter((task) => !filter || task.priority === filter)
           .map((task, idx) => 
@@ -78,6 +79,8 @@ export const Column = ({
           )}
       </ul>
       </div>
+      )}
+
       <Button title="Add another card" type="button" 
       action={() => getModal("Add card", <CardForm setTask={handleAddTask} />
       )}/>

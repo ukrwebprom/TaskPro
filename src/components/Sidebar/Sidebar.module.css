@@ -107,7 +107,7 @@
 
 .boardActive .boardActionButton:hover {
   opacity: 0.5;
-}
+} 
 
 .boardActionButton {
   composes: button from "./Sidebar.css";

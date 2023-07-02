@@ -1,4 +1,5 @@
 .btn{
+    position: relative;
     display: flex;
     justify-content: center;
     gap: 8px;
@@ -18,6 +19,47 @@
     cursor:pointer;
 }
 
+.btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 5px 15px var(--accent-color);
+}
+
+.btn:hover{
+    border: 2px solid var(--accent-color);
+    opacity: 0.5;
+    
+    
+}
+
+.btn:focus{
+    border: 2px solid var(--accent-color);
+    opacity: 0.5;
+    
+}
+
+
+.btn:active:after {
+    box-shadow: 0 0 0 0 var(--accent-color);
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: 0s;
+}
+
+.btn:active {
+    top: 1px;
+}
 .invertBtn {
     composes:btn;
     background-color: var(--secondary-bg-color);

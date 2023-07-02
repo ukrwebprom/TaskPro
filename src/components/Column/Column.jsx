@@ -1,11 +1,8 @@
 import { useMemo } from "react";
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import { updateColumnTitle, deleteColumn, addTask } from 'redux/boards/operations';
-import Modal from '../Modal/Modal';
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
 import Button from "components/Button/Button";
@@ -20,8 +17,6 @@ export const Column = ({
   const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
   const filter = useSelector(setFilter);
-  const [showColumnModal, setShowColumnModal] = useState(false);
-  const [showTaskModal, setShowTaskModal] = useState(false);
 
   const handleEditColumn = value => {
     killModal();

@@ -26,17 +26,18 @@
     flex-grow: 1;
 }
 .columnMiddle{
-    flex-shrink: 2;
+    flex-shrink: 1;
     flex-grow: 0;
     overflow-y: auto;
     margin-bottom: 10px;
+    margin-right: -16px;
+    padding-right: 8px;
 }
 .listTask{
     display:flex;
     flex-direction: column;
     gap:8px;
     overflow-x: hidden;
-    margin-bottom: 14px;
 }
 .columnMiddle::-webkit-scrollbar {
     width: 8px;
@@ -50,7 +51,7 @@
     background-clip: content-box;
     background-color:var(--taskScrollHandler);
 }
-.task{
+/* .task{
     width: 334px;
     height: 154px;
     border-radius:8px;
@@ -60,9 +61,9 @@
 
 .task:not(:last-child){
     margin-bottom: 8px;
-}
+} */
 
-.addCardButton {
+/* .addCardButton {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -74,8 +75,8 @@
     font-size: 14px;
     line-height: 21px;
     color: var(--primary-text-color);
-}
-.addCard{
+} */
+/* .addCard{
     display: block;
     color: var(--btn-text-color);
 }
@@ -84,28 +85,26 @@
 }
 .addCardButton:focus{
     background-color: #a4bb98;
-}
+} */
 .wrapperButton{
     display: flex;
+    gap:8px;
 }
 .buttonColumn{
     width: 20px;
     height: 20px;
     background-color: transparent;
-    color: aliceblue;
+    cursor:pointer;
     border: none;
     color: var(--primary-text-color);
 }
 
-.buttonColumn:not(:last-child){
-    margin-right: 8px;
-}
 
-.wrapperIcon{
+/* .wrapperIcon{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--btn-text-color); 
     padding: 7px;
     border-radius: 8px;
-}
+} */

@@ -1,9 +1,8 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationColumnSchema } from "..//..//..//schems/validationColumnSchema";
-import Button from 'components/Button/Button';
-import s from "./ColumnForm.module.css"
-
+import Button from "components/Button/Button";
+import s from "./ColumnForm.module.css";
 
 export const ColumnForm = ({ setTitle, defaultValues }) => {
   const initialValues = {
@@ -18,24 +17,28 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
 
   return (
     <Formik
-      initialValues={defaultValues? defaultValues : initialValues}
+      initialValues={defaultValues ? defaultValues : initialValues}
       validationSchema={validationColumnSchema}
       onSubmit={onSubmit}
-      validateOnBlur
     >
-      {({ isSubmitting, dirty, handleSubmit }) => (
+      {({ isSubmitting, dirty, touched, errors, handleSubmit }) => (
         <Form onSubmit={handleSubmit} className={s.form}>
           <label className={s.label}>
-            <Field 
-             className={s.input}
-            type="text" name="title"
-            placeholder="Title"  />
-            <ErrorMessage name="title" 
-            component="div"
-            className={s.error}/>
+            <Field
+              className={s.input}
+              type="text"
+              name="title"
+              placeholder="Title"
+              onBlur={touched.description && errors.description}
+            />
+            <ErrorMessage name="title" component="div" className={s.error} />
           </label>
-     <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
-           />
+          <Button
+            invert={false}
+            title="Add"
+            type="submit"
+            disabled={isSubmitting || !dirty}
+          />
         </Form>
       )}
     </Formik>

@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 24px 0px 0 24px;
+    padding: 24px 0px 10px 24px;
     flex-shrink: 1;
     box-sizing: border-box;
-    max-height: calc(100% - 80px);
+    height:100%;
+    border:2px dotted red;
+/*     max-height: calc(100% - 80px); */
 }
 
 .dashboardHeader {
@@ -24,7 +26,8 @@
     width: 100%;
     overflow-x: auto;
     box-sizing: border-box;
-    padding-bottom: 10px;
+    flex-grow: 1;
+/*     padding-bottom: 10px; */
 }
 
 .listArea::-webkit-scrollbar {

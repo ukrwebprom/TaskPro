@@ -20,7 +20,7 @@ export const ModelProvider = ({ children }) => {
     const h = window.innerHeight;
     if(x > window.innerWidth /2) pos.right = window.innerWidth - x;
     else pos.left = x;
-    if(y > h /2) pos.bottom = h - y + (y-545);
+    if(y > h /2) pos.bottom = h - y + Math.min(0, (y-545));
     else pos.top = y - Math.max(0, (545 - (h - y)));
     setPosition(pos);
   }

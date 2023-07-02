@@ -37,58 +37,39 @@ const DashBoard = () => {
 
 
   return (
-    <>
-    {
-      current!== null &&
+        <>
+        {current !== null && (
         <Background>
-          <div className={css.dashboardContainer}>
+        <div className={css.dashboardContainer}>
             <div className={css.dashboardHeader}>
               <h2 className={css.dashboardTitle}>{currentData.title}</h2>
               <Filters />
+            </div>
 
-              {/*         <FiltersButton onClick={openModal} /> */}
-              {/*         {isModalOpen && (
-          <FiltersModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            handleBgClick={handleBgClick}
-            selectedBgIndex={selectedBgIndex}
-          />
-        )} */}
-      </div>
-      <div className={css.listArea}>
-        <ul className={css.columnsList}>
-          {currentData.columns.length > 0 &&
-            currentData.columns.map((column) => {
+          <div className={css.listArea}>
+            <ul className={css.columnsList}>
+            {currentData.columns.length > 0 &&
+            (currentData.columns.map((column) => {
               return (
                 <li key={column._id} className={css.column}>
                   <Column
                     allColumns={columnNamesToIds}
                     data={column}
                   />
-                </li>
-              );
-            })}
-          <li className={css.column}>
-            {/* <Button className={`${btn.btn} ${btn.column}`} onClick={toggleModal}>
-              <div className={`${btn.plus} ${btn.plusColumn}`}>+</div>Add
-              another column
-            </Button> */}
-            <Button invert={true} title="Add another column" type="button" 
-            action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
-          </li>
-        </ul>
-      </div>
-    </div>
-    </Background>
-    }
-    {isModalOpen && 
-    <Modal onClose={toggleModal} name = "Add column">
-          <ColumnForm setTitle={handleAddColumn} onClose={toggleModal} />
-    </Modal>}
-    </>
-   
-  );
+                </li>);}
+                ))
+              }
+              <li className={css.column}>
+              <Button invert={true} title="Add another column" type="button" 
+              action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </Background>
+        )}
+        </>
+      );
 };
 
 export default DashBoard;

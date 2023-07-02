@@ -92,17 +92,7 @@ margin-bottom: 24px;
   }
 .boardicon input:checked+label { opacity:1 }
  
-  /* Стилізувати вибрані значки */
-  /* input[type="radio"][name="icon"]:checked + .icon {
-    background-color: #0077ff;
-    color: #fff;
-  }
-   */
-  /* Стилізувати вибрані фони */
-  /* input[type="radio"][name="background"]:checked + .background {
-    border: 2px solid  var( --accent-color)
-  } */
-  /*кнопка*/
+
 
 .error{
   position: absolute;

@@ -6,12 +6,6 @@ import s from './CardForm.module.css';
 import Button from "..//..//Button/Button.jsx"
 import { MyDatepicker } from '../MyDatepicker/MyDatepicker';
 
-// const labelColors = [
-//   '#8FA1D0',
-//   '#E09CB5',
-//   '#BEDBB0',
-//   'rgba(255, 255, 255, 0.30)',
-// ];
 
 const orderedCodes = [
   'none',

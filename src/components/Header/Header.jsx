@@ -7,15 +7,22 @@ import Icon from 'components/Icon/Icon'
 import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
 
 import { useAuth } from 'hooks/useAuth';
+import { useModal } from 'hooks/useModal'
 
 export const Header = ({ toggleSidebar }) => {
+
   const {getModal, killModal} = useModal();
   const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
+
   const {user} = useAuth();
+  const {getPopover, killPopover} = useModal();
+  const {getModal, killModal} = useModal();
   
-  const showThemeSelector = () => {
-    setIsVisibleThemeSelector(!isVisibleThemeSelector)
-  };
+  // const showThemeSelector = () => {
+  //   setIsVisibleThemeSelector(!isVisibleThemeSelector)
+  // };
+
+
 
   return (
     <div className={css.headerall}>
@@ -27,13 +34,16 @@ export const Header = ({ toggleSidebar }) => {
 
       <div className={css.headerTaskPro}>
         <div className={css.outputselector}>
-          <button className={css.styleTheme} onClick={() => showThemeSelector()}><span className={css.spantheme}>Theme</span>
+          <button className={css.styleTheme} onClick={() => getPopover(<ThemeSelector onClose={killPopover}/>)}>
+            <span className={css.spantheme}>Theme</span>
             <Icon name="#chevron-down-icon" width='16px' height='16px' color='#ffffff'/>
           </button>
-          {isVisibleThemeSelector &&
+          {/* {isVisibleThemeSelector &&
             (<div className={css.selectortheme}>
-              <ThemeSelector showThemeSelector={showThemeSelector} />
-            </div>)}
+              <Popover >
+                <ThemeSelector showThemeSelector={showThemeSelector} />
+              </Popover >              
+            </div>)} */}
         </div>
 
         <ul className={css.styleUserInfo}>
@@ -42,6 +52,7 @@ export const Header = ({ toggleSidebar }) => {
             size={32}/>
           </li>
         </ul>
+
       </div>
     </div>
   )

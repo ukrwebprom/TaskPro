@@ -138,16 +138,23 @@ const boardsSlice = createSlice({
       .addCase(updateTaskPlace.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        const {
+          task,
+          oldColumn,
+        } = action.payload;
 
-        const columnIndex = state.items[state.currentBoard].columns.findIndex(
-          column => column._id === action.payload.column
-        );
+        const newColumnIndex = state.items[state.currentBoard].columns
+          .findIndex(column => column._id === task.column);
 
-        const taskIndex =  state.items[state.currentBoard].columns[columnIndex].tasks.findIndex(
-          task => task._id === action.payload._id
-        );
+        state.items[state.currentBoard].columns[newColumnIndex].tasks.push(task);
 
-        state.items[state.currentBoard].columns[columnIndex].tasks[taskIndex] = action.payload;
+        const oldColumnIndex = state.items[state.currentBoard].columns
+        .findIndex(column => column._id === oldColumn);
+
+        const oldTaskIndex =  state.items[state.currentBoard].columns[oldColumnIndex].tasks
+        .findIndex(item => item._id === task._id);
+
+        state.items[state.currentBoard].columns[oldColumnIndex].tasks.splice(oldTaskIndex, 1);
       })
       .addCase(updateTaskPlace.pending, handlePending)
       .addCase(updateTaskPlace.rejected, handleRejected)

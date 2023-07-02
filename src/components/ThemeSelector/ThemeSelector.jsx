@@ -2,9 +2,10 @@ import { useDispatch } from 'react-redux';
 import { updTheme } from 'redux/auth/operations';
 import css from './ThemeSelector.module.css';
 import { useAuth } from 'hooks/useAuth';
+import { useEffect } from 'react';
 // import { useUser } from "hooks/useUser";
 
-export const ThemeSelector = ({showThemeSelector}) => {
+export const ThemeSelector = ({onClose}) => {   
     const dispatch = useDispatch();
     const {user} = useAuth();
     // const {theme, setUserTheme} = useUser();
@@ -13,9 +14,6 @@ export const ThemeSelector = ({showThemeSelector}) => {
         light: 'light',
         violet: 'violet'
     }
-    // const handleClickBtn = () => {
-        
-    // }
 
     const getThemeOptions = () => {
         let list = [];
@@ -25,12 +23,12 @@ export const ThemeSelector = ({showThemeSelector}) => {
             list.push(
             // <li key={item}><button onClick={() => { setUserTheme(item); showThemeSelector() }} className={`${theme === item? css.active : css.selectorItem} noselect`}>{item}</button></li>
 
-            <li key={item}><button onClick={() => { dispatch(updTheme(item)); showThemeSelector() }} className={`${user.theme === item? css.active : css.selectorItem} noselect`}>{item}</button></li>
+            <li key={item}><button onClick={() => { dispatch(updTheme(item)); onClose() }} className={`${user.theme === item? css.active : css.selectorItem} noselect`}>{item}</button></li>
             )
         }
         return list;
     }
     return(
-        <ul className={css.selector}>{getThemeOptions()}</ul>
+        <ul className={css.selector}>{getThemeOptions()}</ul>    
     )
 }

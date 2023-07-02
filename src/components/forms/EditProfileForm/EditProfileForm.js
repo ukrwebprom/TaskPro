@@ -1,36 +1,43 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationEditProfileSchema } from "..//..//..//schems/validationEditProfileSchema";
-import s from "./EditProfileForm.module.css"
-import { Avatar } from 'components/Avatar/Avatar'
-import Button from "..//..//Button/Button.jsx"
+import s from "./EditProfileForm.module.css";
+import { Avatar } from "components/Avatar/Avatar";
+import Button from "..//..//Button/Button.jsx";
 import Icon from "components/Icon/Icon";
+
 import { useState, useEffect } from "react";
 import { useAuth } from 'hooks/useAuth';
+
 export const EditProfileForm = ({
 /*   userPhoto = null, */
 /*   name = "",
   email = "", */
   password = "",
+  onClose
 }) => {
+
   const {user} = useAuth();
   const {name, email, avatar} = user;
   const {newAvatar, setNewAvatar} = useState(null);
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")
+
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
     resetForm();
+    onClose();
   };
-  const handleShow=(e)=>{
+  const handleShow = (e) => {
     const gettype = e.currentTarget.value;
-     if (gettype==="password"){
+    if (gettype === "password") {
       setType("text");
-      setIconName("#eye-slash-icon")
-    } else{
-      setType("password")
-      setIconName("#eye-icon")
+      setIconName("#eye-slash-icon");
+    } else {
+      setType("password");
+      setIconName("#eye-icon");
     }
+
   }  
   const handleAvaSelect = file => {
     console.log(file);
@@ -46,6 +53,7 @@ export const EditProfileForm = ({
       .catch((err) => console.error(err));
   }
 
+
   return (
     <>
     <input type="file" onChange={e => handleAvaSelect(e) }/>
@@ -60,6 +68,7 @@ export const EditProfileForm = ({
       onSubmit={handleSubmit}
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
+
         
         <Form  className={s.form}>
           <div className={s.s} >
@@ -82,21 +91,20 @@ export const EditProfileForm = ({
              component="div"
              className={s.error} />
           </div>
+
           </div>
 
-          <label  className={s.label}>
-            <Field     
-             className={s.input}
+          <label className={s.label}>
+            <Field
+              className={s.input}
               name="name"
               placeholder="Enter your name"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="name"
-             component="div"
-             className={s.error} />
+            <ErrorMessage name="name" component="div" className={s.error} />
           </label>
 
-          <label  className={s.label}>
+          <label className={s.label}>
             <Field
               className={s.input}
               name="email"
@@ -104,12 +112,10 @@ export const EditProfileForm = ({
               type="email"
               onBlur={touched.fieldName && errors.fieldName}
             />
-            <ErrorMessage name="email"
-             component="div"
-             className={s.error} />
+            <ErrorMessage name="email" component="div" className={s.error} />
           </label>
 
-          <label  className={s.label}>
+          <label className={s.label}>
             <Field
               className={s.input}
               name="password"
@@ -117,20 +123,25 @@ export const EditProfileForm = ({
               type="password"
               onBlur={touched.fieldName && errors.fieldName}
             />
-             <button  type="button" 
-            className={s.eyeicon} 
-            value={type}  
-            onClick={(e)=>handleShow(e)} >
-            <Icon name ={iconName}/>
+            <button
+              type="button"
+              className={s.eyeicon}
+              value={type}
+              onClick={(e) => handleShow(e)}
+            >
+              <Icon name={iconName} />
             </button>
-            <ErrorMessage name="password" 
-             component="div"
-             className={s.error}/>
+            <ErrorMessage name="password" component="div" className={s.error} />
           </label>
-          <Button invert={false} title="Send" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
-           />
+          <Button
+            invert={false}
+            title="Send"
+            icon={false}
+            type="submit"
+            disabled={isSubmitting || !dirty}
+          />
         </Form>
-           )}
+      )}
     </Formik>
     </>
   );

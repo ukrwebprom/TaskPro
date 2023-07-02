@@ -14,7 +14,6 @@ export const EditProfileForm = ({
 }) => {
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")
-  const {user} = useAuth();
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
@@ -44,14 +43,14 @@ export const EditProfileForm = ({
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
        
-        <Form  >
+        <Form  className={s.form}>
           <div className={s.s} >
          
           <div className={s.addfilewrap}>
           <Avatar/>
         
             <label className={s.filelabel}> 
-            <Icon  className ={s.addphoto} name ="#plus-icon"/>
+            <Icon  name ="#plus-icon"/>
             <Field
               className={s.inputFile}
               name="userPhoto"

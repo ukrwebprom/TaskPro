@@ -42,7 +42,7 @@ export const CardForm = ({ taskData, setTask }) => {
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting, dirty, touched, errors, handleSubmit ,setFieldValue }) => (
-        <Form className={s.formbackround} onSubmit={handleSubmit}>
+        <Form className={s.form} onSubmit={handleSubmit}>
           <label  className={s.label}>
             <Field
               className={s.input}
@@ -93,9 +93,11 @@ export const CardForm = ({ taskData, setTask }) => {
             </div>
             <ErrorMessage name="priority" />
           </label>
+          <div className={s.datepicker}>
           <label className={s.item_tittle}>Deadline</label>
           <MyDatepicker handleSetData={(date) => setFieldValue('deadline' , date)}/>
-          <Button invert={false} title="Add" type="submit" disabled ={isSubmitting||!dirty}
+          </div>
+          <Button invert={false} title="Add"   type="submit" disabled ={isSubmitting||!dirty}
            />
         </Form>
       )}

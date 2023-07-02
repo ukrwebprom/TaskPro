@@ -96,7 +96,7 @@ export const BoardForm = ({onSubmitForm, def}) => {
         
             <ErrorMessage name="background"
              component="div"
-             className={s.error} />
+            className={s.error} />
           </label> 
 
            <Button invert={false} title="Create"   type="submit" disabled ={isSubmitting||!dirty}

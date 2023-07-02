@@ -22,7 +22,8 @@
   box-sizing: border-box;
 }
 .popoverContent {
-  composes: modal_content;
+  position: absolute;
+  /* composes: modal_content; */
   width:auto;
 }
 @media screen and (max-width: 375px) {

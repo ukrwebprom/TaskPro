@@ -10,6 +10,7 @@ export const EditProfileForm = ({
   name = "",
   email = "",
   password = "",
+  onClose
 }) => {
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
@@ -17,6 +18,7 @@ export const EditProfileForm = ({
     console.log(values);
     setSubmitting(false);
     resetForm();
+    onClose();
   };
   const handleShow = (e) => {
     const gettype = e.currentTarget.value;

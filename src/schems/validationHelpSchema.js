@@ -8,8 +8,8 @@ export const validationHelpSchema = Yup.object().shape({
       "This must be a valid email"
     ),
 
-  comment: Yup.string()
+  message: Yup.string()
     .required("Is Required")
-    .min(10, "The name must contain at least 10 characters")
-    .max(200, "The name must contain less than 200 characters"),
+    .min(10, "The message must contain at least 10 characters")
+    .max(200, "The message must contain less than 200 characters"),
 });

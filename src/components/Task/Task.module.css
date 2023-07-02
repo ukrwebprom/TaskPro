@@ -151,6 +151,9 @@ li {
   background-color: inherit;
   padding: 0px;
   cursor: pointer;
+  &:hover{
+    color: var(--accent-color);
+   }
 }
 
 .icon_list{
@@ -170,7 +173,7 @@ li {
   width:100px;
   /* border: 1px solid var(--accent-color); */
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-  /* border-radius: 8px; */
+  border-radius: 8px;
   gap: 8px;
 }
 

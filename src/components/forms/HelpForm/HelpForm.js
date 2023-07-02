@@ -3,21 +3,24 @@ import { validationHelpSchema } from "schems";
 import Button from "components/Button/Button";
 import s from "./HelpForm.module.css";
 
-export const HelpForm = () => {
-  const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+
+export const HelpForm = ({ onSubmitForm, type }) => {
+  const initialValues = {
+    email: "",
+    message: ""
+  };
+
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
+    onSubmitForm(values);
     setSubmitting(false);
     resetForm();
   };
 
   return (
     <Formik
-      initialValues={{
-        email: "",
-        comment: "",
-      }}
+      initialValues={initialValues}
       validationSchema={validationHelpSchema}
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
     >
       {({ isSubmitting, touched, errors, dirty }) => (
         <Form className={s.form}>
@@ -35,16 +38,16 @@ export const HelpForm = () => {
           <label className={s.label}>
             <Field
               className={s.comment}
-              name="comment"
+              name="message"
               as="textarea"
-              placeholder="Comment"
+              placeholder="Message"
               onBlur={touched.description && errors.description}
             />
-            <ErrorMessage name="comment" component="div" className={s.error} />
+            <ErrorMessage name="message" component="div" className={s.error} />
           </label>
           <Button
             invert={false}
-            title="Send"
+            title={type}
             icon={false}
             type="submit"
             disabled={isSubmitting || !dirty}

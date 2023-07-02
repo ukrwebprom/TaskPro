@@ -192,15 +192,14 @@ export const updateTask = createAsyncThunk(
  * headers: Authorization: Bearer token
  */
 export const updateTaskPlace = createAsyncThunk(
-  'boards/updateTaskPlace',
-  async (task, thunkAPI) => {
+  'tasks/updateTaskPlace',
+  async ({ task, oldColumn }, thunkAPI) => {
     const { _id, column } = task;
-
     try {
       axios.patch(`/tasks/${_id}`, {
         column,
       });
-      return task;
+      return { task, oldColumn };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -243,25 +242,3 @@ export const updateTaskPlace = createAsyncThunk(
   //     }
   //   }
   // );
-
-
-/*
- * PATCH @ /tasks/:id
- * headers: Authorization: Bearer token
- */
-
-/*   export const moveTaskToOtherColumn = createAsyncThunk(
-    'tasks/',
-    async ({ colomnId, taskId }, thunkAPI) => {
-      try {
-        await axios.patch(taskId, {
-          column: colomnId,
-        });
-        return { colomnId, taskId };
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-    }
-  ); */
-
-

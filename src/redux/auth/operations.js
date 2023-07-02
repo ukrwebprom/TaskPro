@@ -132,6 +132,23 @@ export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
     }
   );
 
+
+  /*
+ * POST @ /support
+ * body: { email, comment }
+ */
+
+export const sendComment = createAsyncThunk(
+  "auth/support",
+  async (data, thunkAPI) => {
+    try {
+      await axios.post("/support", data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 /*
  * GET @ /user/me
  * headers: Authorization: Bearer token

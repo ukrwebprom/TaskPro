@@ -13,7 +13,11 @@ import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
 import { useModal } from 'hooks/useModal';
-import { deleteTask, updateTask } from 'redux/boards/operations';
+import {
+  deleteTask,
+  updateTask,
+  updateTaskPlace,
+} from 'redux/boards/operations';
 
 const levelsToIndexes = {
   none: 'Without priority',
@@ -78,7 +82,7 @@ const Task = ({
   taskData,
   colId
 }) => {
-  const { getPopover } = useModal();
+  const { getPopover, killPopover } = useModal();
   const authContext = useAuth();
   const { user } = authContext;
   const dispatch = useDispatch();
@@ -172,12 +176,38 @@ const Task = ({
                   disabled={!Object.keys(avaliableColumns || {}).length}
                   type="button"
                   className={css.icon_buttons}
-                  /* onClick={event => setMoveAnchorEl(event.currentTarget)} */
-                  onClick={() => getPopover(<button >your component</button>)}
+
+                  onClick={() => getPopover(<ul className={css.popover_list}>
+                    {Object.entries(avaliableColumns)?.map(([id, title]) => (
+                      <li className={css.popoverItem} key={id}>
+                        <button
+                          className={css.popoverBtn}
+                          onClick={() => {
+                            dispatch(updateTaskPlace({
+                              task: {
+                                ...taskData,
+                                column: id,
+                              },
+                              oldColumn: taskData.column,
+                            }));
+                            killPopover();
+                          }}
+                        >
+                        <p className={css.popoverStatus}>{title}</p>
+                        </button>
+                        <Icon
+                          sprite={2}
+                          name={'#arrow-circle-icon'}
+                          width="16"
+                          height="16"
+                        />
+                      </li>
+                    ))}
+                  </ul>)}
+
                   variant="contained"
                 >
                   <Icon
-                    // className={css.icon_info}
                     sprite={2}
                     name={'#arrow-circle-icon'}
                     width="16"
@@ -262,12 +292,7 @@ const Task = ({
               <ItemWrapper className={css.popoverItem} key={id} popStyles={popStyles}>
                 <button
                   onClick={() => {
-                    // TODO 
-                    /* dispatch(moveTaskToOtherColumn({
-                      colomnId: id,
-                      taskId: taskData._id,
-                    })); */
-                    setMoveAnchorEl(null);
+                    // setMoveAnchorEl(null);
                   }}
                   className={css.popoverBtn}
                 >

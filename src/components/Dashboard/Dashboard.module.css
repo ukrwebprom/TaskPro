@@ -6,7 +6,7 @@
     flex-shrink: 1;
     box-sizing: border-box;
     height:100%;
-    border:2px dotted red;
+/*     border:2px dotted red; */
 /*     max-height: calc(100% - 80px); */
 }
 
@@ -27,7 +27,7 @@
     overflow-x: auto;
     box-sizing: border-box;
     flex-grow: 1;
-/*     padding-bottom: 10px; */
+    padding-bottom: 10px;
 }
 
 .listArea::-webkit-scrollbar {

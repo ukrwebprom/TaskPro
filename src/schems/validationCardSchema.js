@@ -7,7 +7,8 @@ export const validationCardSchema = Yup.object().shape({
 
   description: Yup.string()
     .min(5, "The description must contain at least 5 characters")
-    .max(200, "The description must contain less than 200 characters"),
+    .max(200, "The description must contain less than 200 characters")
+    .required("Is Required"),
 
   priority: Yup.string().required("Is Required"),
 });

@@ -173,7 +173,7 @@ const Task = ({
                   type="button"
                   className={css.icon_buttons}
                   /* onClick={event => setMoveAnchorEl(event.currentTarget)} */
-                  onClick={() => getPopover(<button >your component</button>)}
+                  onClick={() => getPopover(<div style={{padding: 24}}><button>your component</button></div>)}
                   variant="contained"
                 >
                   <Icon

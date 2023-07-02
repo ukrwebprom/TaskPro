@@ -1,3 +1,4 @@
+import { Padding } from '@mui/icons-material';
 import css from './Modal.module.css';
 import Icon from 'components/Icon/Icon';
 import {useMedia} from 'react-use';
@@ -41,7 +42,7 @@ const Modal = ({ children, isOpen, name, onClose, position }) => {
     /* <div className={`modal ${isOpen ? "open" : ""}`}> */
       <div className={css.backdrop} onClick={onClose}>
       <div className={css.modal_content} 
-        style={isMobile? {top:"50%", left:"50%", transform:"translate(-50%, -50%)"} : {...position}} onClick={e => e.stopPropagation()}>
+        style={isMobile? {top:"50%", left:"50%", transform:"translate(-50%, -50%)", padding: 24} : {...position, padding: 24}} onClick={e => e.stopPropagation()}>
         <button className={css.close_button} onClick={onClose}>
           <Icon
             sprite={2}

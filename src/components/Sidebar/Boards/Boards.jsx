@@ -1,28 +1,24 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import slug from 'slug';
 import { useBoards } from 'hooks/useBoards'
 import { selectBoard } from "redux/boards/slice";
-import { deleteBoard } from 'redux/boards/operations';
+import { deleteBoard, updateBoardById } from 'redux/boards/operations';
 import BoardsItem from './BoardsItem';
 import css from '../Sidebar.module.css';
-import Modal from 'components/Modal/Modal';
 import { BoardForm } from 'components/forms/BoardForm/BoardForm';
 import { useModal } from 'hooks/useModal';
 
 // import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
-  const {getModal} = useModal();
+  const {getModal, killModal} = useModal();
   const {boards, current} = useBoards();
   const { boardName } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal(c => !c);
 
   const handleSelect = index => {
     dispatch(selectBoard(index));
@@ -30,11 +26,11 @@ const Boards = () => {
     navigate(`/home/${boardSlug}`, { replace: true });
   }
   const handleDelete = id => {
-    console.log(id);
     dispatch(deleteBoard(id));
   }
-  const handleEdit = () => {
-
+  const handleEdit = value => {
+    dispatch(updateBoardById(value));
+    killModal();
   }
   const ifSlug = useCallback(() => {
     const boardIndex = boards.map(b => slug(b.title)).indexOf(boardName);
@@ -63,7 +59,7 @@ const Boards = () => {
             >
               <BoardsItem
                 index={index}
-                handleEdit={() => getModal("Edit board", <BoardForm onSubmitForm={handleEdit}/>)}
+                handleEdit={() => getModal("Edit board", <BoardForm onSubmitForm={handleEdit} def={board}/>)}
                 handleDelete={handleDelete}
                 board={board}
                 setActive={handleSelect}
@@ -73,9 +69,6 @@ const Boards = () => {
         </ul>
       )}
     </div>
-    {showModal && <Modal onClose={toggleModal} name="Edit board">
-    <BoardForm onSubmitForm={handleEdit}/>
-    </Modal>}
     </>
   );
 };

@@ -20,7 +20,7 @@ export const ModelProvider = ({ children }) => {
     if(x > window.innerWidth /2) pos.right = window.innerWidth - x;
     else pos.left = x;
     if(y > window.innerHeight /2) pos.bottom = window.innerHeight - y;
-    else pos.top = y;
+    else pos.top = y - 150;
     setPosition(pos);
   }
   const getModal = (title, insert) => {

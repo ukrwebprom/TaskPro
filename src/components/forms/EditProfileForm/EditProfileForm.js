@@ -4,14 +4,17 @@ import s from "./EditProfileForm.module.css"
 import { Avatar } from 'components/Avatar/Avatar'
 import Button from "..//..//Button/Button.jsx"
 import Icon from "components/Icon/Icon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from 'hooks/useAuth';
 export const EditProfileForm = ({
-  userPhoto = null,
-  name = "",
-  email = "",
+/*   userPhoto = null, */
+/*   name = "",
+  email = "", */
   password = "",
 }) => {
+  const {user} = useAuth();
+  const {name, email, avatar} = user;
+  const {newAvatar, setNewAvatar} = useState(null);
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon")
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -29,34 +32,49 @@ export const EditProfileForm = ({
       setIconName("#eye-icon")
     }
   }  
+  const handleAvaSelect = file => {
+    console.log(file);
+    const formData = new FormData();
+    formData.append("avatar", file);
+
+    fetch('https://taskpro-41yf.onrender.com/user/upload', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => setNewAvatar(data.url))
+      .catch((err) => console.error(err));
+  }
 
   return (
+    <>
+    <input type="file" onChange={e => handleAvaSelect(e) }/>
+
     <Formik
       initialValues={{
-        userPhoto,
+        avatar,
         name,
         email,
-        password,
       }}
       validationSchema={validationEditProfileSchema}
       onSubmit={handleSubmit}
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
-       
+        
         <Form  className={s.form}>
           <div className={s.s} >
          
           <div className={s.addfilewrap}>
-          <Avatar/>
-        
+          {newAvatar ? <img src={newAvatar}/> : <Avatar/>}
+
             <label className={s.filelabel}> 
             <Icon  name ="#plus-icon"/>
             <Field
               className={s.inputFile}
-              name="userPhoto"
+              name="avatar"
               type="file"
               onChange={(event) => {
-                setFieldValue("userPhoto", event.currentTarget.files[0]);
+                handleAvaSelect(event.currentTarget.files[0]);
               }}
               onBlur={touched.fieldName && errors.fieldName}
             /></label>
@@ -95,7 +113,7 @@ export const EditProfileForm = ({
             <Field
               className={s.input}
               name="password"
-              placeholder="Create a password"
+              placeholder="Password"
               type="password"
               onBlur={touched.fieldName && errors.fieldName}
             />
@@ -114,5 +132,6 @@ export const EditProfileForm = ({
         </Form>
            )}
     </Formik>
+    </>
   );
 };

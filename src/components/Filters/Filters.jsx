@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Filters.module.css";
 import { useState, useEffect } from "react";
-import { updBg } from "api/ServerAPI";
+/* import { updBg } from "api/ServerAPI"; */
 import FiltersButton from "components/Filters/FiltersButton";
 import FiltersModal from "components/Filters/FiltersModal";
 import { selectCurrentBoardData } from "redux/boards/selectors";
@@ -43,20 +43,20 @@ const Filters = () => {
 
   const url = `https://res.cloudinary.com/pro-task-cloud/image/upload/v1687806931/backgrounds/diego-ph-wyeapf7Gy-U-unsplash%20${selectedBgIndex}%40${userRatio}_${userScreen}.jpg.webp`;
 
-  const setBoardBg = async (newBgIndex) => {
+/*   const setBoardBg = async (newBgIndex) => {
     try {
       await updBg(selectCurrentBoardData._id, { background: newBgIndex });
     } catch (err) {
       console.log(err);
     }
-  };
+  }; */
   const handleBgClick = (index) => {
     if (index === 0) {
       setSelectedBgIndex("null");
-      setBoardBg("null");
+/*       setBoardBg("null"); */
     } else {
       setSelectedBgIndex(index.toString());
-      setBoardBg(index.toString());
+/*       setBoardBg(index.toString()); */
     }
   };
 

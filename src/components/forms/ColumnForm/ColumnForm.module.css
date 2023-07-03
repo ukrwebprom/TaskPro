@@ -22,7 +22,11 @@
   letter-spacing:  -2%;
   margin-bottom: 24px;
   }
-     
+  .input:focus, .input:hover {
+    color: var(--primary-text-color);
+    border-color: var(--primary-text-color) ;
+      
+      } 
   .label{ 
     position: relative;
   }

@@ -85,7 +85,7 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
             <p className={s.itemtitle}>Background</p>
             <div className={s.wrapimage}>
               {previews.map((preview, index) => (
-                <div className={s.boardicon} key={index}>
+                <div className={s.boardbg} key={index}>
                   <Field
                     type="radio"
                     id={`back${index}`}

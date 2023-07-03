@@ -21,6 +21,11 @@
   letter-spacing:  -2%;
  
 }
+.input:focus, .input:hover {
+  color: var(--primary-text-color);
+  border-color: var(--primary-text-color) ;
+    
+    }
 /*заголовки 2 уровня*/
 .itemtitle{
   color: var(--secondary-text-color); 
@@ -79,20 +84,26 @@ margin-bottom: 24px;
 
 .background {
     display: block;
+    box-sizing: border-box;
     width: 28px;
     height: 28px;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    border: 1px transparent
+ }
+  .background:hover, .background:focus{
+     border:2px solid var(--accent-color);
   }
-  /* Сховати чекбокси */
+  /* Сховати: чекбокси */
+
 .boardicon input {
     display: none;
   }
-.boardicon input:checked+label { opacity:1 }
- 
+.boardicon input:checked+label { opacity:1;
+}
+.boardbg input{ display: none;}
 
+.boardbg input:checked+label {opacity: 0.4;}
 
 .error{
   position: absolute;

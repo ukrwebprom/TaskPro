@@ -44,6 +44,7 @@ margin-bottom: 24px;
   width: 100%;
   padding:14px 18px;
   background-color: var(--input-backround-color);
+  color: var(--primary-text-color);
   font: "Poppins";
   font-size: 14px;
   font-weight: 400;
@@ -55,7 +56,11 @@ margin-bottom: 24px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
 
-
+.input:focus, .input:hover {
+  color: var(--primary-text-color);
+  border-color: var(--primary-text-color) ;
+    
+    }
    .eyeicon{
     position: absolute;
     top: 50%;

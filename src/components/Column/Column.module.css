@@ -99,6 +99,7 @@
     color: var(--primary-text-color);
     &:hover{
         color: var(--accent-color);
+        scale: 1.2;
        }
 }
 

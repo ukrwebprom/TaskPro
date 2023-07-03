@@ -197,3 +197,7 @@ input[type="radio"]:checked::after {
 .highInput:checked::after {
   background-color: var(--high-priority-bg-color);
 }
+.highInput:hover, .withoutPriority:hover,.mediumInput:hover,.lowInput:hover
+{
+  scale: 1.2;
+}

@@ -23,7 +23,7 @@
 }
 .popoverContent {
   position: absolute;
-  /* composes: modal_content; */
+  composes: modal_content;
   width:auto;
 }
 @media screen and (max-width: 375px) {

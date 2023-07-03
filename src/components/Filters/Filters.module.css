@@ -1,19 +1,24 @@
-@import "../../variables.module.css";
-@import "../../fonts/fonts.css";
-
 .filtersButton {
   background-color: transparent;
   color: var(--secondary-text-color);
-  padding: 10px;
+  padding:0;
+  line-height: normal;
   border: none;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   gap: 8px;
-  &:hover {
-    color: var(--accent-color);
-  }
+  margin-right: 24px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor:pointer;
 }
-
+.filtersButton:hover {
+  color: var(--accent-color);
+}
+.filterIcon {
+  color: var(--secondary-text-color);
+}
 .modalContent {
   width: 300px;
   background: var(--secondary-bg-color);
@@ -23,12 +28,7 @@
   position: relative;
   box-sizing: border-box;
 }
-.modalTitle {
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  margin-bottom: 14px;
-}
+
 .closeButton {
   position: absolute;
   top: 14px;
@@ -47,32 +47,28 @@
   content: "";
   display: block;
   height: 1px;
-  background-color: #d9d9d9;
-  opacity: 0.1;
+  background-color: var(--lines);
   margin-bottom: 14px;
 }
 .bgContainer::after {
   display: block;
   height: 1px;
-  background-color: #d9d9d9;
-  opacity: 0.1;
+  background-color: var(--lines);
   margin-bottom: 14px;
 }
-.bgTitle {
+.bgTitle, .labelTitle {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
   margin-top: 14px;
   margin-bottom: 14px;
+  color:var(--primary-text-color);
 }
 
 .bgList {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 4px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-bottom: 14px;
 }
 .bgItem {
   height: 28px;
@@ -84,7 +80,15 @@
   object-fit: cover;
   border-radius: 6px;
   display: block;
+  opacity:0.6;
 }
+.selectedBg {
+  composes:bgImg;
+  opacity:1;
+/*   box-shadow: 0px 0px 4px var(--accent-color); */
+/*   border:2px solid var(--accent-color); */
+}
+
 .labelContainer {
   margin-top: 24px;
 }

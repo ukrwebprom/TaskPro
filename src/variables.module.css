@@ -58,6 +58,7 @@
   --button-icon:#fff;
   --button-icon-bg-invert:#fff;
   --button-icon-invert:#121212;
+  --lines:rgba(255, 255, 255, 0.1);
 }
 
 /* light theme*/
@@ -101,6 +102,7 @@
   --button-icon:#fff;
   --button-icon-bg-invert:#161616;
   --button-icon-invert:#fff;
+  --lines:rgba(22, 22, 22, 0.1);
 }
 
 /* violet theme*/
@@ -144,6 +146,7 @@
   --button-icon:#161616;
   --button-icon-bg-invert:#5255BC;
   --button-icon-invert:#fff;
+  --lines:rgba(22, 22, 22, 0.1);
 }
 /* fonts*/
 /*   --font: "Poppins", sans-serif; */

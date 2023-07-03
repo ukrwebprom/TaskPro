@@ -8,7 +8,6 @@ const FiltersButton = ({ onClick }) => {
       <Icon
         className={css.filterIcon}
         name={"#filter-icon"}
-        sprite={2}
         width="16"
         height="16"
       />

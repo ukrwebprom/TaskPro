@@ -84,13 +84,14 @@ margin-bottom: 24px;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    border: 1px transparent
+    opacity:0.6;
   }
   /* Сховати чекбокси */
 .boardicon input {
     display: none;
   }
 .boardicon input:checked+label { opacity:1 }
+.background input:checked+label { opacity:1 }
  
   /* Стилізувати вибрані значки */
   /* input[type="radio"][name="icon"]:checked + .icon {

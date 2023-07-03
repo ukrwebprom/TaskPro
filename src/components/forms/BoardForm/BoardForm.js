@@ -5,16 +5,7 @@ import s from "./BoardForm.module.css";
 import Button from "components/Button/Button";
 import Icon from "components/Icon/Icon";
 import previews from "..//..//..//images/background/small-url.json";
-const icons = [
-  <Icon name="#board1" />,
-  <Icon name="#board2" />,
-  <Icon name="#board3" />,
-  <Icon name="#board4" />,
-  <Icon name="#board5" />,
-  <Icon name="#board6" />,
-  <Icon name="#board7" />,
-  <Icon name="#board8" />,
-];
+
 const iconNames = [
   "board1",
   "board2",

@@ -97,9 +97,6 @@
     cursor:pointer;
     border: none;
     color: var(--primary-text-color);
-    &:hover{
-        color: var(--accent-color);
-       }
 }
 
 

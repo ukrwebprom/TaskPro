@@ -145,16 +145,12 @@ li {
 }
 
 .popoverBtn{
-  /* display: flex;
-  align-items: center;
-  flex-wrap: nowrap; */
   text-decoration: none;
   color: var(--index-label-color);
   border: none;
   background-color: inherit;
   padding: 0px;
   cursor: pointer;
-  margin-right: 8px;
   &:hover{
     color: var(--accent-color);
    }
@@ -174,7 +170,7 @@ li {
   background-color: var(--secondary-bg-color);
   list-style: none;
   padding:18px;
-  /* width:100px; */
+  width:100px;
   /* border: 1px solid var(--accent-color); */
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
   border-radius: 8px;

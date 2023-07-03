@@ -167,10 +167,9 @@ export const updateColumnTitle = createAsyncThunk(
  * headers: Authorization: Bearer token
  */
 export const updateTask = createAsyncThunk(
-  'boards/updateTask',
+  'task/updateTask',
   async (task, thunkAPI) => {
     const { _id, title, description, deadline, priority, column } = task;
-
     try {
       await axios.put(`/tasks/${_id}`, {
         title,

@@ -32,6 +32,11 @@
   justify-content: center;
   align-items: center;
 }
+.filelabel:hover, .filelabel:focus{
+  opacity: 0.8;
+  border:1px solid var(--accent-color);
+}
+
 .label{ 
 position: relative;
 display: block;

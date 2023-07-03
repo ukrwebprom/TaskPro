@@ -6,6 +6,7 @@
     flex-shrink: 1;
     box-sizing: border-box;
     height:100%;
+    gap:10px;
 }
 @media screen and (max-width:480px) {
     .dashboardContainer {
@@ -22,7 +23,6 @@
     font-size: 18px;
     font-weight: 500;
     color: var(--primary-text-color);
-    margin-bottom: 10px;
 }
 
 .listArea {

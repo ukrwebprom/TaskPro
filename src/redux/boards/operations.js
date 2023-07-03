@@ -63,12 +63,11 @@ export const fetchBoards = createAsyncThunk(
     'boards/updateBoardBgById',
     async (board, thunkAPI) => {
       const { _id, background } = board;
-  
       try {
-        const { data } = await axios.patch(`/boards/${_id}`, {
+        await axios.patch(`/boards/${_id}`, {
           background,
         });
-        return data;
+        return {_id, background};
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }
@@ -168,10 +167,9 @@ export const updateColumnTitle = createAsyncThunk(
  * headers: Authorization: Bearer token
  */
 export const updateTask = createAsyncThunk(
-  'boards/updateTask',
+  'task/updateTask',
   async (task, thunkAPI) => {
     const { _id, title, description, deadline, priority, column } = task;
-
     try {
       await axios.put(`/tasks/${_id}`, {
         title,
@@ -213,7 +211,7 @@ export const updateTaskPlace = createAsyncThunk(
   export const deleteTask = createAsyncThunk(
       'boards/deleteTask',
       async (task, thunkAPI) => {
-        const { _id, column } = task;
+        const { _id } = task;
         try {
           await axios.delete(`/tasks/${_id}`);
           return task;

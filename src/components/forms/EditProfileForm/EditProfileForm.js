@@ -4,21 +4,26 @@ import s from "./EditProfileForm.module.css";
 import { Avatar } from "components/Avatar/Avatar";
 import Button from "..//..//Button/Button.jsx";
 import Icon from "components/Icon/Icon";
+
 import { useState } from "react";
-export const EditProfileForm = ({
-  userPhoto = null,
-  name = "",
-  email = "",
-  password = "",
-  onClose
-}) => {
-  const [type, setType] = useState("password");
-  const [iconName, setIconName] = useState("#eye-icon");
+import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from "react-redux";
+import { updateProfileAvatar } from "redux/auth/operations";
+
+export const EditProfileForm = ({ onSubmitForm }) => {
+  const dispatch = useDispatch();
+
+  const {user} = useAuth();
+  const {name, email, avatar} = user;
+  const {newAvatar } = useState(null);
+  const [type,setType]= useState("password");
+  const [iconName, setIconName]= useState("#eye-icon");
+  console.log(newAvatar)
+
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+    onSubmitForm(values);
     setSubmitting(false);
     resetForm();
-    onClose();
   };
   const handleShow = (e) => {
     const gettype = e.currentTarget.value;
@@ -29,43 +34,61 @@ export const EditProfileForm = ({
       setType("password");
       setIconName("#eye-icon");
     }
-  };
+
+  }  
+  const handleAvaSelect = file => {
+    const formData = new FormData();
+    formData.append("avatar", file);
+    dispatch(updateProfileAvatar(formData))
+  
+
+  //   fetch('https://taskpro-41yf.onrender.com/user/upload', {
+  //     method: 'POST',
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setNewAvatar(data.url))
+  //     .catch((err) => console.error(err));
+  }
+
 
   return (
+    <>
     <Formik
       initialValues={{
-        userPhoto,
+        avatar,
         name,
         email,
-        password,
       }}
       validationSchema={validationEditProfileSchema}
       onSubmit={handleSubmit}
     >
       {({ touched, errors, isSubmitting, dirty, setFieldValue }) => (
-        <Form className={s.form}>
-          <div className={s.s}>
-            <div className={s.addfilewrap}>
-              <Avatar />
 
-              <label className={s.filelabel}>
-                <Icon name="#plus-icon" />
-                <Field
-                  className={s.inputFile}
-                  name="userPhoto"
-                  type="file"
-                  onChange={(event) => {
-                    setFieldValue("userPhoto", event.currentTarget.files[0]);
-                  }}
-                  onBlur={touched.fieldName && errors.fieldName}
-                />
-              </label>
-              <ErrorMessage
-                name="userPhoto"
-                component="div"
-                className={s.error}
-              />
-            </div>
+        
+        <Form  className={s.form}>
+          <div className={s.s} >
+         
+          <div className={s.addfilewrap}>
+          {/* {newAvatar ? <img src={newAvatar} alt='avatar-default'/> : <Avatar/>} */}
+          <Avatar/>
+
+            <label className={s.filelabel}> 
+            <Icon  name ="#plus-icon"/>
+            <Field
+              className={s.inputFile}
+              name="avatar"
+              type="file"
+              onChange={(event) => {
+                handleAvaSelect(event.currentTarget.files[0]);
+              }}
+              onBlur={touched.fieldName && errors.fieldName}
+            /></label>
+            <ErrorMessage name="userPhoto"
+             component="div"
+             className={s.error} />
+          </div>
+
           </div>
 
           <label className={s.label}>
@@ -93,8 +116,8 @@ export const EditProfileForm = ({
             <Field
               className={s.input}
               name="password"
-              placeholder="Create a password"
-              type="password"
+              placeholder="Password"
+              type= {type}
               onBlur={touched.fieldName && errors.fieldName}
             />
             <button
@@ -117,5 +140,6 @@ export const EditProfileForm = ({
         </Form>
       )}
     </Formik>
+    </>
   );
 };

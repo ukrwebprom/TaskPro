@@ -1,11 +1,9 @@
 import { useMemo } from "react";
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import { updateColumnTitle, deleteColumn, addTask } from 'redux/boards/operations';
-import Modal from '../Modal/Modal';
+import Tooltip from '@mui/material/Tooltip';
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
 import Button from "components/Button/Button";
@@ -20,8 +18,6 @@ export const Column = ({
   const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
   const filter = useSelector(setFilter);
-  const [showColumnModal, setShowColumnModal] = useState(false);
-  const [showTaskModal, setShowTaskModal] = useState(false);
 
   const handleEditColumn = value => {
     killModal();
@@ -45,6 +41,7 @@ export const Column = ({
       <div className={css.wrapperTitleColumn}>
         <h3 className={css.titleColumn}>{data.title}</h3>
         <div className={css.wrapperButton}>
+        <Tooltip title="Edit">
           <button
             className={css.buttonColumn}
             type="button"
@@ -53,9 +50,12 @@ export const Column = ({
             )}>
             <Icon name={'#pencil-icon'} />
             </button>
+            </Tooltip>
+            <Tooltip title="Delete">
             <button className={css.buttonColumn} onClick={handleDelete}>
             <Icon name={'#trash-icon'} />
             </button>
+            </Tooltip>
           </div>
         </div>
 

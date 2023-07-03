@@ -99,11 +99,11 @@
 margin-top: 14px;
   }
 
-.label_color{
-  display: flex;
-  margin-bottom: 14px;
-  justify-content: start;
-  }
+    .label_color{
+      display: flex;
+      margin-bottom: 14px;
+      justify-content: flex-start;
+      }
  
 .noneInput::before {
   background-color: #878787;

@@ -19,14 +19,14 @@ export const MyDatepicker = ({ date, handleSetData }) => {
     },[selectedDate])
 
     const CustomInput = forwardRef(({ value, onClick }, ref) => (
-        <p className="example-custom-input" onClick={onClick} ref={ref}>
+        <div className="example-custom-input" onClick={onClick} ref={ref}>
             <p>{value}</p>
             <Icon name="#chevron-down-icon" width='20px' height='20px' color='#BEDBB0'/>
-        </p>
+        </div>
     ));
 
     return (
-        <p>
+        <div>
             {selectedDate.toLocaleDateString() === newDate.toLocaleDateString() &&
                 <span className="deadline">Today, </span>}
             <DatePicker
@@ -37,6 +37,6 @@ export const MyDatepicker = ({ date, handleSetData }) => {
                 className={styleDatepicker}
                 customInput={<CustomInput />}
             />          
-        </p>
+        </div>
     )
 }

@@ -7,26 +7,23 @@ import Icon from "components/Icon/Icon";
 
 import { useState, useEffect } from "react";
 import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from "react-redux";
+import { updateProfileAvatar } from "redux/auth/operations";
 
-export const EditProfileForm = ({
-/*   userPhoto = null, */
-/*   name = "",
-  email = "", */
-  password = "",
-  onClose
-}) => {
+export const EditProfileForm = ({ onSubmitForm }) => {
+  const dispatch = useDispatch();
 
   const {user} = useAuth();
   const {name, email, avatar} = user;
   const {newAvatar, setNewAvatar} = useState(null);
   const [type,setType]= useState("password");
-  const [iconName, setIconName]= useState("#eye-icon")
+  const [iconName, setIconName]= useState("#eye-icon");
+  console.log(newAvatar)
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
+    onSubmitForm(values);
     setSubmitting(false);
     resetForm();
-    onClose();
   };
   const handleShow = (e) => {
     const gettype = e.currentTarget.value;
@@ -40,24 +37,23 @@ export const EditProfileForm = ({
 
   }  
   const handleAvaSelect = file => {
-    console.log(file);
     const formData = new FormData();
     formData.append("avatar", file);
+    dispatch(updateProfileAvatar(formData))
+  
 
-    fetch('https://taskpro-41yf.onrender.com/user/upload', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => setNewAvatar(data.url))
-      .catch((err) => console.error(err));
+  //   fetch('https://taskpro-41yf.onrender.com/user/upload', {
+  //     method: 'POST',
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setNewAvatar(data.url))
+  //     .catch((err) => console.error(err));
   }
 
 
   return (
     <>
-    <input type="file" onChange={e => handleAvaSelect(e) }/>
-
     <Formik
       initialValues={{
         avatar,
@@ -74,7 +70,8 @@ export const EditProfileForm = ({
           <div className={s.s} >
          
           <div className={s.addfilewrap}>
-          {newAvatar ? <img src={newAvatar}/> : <Avatar/>}
+          {/* {newAvatar ? <img src={newAvatar} alt='avatar-default'/> : <Avatar/>} */}
+          <Avatar/>
 
             <label className={s.filelabel}> 
             <Icon  name ="#plus-icon"/>
@@ -120,7 +117,7 @@ export const EditProfileForm = ({
               className={s.input}
               name="password"
               placeholder="Password"
-              type="password"
+              type= {type}
               onBlur={touched.fieldName && errors.fieldName}
             />
             <button

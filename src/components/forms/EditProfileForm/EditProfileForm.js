@@ -5,7 +5,7 @@ import { Avatar } from "components/Avatar/Avatar";
 import Button from "..//..//Button/Button.jsx";
 import Icon from "components/Icon/Icon";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from "react-redux";
 import { updateProfileAvatar } from "redux/auth/operations";
@@ -15,7 +15,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
 
   const {user} = useAuth();
   const {name, email, avatar} = user;
-  const {newAvatar, setNewAvatar} = useState(null);
+  const {newAvatar } = useState(null);
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon");
   console.log(newAvatar)

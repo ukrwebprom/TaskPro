@@ -1,45 +1,10 @@
-import { Padding } from '@mui/icons-material';
 import css from './Modal.module.css';
 import Icon from 'components/Icon/Icon';
 import {useMedia} from 'react-use';
 
-// const modalRoot = document.querySelector('#modal-root');
-
-// const Modal = ({ children, onClose, onClick }) => {
-//   useEffect(() => {
-//     window.addEventListener('keydown', handleKeyDown);
-//     return () => {
-//       window.removeEventListener('keydown', handleKeyDown);
-//     };
-//   }, []);
-
-//   const handleKeyDown = e => {
-//     if (e.code === 'Escape') {
-//       onClose();
-//     }
-//   };
-
-//   const handleBackdropClick = event => {
-//     if (event.currentTarget === event.target) {
-//       onClose();
-//     }
-//   };
-//   return createPortal(
-//     <div className={css.backdrop} onClick={handleBackdropClick}>
-//       <div className={css.modal_content}>
-//         {children}
-//       </div>
-//     </div>,
-//     modalRoot
-//   );
-// };
-
-// export default Modal;
-
 const Modal = ({ children, isOpen, name, onClose, position }) => {
   const isMobile = useMedia('(max-width: 480px)');
   return (
-    /* <div className={`modal ${isOpen ? "open" : ""}`}> */
       <div className={css.backdrop} onClick={onClose}>
       <div className={css.modal_content} 
         style={isMobile? {top:"50%", left:"50%", transform:"translate(-50%, -50%)", padding: 24} : {...position, padding: 24}} onClick={e => e.stopPropagation()}>
@@ -56,9 +21,6 @@ const Modal = ({ children, isOpen, name, onClose, position }) => {
           <h2 className={css.modal_title}>{name}</h2>
         </div>
         {children}
-{/*         <div className="modalBody">
-          {children}
-        </div> */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useRef, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import Popover from "components/Modal/Popover";
 

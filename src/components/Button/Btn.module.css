@@ -17,16 +17,11 @@
     font-family: inherit;
     cursor:pointer;
 }
-.btn:hover{
-    opacity:0.8 ;
-}
+
 .invertBtn {
     composes:btn;
     background-color: var(--secondary-bg-color);
     color:var(--primary-text-color);
-}
-.invertBtn:hover{
-    opacity:0.8 ;
 }
 .wrapperIcon{
     display: flex;

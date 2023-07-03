@@ -61,7 +61,7 @@ const boardsSlice = createSlice({
           board => board._id === action.payload._id
         );
 
-        state.items[index] = action.payload;
+        state.items[index].background = action.payload.background;
       })
       .addCase(updateBoardBgById.pending, handlePending)
       .addCase(updateBoardBgById.rejected, handleRejected)

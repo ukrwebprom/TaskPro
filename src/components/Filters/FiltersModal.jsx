@@ -1,12 +1,11 @@
 import LabelColor from "./LabelColor";
 import Background from "./Background";
 
-const FiltersModal = ({ handleBgClick, selectedBgIndex }) => {
+const FiltersModal = ({ handleBgClick }) => {
   return (
       <div>
         <Background
           handleBgClick={handleBgClick}
-          selectedBgIndex={selectedBgIndex}
         />
 
         <LabelColor />

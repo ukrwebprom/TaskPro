@@ -7,21 +7,18 @@ import Icon from "components/Icon/Icon";
 
 import { useState } from "react";
 import { useAuth } from 'hooks/useAuth';
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { updateProfileAvatar } from "redux/auth/operations";
 
 export const EditProfileForm = ({ onSubmitForm }) => {
-  const dispatch = useDispatch();
-
   const {user} = useAuth();
   const {name, email, avatar} = user;
-  const {newAvatar } = useState(null);
+  const [newAvatar, setNewAvatar ] = useState(null);
   const [type,setType]= useState("password");
   const [iconName, setIconName]= useState("#eye-icon");
-  console.log(newAvatar)
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    onSubmitForm(values);
+    onSubmitForm({...values, avatar: newAvatar});
     setSubmitting(false);
     resetForm();
   };
@@ -35,20 +32,34 @@ export const EditProfileForm = ({ onSubmitForm }) => {
       setIconName("#eye-icon");
     }
 
-  }  
+  } 
+
+  const uploadAvatar = async (formData) => {
+    try {
+      const res = await fetch('https://taskpro-41yf.onrender.com/user/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      setNewAvatar(data.url);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
+  
   const handleAvaSelect = file => {
     const formData = new FormData();
     formData.append("avatar", file);
-    dispatch(updateProfileAvatar(formData))
-  
+    uploadAvatar(formData);
 
-  //   fetch('https://taskpro-41yf.onrender.com/user/upload', {
-  //     method: 'POST',
-  //     body: formData,
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setNewAvatar(data.url))
-  //     .catch((err) => console.error(err));
+    // fetch('https://taskpro-41yf.onrender.com/user/upload', {
+    //   method: 'POST',
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => setNewAvatar(data.url))
+    //   .catch((err) => console.error(err));
   }
 
 
@@ -56,7 +67,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
     <>
     <Formik
       initialValues={{
-        avatar,
+        avatar: "",
         name,
         email,
       }}
@@ -70,8 +81,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
           <div className={s.s} >
          
           <div className={s.addfilewrap}>
-          {/* {newAvatar ? <img src={newAvatar} alt='avatar-default'/> : <Avatar/>} */}
-          <Avatar/>
+          {newAvatar ? <img src={newAvatar} alt='avatar-default'/> : <Avatar/>}
 
             <label className={s.filelabel}> 
             <Icon  name ="#plus-icon"/>

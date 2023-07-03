@@ -7,7 +7,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   color: var(--sidebar-text-color);
   background-color: var(--navigation-bg-color);
   height: 100%;
@@ -26,7 +26,7 @@
   flex-shrink: 1;
 }
 .boards {
-  margin-top: 40px;
+  margin-top: 24px;
   margin-left: -24px;
   margin-right: -24px;
   overflow-x: hidden;

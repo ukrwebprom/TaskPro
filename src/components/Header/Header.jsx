@@ -12,7 +12,7 @@ import Modal from 'components/Modal/Modal'
 
 export const Header = ({ toggleSidebar }) => {
   const {getModal, killModal} = useModal();
-  const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
+  // const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
   const {user} = useAuth();
   const {getPopover, killPopover} = useModal();
   const [showModal, setShowModal] = useState(false);

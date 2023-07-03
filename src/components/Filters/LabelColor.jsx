@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import css from "./Filters.module.css";
-
+import { useBoards } from "hooks/useBoards";
 import { setFilter } from "redux/boards/slice";
 import { useDispatch } from "react-redux";
 
 const LabelColor = () => {
   const dispatch = useDispatch();
-  const [selectedPriority, setSelectedPriority] = useState(null);
+  const {filter} = useBoards();
+  const [selectedPriority, setSelectedPriority] = useState(filter);
+  
   useEffect(() => {
-    console.log("start");
     dispatch(setFilter(selectedPriority));
   }, [selectedPriority, dispatch]);
 

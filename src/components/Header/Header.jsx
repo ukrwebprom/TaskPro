@@ -7,16 +7,16 @@ import Icon from 'components/Icon/Icon'
 import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
 
 import { useAuth } from 'hooks/useAuth';
-import { useModal } from 'hooks/useModal'
+// import { useModal } from 'hooks/useModal'
 
 export const Header = ({ toggleSidebar }) => {
 
   const {getModal, killModal} = useModal();
-  const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
+  // const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
 
   const {user} = useAuth();
   const {getPopover, killPopover} = useModal();
-  const {getModal, killModal} = useModal();
+  // const {getModal, killModal} = useModal();
   
   // const showThemeSelector = () => {
   //   setIsVisibleThemeSelector(!isVisibleThemeSelector)

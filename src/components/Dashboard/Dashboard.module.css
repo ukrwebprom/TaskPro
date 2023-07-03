@@ -6,8 +6,11 @@
     flex-shrink: 1;
     box-sizing: border-box;
     height:100%;
-/*     border:2px dotted red; */
-/*     max-height: calc(100% - 80px); */
+}
+@media screen and (max-width:480px) {
+    .dashboardContainer {
+        padding: 24px 10px 10px 10px;
+    }
 }
 
 .dashboardHeader {
@@ -55,6 +58,6 @@
 }
 @media screen and (max-width:480px) {
     .column {
-        flex-basis: 100%;
+        flex-basis: 92%;
     }
 }

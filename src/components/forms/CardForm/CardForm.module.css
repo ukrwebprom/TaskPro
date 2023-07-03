@@ -83,7 +83,7 @@
     .label_color{
       display: flex;
       margin-bottom: 14px;
-      justify-content: start;
+      justify-content: flex-start;
       }
  
 .noneInput::before {

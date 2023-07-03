@@ -64,7 +64,7 @@ export const fetchBoards = createAsyncThunk(
     async (board, thunkAPI) => {
       const { _id, background } = board;
       try {
-        const { data } = await axios.patch(`/boards/${_id}`, {
+        await axios.patch(`/boards/${_id}`, {
           background,
         });
         return {_id, background};
@@ -212,7 +212,7 @@ export const updateTaskPlace = createAsyncThunk(
   export const deleteTask = createAsyncThunk(
       'boards/deleteTask',
       async (task, thunkAPI) => {
-        const { _id, column } = task;
+        const { _id } = task;
         try {
           await axios.delete(`/tasks/${_id}`);
           return task;

@@ -5,18 +5,24 @@ import { useModal } from 'hooks/useModal'
 import { Avatar } from 'components/Avatar/Avatar'
 import Icon from 'components/Icon/Icon'
 import { EditProfileForm } from 'components/forms/EditProfileForm/EditProfileForm'
-
+import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
-// import { useModal } from 'hooks/useModal'
+import { updateProfile } from 'redux/auth/operations';
+import Modal from 'components/Modal/Modal'
 
 export const Header = ({ toggleSidebar }) => {
-
   const {getModal, killModal} = useModal();
-  // const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
-
+  const [isVisibleThemeSelector, setIsVisibleThemeSelector] = useState(false)
   const {user} = useAuth();
   const {getPopover, killPopover} = useModal();
-  // const {getModal, killModal} = useModal();
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(c => !c);
+  const dispatch = useDispatch();
+
+  const handleUpdateProfile = (value) => {
+    dispatch(updateProfile(value));
+    killModal();
+  }
   
   // const showThemeSelector = () => {
   //   setIsVisibleThemeSelector(!isVisibleThemeSelector)
@@ -25,6 +31,7 @@ export const Header = ({ toggleSidebar }) => {
 
 
   return (
+    <>
     <div className={css.headerall}>
       <div className={css.menuburger}>
         <button className={css.burgerstyle} onClick={() => toggleSidebar(c => !c)}>
@@ -48,12 +55,17 @@ export const Header = ({ toggleSidebar }) => {
 
         <ul className={css.styleUserInfo}>
           <li className={css.styleName}>{user.name}</li>
-          <li><Avatar onClick={() => getModal('Edit profile', <EditProfileForm />)} 
+          <li><Avatar onClick={() => getModal('Edit profile', <EditProfileForm onSubmitForm={handleUpdateProfile}/>)} 
             size={32}/>
           </li>
         </ul>
 
       </div>
     </div>
+    
+    {showModal && <Modal onClose={toggleModal} name="Edit profile">
+        <EditProfileForm onSubmitForm={handleUpdateProfile}/>
+      </Modal>}
+    </>
   )
 };

@@ -17,6 +17,7 @@ const Help = () => {
   dispatch(sendComment(value));
   killModal();
 }
+
   return (
     <>
     <div className={css.help}>

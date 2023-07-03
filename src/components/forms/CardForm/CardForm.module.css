@@ -133,9 +133,15 @@ margin-top: 14px;
 .highInput::before {
   background-color: var(--high-priority-bg-color);
   border: 1px solid var(--high-priority-bg-color);
+  
 }
 .highInput:checked::after {
   background-color: var(--high-priority-bg-color);
+ 
+}
+.highInput:hover, .noneInput:hover,.mediumInput:hover,.lowInput:hover
+{
+  scale: 1.2;
 }
 
 .labelItem {

@@ -81,7 +81,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
           <div className={s.s} >
          
           <div className={s.addfilewrap}>
-          {newAvatar ? <img src={newAvatar} alt='avatar-default'/> : <Avatar/>}
+          {newAvatar ? <img src={newAvatar} alt='avatar-default'/> : <Avatar size ={68}/>}
 
             <label className={s.filelabel}> 
             <Icon  name ="#plus-icon"/>

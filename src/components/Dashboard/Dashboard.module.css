@@ -6,8 +6,12 @@
     flex-shrink: 1;
     box-sizing: border-box;
     height:100%;
-/*     border:2px dotted red; */
-/*     max-height: calc(100% - 80px); */
+    gap:10px;
+}
+@media screen and (max-width:480px) {
+    .dashboardContainer {
+        padding: 24px 10px 10px 10px;
+    }
 }
 
 .dashboardHeader {
@@ -19,7 +23,6 @@
     font-size: 18px;
     font-weight: 500;
     color: var(--primary-text-color);
-    margin-bottom: 10px;
 }
 
 .listArea {
@@ -55,6 +58,6 @@
 }
 @media screen and (max-width:480px) {
     .column {
-        flex-basis: 100%;
+        flex-basis: 92%;
     }
 }

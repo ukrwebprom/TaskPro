@@ -98,14 +98,10 @@ const authSlice = createSlice({
       .addCase(updateProfile.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.avatar = action.payload.avatar;
       })
       .addCase(updateProfile.pending, handlePending)
       .addCase(updateProfile.rejected, handleRejected)
-      .addCase(updateProfileAvatar.fulfilled, (state, action) => {
-        state.user.avatar = action.payload.url;
-      })
-      .addCase(updateProfileAvatar.pending, handlePending)
-      .addCase(updateProfileAvatar.rejected, handleRejected),
 });
 
 export const { refreshTokens, resetIsLoggedIn } = authSlice.actions;

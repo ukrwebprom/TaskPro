@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import EllipsisText from 'react-ellipsis-text';
 import Tooltip from '@mui/material/Tooltip';
-import Popover from '@mui/material/Popover';
 import styled from '@emotion/styled';
 import moment from 'moment';
 
@@ -194,13 +193,13 @@ const Task = ({
                           }}
                         >
                         <p className={css.popoverStatus}>{title}</p>
-                        </button>
                         <Icon
                           sprite={2}
                           name={'#arrow-circle-icon'}
                           width="16"
                           height="16"
-                        />
+                          />
+                        </button>
                       </li>
                     ))}
                   </ul>)}
@@ -266,49 +265,6 @@ const Task = ({
           <CardForm taskData={taskData} setTask={handleEditTask} onClose={toggleModal} />
         </Modal>
       )}
-      <Popover
-        id={id}
-        open={openMovePopover}
-        anchorEl={moveAnchorEl}
-        onClose={() => setMoveAnchorEl(null)}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        sx={{ 
-          "& .MuiPopover-paper": {
-            backgroundColor: 'inherit',
-            borderRadius: '8px',
-          }
-        }}
-      >
-        <PopupWrapper popStyles={popStyles}>
-          <ul className={css.popover_list}>
-            {Object.entries(avaliableColumns)?.map(([id, title]) => (
-              <ItemWrapper className={css.popoverItem} key={id} popStyles={popStyles}>
-                <button
-                  onClick={() => {
-                    // setMoveAnchorEl(null);
-                  }}
-                  className={css.popoverBtn}
-                >
-                <p className={css.popoverStatus}>{title}</p>
-                </button>
-                <Icon 
-                  sprite={2}
-                  name={'#arrow-circle-icon'}
-                  width="16"
-                  height="16"
-                />
-              </ItemWrapper>
-            ))}
-          </ul>
-        </PopupWrapper>
-      </Popover>
     </>
   );
 };

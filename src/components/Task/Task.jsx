@@ -104,7 +104,7 @@ const Task = ({
       _id: taskData._id,
       title: task.title,
       description: task.description, 
-      deadline: task.deadline, 
+      deadline: moment(task.deadline).toISOString(), 
       priority: task.priority, 
       column: taskData.column,
     }));

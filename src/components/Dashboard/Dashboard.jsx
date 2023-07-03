@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
+import { DragDropContext } from "react-beautiful-dnd";
 import { addColumn } from 'redux/boards/operations';
 import Button from "components/Button/Button";
 import { useBoards } from 'hooks/useBoards'
@@ -27,11 +28,15 @@ const DashBoard = () => {
     }, {})
     , [currentData]);
 
+  const onDragEnd = res => {
 
+  }
+  
   return (
         <>
         {current !== null && (
         <Background>
+          <DragDropContext onDragEnd={onDragEnd}>
         <div className={css.dashboardContainer}>
             <div className={css.dashboardHeader}>
               <h2 className={css.dashboardTitle}>{currentData.title}</h2>
@@ -58,6 +63,7 @@ const DashBoard = () => {
             </ul>
           </div>
         </div>
+        </DragDropContext>
         </Background>
         )}
         </>

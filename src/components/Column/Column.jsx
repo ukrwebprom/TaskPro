@@ -73,7 +73,7 @@ export const Column = ({
                 key={task._id}
                 taskData={task}
                 colId={data._id}
-                columnList={[{name: 'todo'}, {name: 'Done'}]}
+/*                 columnList={[{name: 'todo'}, {name: 'Done'}]} */
               />
             )
           )}

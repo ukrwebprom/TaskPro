@@ -298,7 +298,7 @@ const Task = ({
                 >
                 <p className={css.popoverStatus}>{title}</p>
                 </button>
-                <Icon
+                <Icon 
                   sprite={2}
                   name={'#arrow-circle-icon'}
                   width="16"

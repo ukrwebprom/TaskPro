@@ -67,9 +67,10 @@ margin-bottom: 24px;
   opacity: 0.5; 
  }
 
- .icon:hover {
+ .icon:hover , .icon:focus  {
   color:var(--accent-color);
   opacity: 1; 
+  scale: 1.2;
 }
 /*картинки*/
 
@@ -93,6 +94,7 @@ margin-bottom: 24px;
  }
   .background:hover, .background:focus{
      border:2px solid var(--accent-color);
+     scale: 1.2;
   }
   /* Сховати: чекбокси */
 

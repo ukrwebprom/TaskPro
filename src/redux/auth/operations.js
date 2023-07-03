@@ -121,16 +121,34 @@ export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
 */
   export const updateProfile = createAsyncThunk(
     'user/updateProfile',
-    async ({avatar, name, email, password}, thunkAPI) => {
+    async ({name, email, password}, thunkAPI) => {
   
       try {
-        const { data } = await axios.put("/user/update", {avatar, name, email, password});
-        return {data};
+        const response = await axios.put("/user/update", { name, email, password});
+        return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }
     }
   );
+
+  /*
+ * POST @ /user/update
+ * headers: Authorization: Bearer token
+*/
+export const updateProfileAvatar = createAsyncThunk(
+  'auth/updateProfileAvatar',
+  async (file, thunkAPI) => {
+
+    try {
+      const resp = await axios.post("/user/upload", file);
+      return resp.data;
+      // console.log(data)
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 
   /*

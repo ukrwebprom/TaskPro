@@ -4,7 +4,6 @@ import { addColumn } from 'redux/boards/operations';
 import Button from "components/Button/Button";
 import { useBoards } from 'hooks/useBoards'
 import css from "./Dashboard.module.css";
-import { useState } from "react";
 import { Column } from "components/Column/Column";
 import { Background } from "components/Background/Background";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';

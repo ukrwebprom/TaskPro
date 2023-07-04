@@ -26,7 +26,10 @@
     margin-top: auto;
     margin-bottom: auto;
 }
-
+.styleTheme:hover , .styleTheme:focus  {
+    color:var(--accent-color);
+ }
+ 
 .burgerstyle {
     cursor: pointer;
     outline: 0;

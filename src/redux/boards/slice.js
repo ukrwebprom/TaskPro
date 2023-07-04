@@ -11,7 +11,7 @@ const handleRejected = (state, action) => {
 };
 
 const boardsSlice = createSlice({
-    name: 'boards',
+  name: 'boards',
   initialState: {
     items: [],
     isLoading: false,
@@ -25,6 +25,24 @@ const boardsSlice = createSlice({
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
+    },
+    dragAndDrop: (state, action) => {
+      const { destination, source, draggableId} = action.payload;
+
+      const columnIndex = state.items[state.currentBoard].columns.findIndex(
+        column => column._id === source.droppableId
+      );
+
+      const task = state.items[state.currentBoard].columns[columnIndex].tasks[source.index];
+      console.log(task)
+
+      const newColumnIndex = state.items[state.currentBoard].columns.findIndex(
+        column => column._id === destination.droppableId
+      );
+
+      state.items[state.currentBoard].columns[columnIndex].tasks.splice(source.index, 1);
+
+      state.items[state.currentBoard].columns[newColumnIndex].tasks.splice(destination.index,0,task);
     },
   },
   extraReducers: builder =>
@@ -207,5 +225,5 @@ const boardsSlice = createSlice({
       // })
 });
 
-export const { selectBoard, setFilter } = boardsSlice.actions;
+export const { selectBoard, setFilter, dragAndDrop } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer

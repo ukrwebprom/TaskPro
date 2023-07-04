@@ -1,14 +1,14 @@
-.form{
+.form {
   width: 352px;
 }
-.input{
+.input {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  padding:14px 18px;
+  padding: 14px 18px;
   background-color: var(--input-backround-color);
   color: var(--primary-text-color);
-  font: "Poppins";
+  font-family: inherit;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
@@ -19,13 +19,11 @@
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
 
-.label{ 
+.label {
   position: relative;
   display: block;
   margin-bottom: 14px;
-
 }
-
 
 .comment {
   display: block;
@@ -34,7 +32,7 @@
   width: 100%;
   height: 120px;
   resize: none;
-  font-family: "Poppins";
+  font-family: inherit;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
@@ -44,42 +42,41 @@
   border: 1px solid var(--accent-color);
   color: var(--primary-text-color);
   border-radius: 8px;
-  padding:14px 18px;
+  padding: 14px 18px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
   overflow-y: auto;
-    }
-    .comment::-webkit-scrollbar {
-      width: 8px;
-    }
-    .comment::-webkit-scrollbar-track {
-      border-radius: 12px;
-      background-color:var(--taskScrollBase);
-    }
-    .comment::-webkit-scrollbar-thumb {
-      border-radius: 12px;
-      background-clip: content-box;
-      background-color:var(--taskScrollHandler);
-    }
-    
-.comment:hover, .input:hover {
-  color: var(--primary-text-color);
-  border-color: var(--primary-text-color) ;
-    
-    }
-.comment:focus, .input:focus{
-  color:var(--primary-text-color);
-  border-color: var(--primary-text-color) ;
 }
-.error{
+.comment::-webkit-scrollbar {
+  width: 8px;
+}
+.comment::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background-color: var(--taskScrollBase);
+}
+.comment::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-clip: content-box;
+  background-color: var(--taskScrollHandler);
+}
+
+.comment:hover,
+.input:hover {
+  color: var(--primary-text-color);
+  border-color: var(--primary-text-color);
+}
+.comment:focus,
+.input:focus {
+  color: var(--primary-text-color);
+  border-color: var(--primary-text-color);
+}
+.error {
   position: absolute;
-  bottom:-19px;
+  bottom: -19px;
   right: 0;
   font-size: 11px;
   font-weight: 400;
   font-style: normal;
   letter-spacing: -1%;
   opacity: 0.9;
-  color:#e66666;;
-
+  color: #e66666;
 }
-     

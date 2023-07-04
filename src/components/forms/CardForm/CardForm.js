@@ -6,18 +6,14 @@ import Button from "..//..//Button/Button.jsx";
 import { MyDatepicker } from "../MyDatepicker/MyDatepicker";
 /* import Tooltip from '@mui/material/Tooltip'; */
 
-
-
-
 export const CardForm = ({ taskData, setTask }) => {
-
   const orderedCodes = ["none", "low", "medium", "high"];
   const namesToCodes = {
-    none: 'Without priority',
-    low: 'Low',
-    medium: 'Medium',
-    high: 'High',
-  }
+    none: "Without priority",
+    low: "Low",
+    medium: "Medium",
+    high: "High",
+  };
 
   const initialValues = {
     deadline: taskData?.deadline ? new Date(taskData.deadline) : new Date(),
@@ -54,6 +50,7 @@ export const CardForm = ({ taskData, setTask }) => {
               type="text"
               name="title"
               placeholder="Title"
+              autoFocus
               onBlur={touched.title && errors.title}
             />
             <ErrorMessage name="title" component="div" className={s.error} />
@@ -77,27 +74,25 @@ export const CardForm = ({ taskData, setTask }) => {
             <p className={s.item_tittle}>Label Color</p>
             <div id="radio-group" className={s.label_color}>
               {orderedCodes.map((code) => (
-
-                  <div
-                    key={code}
-/*                     role="group" */
-                    aria-labelledby="radio-group"
-                    className={
-                      values.priority === code ? s.selectedLabel : s.labelItem
-                    }
-                  >
-                    <Field
-                      id={`color_${code}`}
-                      type="radio"
-                      name={code}
-                      value={code}
-                      checked={values.priority === code}
-                      onChange={() => setFieldValue("priority", code)}
-                      onBlur={touched.priority && errors.priority}
-                      className={s[`${code}Input`]}
-                    />
-                  </div>
-
+                <div
+                  key={code}
+                  /*                     role="group" */
+                  aria-labelledby="radio-group"
+                  className={
+                    values.priority === code ? s.selectedLabel : s.labelItem
+                  }
+                >
+                  <Field
+                    id={`color_${code}`}
+                    type="radio"
+                    name={code}
+                    value={code}
+                    checked={values.priority === code}
+                    onChange={() => setFieldValue("priority", code)}
+                    onBlur={touched.priority && errors.priority}
+                    className={s[`${code}Input`]}
+                  />
+                </div>
               ))}
             </div>
             <ErrorMessage name="priority" />

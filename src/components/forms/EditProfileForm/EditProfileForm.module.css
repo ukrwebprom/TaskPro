@@ -1,60 +1,58 @@
-.s{
+.s {
   width: 100%;
-  
 }
-.form{
+.form {
   width: 352px;
 }
-.addfilewrap{
+.addfilewrap {
   position: relative;
   margin: 0 auto 14px auto;
   justify-content: center;
-  width:68px;
+  width: 68px;
   height: 79px;
-
 }
-.inputFile{
+.inputFile {
   opacity: 0;
   visibility: hidden;
   position: absolute;
 }
 
-.filelabel{
+.filelabel {
   position: absolute;
   bottom: 0;
-  right: 50%;;
-  transform:translate(50% , 0);
+  right: 50%;
+  transform: translate(50%, 0);
   display: flex;
-  background-color:var(--accent-color);
+  background-color: var(--accent-color);
   width: 24px;
   height: 24px;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
 }
-.filelabel:hover, .filelabel:focus{
+.filelabel:hover,
+.filelabel:focus {
   opacity: 0.8;
-  border:1px solid var(--accent-color);
+  border: 1px solid var(--accent-color);
 }
-.preview{
-  width:68px;
-  height:68px;
-  border-radius:5px;
+.preview {
+  width: 68px;
+  height: 68px;
+  border-radius: 5px;
 }
-.label{ 
-position: relative;
-display: block;
-margin-bottom: 24px;
-
+.label {
+  position: relative;
+  display: block;
+  margin-bottom: 24px;
 }
-.input{
+.input {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  padding:14px 18px;
+  padding: 14px 18px;
   background-color: var(--input-backround-color);
   color: var(--primary-text-color);
-  font: "Poppins";
+  font-family: inherit;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
@@ -65,30 +63,30 @@ margin-bottom: 24px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
 }
 
-.input:focus, .input:hover {
+.input:focus,
+.input:hover {
   color: var(--primary-text-color);
-  border-color: var(--primary-text-color) ;
-    
-    }
-   .eyeicon{
-    position: absolute;
-    top: 50%;
-  display: block;
-    transform: translate(-50%, -50%);
-    right: 0; 
-    color: #ffffff;
-    background-color:transparent;
-    border: transparent;
-    opacity: 0.4;
-  }
-.error{
+  border-color: var(--primary-text-color);
+}
+.eyeicon {
   position: absolute;
-  bottom:-21px;
+  top: 50%;
+  display: block;
+  transform: translate(-50%, -50%);
+  right: 0;
+  color: #ffffff;
+  background-color: transparent;
+  border: transparent;
+  opacity: 0.4;
+}
+.error {
+  position: absolute;
+  bottom: -21px;
   right: 0;
   font-size: 13px;
   font-weight: 400;
   font-style: normal;
   letter-spacing: -1%;
   opacity: 0.9;
-  color:#e66666;;
+  color: #e66666;
 }

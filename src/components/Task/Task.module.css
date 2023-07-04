@@ -100,11 +100,10 @@ li {
   cursor: pointer;
   background-color: transparent;
   padding: 0px;
-  &:hover{
-  color: var(--accent-color);
-  scale: 1.2;
-  }
 }
+/* .icon_buttons:hover {
+  color: var(--accent-color);
+} */
 
 .icon_buttons_bell{
   color: var(--accent-color);

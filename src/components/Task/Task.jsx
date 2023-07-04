@@ -1,13 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useDispatch } from 'react-redux';
+import { Draggable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import EllipsisText from 'react-ellipsis-text';
-import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
 import moment from 'moment';
+import { MoveList } from './MoveList';
 
-import Modal from 'components/Modal/Modal';
+/* import Modal from 'components/Modal/Modal'; */
 import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
@@ -79,7 +80,8 @@ const ItemWrapper = styled.li`
 const Task = ({
   avaliableColumns,
   taskData,
-  colId
+  colId,
+  index,
 }) => {
   const { getPopover, killPopover } = useModal();
   const authContext = useAuth();
@@ -87,10 +89,7 @@ const Task = ({
   const dispatch = useDispatch();
   const { getModal, killModal } = useModal();
 
-  const [isEditTaskOpened, setEditTaskOpened] = useState(false);
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
-
-  const toggleModal = () => setEditTaskOpened(!isEditTaskOpened);
 
   const openMovePopover = Boolean(moveAnchorEl);
   const id = useMemo(() => (openMovePopover ? 'move-popover' : undefined)
@@ -116,14 +115,29 @@ const Task = ({
 
   const taskDate = moment(taskData.deadline).format("DD/MM/YYYY");
   const isActual = moment().isBefore(moment(taskData.deadline), "day");
-
+  const handleMoveTask = moveTo => {
+    dispatch(updateTaskPlace({
+      task: {
+        ...taskData,
+        column: moveTo,
+      },
+      oldColumn: taskData.column,
+    }))
+    killPopover();
+  }
   return (
     <>
+      <Draggable draggableId={taskData._id} index={index}>
+        {provided => (
+          <div
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          >
       <ul
         className={css.wrapper}
-        style={{ borderLeft: `${proprityColors[taskData.priority].bl}` }}
-      >
-        <li key={taskData.id}>
+        style={{ borderLeft: `${proprityColors[taskData.priority].bl}` }}>
+        <li>
           <h2 className={css.title}>{taskData.title}</h2>
           <div className={css.wrapper_text}>
             <EllipsisText
@@ -154,68 +168,31 @@ const Task = ({
             </div>
             <div className={css.icon_list}>
             {!isActual && taskData.priority !== 'none' && (
-              <Tooltip title="din din">
                 <button 
                   type='button'
                   className={css.icon_buttons_bell}
                 >
                   <Icon
-                    sprite={2}
                     name={'#bell-icon'}
                     width="16"
                     height="16"
                     stroke="var( --accent-color)"
                   />
                 </button>
-              </Tooltip>
             )}
-              <Tooltip title="Move">
-                <button
-                  aria-describedby={id}
-                  disabled={!Object.keys(avaliableColumns || {}).length}
-                  type="button"
-                  className={css.icon_buttons}
 
-                  onClick={() => getPopover(<ul className={css.popover_list}>
-                    {Object.entries(avaliableColumns)?.map(([id, title]) => (
-                      <li className={css.popoverItem} key={id}>
-                        <button
-                          className={css.popoverBtn}
-                          onClick={() => {
-                            dispatch(updateTaskPlace({
-                              task: {
-                                ...taskData,
-                                column: id,
-                              },
-                              oldColumn: taskData.column,
-                            }));
-                            killPopover();
-                          }}
-                        >
-                        <p className={css.popoverStatus}>{title}</p>
-                        <Icon
-                          sprite={2}
-                          name={'#arrow-circle-icon'}
-                          width="16"
-                          height="16"
-                          />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>)}
-
-                  variant="contained"
+                <button className={css.icon_buttons}
+                onClick={() => getPopover(<MoveList col={colId} onSelect={handleMoveTask} />)}
                 >
                   <Icon
-                    sprite={2}
+                    tip="Move"
                     name={'#arrow-circle-icon'}
                     width="16"
                     height="16"
                     stroke="var( --index-label-color)"
-                  />
-                </button>
-              </Tooltip>
-              <Tooltip title="Edit">
+                  /></button>
+
+
                 <button
                   type="button"
                   className={css.icon_buttons}
@@ -225,34 +202,36 @@ const Task = ({
                   )}
                 >
                   <Icon
-                    sprite={2}
+                    tip="Edit task"
                     name={'#pencil-icon'}
                     width="16"
                     height="16"
                     stroke="var( --index-label-color)"
                   />
                 </button>
-              </Tooltip>
-              <Tooltip title="Delete">
+
+
                 <button
                   type="button"
                   className={css.icon_buttons}
                   onClick={handleDeleteTask}
                 >
                   <Icon
-                    sprite={2}
+                    tip="Delete"
                     name={'#trash-icon'}
                     width="16"
                     height="16"
                     stroke="var( --index-label-color)"
                   />
                 </button>
-              </Tooltip>
+
             </div>
           </div>
         </li>
       </ul>
-      {isEditTaskOpened && (
+      </div>)}
+      </Draggable>
+{/*       {isEditTaskOpened && (
         <Modal
           name="Edit card"
           onClick={event => {
@@ -264,7 +243,7 @@ const Task = ({
         >
           <CardForm taskData={taskData} setTask={handleEditTask} onClose={toggleModal} />
         </Modal>
-      )}
+      )} */}
     </>
   );
 };

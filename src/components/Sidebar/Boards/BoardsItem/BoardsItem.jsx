@@ -13,20 +13,19 @@ const BoardsItem = ({ index, board, setActive, handleDelete, handleEdit }) => {
           <span className={css.boardTitle}>{board.title}</span>
         </div>
         <div className={css.boardButtons}>
-        <Tooltip title="Edit">
+
           <button type="button" className={css.boardActionButton}
           onClick={handleEdit}>
-            <Icon name="#pencil-icon" />
+            <Icon name="#pencil-icon" tip="Edit"/>
           </button>
-          </Tooltip>
-          <Tooltip title="Delete">
+
           <button
             type="button"
             className={css.boardActionButton}
             onClick={() => handleDelete(board._id)}>
-            <Icon name="#trash-icon" />
+            <Icon name="#trash-icon" tip="Delete"/>
           </button>
-          </Tooltip>
+
         </div>
       </div>
     </>

@@ -49,6 +49,7 @@
   gap: 4px;
   padding: 0;
   list-style: none;
+  padding-bottom:10px;
 }
 
 .boardActive {
@@ -105,12 +106,19 @@
   gap: 8px;
 }
 
-.boardActive .boardActionButton:hover {
-  opacity: 0.5;
+.boardActionButton:hover{
+  color:var(--accent-color);
+  opacity:1;
 }
 
 .boardActionButton {
-  composes: button from "./Sidebar.css";
+  background: transparent;
+  color:white;
+  border:0;
+  outline:none;
+  padding:0;
+  opacity:0.5;
+/*   composes: button from "./Sidebar.css"; */
 }
 
 .board .boardActionButton {

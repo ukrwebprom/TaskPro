@@ -41,6 +41,7 @@ export const Column = ({
   return (
     <Draggable draggableId={data._id} index={index}>
       {(provided) => (
+/*     <div className={css.column}> */
     <section className={css.containerColumn} {...provided.draggableProps} ref={provided.innerRef}>
       <div className={css.wrapperTitleColumn} {...provided.dragHandleProps}>
         <h3 className={css.titleColumn}>{data.title}</h3>
@@ -88,6 +89,7 @@ export const Column = ({
       action={() => getModal("Add card", <CardForm setTask={handleAddTask} />
       )}/>
     </section>
+/*     </div> */
     )}
     </Draggable>
   );

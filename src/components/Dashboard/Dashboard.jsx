@@ -48,27 +48,28 @@ const DashBoard = () => {
             {(provided) => ( 
           <div className={css.listArea} {...provided.droppableProps} ref={provided.innerRef}>
         
-            <ul className={css.columnsList}>
+            <div className={css.columnsList}>
             {currentData.columns.length > 0 &&
             (currentData.columns.map((column, i) => 
               (
-                <li key={column._id} className={css.column}>
+/*                 <li key={column._id} className={css.column}> */
                   <Column
 /*                     allColumns={columnNamesToIds} */
                     data={column}
                     index={i}
                     key={column._id}
                   />
-                </li>)
+                /* </li> */
+                )
                 ))
               }
-              <li className={css.column}>
+{/*               <li className={css.column}>
               <Button invert={true} title="Add another column" type="button" 
               action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
-              </li>
-              
-            </ul>
-            {provided.placeholder}
+              </li> */}
+              {provided.placeholder}
+            </div>
+            
           </div>
              )}
              </StrictModeDroppable>   

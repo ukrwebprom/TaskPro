@@ -29,6 +29,7 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
               type="text"
               name="title"
               placeholder="Title"
+              autoFocus
               onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="title" component="div" className={s.error} />

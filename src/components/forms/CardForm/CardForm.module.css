@@ -1,8 +1,8 @@
-.form{
+.form {
   width: 302px;
 }
- /*инпут*/
-.input{
+/*инпут*/
+.input {
   display: block;
   box-sizing: border-box;
   margin-bottom: 14px;
@@ -10,101 +10,101 @@
   background-color: var(--input-backround-color);
   border: 1px solid var(--accent-color);
   border-radius: 8px;
-  padding:14px 18px;
+  padding: 14px 18px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-  color:var(--primary-text-color);
+  color: var(--primary-text-color);
+  font-family: inherit;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  letter-spacing:  -2%;
- }
- .comment {
-   display: block;
-   position: relative;
-   box-sizing: border-box;
-   margin-bottom: 24px;
-   width:100%;
-   height: 154px;
-   resize: none;
-   background-color: var(--input-backround-color);
-   border: 1px solid var(--accent-color);
-   border-radius: 8px;
-   padding:14px 18px;
-   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-   font-family: "Poppins";
-   font-size: 14px;
-   font-weight: 400;
-   line-height: 18px;
-   letter-spacing: -0.28px;
-   color:var(--primary-text-color);
-   overflow-y: auto;
- 
- }
-     
- .comment::-webkit-scrollbar {
+  letter-spacing: -2%;
+}
+.comment {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  width: 100%;
+  height: 154px;
+  resize: none;
+  background-color: var(--input-backround-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--primary-text-color);
+  overflow-y: auto;
+}
+
+.comment::-webkit-scrollbar {
   width: 8px;
 }
 .comment::-webkit-scrollbar-track {
   border-radius: 12px;
-  background-color:var(--taskScrollBase);
+  background-color: var(--taskScrollBase);
 }
 .comment::-webkit-scrollbar-thumb {
   border-radius: 12px;
   background-clip: content-box;
-  background-color:var(--taskScrollHandler);
+  background-color: var(--taskScrollHandler);
 }
-.comment:hover, .input:hover {
+.comment:hover,
+.input:hover {
   color: var(--primary-text-color);
-  border-color: var(--primary-text-color) ;
-    
-    }
-.comment:focus, .input:focus{
-  color:var(--primary-text-color);
-  border-color: var(--primary-text-color) ;
+  border-color: var(--primary-text-color);
 }
- .label{ 
- width: 100%;
- position: relative;
- display: block;
+.comment:focus,
+.input:focus {
+  color: var(--primary-text-color);
+  border-color: var(--primary-text-color);
+}
+.label {
+  width: 100%;
+  position: relative;
+  display: block;
+}
 
-  }
-   
 .lowInput::before {
   background-color: var(--low-priority-bg-color);
   border: 1px solid var(--low-priority-bg-color);
- }
+}
 
- .lowInput:checked::after {
+.lowInput:checked::after {
   background-color: var(--low-priority-bg-color);
-  }
-        
-  .datepicker{
-   background-color: var(--accent-color) ;
-  border: transparent
-  }
+}
 
-.item_tittle{
+.datepicker {
+  background-color: var(--accent-color);
+  border: transparent;
+}
+
+.item_tittle {
   display: block;
-  color:var(--index-label-color);
+  color: var(--index-label-color);
   margin-bottom: 4px;
   text-align: left;
   font-size: 14px;
-  font-family: "Poppins";
+  font-family: inherit;
   font-weight: 400;
   font-style: normal;
   line-height: 21px;
-  }
+}
 
-.label_wrapper{
-margin-top: 14px;
-  }
+.label_wrapper {
+  margin-top: 14px;
+}
 
-    .label_color{
-      display: flex;
-      margin-bottom: 14px;
-      justify-content: flex-start;
-      }
- 
+.label_color {
+  display: flex;
+  margin-bottom: 14px;
+  justify-content: flex-start;
+}
+
 .noneInput::before {
   background-color: #878787;
   border: 1px solid #878787;
@@ -133,14 +133,14 @@ margin-top: 14px;
 .highInput::before {
   background-color: var(--high-priority-bg-color);
   border: 1px solid var(--high-priority-bg-color);
-  
 }
 .highInput:checked::after {
   background-color: var(--high-priority-bg-color);
- 
 }
-.highInput:hover, .noneInput:hover,.mediumInput:hover,.lowInput:hover
-{
+.highInput:hover,
+.noneInput:hover,
+.mediumInput:hover,
+.lowInput:hover {
   scale: 1.2;
 }
 
@@ -161,19 +161,18 @@ margin-top: 14px;
   gap: 8px;
 }
 
-.datepicker{
+.datepicker {
   background-color: transparent;
   margin-bottom: 40px;
 }
-.error{
+.error {
   position: absolute;
-  bottom:-19px;
+  bottom: -19px;
   right: 0;
   font-size: 11px;
   font-weight: 400;
   font-style: normal;
   letter-spacing: -1%;
   opacity: 0.9;
-  color:#e66666;;
-
+  color: #e66666;
 }

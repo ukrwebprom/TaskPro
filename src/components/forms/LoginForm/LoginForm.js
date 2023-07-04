@@ -2,32 +2,32 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
 import Button from "components/Button/Button";
 import Icon from "components/Icon/Icon";
-import s from "./LoginForm.module.css"
+import s from "./LoginForm.module.css";
 // import { useUser } from "hooks/useUser";
 import { useState } from "react";
-import { login } from 'redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { login } from "redux/auth/operations";
+import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
   // const {userLogin} = useUser();
   const dispatch = useDispatch();
-  const [type,setType]= useState("password");
-  const [iconName, setIconName]= useState("#eye-icon")
-  
-  const handleShow=(e)=>{
+  const [type, setType] = useState("password");
+  const [iconName, setIconName] = useState("#eye-icon");
+
+  const handleShow = (e) => {
     const gettype = e.currentTarget.value;
-    console.log(gettype)
-    if (gettype==="password"){
+    console.log(gettype);
+    if (gettype === "password") {
       setType("text");
-      setIconName("#eye-slash-icon")
-    } else{
-      setType("password")
-      setIconName("#eye-icon")
+      setIconName("#eye-slash-icon");
+    } else {
+      setType("password");
+      setIconName("#eye-icon");
     }
-  }  
+  };
 
   // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    
+
   //   try{
   //     await userLogin(values);
   //     setSubmitting(false);
@@ -47,7 +47,6 @@ export const LoginForm = () => {
     actions.resetForm();
   };
 
-
   return (
     <Formik
       initialValues={{
@@ -56,43 +55,60 @@ export const LoginForm = () => {
       }}
       validationSchema={validationLoginSchema}
       onSubmit={handleSubmit}
-      validateOnBlur
     >
-      {({ isSubmitting, isValid, dirty }) => (
+      {({ isSubmitting, touched, errors, dirty }) => (
         <div className={s.wrap}>
-        <Form >
-          <div className={s.titleFild}>
-          <a  href="register" className= {s.regtitle}>Registration</a>
-          <p  className= {s.regtitleActive}>Log In</p>
-          </div>
-          <div className={s.field}>
-          <label className={s.label}>
-            <Field className= {s.input} name="email" placeholder="Enter your email" type="email" />
-            <ErrorMessage name="email"
-            component="div"
-            className={s.error} />
-          </label>
+          <Form>
+            <div className={s.titleFild}>
+              <a href="register" className={s.regtitle}>
+                Registration
+              </a>
+              <p className={s.regtitleActive}>Log In</p>
+            </div>
+            <div className={s.field}>
+              <label className={s.label}>
+                <Field
+                  className={s.input}
+                  name="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  autoFocus
+                  onBlur={touched.title && errors.title}
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={s.error}
+                />
+              </label>
 
-          <label className={s.label}>
-            <Field 
-             className= {s.input}
-              name="password"
-              placeholder="Confirm a password"
-              type={type}
-            /> 
-              <button  type="button" 
-            className={s.eyeicon} 
-            value={type}  
-            onClick={(e)=>handleShow(e)} >
-            <Icon name ={iconName}/>
-            </button>
-          </label>
-          </div>
-          <Button invert={false} title="Log In Now" icon={false}  type="submit" disabled ={isSubmitting||!dirty}
-           />
-        </Form>
-       
-             </div>
+              <label className={s.label}>
+                <Field
+                  className={s.input}
+                  name="password"
+                  placeholder="Confirm a password"
+                  type={type}
+                  onBlur={touched.title && errors.title}
+                />
+                <button
+                  type="button"
+                  className={s.eyeicon}
+                  value={type}
+                  onClick={(e) => handleShow(e)}
+                >
+                  <Icon name={iconName} />
+                </button>
+              </label>
+            </div>
+            <Button
+              invert={false}
+              title="Log In Now"
+              icon={false}
+              type="submit"
+              disabled={isSubmitting || !dirty}
+            />
+          </Form>
+        </div>
       )}
     </Formik>
   );

@@ -44,6 +44,7 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
               type="text"
               name="title"
               placeholder="Title"
+              autoFocus
               onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="title" component="div" className={s.error} />

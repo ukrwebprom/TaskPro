@@ -3,11 +3,10 @@ import { validationHelpSchema } from "schems";
 import Button from "components/Button/Button";
 import s from "./HelpForm.module.css";
 
-
 export const HelpForm = ({ onSubmitForm, type }) => {
   const initialValues = {
     email: "",
-    message: ""
+    message: "",
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
@@ -30,6 +29,7 @@ export const HelpForm = ({ onSubmitForm, type }) => {
               name="email"
               placeholder="Email address"
               type="email"
+              autoFocus
               onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="email" component="div" className={s.error} />

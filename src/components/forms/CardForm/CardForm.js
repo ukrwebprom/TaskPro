@@ -4,18 +4,21 @@ import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
 import s from "./CardForm.module.css";
 import Button from "..//..//Button/Button.jsx";
 import { MyDatepicker } from "../MyDatepicker/MyDatepicker";
-import Tooltip from '@mui/material/Tooltip';
+/* import Tooltip from '@mui/material/Tooltip'; */
 
 
-const orderedCodes = ["none", "low", "medium", "high"];
-const namesToCodes = {
-  none: 'Without priority',
-  low: 'Low',
-  medium: 'Medium',
-  high: 'High',
-}
+
 
 export const CardForm = ({ taskData, setTask }) => {
+
+  const orderedCodes = ["none", "low", "medium", "high"];
+  const namesToCodes = {
+    none: 'Without priority',
+    low: 'Low',
+    medium: 'Medium',
+    high: 'High',
+  }
+
   const initialValues = {
     deadline: taskData?.deadline ? new Date(taskData.deadline) : new Date(),
     description: taskData?.description || "",
@@ -74,12 +77,10 @@ export const CardForm = ({ taskData, setTask }) => {
             <p className={s.item_tittle}>Label Color</p>
             <div id="radio-group" className={s.label_color}>
               {orderedCodes.map((code) => (
-                <Tooltip
-                  title={namesToCodes[code]}
-                >
+
                   <div
                     key={code}
-                    role="group"
+/*                     role="group" */
                     aria-labelledby="radio-group"
                     className={
                       values.priority === code ? s.selectedLabel : s.labelItem
@@ -96,7 +97,7 @@ export const CardForm = ({ taskData, setTask }) => {
                       className={s[`${code}Input`]}
                     />
                   </div>
-                </Tooltip>
+
               ))}
             </div>
             <ErrorMessage name="priority" />

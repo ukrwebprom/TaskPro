@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useDispatch } from 'react-redux';
+import { Draggable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import EllipsisText from 'react-ellipsis-text';
-import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
 import moment from 'moment';
 
-import Modal from 'components/Modal/Modal';
+/* import Modal from 'components/Modal/Modal'; */
 import css from './Task.module.css';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import Icon from 'components/Icon/Icon';
@@ -79,18 +79,20 @@ const ItemWrapper = styled.li`
 const Task = ({
   avaliableColumns,
   taskData,
-  colId
+  colId,
+  index,
 }) => {
+
   const { getPopover, killPopover } = useModal();
   const authContext = useAuth();
   const { user } = authContext;
   const dispatch = useDispatch();
   const { getModal, killModal } = useModal();
 
-  const [isEditTaskOpened, setEditTaskOpened] = useState(false);
+/*   const [isEditTaskOpened, setEditTaskOpened] = useState(false); */
   const [moveAnchorEl, setMoveAnchorEl] = useState(null);
 
-  const toggleModal = () => setEditTaskOpened(!isEditTaskOpened);
+/*   const toggleModal = () => setEditTaskOpened(!isEditTaskOpened); */
 
   const openMovePopover = Boolean(moveAnchorEl);
   const id = useMemo(() => (openMovePopover ? 'move-popover' : undefined)
@@ -119,10 +121,16 @@ const Task = ({
 
   return (
     <>
+      <Draggable draggableId={taskData._id} index={index}>
+        {provided => (
+          <div
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          >
       <ul
         className={css.wrapper}
-        style={{ borderLeft: `${proprityColors[taskData.priority].bl}` }}
-      >
+        style={{ borderLeft: `${proprityColors[taskData.priority].bl}` }}>
         <li key={taskData.id}>
           <h2 className={css.title}>{taskData.title}</h2>
           <div className={css.wrapper_text}>
@@ -154,7 +162,6 @@ const Task = ({
             </div>
             <div className={css.icon_list}>
             {!isActual && taskData.priority !== 'none' && (
-              <Tooltip title="din din">
                 <button 
                   type='button'
                   className={css.icon_buttons_bell}
@@ -167,9 +174,8 @@ const Task = ({
                     stroke="var( --accent-color)"
                   />
                 </button>
-              </Tooltip>
             )}
-              <Tooltip title="Move">
+
                 <button
                   aria-describedby={id}
                   disabled={!Object.keys(avaliableColumns || {}).length}
@@ -214,8 +220,8 @@ const Task = ({
                     stroke="var( --index-label-color)"
                   />
                 </button>
-              </Tooltip>
-              <Tooltip title="Edit">
+
+
                 <button
                   type="button"
                   className={css.icon_buttons}
@@ -232,8 +238,8 @@ const Task = ({
                     stroke="var( --index-label-color)"
                   />
                 </button>
-              </Tooltip>
-              <Tooltip title="Delete">
+
+
                 <button
                   type="button"
                   className={css.icon_buttons}
@@ -247,12 +253,14 @@ const Task = ({
                     stroke="var( --index-label-color)"
                   />
                 </button>
-              </Tooltip>
+
             </div>
           </div>
         </li>
       </ul>
-      {isEditTaskOpened && (
+      </div>)}
+      </Draggable>
+{/*       {isEditTaskOpened && (
         <Modal
           name="Edit card"
           onClick={event => {
@@ -264,7 +272,7 @@ const Task = ({
         >
           <CardForm taskData={taskData} setTask={handleEditTask} onClose={toggleModal} />
         </Modal>
-      )}
+      )} */}
     </>
   );
 };

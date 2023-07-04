@@ -29,7 +29,7 @@ const DashBoard = () => {
     , [currentData]);
 
   const onDragEnd = res => {
-
+    console.log(res)
   }
   
   return (

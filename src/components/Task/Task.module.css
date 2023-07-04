@@ -16,6 +16,7 @@ li {
   border-radius: 8px;
   background-color: var(--secondary-bg-color);
   box-sizing: border-box;
+  position: relative;
 }
 
 .title {

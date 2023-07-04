@@ -10,7 +10,7 @@
 }
 .tip {
     position:absolute;
-    transform: translateY(30px);
+    transform: translateY(-20px);
     transform: scale(0.1);
     visibility: hidden;
     background-color: #6d6d6d;
@@ -25,6 +25,6 @@
 .icon:hover .tip {
     visibility: visible;
     transform: scale(1);
-    transform: translateY(30px);
+    transform: translateY(-20px);
     transition: transform 0.2s ease-in-out;
 }

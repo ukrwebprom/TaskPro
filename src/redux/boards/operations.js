@@ -192,7 +192,7 @@ export const updateTask = createAsyncThunk(
 export const updateTaskPlace = createAsyncThunk(
   'tasks/updateTaskPlace',
   async ({ task, oldColumn }, thunkAPI) => {
-    const { _id, column } = task;
+    const { _id, column} = task;
     try {
       axios.patch(`/tasks/${_id}`, {
         column,

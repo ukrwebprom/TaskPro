@@ -1,21 +1,21 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Droppable } from "react-beautiful-dnd";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import { updateColumnTitle, deleteColumn, addTask } from 'redux/boards/operations';
-import Tooltip from '@mui/material/Tooltip';
+/* import Tooltip from '@mui/material/Tooltip'; */
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
 import Button from "components/Button/Button";
 import css from './Column.module.css';
 import { useModal } from "hooks/useModal";
 import { setFilter } from "redux/boards/selectors";
-import { OneMoreTask } from "components/OneMoreTask/OneMoreTask";
 import { StrictModeDroppable } from "utils/StrictModeDroppable";
+import { Draggable } from "react-beautiful-dnd";
 
 export const Column = ({
 /*   allColumns, */
+  index,
   data
 }) => {
   const {getModal, killModal} = useModal();
@@ -39,8 +39,10 @@ export const Column = ({
   }, [allColumns, data]); */
 
   return (
-    <section className={css.containerColumn}>
-      <div className={css.wrapperTitleColumn}>
+    <Draggable draggableId={data._id} index={index}>
+      {(provided) => (
+    <section className={css.containerColumn} {...provided.draggableProps} ref={provided.innerRef}>
+      <div className={css.wrapperTitleColumn} {...provided.dragHandleProps}>
         <h3 className={css.titleColumn}>{data.title}</h3>
         <div className={css.wrapperButton}>
           <button
@@ -58,7 +60,7 @@ export const Column = ({
         </div>
 
       
-        <StrictModeDroppable droppableId={data._id}>
+        <StrictModeDroppable droppableId={data._id} type="task">
           {(provided) => (
         <div className={css.columnMiddle} ref={provided.innerRef} {...provided.droppableProps}>
        <div className={css.listTask}>
@@ -86,5 +88,7 @@ export const Column = ({
       action={() => getModal("Add card", <CardForm setTask={handleAddTask} />
       )}/>
     </section>
+    )}
+    </Draggable>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
 import { DragDropContext } from "react-beautiful-dnd";
+import { StrictModeDroppable } from "utils/StrictModeDroppable";
 import { addColumn } from 'redux/boards/operations';
 import Button from "components/Button/Button";
 import { useBoards } from 'hooks/useBoards'
@@ -37,22 +38,26 @@ const DashBoard = () => {
         {current !== null && (
         <Background>
           <DragDropContext onDragEnd={onDragEnd}>
+            
         <div className={css.dashboardContainer}>
             <div className={css.dashboardHeader}>
               <h2 className={css.dashboardTitle}>{currentData.title}</h2>
               <Filters />
             </div>
-
-          <div className={css.listArea}>
+            <StrictModeDroppable droppableId={currentData._id} direction="horizontal" type="column">
+            {(provided) => ( 
+          <div className={css.listArea} {...provided.droppableProps} ref={provided.innerRef}>
+        
             <ul className={css.columnsList}>
             {currentData.columns.length > 0 &&
-            (currentData.columns.map(column => 
+            (currentData.columns.map((column, i) => 
               (
                 <li key={column._id} className={css.column}>
                   <Column
 /*                     allColumns={columnNamesToIds} */
                     data={column}
-                    
+                    index={i}
+                    key={column._id}
                   />
                 </li>)
                 ))
@@ -61,8 +66,12 @@ const DashBoard = () => {
               <Button invert={true} title="Add another column" type="button" 
               action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
               </li>
+              
             </ul>
+            {provided.placeholder}
           </div>
+             )}
+             </StrictModeDroppable>   
         </div>
         </DragDropContext>
         </Background>

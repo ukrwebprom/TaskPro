@@ -9,7 +9,7 @@ export const OneMoreTask = ({data, index}) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           >
-                <p>{index}</p>
+                <p>{data._id}</p>
         </div>)}}
       </Draggable>
     )

@@ -15,8 +15,8 @@ import { OneMoreTask } from "components/OneMoreTask/OneMoreTask";
 import { StrictModeDroppable } from "utils/StrictModeDroppable";
 
 export const Column = ({
-  allColumns,
-  data,
+/*   allColumns, */
+  data
 }) => {
   const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
@@ -32,14 +32,13 @@ export const Column = ({
   }
   const handleDelete = () => dispatch(deleteColumn(data._id));
   
-  const avaliableColumns = useMemo(() => {
+/*   const avaliableColumns = useMemo(() => {
     const newColumns = {...allColumns};
     delete newColumns[data._id];
     return newColumns;
-  }, [allColumns, data]);
+  }, [allColumns, data]); */
 
   return (
-    <>
     <section className={css.containerColumn}>
       <div className={css.wrapperTitleColumn}>
         <h3 className={css.titleColumn}>{data.title}</h3>
@@ -50,29 +49,25 @@ export const Column = ({
             onClick={() => getModal("Edit column", 
             <ColumnForm defaultValues={{title:data.title}} setTitle={handleEditColumn} />
             )}>
-            <Icon name={'#pencil-icon'} />
-            </button>
-            <button className={css.buttonColumn} onClick={handleDelete}>
-            <Icon name={'#trash-icon'} />
-            </button>
+            <Icon name={'#pencil-icon'} tip="Edit" />
+          </button>
+          <button className={css.buttonColumn} onClick={handleDelete}>
+            <Icon name={'#trash-icon'} tip="Delete" />
+          </button>
           </div>
         </div>
 
-      {data.tasks.length > 0 && (
       
-        <StrictModeDroppable  droppableId={data._id}>
+        <StrictModeDroppable droppableId={data._id}>
           {(provided) => (
-      <div className={css.columnMiddle}             
-        ref={provided.innerRef}
-        {...provided.droppableProps}>
-      <div className={css.listTask}>
-        {
-          data.tasks
+        <div className={css.columnMiddle} ref={provided.innerRef} {...provided.droppableProps}>
+       <div className={css.listTask}>
+        { data.tasks
           .filter((task) => !filter || task.priority === filter)
           .map((task, idx) => 
             (
               <Task
-                avaliableColumns={avaliableColumns}
+   /*              avaliableColumns={avaliableColumns} */
                 index={idx}
                 key={task._id}
                 taskData={task}
@@ -82,16 +77,14 @@ export const Column = ({
           )}
           {provided.placeholder}
       </div>
-      </div>
+      </div>     
       )}
       </StrictModeDroppable >
-      
-      )}
+
 
       <Button title="Add another card" type="button" 
       action={() => getModal("Add card", <CardForm setTask={handleAddTask} />
       )}/>
     </section>
-    </>
   );
 };

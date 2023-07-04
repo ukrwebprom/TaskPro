@@ -69,8 +69,6 @@ margin-bottom: 24px;
 
  .icon:hover , .icon:focus  {
   color:var(--accent-color);
-  opacity: 1; 
-  scale: 1.2;
 }
 /*картинки*/
 

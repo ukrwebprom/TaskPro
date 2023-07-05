@@ -97,9 +97,9 @@
 }
 .error {
   position: absolute;
-  bottom: -15px;
+  bottom: -18px;
   right: 0;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   font-style: normal;
   letter-spacing: -1%;

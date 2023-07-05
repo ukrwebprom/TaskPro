@@ -1,10 +1,8 @@
-import React, { useMemo, useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Draggable } from "react-beautiful-dnd";
 import PropTypes from "prop-types";
 import EllipsisText from "react-ellipsis-text";
-import styled from "@emotion/styled";
 import moment from "moment";
 import { MoveList } from "./MoveList";
 
@@ -48,52 +46,13 @@ const proprityColors = {
   },
 };
 
-const getPopoverItems = {
-  dark: {
-    hc: "#bedbb0",
-    bg: "#1F1F1F",
-    tc: "rgba(255, 255, 255, 0.50)",
-  },
-  violet: {
-    hc: "#5255bc",
-    bg: "#FCFCFC",
-    tc: "#161616",
-  },
-  light: {
-    hc: "#bedbb0",
-    bg: "#FCFCFC",
-    tc: "#161616",
-  },
-};
-
-const PopupWrapper = styled.div`
-  background-color: ${({ popStyles }) => popStyles.bg};
-`;
-
-const ItemWrapper = styled.li`
-  color: ${({ popStyles }) => popStyles.tc};
-  &:hover {
-    color: ${({ popStyles }) => popStyles.hc};
-  }
-`;
-
 const Task = ({ avaliableColumns, taskData, colId, index }) => {
   const { getPopover, killPopover } = useModal();
-  const authContext = useAuth();
-  const { user } = authContext;
+
   const dispatch = useDispatch();
   const { getModal, killModal } = useModal();
 
-  const [moveAnchorEl, setMoveAnchorEl] = useState(null);
   const [showFullText, setShowFullText] = useState(false);
-
-  const openMovePopover = Boolean(moveAnchorEl);
-  const id = useMemo(
-    () => (openMovePopover ? "move-popover" : undefined),
-    [openMovePopover]
-  );
-
-  const popStyles = useMemo(() => getPopoverItems[user.theme], [user.theme]);
 
   const handleEditTask = (task) => {
     dispatch(

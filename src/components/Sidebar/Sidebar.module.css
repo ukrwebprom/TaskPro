@@ -32,6 +32,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   flex-shrink: 2;
+  flex-grow:1;
 }
 .boards::-webkit-scrollbar {
   display: none;

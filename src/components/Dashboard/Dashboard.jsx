@@ -11,7 +11,7 @@ import { Background } from "components/Background/Background";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { useModal } from "hooks/useModal";
 import Filters from "components/Filters/Filters";
-import { dragAndDrop } from "redux/boards/slice";
+import { dragAndDropTask, dragAndDropColumn } from "redux/boards/slice";
 import axios from "axios";
 
 const DashBoard = () => {
@@ -31,6 +31,17 @@ const updateTaskOrder = async (task) => {
       }
   };
 
+  const updateColumnOrder = async (column) => {
+    const { _id, newOrder } = column;
+    try {
+      await axios.patch(`/columns/${_id}/order`, {
+        newOrder
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+};
+
   const handleAddColumn = value => {
     dispatch(addColumn({board: currentData._id,...value}));
     killModal();
@@ -44,22 +55,27 @@ const updateTaskOrder = async (task) => {
     , [currentData]);
 
   const onDragEnd = res => {
+    const {destination, source, draggableId} = res;
+    if(!destination) return;
+
     switch(res.type) {
       case 'task':
-        const {destination, source, draggableId} = res;
-        if(!destination) return;
-
         const task = {
           _id:draggableId, 
           column:destination.droppableId, 
           newOrder:destination.index
         }
-        dispatch(dragAndDrop({destination,source,draggableId}));
+        dispatch(dragAndDropTask({destination,source,draggableId}));
         updateTaskOrder(task);
         break;
       case 'column':
-        console.log(res);
-        /* column reorder dispatch */
+        const column = {
+          _id:draggableId, 
+          newOrder:destination.index
+        }
+        console.log(res)
+        updateColumnOrder(column)
+        dispatch(dragAndDropColumn({destination,source,draggableId}));
         break;
       default:
         return

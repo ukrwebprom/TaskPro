@@ -26,15 +26,14 @@ const boardsSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
-    dragAndDrop: (state, action) => {
-      const { destination, source, draggableId} = action.payload;
+    dragAndDropTask: (state, action) => {
+      const { destination, source} = action.payload;
 
       const columnIndex = state.items[state.currentBoard].columns.findIndex(
         column => column._id === source.droppableId
       );
 
       const task = state.items[state.currentBoard].columns[columnIndex].tasks[source.index];
-      console.log(task)
 
       const newColumnIndex = state.items[state.currentBoard].columns.findIndex(
         column => column._id === destination.droppableId
@@ -43,6 +42,20 @@ const boardsSlice = createSlice({
       state.items[state.currentBoard].columns[columnIndex].tasks.splice(source.index, 1);
 
       state.items[state.currentBoard].columns[newColumnIndex].tasks.splice(destination.index,0,task);
+    },
+    dragAndDropColumn: (state, action) => {
+      const { destination, source, draggableId} = action.payload;
+
+      // const columnIndex = state.items[state.currentBoard].columns.findIndex(
+      //   column => column._id === source.droppableId
+      // );
+      const column = state.items[state.currentBoard].columns.find(
+        column => column._id === draggableId
+      );
+
+      state.items[state.currentBoard].columns.splice(source.index, 1);
+
+      state.items[state.currentBoard].columns.splice(destination.index,0,column);
     },
   },
   extraReducers: builder =>
@@ -225,5 +238,5 @@ const boardsSlice = createSlice({
       // })
 });
 
-export const { selectBoard, setFilter, dragAndDrop } = boardsSlice.actions;
+export const { selectBoard, setFilter, dragAndDropTask, dragAndDropColumn } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer

@@ -95,35 +95,32 @@ const updateTaskOrder = async (task) => {
               <h2 className={css.dashboardTitle}>{currentData.title}</h2>
               <Filters />
             </div>
-            <StrictModeDroppable droppableId={currentData._id} direction="horizontal" type="column">
-            {(provided) => ( 
-          <div className={css.listArea} {...provided.droppableProps} ref={provided.innerRef}>
-        
-            <div className={css.columnsList}>
+
+          <div className={css.listArea}>
+          <StrictModeDroppable droppableId={currentData._id} direction="horizontal" type="column">
+            {(provided) => (       
+            <div className={css.columnsList} {...provided.droppableProps} ref={provided.innerRef}>
             {currentData.columns.length > 0 &&
             (currentData.columns.map((column, i) => 
               (
-/*                 <li key={column._id} className={css.column}> */
                   <Column
-/*                     allColumns={columnNamesToIds} */
                     data={column}
                     index={i}
                     key={column._id}
                   />
-                /* </li> */
                 )
                 ))
               }
-{/*               <li className={css.column}>
-              <Button invert={true} title="Add another column" type="button" 
-              action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
-              </li> */}
               {provided.placeholder}
             </div>
-            
+              )}
+              </StrictModeDroppable> 
+              <div className={css.column}>
+              <Button invert={true} title="Add another column" type="button" 
+              action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
+              </div>             
           </div>
-             )}
-             </StrictModeDroppable>   
+
         </div>
         </DragDropContext>
         </Background>

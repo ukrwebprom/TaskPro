@@ -1,10 +1,13 @@
 .containerColumn{
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     box-sizing: border-box;
     max-height: 100%;
+    flex-basis: 334px;
+    /*flex-shrink: 0; */
 }
+
 .wrapperTitleColumn{
     display: flex;
     align-items: center;
@@ -14,7 +17,7 @@
     background-color: var(--secondary-bg-color);
     border-radius: 8px;
     flex-shrink: 0;
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 .titleColumn{
  color: var(--primary-text-color);

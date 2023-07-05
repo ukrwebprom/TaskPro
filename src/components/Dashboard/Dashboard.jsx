@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
 import { DragDropContext } from "react-beautiful-dnd";
+import { StrictModeDroppable } from "utils/StrictModeDroppable";
 import { addColumn } from 'redux/boards/operations';
 import Button from "components/Button/Button";
 import { useBoards } from 'hooks/useBoards'
@@ -43,16 +44,28 @@ const updateTaskOrder = async (task) => {
     , [currentData]);
 
   const onDragEnd = res => {
-    const {destination, source, draggableId} = res;
-    if(!destination) return;
+    switch(res.type) {
+      case 'task':
+        const {destination, source, draggableId} = res;
+        if(!destination) return;
 
-      const task = {
-        _id:draggableId, 
-        column:destination.droppableId, 
-        newOrder:destination.index
-      }
-    dispatch(dragAndDrop({destination,source,draggableId}));
-    updateTaskOrder(task);
+        const task = {
+          _id:draggableId, 
+          column:destination.droppableId, 
+          newOrder:destination.index
+        }
+        dispatch(dragAndDrop({destination,source,draggableId}));
+        updateTaskOrder(task);
+        break;
+      case 'column':
+        console.log(res);
+        /* column reorder dispatch */
+        break;
+      default:
+        return
+    }
+    
+    
   }
   
   return (
@@ -60,32 +73,41 @@ const updateTaskOrder = async (task) => {
         {current !== null && (
         <Background>
           <DragDropContext onDragEnd={onDragEnd}>
+            
         <div className={css.dashboardContainer}>
             <div className={css.dashboardHeader}>
               <h2 className={css.dashboardTitle}>{currentData.title}</h2>
               <Filters />
             </div>
-
-          <div className={css.listArea}>
-            <ul className={css.columnsList}>
+            <StrictModeDroppable droppableId={currentData._id} direction="horizontal" type="column">
+            {(provided) => ( 
+          <div className={css.listArea} {...provided.droppableProps} ref={provided.innerRef}>
+        
+            <div className={css.columnsList}>
             {currentData.columns.length > 0 &&
-            (currentData.columns.map(column => 
+            (currentData.columns.map((column, i) => 
               (
-                <li key={column._id} className={css.column}>
+/*                 <li key={column._id} className={css.column}> */
                   <Column
 /*                     allColumns={columnNamesToIds} */
                     data={column}
-                    
+                    index={i}
+                    key={column._id}
                   />
-                </li>)
+                /* </li> */
+                )
                 ))
               }
-              <li className={css.column}>
+{/*               <li className={css.column}>
               <Button invert={true} title="Add another column" type="button" 
               action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>
-              </li>
-            </ul>
+              </li> */}
+              {provided.placeholder}
+            </div>
+            
           </div>
+             )}
+             </StrictModeDroppable>   
         </div>
         </DragDropContext>
         </Background>

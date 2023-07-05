@@ -150,7 +150,8 @@ const Task = ({ avaliableColumns, taskData, colId, index }) => {
                   <EllipsisText
                     className={css.title}
                     text={taskData.title}
-                    length={35}
+                    length={37}
+                    tail=" . . ."
                   />
                 </h4>
 
@@ -159,25 +160,24 @@ const Task = ({ avaliableColumns, taskData, colId, index }) => {
                     <EllipsisText
                       className={css.elips_text}
                       text={taskData.description}
-                      tail=""
-                      tailClassName={css.elips_text}
-                      length={90}
+                      tail=" . . ."
+                      // tailClassName={css.lips_tail}
+                      length={100}
                     />
                   )}
-
-                  {!showFullText && taskData.description.length > 90 && (
-                    <button className={css.showMore} onClick={handleClick}>
-                      ...
-                    </button>
-                  )}
                   {showFullText && (
-                    <span className={css.elips_text}>
-                      {taskData.description}
-                    </span>
+                    <p className={css.elips_text}>{taskData.description}</p>
                   )}
                 </div>
 
-                <div className={css.divider} />
+                <div className={css.divider}>
+                  {taskData.description.length > 100 && (
+                    <button
+                      className={css.showMore}
+                      onClick={handleClick}
+                    ></button>
+                  )}
+                </div>
                 <div className={css.card}>
                   <div className={css.card_priority}>
                     <div className={css.card_title}>

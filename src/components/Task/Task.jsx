@@ -151,7 +151,7 @@ const Task = ({ avaliableColumns, taskData, colId, index }) => {
                     className={css.title}
                     text={taskData.title}
                     length={37}
-                    tail=" . . ."
+                    tail=" ..."
                   />
                 </h4>
 
@@ -160,9 +160,9 @@ const Task = ({ avaliableColumns, taskData, colId, index }) => {
                     <EllipsisText
                       className={css.elips_text}
                       text={taskData.description}
-                      tail=" . . ."
+                      tail=" ..."
                       // tailClassName={css.lips_tail}
-                      length={100}
+                      length={90}
                     />
                   )}
                   {showFullText && (
@@ -171,7 +171,7 @@ const Task = ({ avaliableColumns, taskData, colId, index }) => {
                 </div>
 
                 <div className={css.divider}>
-                  {taskData.description.length > 100 && (
+                  {taskData.description.length > 90 && (
                     <button
                       className={css.showMore}
                       onClick={handleClick}

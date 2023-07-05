@@ -12,24 +12,34 @@ export const ModelProvider = ({ children }) => {
   const [content, setContent] = useState(null);
   const [popoverContent, setPopoverContent] = useState(null);
   const [title, setTitle] = useState('');
-  const [position, setPosition] = useState({})
+  const [position, setPosition] = useState({});
+  const [modalHeight, setModalHeight] = useState(0);
+  const [lastClick, setLastClick] = useState({})
 
   const setClickPosition = e => {
     const {x, y} = e;
+    setLastClick({x, y});
+  }
+
+  useEffect(() => {
+    const {x, y} = lastClick;
     const pos = {};
     const h = window.innerHeight;
     if(x > window.innerWidth /2) pos.right = window.innerWidth - x;
     else pos.left = x;
-    if(y > h /2) pos.bottom = h - y + Math.min(0, (y-545));
-    else pos.top = y - Math.max(0, (545 - (h - y)));
+    if(y > h /2) pos.bottom = h - y + Math.min(0, (y-modalHeight));
+    else pos.top = y - Math.max(0, (modalHeight - (h - y)));
     setPosition(pos);
-  }
+  }, [lastClick, modalHeight])
+
   const getModal = (title, insert) => {
+    setModalHeight(545);
     setTitle(title);
     setContent(insert);
     setShowModal(true);
   }
   const getPopover = (insert) => {
+    setModalHeight(0);
     setPopoverContent(insert);
     setShowPopover(true);
   }

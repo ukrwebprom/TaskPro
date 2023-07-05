@@ -1,5 +1,9 @@
 a{
     text-decoration:none;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 27px;
 }
 .container {
     width:100%;
@@ -36,9 +40,7 @@ a{
     align-items: center;
     justify-content: center;
     padding: 14px 130px;
-    font-weight: 500;
     color:white;
-    letter-spacing: -0.28px;
     border-radius: 8px;
     border: none;
     outline: none;
@@ -54,22 +56,13 @@ a{
     text-align: center;
 }
 
-.logintext{
-    text-align: start;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 14px;
-    line-height: 27px;
+.logintext, .gogglelogin{
     color:#161616;
 }
 .wecomeimage{
     margin-bottom: 24px;
     width:162px;
  }
- .goggleimage{
-    width:24px;
-    height:24px;
-}
 .gogglelogin{
     display: flex;
     align-items: center;
@@ -78,4 +71,11 @@ a{
     background-color: white;
     padding: 14px;
     border-radius: 8px;
+}
+.gogglelogin::before {
+    content:'';
+    background-image: url('../../images/googlesignup.png');
+    background-size: contain;
+    width:24px;
+    height:24px;
 }

@@ -1,9 +1,7 @@
-import { useMemo } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { CardForm } from 'components/forms/CardForm/CardForm';
 import { updateColumnTitle, deleteColumn, addTask } from 'redux/boards/operations';
-/* import Tooltip from '@mui/material/Tooltip'; */
 import Task from 'components/Task/Task';
 import Icon from '../Icon';
 import Button from "components/Button/Button";
@@ -31,17 +29,10 @@ export const Column = ({
     killModal();
   }
   const handleDelete = () => dispatch(deleteColumn(data._id));
-  
-/*   const avaliableColumns = useMemo(() => {
-    const newColumns = {...allColumns};
-    delete newColumns[data._id];
-    return newColumns;
-  }, [allColumns, data]); */
 
   return (
     <Draggable draggableId={data._id} index={index}>
       {(provided) => (
-/*     <div className={css.column}> */
     <section className={css.containerColumn} {...provided.draggableProps} ref={provided.innerRef}>
       <div className={css.wrapperTitleColumn} {...provided.dragHandleProps}>
         <h3 className={css.titleColumn}>{data.title}</h3>
@@ -70,7 +61,6 @@ export const Column = ({
           .map((task, idx) => 
             (
               <Task
-   /*              avaliableColumns={avaliableColumns} */
                 index={idx}
                 key={task._id}
                 taskData={task}

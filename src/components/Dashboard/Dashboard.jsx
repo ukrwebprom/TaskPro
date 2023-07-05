@@ -1,4 +1,3 @@
-import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
 import { DragDropContext } from "react-beautiful-dnd";
 import { StrictModeDroppable } from "utils/StrictModeDroppable";
@@ -47,13 +46,6 @@ const updateTaskOrder = async (task) => {
     killModal();
   }
 
-  const columnNamesToIds = useMemo(() => currentData?.columns
-    ?.reduce((acc, column) => {
-        acc[column._id] = column.title;
-        return acc;
-    }, {})
-    , [currentData]);
-
   const onDragEnd = res => {
     const {destination, source, draggableId} = res;
     if(!destination) return;
@@ -73,7 +65,6 @@ const updateTaskOrder = async (task) => {
           _id:draggableId, 
           newOrder:destination.index
         }
-        console.log(res)
         updateColumnOrder(column)
         dispatch(dragAndDropColumn({destination,source,draggableId}));
         break;
@@ -97,10 +88,11 @@ const updateTaskOrder = async (task) => {
             </div>
 
           <div className={css.listArea}>
+          {currentData.columns.length > 0 &&
           <StrictModeDroppable droppableId={currentData._id} direction="horizontal" type="column">
             {(provided) => (       
             <div className={css.columnsList} {...provided.droppableProps} ref={provided.innerRef}>
-            {currentData.columns.length > 0 &&
+            {
             (currentData.columns.map((column, i) => 
               (
                   <Column
@@ -115,6 +107,7 @@ const updateTaskOrder = async (task) => {
             </div>
               )}
               </StrictModeDroppable> 
+              }
               <div className={css.column}>
               <Button invert={true} title="Add another column" type="button" 
               action={() => getModal("Add another column", <ColumnForm setTitle={handleAddColumn} />)}/>

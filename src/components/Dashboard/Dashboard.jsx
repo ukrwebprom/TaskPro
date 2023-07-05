@@ -44,16 +44,28 @@ const updateTaskOrder = async (task) => {
     , [currentData]);
 
   const onDragEnd = res => {
-    const {destination, source, draggableId} = res;
-    if(!destination) return;
+    switch(res.type) {
+      case 'task':
+        const {destination, source, draggableId} = res;
+        if(!destination) return;
 
-      const task = {
-        _id:draggableId, 
-        column:destination.droppableId, 
-        newOrder:destination.index
-      }
-    dispatch(dragAndDrop({destination,source,draggableId}));
-    updateTaskOrder(task);
+        const task = {
+          _id:draggableId, 
+          column:destination.droppableId, 
+          newOrder:destination.index
+        }
+        dispatch(dragAndDrop({destination,source,draggableId}));
+        updateTaskOrder(task);
+        break;
+      case 'column':
+        console.log(res);
+        /* column reorder dispatch */
+        break;
+      default:
+        return
+    }
+    
+    
   }
   
   return (

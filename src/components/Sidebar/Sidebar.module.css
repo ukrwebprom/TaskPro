@@ -113,11 +113,11 @@
 
 .boardActionButton {
   background: transparent;
-  color:white;
+  color:var(--board-icons);
   border:0;
   outline:none;
   padding:0;
-  opacity:0.5;
+/*   opacity:0.5; */
 /*   composes: button from "./Sidebar.css"; */
 }
 

@@ -3,6 +3,7 @@ import { login, register, logout, getMe, updTheme, updateProfile, updateProfileA
 
 const handlePending = (state) => {
   state.isRefreshing = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {

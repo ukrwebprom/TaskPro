@@ -2,14 +2,15 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
 import Button from "components/Button/Button";
 import Icon from "components/Icon/Icon";
+import { ErrorTip } from "../ErrorMessage/ErrorTip";
 import s from "./LoginForm.module.css";
-// import { useUser } from "hooks/useUser";
 import { useState } from "react";
 import { login } from "redux/auth/operations";
 import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
 
 export const LoginForm = () => {
-  // const {userLogin} = useUser();
+  const {error} = useAuth();
   const dispatch = useDispatch();
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
@@ -26,16 +27,6 @@ export const LoginForm = () => {
     }
   };
 
-  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-
-  //   try{
-  //     await userLogin(values);
-  //     setSubmitting(false);
-  //     resetForm();
-  //   } catch(err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -65,6 +56,7 @@ export const LoginForm = () => {
               </a>
               <p className={s.regtitleActive}>Log In</p>
             </div>
+            {error && <ErrorTip e={error}/>}
             <div className={s.field}>
               <label className={s.label}>
                 <Field

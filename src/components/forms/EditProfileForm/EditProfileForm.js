@@ -4,7 +4,7 @@ import s from "./EditProfileForm.module.css";
 import { Avatar } from "components/Avatar/Avatar";
 import Button from "..//..//Button/Button.jsx";
 import Icon from "components/Icon/Icon";
-
+import sprite from '../../../images/sprite.svg';
 import { useState } from "react";
 import { useAuth } from "hooks/useAuth";
 
@@ -76,7 +76,9 @@ export const EditProfileForm = ({ onSubmitForm }) => {
                 )}
 
                 <label className={s.filelabel}>
-                  <Icon name="#plus-icon" />
+                    <svg width='18px' height='18px' stroke="currentColor">
+                      <use href={sprite + "#plus-icon"} />
+                    </svg>
                   <Field
                     className={s.inputFile}
                     name="avatar"

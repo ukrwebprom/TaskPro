@@ -2,16 +2,14 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
 import { useState } from "react";
 import Button from "..//..//Button/Button.jsx";
+import { ErrorTip } from "../ErrorMessage/ErrorTip";
 import s from "./Registerform.module.css";
 import Icon from "components/Icon/Icon";
-// import { useUser } from "hooks/useUser";
 import { useDispatch } from "react-redux";
 import { register } from "redux/auth/operations";
 import { useAuth } from "hooks/useAuth.js";
 
 export const RegisterForm = () => {
-  // const {userRegister} = useUser();
-
   const dispatch = useDispatch();
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
@@ -28,16 +26,6 @@ export const RegisterForm = () => {
       setIconName("#eye-icon");
     }
   };
-  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  //   try {
-  //     await userRegister(values);
-  //     setSubmitting(false);
-  //     resetForm();
-  //   } catch (err) {
-  //     console.log(err);
-  //     console.log("єто моя 409");
-  //   }
-  // };
 
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -68,8 +56,8 @@ export const RegisterForm = () => {
               <a href="log" className={s.regtitle}>
                 Log In
               </a>
-              {error && <div className={s.mistake}>*{error}</div>}
             </div>
+            {error && <ErrorTip e={error}/>}
             <div className={s.field}>
               <label className={s.label}>
                 <Field

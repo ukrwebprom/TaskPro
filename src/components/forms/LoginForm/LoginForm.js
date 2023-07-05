@@ -2,6 +2,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationLoginSchema } from "schems";
 import Button from "components/Button/Button";
 import Icon from "components/Icon/Icon";
+import { ErrorTip } from "../ErrorMessage/ErrorTip";
 import s from "./LoginForm.module.css";
 import { useState } from "react";
 import { login } from "redux/auth/operations";
@@ -55,7 +56,7 @@ export const LoginForm = () => {
               </a>
               <p className={s.regtitleActive}>Log In</p>
             </div>
-            {error && <p style={{color:"#ff0000"}}>{error}</p>}
+            {error && <ErrorTip e={error}/>}
             <div className={s.field}>
               <label className={s.label}>
                 <Field

@@ -11,11 +11,25 @@ import { Background } from "components/Background/Background";
 import { ColumnForm } from 'components/forms/ColumnForm/ColumnForm';
 import { useModal } from "hooks/useModal";
 import Filters from "components/Filters/Filters";
+import { dragAndDrop } from "redux/boards/slice";
+import axios from "axios";
 
 const DashBoard = () => {
   const {getModal, killModal} = useModal();
   const dispatch = useDispatch();
   const {current, currentData} = useBoards();
+
+const updateTaskOrder = async (task) => {
+      const { _id, column, newOrder } = task;
+      try {
+        await axios.patch(`/tasks/${_id}`, {
+          column,
+          newOrder
+        });
+      } catch (error) {
+        console.log(error.message)
+      }
+  };
 
   const handleAddColumn = value => {
     dispatch(addColumn({board: currentData._id,...value}));
@@ -30,7 +44,16 @@ const DashBoard = () => {
     , [currentData]);
 
   const onDragEnd = res => {
-    console.log(res)
+    const {destination, source, draggableId} = res;
+    if(!destination) return;
+
+      const task = {
+        _id:draggableId, 
+        column:destination.droppableId, 
+        newOrder:destination.index
+      }
+    dispatch(dragAndDrop({destination,source,draggableId}));
+    updateTaskOrder(task);
   }
   
   return (

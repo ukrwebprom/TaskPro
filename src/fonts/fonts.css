@@ -35,8 +35,8 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat Medium"), local("Montserrat-Medium"),
-    url("Montserrat-SemiBold.woff2") format("woff2"),
-    url("Montserrat-SemiBold.woff") format("woff");
+    url("Montserrat-Medium.woff2") format("woff2"),
+    url("Montserrat-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
@@ -44,8 +44,8 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat Regular"), local("Montserrat-Regular"),
-    url("Montserrat-SemiBold.woff2") format("woff2"),
-    url("Montserrat-SemiBold.woff") format("woff");
+    url("Montserrat-Regular.woff2") format("woff2"),
+    url("Montserrat-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;

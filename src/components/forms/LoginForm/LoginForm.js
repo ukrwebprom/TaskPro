@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 
 export const LoginForm = () => {
-  const {error} = useAuth();
+  const { error } = useAuth();
   const dispatch = useDispatch();
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
@@ -26,7 +26,6 @@ export const LoginForm = () => {
       setIconName("#eye-icon");
     }
   };
-
 
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -56,7 +55,7 @@ export const LoginForm = () => {
               </a>
               <p className={s.regtitleActive}>Log In</p>
             </div>
-            {error && <ErrorTip e={error}/>}
+            {error && <ErrorTip e={error} />}
             <div className={s.field}>
               <label className={s.label}>
                 <Field
@@ -81,6 +80,11 @@ export const LoginForm = () => {
                   placeholder="Confirm a password"
                   type={type}
                   onBlur={touched.title && errors.title}
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className={s.error}
                 />
                 <button
                   type="button"

@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, register, logout, getMe, updTheme, updateProfile, updateProfileAvatar } from "../auth/operations";
+import {
+  login,
+  register,
+  logout,
+  getMe,
+  updTheme,
+  updateProfile,
+} from "../auth/operations";
 
 const handlePending = (state) => {
   state.isRefreshing = true;
@@ -102,7 +109,7 @@ const authSlice = createSlice({
         state.user.avatar = action.payload.avatar;
       })
       .addCase(updateProfile.pending, handlePending)
-      .addCase(updateProfile.rejected, handleRejected)
+      .addCase(updateProfile.rejected, handleRejected),
 });
 
 export const { refreshTokens, resetIsLoggedIn } = authSlice.actions;

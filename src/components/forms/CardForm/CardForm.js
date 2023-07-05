@@ -4,16 +4,9 @@ import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
 import s from "./CardForm.module.css";
 import Button from "..//..//Button/Button.jsx";
 import { MyDatepicker } from "../MyDatepicker/MyDatepicker";
-/* import Tooltip from '@mui/material/Tooltip'; */
 
 export const CardForm = ({ taskData, setTask }) => {
   const orderedCodes = ["none", "low", "medium", "high"];
-  const namesToCodes = {
-    none: "Without priority",
-    low: "Low",
-    medium: "Medium",
-    high: "High",
-  };
 
   const initialValues = {
     deadline: taskData?.deadline ? new Date(taskData.deadline) : new Date(),

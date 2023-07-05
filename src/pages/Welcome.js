@@ -2,7 +2,6 @@ import React from "react";
 import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
 import s from "..//components/WelcomeLayout/WelcomeLayout.module.css";
 import { Suspense } from "react";
-import goggle from "..//images/google.png"
 import g from '../images/googlesignup.png'
 const Welcome = () => {
   return (

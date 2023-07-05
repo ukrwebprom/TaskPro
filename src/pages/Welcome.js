@@ -1,79 +1,20 @@
 import React from "react";
 import { WelcomeLayout } from "components/WelcomeLayout/WelcomeLayout";
-import Icon from "components/Icon/Icon";
 import s from "..//components/WelcomeLayout/WelcomeLayout.module.css";
 import { Suspense } from "react";
-import img from "..//images/welcome-page.png"
 import goggle from "..//images/google.png"
+import g from '../images/googlesignup.png'
 const Welcome = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <WelcomeLayout>
-      <img 
-    className={s.wecomeimage}
-    src= {img} 
-    alt="welcome" width="162"
-          height="162" />
-        <div className={s.logowrap}>
-          <Icon name="#icon-welcome-icon" width="48" height="48" />
-          <h1 className={s.title}>Task Pro</h1>
-        </div>
-        <div className={s.paragraph}>
-          <p>
-            Supercharge your productivity and take control of your tasks with
-            Task Pro - Don't wait, start achieving your goals now!
-          </p>
-        </div>
-        <button className={s.regbtn}>
-          <a className={s.regbtntext} href="auth/register">
-            Registration
-          </a>
-        </button>
-        <a href="auth/login" className={s.logintext}>
-          Log In
-        </a>
+        <a className={s.regbtn} href="auth/register">Registration</a>
+        <a className={s.logintext} href="auth/login">Log In</a>
         <div  className={s.gogglelogin}>
-<img
- className={s.goggleimage}
-src ={goggle}
-alt = "goggleicon"
-width="24"
-height="24"/>
+        <img  className={s.goggleimage} src={g} alt="Google icon" />
         <a  className={s.logintext} href={"https://taskpro-41yf.onrender.com/user/google"}>
-          Login with Google
-        </a>
+          Sign in with Google</a>
         </div>
-        {/* https://taskpro-41yf.onrender.com */}
-        {/* http://localhost:3001 */}
-
-        {/* example of using SVG sprite */}
-        {/*       <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
-        <p>Project icons:</p>
-        <Icon name="#board1" />
-        <Icon name="#board2" />
-        <Icon name="#board3" />
-        <Icon name="#board4" />
-        <Icon name="#board5" />
-        <Icon name="#board6" />
-        <Icon name="#board7" />
-        <Icon name="#board8" />
-      </div>
-      <div style={{display:'flex', gap: '10px', alignItems:'center'}}>
-      <p>UI:</p>
-        <Icon name="#arrow-circle-icon" />
-        <Icon name="#bell-icon" />
-        <Icon name="#chevron-down-icon" />
-        <Icon name="#close-icon" />
-        <Icon name="#eye-icon" />
-        <Icon name="#filter-icon" />
-        <Icon name="#help-circle-icon" />
-        <Icon name="#login-icon" width='32px' height='32px' color='#bedbb0' />
-        <Icon name="#logo-icon" />
-        <Icon name="#menu-icon" />
-        <Icon name="#pencil-icon" />
-        <Icon name="#plus-icon" />
-        <Icon name="#trash-icon" />
-      </div> */}
       </WelcomeLayout>
     </Suspense>
   );

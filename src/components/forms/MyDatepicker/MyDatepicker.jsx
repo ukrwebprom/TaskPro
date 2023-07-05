@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from "react";
+import {forwardRef} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,11 +8,6 @@ import Icon from "components/Icon/Icon";
 const newDate = new Date();
 
 export const MyDatepicker = ({ date, handleSetData }) => {
-  const [selectedDate, setSelectedDate] = useState(date);
-
-  useEffect(() => {
-    handleSetData(selectedDate);
-  }, [selectedDate]);
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <div className="example-custom-input" onClick={onClick} ref={ref}>
@@ -27,18 +22,17 @@ export const MyDatepicker = ({ date, handleSetData }) => {
   ));
 
   return (
-    <div>
-      {selectedDate.toLocaleDateString() === newDate.toLocaleDateString() && (
-        <span className="deadline">Today, </span>
-      )}
-      <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-        minDate={new Date()}
-        dateFormat="MMMM d"
-        className={styleDatepicker}
-        customInput={<CustomInput />}
-      />
-    </div>
-  );
-};
+        <div>
+            {date.toLocaleDateString() === newDate.toLocaleDateString() &&
+                <span className="deadline">Today, </span>}
+            <DatePicker
+                selected={date}
+                onChange={date => handleSetData(date)}
+                minDate={new Date()}
+                dateFormat='MMMM d'
+                className={styleDatepicker}
+                customInput={<CustomInput />}
+            />          
+        </div>
+    )
+}

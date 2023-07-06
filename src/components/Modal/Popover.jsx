@@ -6,7 +6,7 @@ const Popover = ({ children, onClose, position }) => {
     return (
         <div className={css.backdrop} onClick={onClose}>
         <div className={css.popoverContent} 
-          style={isMobile? {top:"50%", left:"50%", transform:"translate(-50%, -50%)"} : {...position}} onClick={e => e.stopPropagation()}>
+          style={{...position}} onClick={e => e.stopPropagation()}>
           {children}
         </div>
       </div>

@@ -33,10 +33,10 @@ export const RegisterForm = () => {
       dispatch(
         login({
           email: values.email,
-          password: values.password
+          password: values.password,
         })
       );
-    } catch(err) {
+    } catch (err) {
       setError(err.response.data.message);
     }
   };
@@ -50,8 +50,9 @@ export const RegisterForm = () => {
       }}
       validationSchema={validationRegistrSchema}
       onSubmit={handleSubmit}
+      validationOnBlur={true}
     >
-      {({ isSubmitting, touched, errors, dirty }) => (
+      {({ isSubmitting, dirty }) => (
         <div className={s.wrap}>
           <Form>
             <div className={s.titleFild}>
@@ -60,7 +61,7 @@ export const RegisterForm = () => {
                 Log In
               </a>
             </div>
-            {error && <ErrorTip e={error}/>}
+            {error && <ErrorTip e={error} />}
             <div className={s.field}>
               <label className={s.label}>
                 <Field
@@ -68,7 +69,6 @@ export const RegisterForm = () => {
                   name="name"
                   placeholder="Enter your name"
                   autoFocus
-                  onBlur={touched.title && errors.title}
                 />
 
                 <ErrorMessage name="name" component="div" className={s.error} />
@@ -80,7 +80,6 @@ export const RegisterForm = () => {
                   name="email"
                   placeholder="Enter your email"
                   type="email"
-                  onBlur={touched.title && errors.title}
                 />
                 <ErrorMessage
                   name="email"
@@ -95,7 +94,6 @@ export const RegisterForm = () => {
                   name="password"
                   placeholder="Create a password"
                   type={type}
-                  onBlur={touched.title && errors.title}
                 />
                 <button
                   type="button"

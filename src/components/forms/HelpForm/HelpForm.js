@@ -20,8 +20,9 @@ export const HelpForm = ({ onSubmitForm, type }) => {
       initialValues={initialValues}
       validationSchema={validationHelpSchema}
       onSubmit={onSubmit}
+      validationOnBlur={true}
     >
-      {({ isSubmitting, touched, errors, dirty }) => (
+      {({ isSubmitting, dirty }) => (
         <Form className={s.form}>
           <label className={s.label}>
             <Field
@@ -30,7 +31,6 @@ export const HelpForm = ({ onSubmitForm, type }) => {
               placeholder="Email address"
               type="email"
               autoFocus
-              onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="email" component="div" className={s.error} />
           </label>
@@ -41,7 +41,6 @@ export const HelpForm = ({ onSubmitForm, type }) => {
               name="message"
               as="textarea"
               placeholder="Message"
-              onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="message" component="div" className={s.error} />
           </label>

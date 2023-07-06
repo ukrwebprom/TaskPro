@@ -45,8 +45,9 @@ export const LoginForm = () => {
       }}
       validationSchema={validationLoginSchema}
       onSubmit={handleSubmit}
+      validationOnBlur={true}
     >
-      {({ isSubmitting, touched, errors, dirty }) => (
+      {({ isSubmitting, dirty }) => (
         <div className={s.wrap}>
           <Form>
             <div className={s.titleFild}>
@@ -64,7 +65,6 @@ export const LoginForm = () => {
                   placeholder="Enter your email"
                   type="email"
                   autoFocus
-                  onBlur={touched.title && errors.title}
                 />
                 <ErrorMessage
                   name="email"
@@ -79,7 +79,6 @@ export const LoginForm = () => {
                   name="password"
                   placeholder="Confirm a password"
                   type={type}
-                  onBlur={touched.title && errors.title}
                 />
                 <ErrorMessage
                   name="password"

@@ -12,8 +12,6 @@ export const ModelProvider = ({ children }) => {
   const [content, setContent] = useState(null);
   const [popoverContent, setPopoverContent] = useState(null);
   const [title, setTitle] = useState('');
-  const [position, setPosition] = useState({});
-  const [modalHeight, setModalHeight] = useState(0);
   const [lastClick, setLastClick] = useState({})
 
   const setClickPosition = e => {
@@ -21,25 +19,23 @@ export const ModelProvider = ({ children }) => {
     setLastClick({x, y});
   }
 
-  useEffect(() => {
-    const {x, y} = lastClick;
+  const getPosition = modalHeight => {
+    const {x = 0, y = 0} = lastClick;
     const pos = {};
     const h = window.innerHeight;
     if(x > window.innerWidth /2) pos.right = window.innerWidth - x;
     else pos.left = x;
     if(y > h /2) pos.bottom = h - y + Math.min(0, (y-modalHeight));
     else pos.top = y - Math.max(0, (modalHeight - (h - y)));
-    setPosition(pos);
-  }, [lastClick, modalHeight])
+    return pos;
+  }
 
   const getModal = (title, insert) => {
-    setModalHeight(545);
     setTitle(title);
     setContent(insert);
     setShowModal(true);
   }
   const getPopover = (insert) => {
-    setModalHeight(0);
     setPopoverContent(insert);
     setShowPopover(true);
   }
@@ -60,11 +56,11 @@ export const ModelProvider = ({ children }) => {
      <ModalContext.Provider
        value={{ getModal, killModal, getPopover, killPopover }}>
         {showModal && 
-          <Modal onClose={killModal} name={title} position={position}>
+          <Modal onClose={killModal} name={title} position={getPosition(545)}>
             {content}
           </Modal>}
           {showPopover && 
-          <Popover onClose={killPopover} position={position}>
+          <Popover onClose={killPopover} position={getPosition(5)}>
             {popoverContent}
           </Popover>}
        {children}

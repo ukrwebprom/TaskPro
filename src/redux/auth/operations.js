@@ -115,6 +115,7 @@ export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
   }
 });
 
+
 /*
  * PUT @ /user/update
  * headers: Authorization: Bearer token

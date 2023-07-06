@@ -123,7 +123,6 @@ export const getMe = createAsyncThunk("auth/getMe", async (_, thunkAPI) => {
   export const updateProfile = createAsyncThunk(
     'user/updateProfile',
     async (body, thunkAPI) => {
-      console.log(body);
       try {
        await axios.put("/user/update", body);
         return body;

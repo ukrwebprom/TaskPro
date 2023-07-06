@@ -6,13 +6,14 @@ import { Oval } from  'react-loader-spinner'
 
 export const Avatar = ({size, onClick, isLoading, preload}) => {
     const {user} = useAuth();
-    let src = user.avatar? user.avatar : defaultAvatar[user.theme];
-    if(preload) src=preload;
     const defaultAvatar = {
         dark:avaDark,
         light:avaLight,
         violet:avaViolet
     }
+    let src = user.avatar? user.avatar : defaultAvatar[user.theme];
+    if(preload) src=preload;
+
     const mainColor = {
         dark:"#bedbb0",
         light:"#bedbb0",

@@ -104,7 +104,6 @@ const authSlice = createSlice({
       .addCase(updTheme.pending, handlePending)
       .addCase(updTheme.rejected, handleRejected)
       .addCase(updateProfile.fulfilled, (state, action) => {
-        console.log(action.payload);
         if(action.payload.name) state.user.name = action.payload.name;
         if(action.payload.email) state.user.email = action.payload.email;
         if(action.payload.avatar) state.user.avatar = action.payload.avatar;

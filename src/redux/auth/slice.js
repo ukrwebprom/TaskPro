@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   login,
-  register,
+/*   register, */
   logout,
   getMe,
   updTheme,
@@ -45,11 +45,11 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(register.fulfilled, (state, action) => {
+/*       .addCase(register.fulfilled, (state, action) => {
         // state.user = action.payload.user;
       })
       .addCase(register.pending, handlePending)
-      .addCase(register.rejected, handleRejected)
+      .addCase(register.rejected, handleRejected) */
       .addCase(login.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.theme = action.payload.theme;

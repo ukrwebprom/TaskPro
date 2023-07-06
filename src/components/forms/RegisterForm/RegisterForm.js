@@ -6,18 +6,17 @@ import { ErrorTip } from "../ErrorMessage/ErrorTip";
 import s from "./Registerform.module.css";
 import Icon from "components/Icon/Icon";
 import { useDispatch } from "react-redux";
-import { register } from "redux/auth/operations";
-import { useAuth } from "hooks/useAuth.js";
+import { login } from "redux/auth/operations";
+import { registerUser } from "api/ServerAPI.js";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
-  const { error } = useAuth();
+  const [error, setError] = useState(null);
 
   const handleShow = (e) => {
     const gettype = e.currentTarget.value;
-    console.log(gettype);
     if (gettype === "password") {
       setType("text");
       setIconName("#eye-slash-icon");
@@ -27,15 +26,19 @@ export const RegisterForm = () => {
     }
   };
 
-  const handleSubmit = (values, actions) => {
-    dispatch(
-      register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      })
-    );
-    actions.resetForm();
+  const handleSubmit = async (values, actions) => {
+    try {
+      await registerUser(values);
+      actions.resetForm();
+      dispatch(
+        login({
+          email: values.email,
+          password: values.password
+        })
+      );
+    } catch(err) {
+      setError(err.response.data.message);
+    }
   };
 
   return (

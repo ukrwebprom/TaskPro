@@ -8,6 +8,11 @@ export const sendTempPicture = async () => {
    return res.data;
 };
 
+export const registerUser = async (data) => {
+    const res = await axios.post("/user/register", data);
+    return res.data;
+}
+
 // const setAuthToken = token => {
 //     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 // }

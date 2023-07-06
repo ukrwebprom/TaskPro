@@ -11,7 +11,6 @@ import css from '../Sidebar.module.css';
 import { BoardForm } from 'components/forms/BoardForm/BoardForm';
 import { useModal } from 'hooks/useModal';
 
-// import { CardForm } from "components/forms/CardForm/CardForm";
 
 const Boards = () => {
   const {getModal, killModal} = useModal();

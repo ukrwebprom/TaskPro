@@ -25,7 +25,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
       email:values.email
     }
     if(newAvatar) dataToSend.avatar = newAvatar;
-    if(values.password) dataToSend.password = values.password;
+    if(values.password !== "") dataToSend.password = values.password;
     dispatch(updateProfile(dataToSend));
     onSubmitForm();
     setSubmitting(false);
@@ -70,6 +70,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
           avatar: "",
           name,
           email,
+          password:""
         }}
         validationSchema={validationEditProfileSchema}
         onSubmit={handleSubmit}

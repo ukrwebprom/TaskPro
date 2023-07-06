@@ -83,12 +83,12 @@ const updateTaskOrder = async (task) => {
             
         <div className={css.dashboardContainer}>
             <div className={css.dashboardHeader}>
-              <h2 className={css.dashboardTitle}>{currentData.title}</h2>
+              <h2 className={css.dashboardTitle}>{currentData?.title}</h2>
               <Filters />
             </div>
 
           <div className={css.listArea}>
-          {currentData.columns.length > 0 &&
+          {currentData?.columns.length > 0 &&
           <StrictModeDroppable droppableId={currentData._id} direction="horizontal" type="column">
             {(provided) => (       
             <div className={css.columnsList} {...provided.droppableProps} ref={provided.innerRef}>

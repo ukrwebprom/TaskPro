@@ -4,7 +4,7 @@ import { useBoards } from 'hooks/useBoards'
 
 export const Background = ({children}) => {
     const {boards, current} = useBoards();
-    const selectedBgIndex = boards[current].background;
+    const selectedBgIndex = boards[current]?.background;
     const isWide = useMedia('(min-width: 1280px)');
     const isMobile = useMedia('(max-width: 320px)');
     const userRatio = useMedia('(-webkit-min-device-pixel-ratio: 2)')? "2x":"1x";

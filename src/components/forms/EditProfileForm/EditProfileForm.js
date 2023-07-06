@@ -70,7 +70,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
           avatar: "",
           name,
           email,
-          password:""
+          password: '',
         }}
         validationSchema={validationEditProfileSchema}
         onSubmit={handleSubmit}

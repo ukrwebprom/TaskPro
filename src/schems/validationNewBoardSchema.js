@@ -7,5 +7,5 @@ export const validationNewBoardSchema = Yup.object().shape({
 
   icon: Yup.string().required("Is Required"),
 
-  background: Yup.string().required("Is Required"),
+  background: Yup.string(),
 });

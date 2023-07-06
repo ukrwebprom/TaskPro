@@ -7,8 +7,11 @@ import Icon from "components/Icon/Icon";
 import sprite from '../../../images/sprite.svg';
 import { useState } from "react";
 import { useAuth } from "hooks/useAuth";
+import { updateProfile } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 export const EditProfileForm = ({ onSubmitForm }) => {
+  const dispatch = useDispatch();
   const { user } = useAuth();
   const { name, email } = user;
   const [newAvatar, setNewAvatar] = useState(null);
@@ -16,7 +19,14 @@ export const EditProfileForm = ({ onSubmitForm }) => {
   const [iconName, setIconName] = useState("#eye-icon");
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    onSubmitForm({ ...values, avatar: newAvatar });
+    const dataToSend = {
+      name:values.name,
+      email:values.email
+    }
+    if(newAvatar) dataToSend.avatar = newAvatar;
+    if(values.password) dataToSend.password = values.password;
+    dispatch(updateProfile(dataToSend));
+    onSubmitForm();
     setSubmitting(false);
     resetForm();
   };

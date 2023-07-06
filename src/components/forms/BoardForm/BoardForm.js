@@ -21,7 +21,7 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
   const initialValues = {
     title: "",
     icon: iconNames[0],
-    background: previews[0],
+    background: "0",
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {

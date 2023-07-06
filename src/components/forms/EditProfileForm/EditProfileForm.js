@@ -17,6 +17,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
   const [newAvatar, setNewAvatar] = useState(null);
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     const dataToSend = {
@@ -42,6 +43,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
   };
 
   const uploadAvatar = async (formData) => {
+    setLoading(true);
     try {
       const res = await fetch("https://taskpro-41yf.onrender.com/user/upload", {
         method: "POST",
@@ -49,6 +51,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
       });
       const data = await res.json();
       setNewAvatar(data.url);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -75,17 +78,8 @@ export const EditProfileForm = ({ onSubmitForm }) => {
           <Form className={s.form}>
             <div className={s.s}>
               <div className={s.addfilewrap}>
-                {newAvatar ? (
-                  <img
-                    src={newAvatar}
-                    alt="avatar-default"
-                    className={s.preview}
-                  />
-                ) : (
-                  <Avatar size={68} />
-                )}
-
-                <label className={s.filelabel}>
+              <Avatar size={68} isLoading={loading} preload={newAvatar} />
+                {!loading && <label className={s.filelabel}>
                     <svg width='18px' height='18px' stroke="currentColor">
                       <use href={sprite + "#plus-icon"} />
                     </svg>
@@ -98,7 +92,7 @@ export const EditProfileForm = ({ onSubmitForm }) => {
                     }}
                     onBlur={touched.fieldName && errors.fieldName}
                   />
-                </label>
+                </label>}
                 <ErrorMessage
                   name="userPhoto"
                   component="div"

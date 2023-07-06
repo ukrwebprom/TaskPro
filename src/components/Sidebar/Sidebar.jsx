@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { addBoard } from 'redux/boards/operations';
 import { BoardForm } from "components/forms/BoardForm/BoardForm";
 import { useModal } from "hooks/useModal";
+import { persistor } from "redux/store";
 
 const Sidebar = () => {
 const {getModal, killModal} = useModal();
@@ -15,6 +16,11 @@ const dispatch = useDispatch();
 const handleAddBoard = (value) => {
   dispatch(addBoard(value));
   killModal();
+}
+
+const handleLogOut = ()=>{
+  dispatch(logout());
+  persistor.purge();
 }
 
   return (
@@ -34,7 +40,7 @@ const handleAddBoard = (value) => {
         <Help />
         <button type="button" className={css.logoutButton}>
           <Icon name={"#login-icon"} sprite={2} width="32" height="32" />
-          <span onClick={() => dispatch(logout())}>Log out</span>
+          <span onClick={handleLogOut}>Log out</span>
         </button>
       </div>
     </div>

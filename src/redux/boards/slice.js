@@ -34,6 +34,7 @@ const boardsSlice = createSlice({
       );
 
       const task = state.items[state.currentBoard].columns[columnIndex].tasks[source.index];
+      task.column = destination.droppableId;
 
       const newColumnIndex = state.items[state.currentBoard].columns.findIndex(
         column => column._id === destination.droppableId

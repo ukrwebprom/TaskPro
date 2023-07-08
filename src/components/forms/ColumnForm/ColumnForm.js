@@ -20,8 +20,9 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
       initialValues={defaultValues ? defaultValues : initialValues}
       validationSchema={validationColumnSchema}
       onSubmit={onSubmit}
+      validationOnBlur={true}
     >
-      {({ isSubmitting, dirty, touched, errors, handleSubmit }) => (
+      {({ isSubmitting, dirty, handleSubmit }) => (
         <Form onSubmit={handleSubmit} className={s.form}>
           <label className={s.label}>
             <Field
@@ -30,7 +31,6 @@ export const ColumnForm = ({ setTitle, defaultValues }) => {
               name="title"
               placeholder="Title"
               autoFocus
-              onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="title" component="div" className={s.error} />
           </label>

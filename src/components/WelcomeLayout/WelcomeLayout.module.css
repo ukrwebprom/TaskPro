@@ -1,6 +1,9 @@
-@import "..//..//variables.module.css";
 a{
     text-decoration:none;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 27px;
 }
 .container {
     width:100%;
@@ -19,23 +22,25 @@ a{
     justify-content: center;
     align-items: center;
 }
-
+.title {
+    font-size: 40px;
+    font-weight: 600;
+    color: #161616;
+    letter-spacing: -1.6px;
+}
 .logowrap{
-display: flex;
-width: 100%;
-gap: 14px;
-justify-content: center;
-margin-bottom: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 24px;
 }
 .regbtn{
-    width: 344px;
-    /* width:335px; */
     background-color: #161616;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
-    height: 49px;
+    padding: 14px 130px;
+    color:white;
     border-radius: 8px;
     border: none;
     outline: none;
@@ -48,35 +53,29 @@ margin-bottom: 24px;
     line-height: 18px;
     letter-spacing: -2%;
     margin-bottom: 48px;
-  text-align: center;
+    text-align: center;
 }
-.regbtntext {    display: inline-block;
-    text-align: start;
-    font: "Poppins";
-   font-weight: 500;
-    font-style: normal;
-    font-size: 14px;
-    line-height: 27px;
-   color: #FFFFFF;
 
-     }
-     .logintext{
-        display: inline-block;
-        text-align: start;
-        font: "Poppins";
-       font-weight: 500;
-        font-style: normal;
-        font-size: 14px;
-        line-height: 27px;
-        color:#161616
-     }
+.logintext, .gogglelogin{
+    color:#161616;
+}
 .wecomeimage{
-  margin-bottom: 24px;
+    margin-bottom: 24px;
+    width:162px;
  }
- .goggleimage{
-border-radius: 8px;
-   }
 .gogglelogin{
     display: flex;
+    align-items: center;
     gap: 8px;
+    margin-top:20px;
+    background-color: white;
+    padding: 14px;
+    border-radius: 8px;
+}
+.gogglelogin::before {
+    content:'';
+    background-image: url('../../images/googlesignup.png');
+    background-size: contain;
+    width:24px;
+    height:24px;
 }

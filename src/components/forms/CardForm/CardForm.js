@@ -4,16 +4,9 @@ import { validationCardSchema } from "..//..//..//schems/validationCardSchema";
 import s from "./CardForm.module.css";
 import Button from "..//..//Button/Button.jsx";
 import { MyDatepicker } from "../MyDatepicker/MyDatepicker";
-/* import Tooltip from '@mui/material/Tooltip'; */
 
 export const CardForm = ({ taskData, setTask }) => {
   const orderedCodes = ["none", "low", "medium", "high"];
-  const namesToCodes = {
-    none: "Without priority",
-    low: "Low",
-    medium: "Medium",
-    high: "High",
-  };
 
   const initialValues = {
     deadline: taskData?.deadline ? new Date(taskData.deadline) : new Date(),
@@ -33,16 +26,9 @@ export const CardForm = ({ taskData, setTask }) => {
       initialValues={initialValues}
       validationSchema={validationCardSchema}
       onSubmit={onSubmit}
+      validationOnBlur={true}
     >
-      {({
-        values,
-        isSubmitting,
-        dirty,
-        touched,
-        errors,
-        handleSubmit,
-        setFieldValue,
-      }) => (
+      {({ values, isSubmitting, dirty, handleSubmit, setFieldValue }) => (
         <Form className={s.form} onSubmit={handleSubmit}>
           <label className={s.label}>
             <Field
@@ -51,7 +37,6 @@ export const CardForm = ({ taskData, setTask }) => {
               name="title"
               placeholder="Title"
               autoFocus
-              onBlur={touched.title && errors.title}
             />
             <ErrorMessage name="title" component="div" className={s.error} />
           </label>
@@ -62,7 +47,6 @@ export const CardForm = ({ taskData, setTask }) => {
               as="textarea"
               placeholder="Description"
               name="description"
-              onBlur={touched.description && errors.description}
             />
             <ErrorMessage
               name="description"
@@ -89,7 +73,6 @@ export const CardForm = ({ taskData, setTask }) => {
                     value={code}
                     checked={values.priority === code}
                     onChange={() => setFieldValue("priority", code)}
-                    onBlur={touched.priority && errors.priority}
                     className={s[`${code}Input`]}
                   />
                 </div>

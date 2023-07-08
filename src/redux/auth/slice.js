@@ -1,8 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, register, logout, getMe, updTheme, updateProfile, updateProfileAvatar } from "../auth/operations";
+import {
+  login,
+/*   register, */
+  logout,
+  getMe,
+  updTheme,
+  updateProfile,
+} from "../auth/operations";
 
 const handlePending = (state) => {
   state.isRefreshing = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
@@ -37,11 +45,11 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(register.fulfilled, (state, action) => {
+/*       .addCase(register.fulfilled, (state, action) => {
         // state.user = action.payload.user;
       })
       .addCase(register.pending, handlePending)
-      .addCase(register.rejected, handleRejected)
+      .addCase(register.rejected, handleRejected) */
       .addCase(login.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.theme = action.payload.theme;
@@ -96,12 +104,12 @@ const authSlice = createSlice({
       .addCase(updTheme.pending, handlePending)
       .addCase(updTheme.rejected, handleRejected)
       .addCase(updateProfile.fulfilled, (state, action) => {
-        state.user.name = action.payload.name;
-        state.user.email = action.payload.email;
-        state.user.avatar = action.payload.avatar;
+        if(action.payload.name) state.user.name = action.payload.name;
+        if(action.payload.email) state.user.email = action.payload.email;
+        if(action.payload.avatar) state.user.avatar = action.payload.avatar;
       })
       .addCase(updateProfile.pending, handlePending)
-      .addCase(updateProfile.rejected, handleRejected)
+      .addCase(updateProfile.rejected, handleRejected),
 });
 
 export const { refreshTokens, resetIsLoggedIn } = authSlice.actions;

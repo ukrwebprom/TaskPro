@@ -2,24 +2,21 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { validationRegistrSchema } from "schems";
 import { useState } from "react";
 import Button from "..//..//Button/Button.jsx";
+import { ErrorTip } from "../ErrorMessage/ErrorTip";
 import s from "./Registerform.module.css";
 import Icon from "components/Icon/Icon";
-// import { useUser } from "hooks/useUser";
 import { useDispatch } from "react-redux";
-import { register } from "redux/auth/operations";
-import { useAuth } from "hooks/useAuth.js";
+import { login } from "redux/auth/operations";
+import { registerUser } from "api/ServerAPI.js";
 
 export const RegisterForm = () => {
-  // const {userRegister} = useUser();
-
   const dispatch = useDispatch();
   const [type, setType] = useState("password");
   const [iconName, setIconName] = useState("#eye-icon");
-  const { error } = useAuth();
+  const [error, setError] = useState(null);
 
   const handleShow = (e) => {
     const gettype = e.currentTarget.value;
-    console.log(gettype);
     if (gettype === "password") {
       setType("text");
       setIconName("#eye-slash-icon");
@@ -28,26 +25,20 @@ export const RegisterForm = () => {
       setIconName("#eye-icon");
     }
   };
-  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-  //   try {
-  //     await userRegister(values);
-  //     setSubmitting(false);
-  //     resetForm();
-  //   } catch (err) {
-  //     console.log(err);
-  //     console.log("єто моя 409");
-  //   }
-  // };
 
-  const handleSubmit = (values, actions) => {
-    dispatch(
-      register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      })
-    );
-    actions.resetForm();
+  const handleSubmit = async (values, actions) => {
+    try {
+      await registerUser(values);
+      actions.resetForm();
+      dispatch(
+        login({
+          email: values.email,
+          password: values.password,
+        })
+      );
+    } catch (err) {
+      setError(err.response.data.message);
+    }
   };
 
   return (
@@ -59,8 +50,9 @@ export const RegisterForm = () => {
       }}
       validationSchema={validationRegistrSchema}
       onSubmit={handleSubmit}
+      validationOnBlur={true}
     >
-      {({ isSubmitting, touched, errors, dirty }) => (
+      {({ isSubmitting, dirty }) => (
         <div className={s.wrap}>
           <Form>
             <div className={s.titleFild}>
@@ -68,8 +60,8 @@ export const RegisterForm = () => {
               <a href="log" className={s.regtitle}>
                 Log In
               </a>
-              {error && <div className={s.mistake}>*{error}</div>}
             </div>
+            {error && <ErrorTip e={error} />}
             <div className={s.field}>
               <label className={s.label}>
                 <Field
@@ -77,7 +69,6 @@ export const RegisterForm = () => {
                   name="name"
                   placeholder="Enter your name"
                   autoFocus
-                  onBlur={touched.title && errors.title}
                 />
 
                 <ErrorMessage name="name" component="div" className={s.error} />
@@ -89,7 +80,6 @@ export const RegisterForm = () => {
                   name="email"
                   placeholder="Enter your email"
                   type="email"
-                  onBlur={touched.title && errors.title}
                 />
                 <ErrorMessage
                   name="email"
@@ -104,7 +94,6 @@ export const RegisterForm = () => {
                   name="password"
                   placeholder="Create a password"
                   type={type}
-                  onBlur={touched.title && errors.title}
                 />
                 <button
                   type="button"

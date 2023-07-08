@@ -21,7 +21,7 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
   const initialValues = {
     title: "",
     icon: iconNames[0],
-    background: previews[0],
+    background: "0",
   };
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
@@ -35,8 +35,9 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
       initialValues={def ? def : initialValues}
       validationSchema={validationNewBoardSchema}
       onSubmit={onSubmit}
+      validationOnBlur={true}
     >
-      {({ isSubmitting, touched, errors, dirty, values, setFieldValue }) => (
+      {({ isSubmitting, dirty, values, setFieldValue }) => (
         <Form className={s.form}>
           <label className={s.label}>
             <Field
@@ -45,7 +46,6 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
               name="title"
               placeholder="Title"
               autoFocus
-              onBlur={touched.description && errors.description}
             />
             <ErrorMessage name="title" component="div" className={s.error} />
           </label>
@@ -62,7 +62,6 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
                     value={icon}
                     checked={values.icon === icon}
                     className={s.radio}
-                    onBlur={touched.description && errors.description}
                   />
                   <label htmlFor={index} className={s.icon}>
                     <Icon name={`#${icon}`} />
@@ -84,7 +83,6 @@ export const BoardForm = ({ onSubmitForm, def, type }) => {
                     name="background"
                     value={index}
                     checked={Number(values.background) === index}
-                    onBlur={touched.description && errors.description}
                   />
                   <label
                     htmlFor={`back${index}`}
